@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noémi Eger — Ads Manager IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --surface3: #22222f;
+    --border: #2a2a3a;
+    --accent: #c9a96e;
+    --accent2: #e8c99a;
+    --text: #f0ede8;
+    --text2: #9a97a0;
+    --text3: #5a576a;
+    --green: #4caf7d;
+    --red: #e05c5c;
+    --blue: #6b9fff;
+    --purple: #9b7fe8;
+    --amber: #f0a840;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+  .sidebar {
+    position: fixed; left: 0; top: 0; bottom: 0; width: 240px;
+    background: var(--surface); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; z-index: 100;
+  }
+  .sidebar-logo { padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+  .sidebar-logo .brand { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--accent); }
+  .sidebar-logo .sub { font-size: 11px; color: var(--text3); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .nav { padding: 16px 12px; flex: 1; }
+  .nav-section { margin-bottom: 24px; }
+  .nav-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 2px; padding: 0 12px; margin-bottom: 6px; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--text2); transition: all 0.15s; margin-bottom: 2px; }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: var(--surface3); color: var(--accent); }
+  .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-bottom { padding: 16px; border-top: 1px solid var(--border); }
+  .config-btn { width: 100%; padding: 10px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--text2); font-size: 13px; cursor: pointer; transition: all 0.15s; font-family: 'DM Sans', sans-serif; }
+  .config-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .main { margin-left: 240px; min-height: 100vh; }
+  .topbar { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--surface); position: sticky; top: 0; z-index: 50; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 22px; }
+  .page-subtitle { font-size: 13px; color: var(--text3); margin-top: 2px; }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; }
+
+  .btn { padding: 9px 18px; border-radius: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: all 0.15s; border: none; }
+  .btn-primary { background: var(--accent); color: #0a0a0f; }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-secondary { background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-success { background: var(--green); color: white; }
+  .btn-sm { padding: 6px 12px; font-size: 12px; }
+
+  .content { padding: 32px; }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; overflow: hidden; }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: 0.5; }
+  .stat-label { font-size: 12px; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; }
+  .stat-value { font-size: 28px; font-family: 'Playfair Display', serif; margin: 8px 0 4px; }
+  .stat-change { font-size: 12px; }
+  .stat-change.up { color: var(--green); }
+  .stat-change.down { color: var(--red); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .card-header { padding: 18px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .card-title { font-size: 14px; font-weight: 600; }
+  .card-body { padding: 20px; }
+
+  .ai-report { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #2d2d5e; border-radius: 12px; padding: 24px; margin-bottom: 28px; position: relative; }
+  .ai-report::before { content: '✦'; position: absolute; right: 24px; top: 20px; font-size: 24px; color: var(--accent); opacity: 0.4; }
+  .ai-report-title { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .ai-report-text { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .ai-insights { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .insight-tag { padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+  .insight-tag.good { background: rgba(76,175,125,0.15); color: var(--green); border: 1px solid rgba(76,175,125,0.3); }
+  .insight-tag.warn { background: rgba(201,169,110,0.15); color: var(--accent); border: 1px solid rgba(201,169,110,0.3); }
+  .insight-tag.bad { background: rgba(224,92,92,0.15); color: var(--red); border: 1px solid rgba(224,92,92,0.3); }
+
+  .table { width: 100%; border-collapse: collapse; }
+  .table th { text-align: left; font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .table td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid rgba(42,42,58,0.5); }
+  .table tr:last-child td { border-bottom: none; }
+  .table tr:hover td { background: rgba(255,255,255,0.02); }
+  .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .status-badge.active { background: rgba(76,175,125,0.15); color: var(--green); }
+  .status-badge.paused { background: rgba(90,87,106,0.3); color: var(--text3); }
+  .status-badge.draft { background: rgba(107,159,255,0.15); color: var(--blue); }
+  .status-badge.scheduled { background: rgba(155,127,232,0.15); color: var(--purple); }
+
+  .creator-steps { display: flex; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+  .step-tab { padding: 14px 20px; font-size: 13px; color: var(--text3); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .step-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .step-tab.done { color: var(--green); }
+  .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--surface3); font-size: 11px; display: flex; align-items: center; justify-content: center; }
+  .step-tab.active .step-num { background: var(--accent); color: #000; }
+  .step-tab.done .step-num { background: var(--green); color: #000; }
+  .step-content { display: none; }
+  .step-content.active { display: block; }
+
+  .upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 48px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--surface); }
+  .upload-area:hover, .upload-area.drag-over { border-color: var(--accent); background: rgba(201,169,110,0.05); }
+  .upload-icon { font-size: 40px; margin-bottom: 12px; }
+  .upload-title { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+  .upload-sub { font-size: 13px; color: var(--text3); }
+  .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 20px; }
+  .image-thumb { aspect-ratio: 1; border-radius: 8px; overflow: hidden; position: relative; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; }
+  .image-thumb:hover { border-color: var(--accent); }
+  .image-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .remove-img { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,0.7); border: none; color: white; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; font-size: 14px; display: none; align-items: center; justify-content: center; }
+  .image-thumb:hover .remove-img { display: flex; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 0; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-size: 12px; color: var(--text2); margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+  .form-input, .form-select, .form-textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; font-family: 'DM Sans', sans-serif; transition: border-color 0.15s; outline: none; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-select option { background: var(--surface2); }
+  .form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .copy-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 12px; transition: border-color 0.2s; cursor: pointer; }
+  .copy-card:hover, .copy-card.selected { border-color: var(--accent); background: rgba(201,169,110,0.04); }
+  .copy-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .copy-type { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+
+  .loading-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,15,0.85); z-index: 1000; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
+  .loading-overlay.show { display: flex; }
+  .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { font-size: 14px; color: var(--text2); }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,15,0.9); z-index: 200; align-items: center; justify-content: center; }
+  .modal-overlay.show { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; width: 500px; max-width: 90vw; max-height: 85vh; overflow-y: auto; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 20px; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+
+  .chart-area { height: 160px; display: flex; align-items: flex-end; gap: 5px; padding: 0 4px; }
+  .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+  .chart-bar { width: 100%; border-radius: 4px 4px 0 0; background: linear-gradient(to top, var(--accent), rgba(201,169,110,0.3)); transition: opacity 0.2s; }
+  .chart-bar:hover { opacity: 0.7; }
+  .chart-label { font-size: 10px; color: var(--text3); }
+
+  .alert { padding: 14px 18px; border-radius: 10px; font-size: 13px; margin-bottom: 12px; line-height: 1.5; }
+  .alert.warn { background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.3); color: var(--accent2); }
+  .alert.success { background: rgba(76,175,125,0.1); border: 1px solid rgba(76,175,125,0.3); color: var(--green); }
+  .alert.danger { background: rgba(224,92,92,0.1); border: 1px solid rgba(224,92,92,0.3); color: var(--red); }
+
+  .empty-state { text-align: center; padding: 60px 20px; }
+  .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.3; }
+  .empty-state h3 { font-size: 16px; margin-bottom: 8px; }
+  .empty-state p { font-size: 13px; color: var(--text3); }
+
+  .notification { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px; font-size: 13px; z-index: 500; transform: translateY(100px); opacity: 0; transition: all 0.3s; max-width: 320px; }
+  .notification.show { transform: translateY(0); opacity: 1; }
+  .notification.success { border-color: var(--green); color: var(--green); }
+  .notification.error { border-color: var(--red); color: var(--red); }
+
+  .flex { display: flex; } .gap-10 { gap: 10px; } .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; } .mt-24 { margin-top: 24px; } .mt-16 { margin-top: 16px; }
+  .text-muted { color: var(--text3); font-size: 13px; }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* NEW CAMPAIGN CREATOR */
+  .nc-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s; }
+  .nc-section-locked { opacity: 0.5; pointer-events: none; }
+  .nc-section-locked.unlocked { opacity: 1; pointer-events: all; }
+  .nc-section.confirmed { border-color: var(--green); }
+  .nc-section-header { padding: 18px 20px; display: flex; align-items: center; gap: 14px; cursor: pointer; }
+  .nc-section-header:hover { background: rgba(255,255,255,0.02); }
+  .nc-section-num { width: 28px; height: 28px; border-radius: 50%; background: var(--surface3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; transition: all 0.2s; }
+  .nc-section-num.active-num { background: var(--blue); color: white; }
+  .nc-section-num.done-num { background: var(--green); color: white; font-size: 14px; }
+  .nc-section-title { font-size: 15px; font-weight: 600; }
+  .nc-section-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .nc-section-arrow { margin-left: auto; color: var(--text3); font-size: 11px; }
+  .nc-section-body { padding: 0 20px 20px; border-top: 1px solid var(--border); }
+  .nc-field { margin-top: 18px; }
+  .nc-field-label { font-size: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .nc-field-note { font-size: 12px; color: var(--text3); margin-top: 6px; line-height: 1.5; }
+  .nc-default-pill { background: rgba(90,87,106,0.3); color: var(--text3); padding: 2px 8px; border-radius: 10px; font-size: 10px; text-transform: none; letter-spacing: 0; }
+  .nc-changed-pill { background: rgba(76,175,125,0.15); color: var(--green); border: 1px solid rgba(76,175,125,0.3); padding: 2px 8px; border-radius: 10px; font-size: 10px; text-transform: none; letter-spacing: 0; }
+  .nc-toggle-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nc-toggle-opt { padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border); font-size: 13px; cursor: pointer; color: var(--text2); transition: all 0.15s; background: var(--surface2); }
+  .nc-toggle-opt:hover { border-color: var(--accent); color: var(--text); }
+  .nc-toggle-opt.active { border-color: var(--accent); background: rgba(201,169,110,0.12); color: var(--accent); font-weight: 500; }
+  .nc-checkbox { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); cursor: pointer; padding: 6px 10px; border-radius: 6px; transition: background 0.15s; }
+  .nc-checkbox:hover { background: var(--surface2); }
+  .nc-checkbox input { accent-color: var(--accent); }
+
+  /* AI CHAT */
+  .chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.6; }
+  .chat-msg.ai { background: var(--surface2); border: 1px solid var(--border); color: var(--text2); align-self: flex-start; border-radius: 4px 12px 12px 12px; }
+  .chat-msg.user { background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.2); color: var(--text); align-self: flex-end; border-radius: 12px 4px 12px 12px; }
+  .chat-qr { padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); font-size: 12px; cursor: pointer; color: var(--text2); background: var(--surface2); transition: all 0.15s; white-space: nowrap; }
+  .chat-qr:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SUMMARY */
+  .summary-field { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(42,42,58,0.5); }
+  .summary-indicator { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .summary-indicator.default { background: var(--blue); }
+  .summary-indicator.changed { background: var(--green); }
+  .summary-fname { font-size: 12px; color: var(--text3); min-width: 160px; }
+  .summary-fval { font-size: 13px; color: var(--text); }
+
+  /* TOKEN BANNER */
+  .token-banner { display:none; padding:10px 32px; font-size:13px; align-items:center; justify-content:space-between; gap:12px; position:sticky; top:0; z-index:99; }
+  .token-banner.warn { background:rgba(240,168,64,0.12); border-bottom:1px solid rgba(240,168,64,0.3); color:var(--amber); display:flex; }
+  .token-banner.critical { background:rgba(224,92,92,0.12); border-bottom:1px solid rgba(224,92,92,0.3); color:var(--red); display:flex; }
+
+  /* METRIC PILLS */
+  .metric-pill { display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:10px; font-size:11px; font-weight:600; }
+  .metric-pill.green { background:rgba(76,175,125,0.15); color:var(--green); }
+  .metric-pill.amber { background:rgba(240,168,64,0.15); color:var(--amber); }
+  .metric-pill.red { background:rgba(224,92,92,0.15); color:var(--red); }
+  .metric-pill.blue { background:rgba(107,159,255,0.15); color:var(--blue); }
+
+  /* CAMPAIGNS TABLE SCROLL */
+  .table-wrap { overflow-x:auto; }
+  .table th, .table td { white-space:nowrap; }
+
+  /* STATUS FILTER TABS */
+  .filter-tabs { display:flex; gap:6px; }
+  .filter-tab { padding:6px 14px; border-radius:20px; font-size:12px; cursor:pointer; border:1px solid var(--border); color:var(--text3); background:var(--surface2); transition:all 0.15s; }
+  .filter-tab:hover { border-color:var(--accent); color:var(--accent); }
+  .filter-tab.active { background:var(--accent); color:#000; border-color:var(--accent); font-weight:600; }
+
+  /* REPORT CARDS */
+  .report-section { margin-bottom:24px; }
+  .report-section-title { font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; }
+  .report-action-item { display:flex; align-items:flex-start; gap:10px; padding:12px 0; border-bottom:1px solid rgba(42,42,58,0.4); }
+  .report-action-num { width:22px; height:22px; border-radius:50%; background:var(--accent); color:#000; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .report-action-text { font-size:13px; color:var(--text2); line-height:1.6; }
+  .report-metric-row { display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(42,42,58,0.3); font-size:13px; }
+  .report-metric-label { color:var(--text3); }
+  .report-metric-val { font-weight:600; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="brand">Noémi Eger</div>
+    <div class="sub">Ads Manager IA</div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-label">Principal</div>
+      <div class="nav-item active" onclick="showPage('dashboard')"><span class="icon">📊</span> Dashboard</div>
+      <div class="nav-item" onclick="showPage('campaigns')"><span class="icon">🚀</span> Campanhas</div>
+      <div class="nav-item" onclick="showPage('creator')"><span class="icon">✨</span> Criar Campanha</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Criativos</div>
+      <div class="nav-item" onclick="window.location.href='criativos.html'"><span class="icon">🎨</span> Módulo Criativos</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">Análise</div>
+      <div class="nav-item" onclick="showPage('analytics')"><span class="icon">📈</span> Analytics</div>
+      <div class="nav-item" onclick="showPage('reports')"><span class="icon">🤖</span> Relatórios IA</div>
+    </div>
+  </nav>
+  <div class="sidebar-bottom">
+    <button class="config-btn" onclick="showModal('configModal')">⚙️ Configurações</button>
+  </div>
+</aside>
+
+<main class="main">
+  <!-- TOKEN BANNER -->
+  <div class="token-banner" id="tokenBanner">
+    <span id="tokenBannerMsg">⚠️ O teu Access Token expira em breve.</span>
+    <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);border:none;color:inherit;cursor:pointer" onclick="showModal('configModal')">Renovar agora →</button>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="page-dashboard" class="page active">
+    <div class="topbar">
+      <div><div class="page-title">Dashboard</div><div class="page-subtitle">Visão geral — últimos 7 dias</div></div>
+      <div class="topbar-actions">
+        <button class="btn btn-secondary" onclick="loadDashboard()">↻ Atualizar</button>
+        <button class="btn btn-primary" onclick="showPage('creator')">+ Nova Campanha</button>
+      </div>
+    </div>
+    <div class="content">
+      <div class="ai-report">
+        <div class="ai-report-title">✦ Análise IA</div>
+        <div class="ai-report-text" id="aiText">A carregar análise...</div>
+        <div class="ai-insights" id="aiTags"></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Gasto Total</div><div class="stat-value" id="s-spend">—</div><div id="s-spend-c" class="stat-change">—</div></div>
+        <div class="stat-card"><div class="stat-label">ROAS</div><div class="stat-value" id="s-roas">—</div><div id="s-roas-c" class="stat-change">—</div></div>
+        <div class="stat-card"><div class="stat-label">Compras</div><div class="stat-value" id="s-purchases">—</div><div id="s-purchases-c" class="stat-change">—</div></div>
+        <div class="stat-card"><div class="stat-label">CPA</div><div class="stat-value" id="s-cpa">—</div><div id="s-cpa-c" class="stat-change">—</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Gasto por Dia (7 dias)</div></div>
+          <div class="card-body"><div class="chart-area" id="spendChart"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">⚡ Alertas & Recomendações</div></div>
+          <div class="card-body" id="alertsBox"><div class="text-muted">A carregar...</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Campanhas Ativas</div><button class="btn btn-sm btn-secondary" onclick="showPage('campaigns')">Ver todas</button></div>
+        <div class="card-body" style="padding:0">
+          <table class="table"><thead><tr><th>Nome</th><th>Status</th><th>Gasto</th><th>ROAS</th><th>CPA</th><th>Ação</th></tr></thead>
+          <tbody id="dashCampaigns"><tr><td colspan="6" style="text-align:center;color:var(--text3);padding:24px">A carregar...</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGNS -->
+  <div id="page-campaigns" class="page">
+    <div class="topbar">
+      <div><div class="page-title">Campanhas</div><div class="page-subtitle" id="campSubtitle">Gestão completa</div></div>
+      <div class="topbar-actions">
+        <select class="form-select" id="campDateFilter" style="width:auto;padding:8px 14px" onchange="loadCampaigns()">
+          <option value="today" selected>Hoje</option>
+          <option value="yesterday">Ontem</option>
+          <option value="last_7d">Últimos 7 dias</option>
+          <option value="last_14d">Últimos 14 dias</option>
+          <option value="last_30d">Últimos 30 dias</option>
+          <option value="this_month">Este mês</option>
+          <option value="last_month">Mês passado</option>
+        </select>
+        <button class="btn btn-secondary" onclick="loadCampaigns()">↻ Atualizar</button>
+        <button class="btn btn-primary" onclick="showPage('creator')">+ Nova Campanha</button>
+      </div>
+    </div>
+    <div class="content">
+      <!-- Filter tabs -->
+      <div class="flex gap-10 items-center" style="margin-bottom:16px;flex-wrap:wrap">
+        <div class="filter-tabs">
+          <div class="filter-tab active" id="ft-active" onclick="setCampFilter('active')">🟢 Ativas</div>
+          <div class="filter-tab" id="ft-scheduled" onclick="setCampFilter('scheduled')">🟣 Agendadas</div>
+          <div class="filter-tab" id="ft-paused" onclick="setCampFilter('paused')">⚫ Pausadas</div>
+          <div class="filter-tab" id="ft-all" onclick="setCampFilter('all')">Todas</div>
+        </div>
+        <div id="campTotalsBar" style="font-size:12px;color:var(--text3);margin-left:auto"></div>
+      </div>
+      <!-- Table -->
+      <div class="card">
+        <div class="table-wrap">
+          <table class="table" id="campTable">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Status</th>
+                <th>Orç./dia</th>
+                <th>Gasto</th>
+                <th>CPM</th>
+                <th>CPC</th>
+                <th>CTR</th>
+                <th>Add Cart</th>
+                <th>Compras</th>
+                <th>ROAS</th>
+                <th>CPA</th>
+                <th>Freq.</th>
+                <th>IA</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="allCampaigns"><tr><td colspan="14" style="text-align:center;color:var(--text3);padding:32px">A carregar campanhas...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATOR -->
+  <div id="page-creator" class="page">
+    <div class="topbar">
+      <div><div class="page-title">Nova Campanha</div><div class="page-subtitle">Configura cada secção — as predefinições já estão preenchidas</div></div>
+      <div class="topbar-actions">
+        <button class="btn btn-secondary" onclick="resetCreator()">↺ Recomeçar</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 65px)">
+
+      <!-- LEFT: FORM SECTIONS -->
+      <div style="overflow-y:auto;padding:28px 32px">
+
+        <!-- SECTION 1: CAMPANHA -->
+        <div class="nc-section" id="ncs1">
+          <div class="nc-section-header" onclick="toggleSection(1)">
+            <div class="nc-section-num" id="nsn1">1</div>
+            <div>
+              <div class="nc-section-title">Campanha</div>
+              <div class="nc-section-sub" id="nss1">Objetivo, orçamento e nome</div>
+            </div>
+            <div class="nc-section-arrow" id="nsa1">▼</div>
+          </div>
+          <div class="nc-section-body" id="nsb1">
+
+            <!-- Objetivo -->
+            <div class="nc-field">
+              <div class="nc-field-label">Tipo / Objetivo <span class="nc-default-pill">Predefinição: Vendas</span></div>
+              <div class="nc-toggle-group" id="tg-objective">
+                <div class="nc-toggle-opt active" data-val="OUTCOME_SALES" onclick="setToggle('objective',this)">🛒 Vendas</div>
+                <div class="nc-toggle-opt" data-val="OUTCOME_AWARENESS" onclick="setToggle('objective',this)">👁️ Reconhecimento</div>
+                <div class="nc-toggle-opt" data-val="OUTCOME_TRAFFIC" onclick="setToggle('objective',this)">🔗 Tráfego</div>
+                <div class="nc-toggle-opt" data-val="OUTCOME_ENGAGEMENT" onclick="setToggle('objective',this)">💬 Envolvimento</div>
+                <div class="nc-toggle-opt" data-val="OUTCOME_LEADS" onclick="setToggle('objective',this)">📋 Leads</div>
+                <div class="nc-toggle-opt" data-val="OUTCOME_APP_PROMOTION" onclick="setToggle('objective',this)">📱 App</div>
+              </div>
+            </div>
+
+            <!-- Estrutura orçamento -->
+            <div class="nc-field">
+              <div class="nc-field-label">Estrutura de Orçamento <span class="nc-default-pill">Predefinição: CBO</span></div>
+              <div class="nc-toggle-group" id="tg-budgettype">
+                <div class="nc-toggle-opt active" data-val="CBO" onclick="setToggle('budgettype',this);toggleBudgetLevel()">CBO — Por Campanha</div>
+                <div class="nc-toggle-opt" data-val="ABO" onclick="setToggle('budgettype',this);toggleBudgetLevel()">ABO — Por Conjunto</div>
+              </div>
+              <div class="nc-field-note">CBO = Meta distribui automaticamente &nbsp;|&nbsp; ABO = mais controlo por conjunto</div>
+            </div>
+
+            <!-- Nome campanha -->
+            <div class="nc-field">
+              <div class="nc-field-label">Nome da Campanha <span style="color:var(--red);font-size:11px">*obrigatório</span></div>
+              <input type="text" class="form-input" id="nc-campname" placeholder="Ex: Vestidos Verão — Hungria — Mai 2026" oninput="markChanged('campname')">
+            </div>
+
+            <!-- Orçamento CBO (só aparece se CBO) -->
+            <div class="nc-field" id="nc-cbo-budget" style="display:none">
+              <div class="nc-field-label">Orçamento Diário da Campanha <span class="nc-changed-pill" id="chg-cbobudget" style="display:none">alterado</span></div>
+              <div style="position:relative">
+                <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)">€</span>
+                <input type="number" class="form-input" id="nc-cbobudget" style="padding-left:28px" placeholder="50" min="1" oninput="markChanged('cbobudget')">
+              </div>
+            </div>
+
+            <!-- Limite de gastos -->
+            <div class="nc-field">
+              <div class="nc-field-label">Limite Total de Gastos <span class="nc-default-pill">Predefinição: Sem limite</span></div>
+              <div class="nc-toggle-group" id="tg-spendlimit">
+                <div class="nc-toggle-opt active" data-val="none" onclick="setToggle('spendlimit',this);toggleSpendLimit()">Sem limite</div>
+                <div class="nc-toggle-opt" data-val="set" onclick="setToggle('spendlimit',this);toggleSpendLimit()">Definir limite</div>
+              </div>
+              <div id="nc-spendlimit-field" style="display:none;margin-top:10px">
+                <div style="position:relative">
+                  <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)">€</span>
+                  <input type="number" class="form-input" id="nc-spendlimit" style="padding-left:28px" placeholder="500" min="1">
+                </div>
+              </div>
+            </div>
+
+            <!-- Categoria especial -->
+            <div class="nc-field">
+              <div class="nc-field-label">Categoria Especial de Anúncios <span class="nc-default-pill">Predefinição: Nenhuma</span></div>
+              <select class="form-select" id="nc-specialcat" onchange="markChanged('specialcat')">
+                <option value="NONE">Nenhuma</option>
+                <option value="CREDIT">Crédito</option>
+                <option value="EMPLOYMENT">Emprego</option>
+                <option value="HOUSING">Habitação</option>
+                <option value="ISSUES_ELECTIONS_POLITICS">Questões sociais / Política</option>
+              </select>
+              <div class="nc-field-note">Para moda/vestuário seleciona sempre <strong>Nenhuma</strong></div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="confirmSection(1)">Confirmar Secção 1 →</button>
+          </div>
+        </div>
+
+        <!-- SECTION 2: CONJUNTO DE ANÚNCIOS -->
+        <div class="nc-section nc-section-locked" id="ncs2">
+          <div class="nc-section-header" onclick="toggleSection(2)">
+            <div class="nc-section-num" id="nsn2">2</div>
+            <div>
+              <div class="nc-section-title">Conjunto de Anúncios</div>
+              <div class="nc-section-sub" id="nss2">Pixel, objetivo de desempenho, datas e licitação</div>
+            </div>
+            <div class="nc-section-arrow" id="nsa2">▶</div>
+          </div>
+          <div class="nc-section-body" id="nsb2" style="display:none">
+
+            <!-- Nome adset -->
+            <div class="nc-field">
+              <div class="nc-field-label">Nome do Conjunto <span style="color:var(--red);font-size:11px">*obrigatório</span></div>
+              <input type="text" class="form-input" id="nc-adsetname" placeholder="Ex: Broad — Hungria — Compra" oninput="markChanged('adsetname')">
+            </div>
+
+            <!-- Orçamento ABO -->
+            <div class="nc-field" id="nc-abo-budget">
+              <div class="nc-field-label">Orçamento Diário do Conjunto <span class="nc-changed-pill" id="chg-abobudget" style="display:none">alterado</span></div>
+              <div style="position:relative">
+                <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3)">€</span>
+                <input type="number" class="form-input" id="nc-abobudget" style="padding-left:28px" placeholder="50" min="1" oninput="markChanged('abobudget')">
+              </div>
+            </div>
+
+            <!-- Localização da conversão -->
+            <div class="nc-field">
+              <div class="nc-field-label">Localização da Conversão <span class="nc-default-pill">Predefinição: Site</span></div>
+              <div class="nc-toggle-group" id="tg-convloc">
+                <div class="nc-toggle-opt active" data-val="WEBSITE" onclick="setToggle('convloc',this)">🌐 Site</div>
+                <div class="nc-toggle-opt" data-val="APP" onclick="setToggle('convloc',this)">📱 App</div>
+                <div class="nc-toggle-opt" data-val="MESSENGER" onclick="setToggle('convloc',this)">💬 Messenger</div>
+                <div class="nc-toggle-opt" data-val="WHATSAPP" onclick="setToggle('convloc',this)">📞 WhatsApp</div>
+                <div class="nc-toggle-opt" data-val="INSTAGRAM_DIRECT" onclick="setToggle('convloc',this)">📸 Instagram DM</div>
+              </div>
+            </div>
+
+            <!-- Objetivo de desempenho -->
+            <div class="nc-field">
+              <div class="nc-field-label">Objetivo de Desempenho <span class="nc-default-pill">Predefinição: Maximizar Conversões</span></div>
+              <select class="form-select" id="nc-perfobj" onchange="markChanged('perfobj')">
+                <option value="OFFSITE_CONVERSIONS">Maximizar número de conversões</option>
+                <option value="VALUE">Maximizar valor das conversões</option>
+                <option value="LINK_CLICKS">Maximizar cliques na ligação</option>
+                <option value="REACH">Maximizar alcance único diário</option>
+                <option value="IMPRESSIONS">Maximizar impressões</option>
+                <option value="POST_ENGAGEMENT">Maximizar envolvimento com publicação</option>
+                <option value="LEAD_GENERATION">Maximizar leads</option>
+              </select>
+            </div>
+
+            <!-- Pixel -->
+            <div class="nc-field">
+              <div class="nc-field-label">Pixel / Conjunto de Dados <span class="nc-default-pill">Predefinição: Noemi Eger Fashion</span></div>
+              <select class="form-select" id="nc-pixel" onchange="markChanged('pixel')">
+                <option value="1794162401993457">Noemi Eger Fashion (1794162401993457)</option>
+              </select>
+              <div class="nc-field-note">Este é o pixel associado à tua conta. Confirma se é o correto.</div>
+            </div>
+
+            <!-- Evento de conversão -->
+            <div class="nc-field">
+              <div class="nc-field-label">Evento de Conversão <span class="nc-default-pill">Predefinição: Compra</span></div>
+              <div class="nc-toggle-group" id="tg-convevent" style="flex-wrap:wrap">
+                <div class="nc-toggle-opt active" data-val="PURCHASE" onclick="setToggle('convevent',this)">💳 Compra</div>
+                <div class="nc-toggle-opt" data-val="INITIATED_CHECKOUT" onclick="setToggle('convevent',this)">🛒 Iniciar Checkout</div>
+                <div class="nc-toggle-opt" data-val="ADD_TO_CART" onclick="setToggle('convevent',this)">➕ Add to Cart</div>
+                <div class="nc-toggle-opt" data-val="ADD_PAYMENT_INFO" onclick="setToggle('convevent',this)">💰 Info Pagamento</div>
+                <div class="nc-toggle-opt" data-val="COMPLETE_REGISTRATION" onclick="setToggle('convevent',this)">✅ Registo</div>
+                <div class="nc-toggle-opt" data-val="CONTACT" onclick="setToggle('convevent',this)">📞 Contacto</div>
+                <div class="nc-toggle-opt" data-val="LEAD" onclick="setToggle('convevent',this)">📋 Lead</div>
+                <div class="nc-toggle-opt" data-val="VIEW_CONTENT" onclick="setToggle('convevent',this)">👁️ Ver Conteúdo</div>
+              </div>
+            </div>
+
+            <!-- Data início -->
+            <div class="nc-field">
+              <div class="nc-field-label">Data de Início <span class="nc-default-pill">Predefinição: Amanhã às 00h01</span></div>
+              <div class="nc-toggle-group" id="tg-startdate">
+                <div class="nc-toggle-opt active" data-val="tomorrow" onclick="setToggle('startdate',this);toggleStartDate()">Amanhã às 00h01 <span id="nc-tomorrow-label" style="color:var(--text3);font-size:11px"></span></div>
+                <div class="nc-toggle-opt" data-val="custom" onclick="setToggle('startdate',this);toggleStartDate()">Personalizar</div>
+              </div>
+              <div id="nc-startdate-field" style="display:none;margin-top:10px;display:none">
+                <input type="datetime-local" class="form-input" id="nc-startdateval">
+              </div>
+            </div>
+
+            <!-- Data fim -->
+            <div class="nc-field">
+              <div class="nc-field-label">Data de Fim <span class="nc-default-pill">Predefinição: Sem data de fim</span></div>
+              <div class="nc-toggle-group" id="tg-enddate">
+                <div class="nc-toggle-opt active" data-val="none" onclick="setToggle('enddate',this);toggleEndDate()">Sem data de fim</div>
+                <div class="nc-toggle-opt" data-val="set" onclick="setToggle('enddate',this);toggleEndDate()">Definir data</div>
+              </div>
+              <div id="nc-enddate-field" style="display:none;margin-top:10px">
+                <input type="datetime-local" class="form-input" id="nc-enddateval">
+              </div>
+            </div>
+
+            <!-- Estratégia de licitação -->
+            <div class="nc-field">
+              <div class="nc-field-label">Estratégia de Licitação <span class="nc-default-pill">Predefinição: Custo mais baixo</span></div>
+              <div class="nc-toggle-group" id="tg-bidstrategy">
+                <div class="nc-toggle-opt active" data-val="LOWEST_COST_WITHOUT_CAP" onclick="setToggle('bidstrategy',this);toggleBidStrategy()">Custo mais baixo</div>
+                <div class="nc-toggle-opt" data-val="COST_CAP" onclick="setToggle('bidstrategy',this);toggleBidStrategy()">Limite de custo</div>
+                <div class="nc-toggle-opt" data-val="LOWEST_COST_WITH_BID_CAP" onclick="setToggle('bidstrategy',this);toggleBidStrategy()">Limite de licitação</div>
+                <div class="nc-toggle-opt" data-val="MINIMUM_ROAS" onclick="setToggle('bidstrategy',this);toggleBidStrategy()">ROAS mínimo</div>
+              </div>
+              <div id="nc-bid-value-field" style="display:none;margin-top:10px">
+                <input type="number" class="form-input" id="nc-bidvalue" placeholder="Ex: 2.0 (ROAS) ou 15 (custo €)">
+              </div>
+            </div>
+
+            <!-- Tipo de compra -->
+            <div class="nc-field">
+              <div class="nc-field-label">Tipo de Compra <span class="nc-default-pill">Predefinição: Leilão</span></div>
+              <div class="nc-toggle-group" id="tg-buytype">
+                <div class="nc-toggle-opt active" data-val="AUCTION" onclick="setToggle('buytype',this)">Leilão (standard)</div>
+                <div class="nc-toggle-opt" data-val="RESERVED" onclick="setToggle('buytype',this)">Alcance e Frequência</div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="confirmSection(2)">Confirmar Secção 2 →</button>
+          </div>
+        </div>
+
+        <!-- SECTION 3: PÚBLICO -->
+        <div class="nc-section nc-section-locked" id="ncs3">
+          <div class="nc-section-header" onclick="toggleSection(3)">
+            <div class="nc-section-num" id="nsn3">3</div>
+            <div>
+              <div class="nc-section-title">Público</div>
+              <div class="nc-section-sub" id="nss3">Localização, segmentação e placements</div>
+            </div>
+            <div class="nc-section-arrow" id="nsa3">▶</div>
+          </div>
+          <div class="nc-section-body" id="nsb3" style="display:none">
+
+            <!-- País -->
+            <div class="nc-field">
+              <div class="nc-field-label">País / Localização <span class="nc-default-pill">Predefinição: Hungria</span></div>
+              <input type="text" class="form-input" id="nc-country" value="Hungria (HU)" oninput="markChanged('country')" placeholder="Ex: Hungria, Portugal...">
+              <div class="nc-field-note">Podes escrever múltiplos países separados por vírgula</div>
+            </div>
+
+            <!-- Tipo de público -->
+            <div class="nc-field">
+              <div class="nc-field-label">Tipo de Público <span class="nc-default-pill">Predefinição: Broad</span></div>
+              <div class="nc-toggle-group" id="tg-audiencetype">
+                <div class="nc-toggle-opt active" data-val="broad" onclick="setToggle('audiencetype',this);toggleAudienceType()">Broad</div>
+                <div class="nc-toggle-opt" data-val="saved" onclick="setToggle('audiencetype',this);toggleAudienceType()">Público Guardado</div>
+                <div class="nc-toggle-opt" data-val="lookalike" onclick="setToggle('audiencetype',this);toggleAudienceType()">Lookalike</div>
+                <div class="nc-toggle-opt" data-val="retargeting" onclick="setToggle('audiencetype',this);toggleAudienceType()">Retargeting</div>
+              </div>
+              <div id="nc-audience-extra" style="display:none;margin-top:10px">
+                <input type="text" class="form-input" id="nc-audiencedetail" placeholder="Nome do público guardado ou fonte do Lookalike...">
+              </div>
+            </div>
+
+            <!-- Idade -->
+            <div class="nc-field">
+              <div class="nc-field-label">Idade <span class="nc-default-pill">Predefinição: 18 – 65+</span></div>
+              <div style="display:flex;gap:12px;align-items:center">
+                <input type="number" class="form-input" id="nc-agemin" value="18" min="18" max="65" oninput="markChanged('age')" style="width:100px">
+                <span style="color:var(--text3)">até</span>
+                <input type="number" class="form-input" id="nc-agemax" value="65" min="18" max="65" oninput="markChanged('age')" style="width:100px">
+              </div>
+              <div class="nc-field-note">Predefinição Broad — recomendado para campanhas de conversão</div>
+            </div>
+
+            <!-- Género -->
+            <div class="nc-field">
+              <div class="nc-field-label">Género <span class="nc-default-pill">Predefinição: Todos</span></div>
+              <div class="nc-toggle-group" id="tg-gender">
+                <div class="nc-toggle-opt active" data-val="0" onclick="setToggle('gender',this)">Todos</div>
+                <div class="nc-toggle-opt" data-val="2" onclick="setToggle('gender',this)">Mulheres</div>
+                <div class="nc-toggle-opt" data-val="1" onclick="setToggle('gender',this)">Homens</div>
+              </div>
+            </div>
+
+            <!-- Segmentação detalhada -->
+            <div class="nc-field">
+              <div class="nc-field-label">Segmentação Detalhada (Interesses) <span class="nc-default-pill">Predefinição: Sem segmentação</span></div>
+              <div class="nc-toggle-group" id="tg-interests">
+                <div class="nc-toggle-opt active" data-val="none" onclick="setToggle('interests',this);toggleInterests()">Sem segmentação (Broad)</div>
+                <div class="nc-toggle-opt" data-val="set" onclick="setToggle('interests',this);toggleInterests()">Adicionar interesses</div>
+              </div>
+              <div id="nc-interests-field" style="display:none;margin-top:10px">
+                <input type="text" class="form-input" id="nc-interestsval" placeholder="Ex: Moda, Roupa de mulher, Shopping online...">
+              </div>
+            </div>
+
+            <!-- Exclusões -->
+            <div class="nc-field">
+              <div class="nc-field-label">Exclusões de Público <span class="nc-default-pill">Predefinição: Nenhuma</span></div>
+              <div class="nc-toggle-group" id="tg-exclusions">
+                <div class="nc-toggle-opt active" data-val="none" onclick="setToggle('exclusions',this);toggleExclusions()">Sem exclusões</div>
+                <div class="nc-toggle-opt" data-val="set" onclick="setToggle('exclusions',this);toggleExclusions()">Adicionar exclusões</div>
+              </div>
+              <div id="nc-exclusions-field" style="display:none;margin-top:10px">
+                <input type="text" class="form-input" id="nc-exclusionsval" placeholder="Ex: Clientes que compraram nos últimos 30 dias...">
+              </div>
+            </div>
+
+            <!-- Placements -->
+            <div class="nc-field">
+              <div class="nc-field-label">Posicionamentos (Placements) <span class="nc-default-pill">Predefinição: Advantage+ automático</span></div>
+              <div class="nc-toggle-group" id="tg-placements">
+                <div class="nc-toggle-opt active" data-val="auto" onclick="setToggle('placements',this);togglePlacements()">Advantage+ Automático</div>
+                <div class="nc-toggle-opt" data-val="manual" onclick="setToggle('placements',this);togglePlacements()">Manual</div>
+              </div>
+              <div id="nc-placements-manual" style="display:none;margin-top:12px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-fb-feed" checked> Feed Facebook</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-ig-feed" checked> Feed Instagram</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-fb-stories" checked> Stories Facebook</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-ig-stories" checked> Stories Instagram</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-fb-reels"> Reels Facebook</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-ig-reels" checked> Reels Instagram</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-fb-right"> Coluna Direita FB</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-marketplace"> Marketplace FB</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-audience-net"> Audience Network</label>
+                  <label class="nc-checkbox"><input type="checkbox" id="pl-messenger"> Messenger</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Advantage+ Creative -->
+            <div class="nc-field">
+              <div class="nc-field-label">Advantage+ Creative (otimização automática) <span class="nc-default-pill">Predefinição: Ativado</span></div>
+              <div class="nc-toggle-group" id="tg-advcreative">
+                <div class="nc-toggle-opt active" data-val="1" onclick="setToggle('advcreative',this)">✅ Ativado</div>
+                <div class="nc-toggle-opt" data-val="0" onclick="setToggle('advcreative',this)">Desativado</div>
+              </div>
+              <div class="nc-field-note">Permite ao Meta ajustar ligeiramente os criativos para melhorar performance</div>
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="confirmSection(3)">Confirmar Secção 3 →</button>
+          </div>
+        </div>
+
+        <!-- SECTION 4: CONFORMIDADE UE -->
+        <div class="nc-section nc-section-locked" id="ncs4">
+          <div class="nc-section-header" onclick="toggleSection(4)">
+            <div class="nc-section-num" id="nsn4">4</div>
+            <div>
+              <div class="nc-section-title">Conformidade UE & Detalhes</div>
+              <div class="nc-section-sub" id="nss4">Anunciante, entidade pagadora e detalhes finais</div>
+            </div>
+            <div class="nc-section-arrow" id="nsa4">▶</div>
+          </div>
+          <div class="nc-section-body" id="nsb4" style="display:none">
+
+            <div class="nc-field">
+              <div class="nc-field-label">Nome do Anunciante <span class="nc-default-pill">Predefinição: Noemi Eger</span></div>
+              <input type="text" class="form-input" id="nc-advertiser" value="Noemi Eger" oninput="markChanged('advertiser')">
+              <div class="nc-field-note">Obrigatório para anúncios exibidos na União Europeia</div>
+            </div>
+
+            <div class="nc-field">
+              <div class="nc-field-label">Entidade Pagadora <span class="nc-default-pill">Predefinição: Noemi Eger</span></div>
+              <input type="text" class="form-input" id="nc-payer" value="Noemi Eger" oninput="markChanged('payer')">
+            </div>
+
+            <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="confirmSection(4)">Confirmar Secção 4 → Ver Resumo</button>
+          </div>
+        </div>
+
+        <!-- RESUMO FINAL -->
+        <div id="nc-summary" style="display:none;margin-top:16px"></div>
+
+      </div>
+
+      <!-- RIGHT: AI CHAT -->
+      <div style="border-left:1px solid var(--border);display:flex;flex-direction:column;background:var(--surface)">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+          <div style="font-size:13px;font-weight:600;color:var(--accent)">✦ Assistente IA</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px">Parceiro inteligente de campanha</div>
+        </div>
+        <div id="nc-chat-msgs" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px"></div>
+        <div id="nc-quick-replies" style="padding:12px 16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:6px"></div>
+        <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px">
+          <input type="text" class="form-input" id="nc-chat-input" placeholder="Faz uma pergunta..." style="flex:1" onkeydown="if(event.key==='Enter')sendChatMsg()">
+          <button class="btn btn-primary btn-sm" onclick="sendChatMsg()">→</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ANALYTICS -->
+  <div id="page-analytics" class="page">
+    <div class="topbar">
+      <div><div class="page-title">Analytics</div><div class="page-subtitle">Performance detalhada</div></div>
+      <div class="topbar-actions">
+        <select class="form-select" id="anaRange" style="width:auto;padding:8px 14px" onchange="loadAnalytics()">
+          <option value="last_7d">Últimos 7 dias</option>
+          <option value="last_14d">Últimos 14 dias</option>
+          <option value="last_30d">Últimos 30 dias</option>
+        </select>
+        <button class="btn btn-secondary" onclick="loadAnalytics()">↻ Atualizar</button>
+      </div>
+    </div>
+    <div class="content">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">Impressões</div><div class="stat-value" id="an-imp">—</div></div>
+        <div class="stat-card"><div class="stat-label">Cliques</div><div class="stat-value" id="an-clk">—</div></div>
+        <div class="stat-card"><div class="stat-label">CTR</div><div class="stat-value" id="an-ctr">—</div></div>
+        <div class="stat-card"><div class="stat-label">CPM</div><div class="stat-value" id="an-cpm">—</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Performance por Campanha</div></div>
+        <div class="card-body" style="padding:0">
+          <table class="table"><thead><tr><th>Campanha</th><th>Impressões</th><th>Cliques</th><th>CTR</th><th>Gasto</th><th>Compras</th><th>ROAS</th></tr></thead>
+          <tbody id="anaTable"><tr><td colspan="7" style="text-align:center;color:var(--text3);padding:32px">A carregar...</td></tr></tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTS -->
+  <div id="page-reports" class="page">
+    <div class="topbar">
+      <div><div class="page-title">Relatórios IA</div><div class="page-subtitle">Análise inteligente e recomendações</div></div>
+      <div class="topbar-actions">
+        <div class="filter-tabs">
+          <div class="filter-tab active" id="rt-daily" onclick="setReportTab('daily')">📅 Diário</div>
+          <div class="filter-tab" id="rt-weekly" onclick="setReportTab('weekly')">📊 Semanal</div>
+        </div>
+        <button class="btn btn-primary" onclick="genReport()">✨ Gerar Relatório</button>
+      </div>
+    </div>
+    <div class="content">
+      <div id="reportOut">
+        <div class="empty-state">
+          <div class="empty-icon">🤖</div>
+          <h3>Relatório IA</h3>
+          <p>Clica em "Gerar Relatório" para analisar as tuas campanhas com IA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- CONFIG MODAL -->
+<div class="modal-overlay" id="configModal">
+  <div class="modal">
+    <div class="modal-title">⚙️ Configurações</div>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.6">Insere as tuas credenciais para ligar ao Meta Ads e à IA. Guardadas apenas no teu browser.</p>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div><label class="form-label">Meta Access Token</label><input type="password" class="form-input" id="cfg-token" placeholder="EAAxxxxx..."></div>
+      <div><label class="form-label">Ad Account ID</label><input type="text" class="form-input" id="cfg-account" placeholder="act_1459571755242461"></div>
+      <div><label class="form-label">Pixel ID</label><input type="text" class="form-input" id="cfg-pixel" placeholder="1794162401993457"></div>
+      <div><label class="form-label">Facebook Page ID</label><input type="text" class="form-input" id="cfg-page" placeholder="ID da tua página de Facebook"></div>
+      <div><label class="form-label">Anthropic API Key</label><input type="password" class="form-input" id="cfg-claude" placeholder="sk-ant-..."></div>
+      <div>
+        <label class="form-label">Replicate API Key <span style="color:var(--green);font-size:10px;margin-left:4px">Geração de imagens</span></label>
+        <input type="password" class="form-input" id="cfg-replicate" placeholder="r8_...">
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">Para gerar imagens no módulo de criativos</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('configModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveConfig()">Guardar Configurações</button>
+    </div>
+  </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loadingTxt">A processar...</div>
+</div>
+
+<div class="notification" id="notif"></div>
+
+<script>
+// ===== STATE =====
+let CFG = { token:'', account:'', pixel:'1794162401993457', page:'', claude:'', v:'v21.0' };
+let CD = { images:[], config:{}, creatives:[], copies:[], selectedCopy:null };
+let allCampsData = [];
+let campFilter = 'active';
+let currentReportTab = 'daily';
+
+// ===== INIT =====
+function init() {
+  const s = localStorage.getItem('neCfg');
+  if (s) { CFG = {...CFG, ...JSON.parse(s)}; fillConfig(); loadDashboard(); }
+  else { setTimeout(() => showModal('configModal'), 600); showDemo(); }
+  // If token exists but no date saved, assume it was saved yesterday as fallback
+  if (CFG.token && !localStorage.getItem('neTokenDate')) {
+    localStorage.setItem('neTokenDate', new Date().toISOString());
+  }
+  checkTokenExpiry();
+}
+
+function fillConfig() {
+  document.getElementById('cfg-token').value = CFG.token||'';
+  document.getElementById('cfg-account').value = CFG.account||'';
+  document.getElementById('cfg-pixel').value = CFG.pixel||'';
+  document.getElementById('cfg-page').value = CFG.page||'';
+  document.getElementById('cfg-claude').value = CFG.claude||'';
+  document.getElementById('cfg-replicate').value = CFG.replicate||'';
+}
+
+function saveConfig() {
+  const newToken = document.getElementById('cfg-token').value.trim();
+  // If token changed, reset the date
+  if (newToken !== CFG.token) localStorage.setItem('neTokenDate', new Date().toISOString());
+  CFG.token = newToken;
+  CFG.account = document.getElementById('cfg-account').value.trim();
+  CFG.pixel = document.getElementById('cfg-pixel').value.trim();
+  CFG.page = document.getElementById('cfg-page').value.trim();
+  CFG.claude = document.getElementById('cfg-claude').value.trim();
+  CFG.replicate = document.getElementById('cfg-replicate').value.trim();
+  localStorage.setItem('neCfg', JSON.stringify(CFG));
+  closeModal('configModal');
+  notify('✅ Configurações guardadas!', 'success');
+  checkTokenExpiry();
+  loadDashboard();
+}
+
+// ===== NAV =====
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const idx = {dashboard:0,campaigns:1,creator:2,analytics:3,reports:4};
+  document.querySelectorAll('.nav-item')[idx[p]]?.classList.add('active');
+  if (p==='dashboard') loadDashboard();
+  if (p==='campaigns') loadCampaigns();
+  if (p==='analytics') loadAnalytics();
+  if (p==='creator') { document.getElementById('nc-chat-msgs').innerHTML=''; initCreator(); initBudgetLevel(); }
+}
+
+// ===== MODAL =====
+function showModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if(e.target===m) m.classList.remove('show'); }));
+
+// ===== LOADING =====
+function showLoad(t='A processar...') { document.getElementById('loadingTxt').textContent=t; document.getElementById('loadingOverlay').classList.add('show'); }
+function hideLoad() { document.getElementById('loadingOverlay').classList.remove('show'); }
+
+// ===== NOTIFY =====
+function notify(msg, type='success') {
+  const n = document.getElementById('notif');
+  n.textContent = msg; n.className = 'notification show '+type;
+  setTimeout(() => n.classList.remove('show'), 3500);
+}
+
+// ===== META API =====
+async function metaGet(endpoint) {
+  if (!CFG.token) { showModal('configModal'); throw new Error('Token não configurado'); }
+  const sep = endpoint.includes('?') ? '&' : '?';
+  const r = await fetch(`https://graph.facebook.com/${CFG.v}${endpoint}${sep}access_token=${CFG.token}`);
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d;
+}
+async function metaPost(endpoint, body) {
+  if (!CFG.token) { showModal('configModal'); throw new Error('Token não configurado'); }
+  const sep = endpoint.includes('?') ? '&' : '?';
+  const r = await fetch(`https://graph.facebook.com/${CFG.v}${endpoint}${sep}access_token=${CFG.token}`, {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d;
+}
+
+// ===== CLAUDE API =====
+async function askClaude(prompt, sys='') {
+  if (!CFG.claude) throw new Error('Anthropic API Key não configurada. Vai às ⚙️ Configurações.');
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model:'claude-sonnet-4-20250514', max_tokens:1000,
+      system: sys || 'És especialista em Meta Ads e e-commerce de moda. Respondes em português de Portugal de forma direta e prática.',
+      messages:[{role:'user', content:prompt}]
+    })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+// ===== DASHBOARD =====
+async function loadDashboard() {
+  if (!CFG.token || !CFG.account) { showDemo(); return; }
+  try {
+    showLoad('A carregar dados do Meta Ads...');
+    const [ins, camps] = await Promise.all([
+      metaGet(`/${CFG.account}/insights?fields=spend,purchase_roas,actions,impressions,ctr,cpm&date_preset=today`),
+      metaGet(`/${CFG.account}/campaigns?fields=name,status,start_time,daily_budget,insights.date_preset(today){spend,purchase_roas,actions,ctr,cpm,frequency}&limit=20&effective_status=['ACTIVE','PAUSED','ARCHIVED']`)
+    ]);
+    hideLoad();
+    renderDashStats(ins.data?.[0]);
+    renderDashCampaigns(camps.data);
+    renderDemoChart();
+    genAIInsight(ins.data?.[0], camps.data);
+  } catch(e) { hideLoad(); showDemo(); }
+}
+
+function renderDashStats(ins) {
+  if (!ins) return;
+  const spend = parseFloat(ins.spend||0);
+  const roas = ins.purchase_roas?.[0]?.value ? parseFloat(ins.purchase_roas[0].value) : 0;
+  const purchases = parseInt(ins.actions?.find(a=>a.action_type==='purchase')?.value||0);
+  const cpa = purchases>0 ? (spend/purchases).toFixed(2) : null;
+  document.getElementById('s-spend').textContent = `€${spend.toFixed(2)}`;
+  document.getElementById('s-roas').textContent = roas>0 ? roas.toFixed(2)+'x' : '—';
+  document.getElementById('s-purchases').textContent = purchases||'—';
+  document.getElementById('s-cpa').textContent = cpa ? `€${cpa}` : '—';
+  document.getElementById('s-roas-c').className = 'stat-change '+(roas>=3?'up':'down');
+  document.getElementById('s-roas-c').textContent = roas>=3 ? '↑ Bom ROAS' : roas>0 ? '↓ Abaixo do ideal' : '—';
+}
+
+function renderDashCampaigns(camps) {
+  if (!camps?.length) return;
+  document.getElementById('dashCampaigns').innerHTML = camps.map(c => {
+    const ins = c.insights?.data?.[0];
+    const spend = ins ? `€${parseFloat(ins.spend||0).toFixed(2)}` : '—';
+    const roas = ins?.purchase_roas?.[0]?.value ? parseFloat(ins.purchase_roas[0].value).toFixed(2)+'x' : '—';
+    const pur = ins?.actions?.find(a=>a.action_type==='purchase')?.value||0;
+    const cpa = ins && pur>0 ? `€${(parseFloat(ins.spend)/pur).toFixed(2)}` : '—';
+    const {cls, label} = getCampStatusInfo(c.status, c.start_time);
+    const toggleBtn = cls==='scheduled' ? '' : c.status==='ACTIVE'
+      ? `<button class="btn btn-sm btn-secondary" onclick="toggleCamp('${c.id}','${c.status}')">⏸ Pausar</button>`
+      : `<button class="btn btn-sm btn-secondary" onclick="toggleCamp('${c.id}','${c.status}')">▶ Ativar</button>`;
+    return `<tr><td>${c.name}</td><td><span class="status-badge ${cls}">${label}</span></td><td>${spend}</td><td>${roas}</td><td>${cpa}</td>
+    <td>${toggleBtn}</td></tr>`;
+  }).join('');
+}
+
+function renderDemoChart() {
+  const vals = [35,52,28,75,48,88,62];
+  const days = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+  const max = Math.max(...vals);
+  document.getElementById('spendChart').innerHTML = vals.map((v,i) =>
+    `<div class="chart-bar-wrap"><div class="chart-bar" style="height:${(v/max)*100}%" title="€${v}"></div><div class="chart-label">${days[i]}</div></div>`
+  ).join('');
+}
+
+function showDemo() {
+  document.getElementById('s-spend').textContent = '€247.50';
+  document.getElementById('s-spend-c').innerHTML = '<span class="stat-change up">+12% vs semana passada</span>';
+  document.getElementById('s-roas').textContent = '3.2x';
+  document.getElementById('s-roas-c').innerHTML = '<span class="stat-change up">↑ Bom desempenho</span>';
+  document.getElementById('s-purchases').textContent = '24';
+  document.getElementById('s-purchases-c').innerHTML = '<span class="stat-change up">+4 vs semana passada</span>';
+  document.getElementById('s-cpa').textContent = '€10.31';
+  document.getElementById('s-cpa-c').innerHTML = '<span class="stat-change down">↑ Monitorizar</span>';
+  renderDemoChart();
+  document.getElementById('alertsBox').innerHTML = `
+    <div class="alert warn">⚠️ "Vestidos Verão" com frequência >3. Renova os criativos.</div>
+    <div class="alert success">✅ ROAS >3x — considera aumentar orçamento 20%.</div>
+    <div class="alert danger">🔴 CTR <1% em "Acessórios". Pausa e testa novos criativos.</div>`;
+  document.getElementById('dashCampaigns').innerHTML = `
+    <tr><td>Vestidos Verão 2025</td><td><span class="status-badge active">Ativo</span></td><td>€145.20</td><td>4.1x</td><td>€8.50</td><td><button class="btn btn-sm btn-secondary">⏸ Pausar</button></td></tr>
+    <tr><td>Acessórios — Tráfego</td><td><span class="status-badge active">Ativo</span></td><td>€62.30</td><td>1.8x</td><td>€18.20</td><td><button class="btn btn-sm btn-secondary">⏸ Pausar</button></td></tr>
+    <tr><td>Óculos Nova Coleção</td><td><span class="status-badge paused">Pausado</span></td><td>€40.00</td><td>2.5x</td><td>€13.30</td><td><button class="btn btn-sm btn-secondary">▶ Ativar</button></td></tr>`;
+  document.getElementById('aiText').textContent = 'Configura as credenciais nas ⚙️ Configurações para ver dados reais. Dados demonstrativos activos.';
+  document.getElementById('aiTags').innerHTML = `<span class="insight-tag good">✓ ROAS saudável</span><span class="insight-tag warn">⚡ Renovar criativos</span><span class="insight-tag bad">✗ CTR baixo</span>`;
+}
+
+async function genAIInsight(ins, camps) {
+  // Threshold-based alerts (instant)
+  const alerts = [];
+  if (camps?.length) {
+    camps.forEach(c => {
+      const i = c.insights?.data?.[0];
+      if (!i) return;
+      const ctr = parseFloat(i.ctr||0);
+      const cpc = parseFloat(i.cpp||0);
+      const freq = parseFloat(i.frequency||0);
+      const cpm = parseFloat(i.cpm||0);
+      const roas = i.purchase_roas?.[0]?.value ? parseFloat(i.purchase_roas[0].value) : null;
+      const name = c.name.length > 28 ? c.name.slice(0,28)+'…' : c.name;
+      if (ctr>0 && ctr<THRESH.ctr.bad) alerts.push({cls:'danger', msg:`🔴 CTR crítico (${ctr.toFixed(2)}%) — <strong>${name}</strong>`});
+      if (cpc>THRESH.cpc.crit) alerts.push({cls:'danger', msg:`🔴 CPC crítico (€${cpc.toFixed(2)}) — <strong>${name}</strong>`});
+      else if (cpc>THRESH.cpc.warn) alerts.push({cls:'warn', msg:`⚠️ CPC alto (€${cpc.toFixed(2)}) — <strong>${name}</strong>`});
+      if (freq>THRESH.freq.crit) alerts.push({cls:'danger', msg:`🔴 Frequência crítica (${freq.toFixed(1)}) — renova criativos em <strong>${name}</strong>`});
+      else if (freq>THRESH.freq.warn) alerts.push({cls:'warn', msg:`⚠️ Frequência alta (${freq.toFixed(1)}) — <strong>${name}</strong>`});
+      if (cpm>THRESH.cpm.crit) alerts.push({cls:'danger', msg:`🔴 CPM crítico €${cpm.toFixed(2)} — <strong>${name}</strong>`});
+      else if (cpm>THRESH.cpm.warn) alerts.push({cls:'warn', msg:`⚠️ CPM elevado €${cpm.toFixed(2)} — <strong>${name}</strong>`});
+      if (roas!==null && roas>=THRESH.roas.ok) alerts.push({cls:'success', msg:`📈 ROAS ótimo (${roas.toFixed(2)}x) — escalar <strong>${name}</strong>`});
+      if (roas!==null && roas<THRESH.roas.crit) alerts.push({cls:'danger', msg:`🔴 ROAS crítico (${roas.toFixed(2)}x) — pausar <strong>${name}</strong>`});
+    });
+  }
+  document.getElementById('alertsBox').innerHTML = alerts.slice(0,6).map(a =>
+    `<div class="alert ${a.cls}" style="margin-bottom:8px">${a.msg}</div>`
+  ).join('') || '<div class="text-muted">Sem alertas — tudo ok! ✅</div>';
+
+  if (!CFG.claude) { document.getElementById('aiText').textContent = 'Configura a Anthropic API Key para análise IA automática.'; return; }
+  try {
+    const snap = ins ? `Gasto: €${parseFloat(ins.spend||0).toFixed(2)}, CTR: ${parseFloat(ins.ctr||0).toFixed(2)}%, CPM: €${parseFloat(ins.cpm||0).toFixed(2)}` : 'Sem dados';
+    const txt = await askClaude(`Dados Meta Ads Noémi Eger hoje: ${snap}. ${alerts.length} alertas: ${alerts.slice(0,3).map(a=>a.msg.replace(/<[^>]*>/g,'')).join('; ')}. Resume em 2 frases o estado e a ação mais urgente.`);
+    document.getElementById('aiText').textContent = txt;
+    const tags = [];
+    if (alerts.some(a=>a.cls==='success')) tags.push('<span class="insight-tag good">✓ Campanhas a escalar</span>');
+    if (alerts.some(a=>a.cls==='danger')) tags.push('<span class="insight-tag bad">✗ Alertas críticos</span>');
+    if (alerts.some(a=>a.cls==='warn')) tags.push('<span class="insight-tag warn">⚡ Atenção requerida</span>');
+    document.getElementById('aiTags').innerHTML = tags.join('');
+  } catch(e) { document.getElementById('aiText').textContent = 'Erro IA: '+e.message; }
+}
+
+// ===== TOKEN EXPIRY CHECK =====
+function checkTokenExpiry() {
+  const saved = localStorage.getItem('neTokenDate');
+  if (!saved || !CFG.token) return;
+  const created = new Date(saved);
+  const now = new Date();
+  const daysOld = Math.floor((now - created) / (1000*60*60*24));
+  const daysLeft = 60 - daysOld;
+  const banner = document.getElementById('tokenBanner');
+  const msg = document.getElementById('tokenBannerMsg');
+  if (daysLeft <= 0) {
+    banner.className = 'token-banner critical';
+    msg.textContent = '🔴 O teu Access Token expirou! A app não consegue ligar ao Meta Ads.';
+  } else if (daysLeft <= 7) {
+    banner.className = 'token-banner critical';
+    msg.textContent = `🔴 Token expira em ${daysLeft} dia(s)! Renova agora para não perder acesso.`;
+  } else if (daysLeft <= 14) {
+    banner.className = 'token-banner warn';
+    msg.textContent = `⚠️ Token expira em ${daysLeft} dias. Renova em breve.`;
+  }
+}
+
+// ===== METRIC THRESHOLDS =====
+const THRESH = {
+  ctr:  { bad:1.5, ok:4 },       // <1.5 bad, 1.5-4 ok, >4 great
+  cpc:  { warn:0.50, crit:0.60 }, // >0.50 warn, >0.60 critical
+  roas: { crit:1.0, bad:2.0, ok:3.5 }, // <1 critical, 1-2 bad, 2-3.5 ok, >3.5 great
+  freq: { warn:2.5, crit:3.5 },   // >2.5 warn, >3.5 critical
+  cpm:  { warn:8, crit:13 }       // >8 warn, >13 critical (HU fashion)
+};
+
+function rateMetric(type, val) {
+  if (val === null || val === undefined || isNaN(val)) return null;
+  const t = THRESH[type];
+  if (!t) return null;
+  if (type==='ctr') {
+    if (val < t.bad) return {cls:'red', icon:'🔴', label:'Crítico'};
+    if (val >= t.ok) return {cls:'green', icon:'🟢', label:'Ótimo'};
+    return {cls:'amber', icon:'🟡', label:'Ok'};
+  }
+  if (type==='cpc') {
+    if (val > t.crit) return {cls:'red', icon:'🔴', label:'Crítico'};
+    if (val > t.warn) return {cls:'amber', icon:'🟡', label:'Atenção'};
+    return {cls:'green', icon:'🟢', label:'Bom'};
+  }
+  if (type==='roas') {
+    if (val < t.crit) return {cls:'red', icon:'🔴', label:'Crítico'};
+    if (val < t.bad)  return {cls:'amber', icon:'🟠', label:'Fraco'};
+    if (val < t.ok)   return {cls:'blue', icon:'🔵', label:'Ok'};
+    return {cls:'green', icon:'🟢', label:'Ótimo'};
+  }
+  if (type==='freq') {
+    if (val > t.crit) return {cls:'red', icon:'🔴', label:'Criativo cansado'};
+    if (val > t.warn) return {cls:'amber', icon:'🟡', label:'Atenção'};
+    return {cls:'green', icon:'🟢', label:'Ok'};
+  }
+  if (type==='cpm') {
+    if (val > t.crit) return {cls:'red', icon:'🔴', label:'CPM crítico'};
+    if (val > t.warn) return {cls:'amber', icon:'🟡', label:'CPM alto'};
+    return {cls:'green', icon:'🟢', label:'Ok'};
+  }
+  return null;
+}
+
+function metricPill(type, val, fmt) {
+  if (val === null || val === undefined || isNaN(val)) return '<span style="color:var(--text3)">—</span>';
+  const rating = rateMetric(type, val);
+  const display = fmt ? fmt(val) : val;
+  if (!rating) return `<span style="font-size:13px">${display}</span>`;
+  return `<span class="metric-pill ${rating.cls}">${display}</span>`;
+}
+
+function setCampFilter(f) {
+  campFilter = f;
+  ['active','scheduled','paused','all'].forEach(x => {
+    document.getElementById('ft-'+x)?.classList.toggle('active', x===f);
+  });
+  renderAllCamps(allCampsData, document.getElementById('campDateFilter')?.value || 'today');
+}
+
+function setReportTab(t) {
+  currentReportTab = t;
+  ['daily','weekly'].forEach(x => document.getElementById('rt-'+x)?.classList.toggle('active', x===t));
+}
+
+// ===== CAMPAIGNS =====
+function getCampStatusInfo(status, startTime) {
+  const now = new Date();
+  const start = startTime ? new Date(startTime) : null;
+  if (status === 'ACTIVE' && start && start > now) {
+    return { cls:'scheduled', label:'Agendada', order:1 };
+  }
+  const map = {
+    'ACTIVE':    { cls:'active',    label:'Ativo',     order:0 },
+    'SCHEDULED': { cls:'scheduled', label:'Agendada',  order:1 },
+    'PAUSED':    { cls:'paused',    label:'Pausado',   order:2 },
+    'ARCHIVED':  { cls:'paused',    label:'Arquivada', order:3 },
+    'DELETED':   { cls:'paused',    label:'Eliminada', order:4 },
+    'DISAPPROVED':{ cls:'paused',   label:'Reprovada', order:4 },
+  };
+  return map[status] || { cls:'draft', label: status||'Rascunho', order:5 };
+}
+
+async function loadCampaigns() {
+  if (!CFG.token || !CFG.account) { showDemoCamps(); return; }
+  const preset = document.getElementById('campDateFilter')?.value || 'today';
+  showLoad('A carregar campanhas...');
+  try {
+    // Step 1: fetch campaigns without insights first (always works)
+    const base = await metaGet(
+      `/${CFG.account}/campaigns?fields=name,status,daily_budget,start_time,stop_time&` +
+      `limit=100&effective_status=['ACTIVE','PAUSED','ARCHIVED','WITH_ISSUES']`
+    );
+    if (!base?.data) { hideLoad(); showDemoCamps(); return; }
+
+    // Step 2: try to fetch insights separately
+    let insightsMap = {};
+    try {
+      const insData = await metaGet(
+        `/${CFG.account}/campaigns?fields=id,insights.date_preset(${preset}){spend,purchase_roas,actions,impressions,clicks,ctr,cpm,frequency}&` +
+        `limit=100&effective_status=['ACTIVE','PAUSED','ARCHIVED','WITH_ISSUES']`
+      );
+      if (insData?.data) {
+        insData.data.forEach(c => { insightsMap[c.id] = c.insights?.data?.[0] || null; });
+      }
+    } catch(e2) {
+      // insights failed, continue without them
+    }
+
+    // Merge data
+    const merged = base.data.map(c => ({
+      ...c,
+      insights: { data: [insightsMap[c.id] || null] }
+    }));
+
+    hideLoad();
+    allCampsData = merged;
+    document.getElementById('campTotalsBar').innerHTML = `<span style="color:var(--text2)">${merged.length} campanhas carregadas</span>`;
+    renderAllCamps(merged, preset);
+  } catch(e) {
+    hideLoad();
+    document.getElementById('allCampaigns').innerHTML = `<tr><td colspan="14" style="text-align:center;color:var(--red);padding:32px">Erro: ${e.message}</td></tr>`;
+  }
+}
+
+function renderAllCamps(camps, preset) {
+  if (!camps?.length) { document.getElementById('allCampaigns').innerHTML = '<tr><td colspan="14" style="text-align:center;color:var(--text3);padding:32px">Sem campanhas</td></tr>'; return; }
+
+  // Filter by tab
+  let filtered = camps.filter(c => {
+    const {cls} = getCampStatusInfo(c.status, c.start_time);
+    if (campFilter === 'active') return cls === 'active';
+    if (campFilter === 'scheduled') return cls === 'scheduled';
+    if (campFilter === 'paused') return cls === 'paused' || cls === 'draft';
+    return true;
+  });
+
+  // Sort: active → scheduled → paused
+  filtered.sort((a,b) => {
+    const oa = getCampStatusInfo(a.status, a.start_time).order;
+    const ob = getCampStatusInfo(b.status, b.start_time).order;
+    return oa - ob;
+  });
+
+  // Totals bar
+  const totalSpend = camps.reduce((s,c) => s + parseFloat(c.insights?.data?.[0]?.spend||0), 0);
+  const totalPurchases = camps.reduce((s,c) => {
+    const ins = c.insights?.data?.[0];
+    return s + parseInt(ins?.actions?.find(a=>a.action_type==='purchase')?.value||0);
+  }, 0);
+  const totalConvVal = camps.reduce((s,c) => {
+    const ins = c.insights?.data?.[0];
+    return s + parseFloat(ins?.conversion_values?.find?.(v=>v.action_type==='purchase')?.value||ins?.actions?.find(a=>a.action_type==='offsite_conversion.fb_pixel_purchase')?.value||0);
+  }, 0);
+  const totalRoas = totalSpend > 0 && totalConvVal > 0 ? (totalConvVal/totalSpend).toFixed(2) : null;
+  const periodLabel = {today:'hoje',yesterday:'ontem',last_7d:'7 dias',last_14d:'14 dias',last_30d:'30 dias',this_month:'este mês',last_month:'mês passado'}[preset]||preset;
+
+  document.getElementById('campTotalsBar').innerHTML =
+    `<span style="color:var(--text2)">${camps.length} campanhas</span> &nbsp;·&nbsp; ` +
+    `Gasto: <strong style="color:var(--accent)">€${totalSpend.toFixed(2)}</strong> &nbsp;·&nbsp; ` +
+    `Compras: <strong style="color:var(--green)">${totalPurchases}</strong>` +
+    (totalRoas ? ` &nbsp;·&nbsp; ROAS: <strong style="color:var(--blue)">${totalRoas}x</strong>` : '');
+
+  document.getElementById('campSubtitle').textContent = `${filtered.length} de ${camps.length} campanhas — ${periodLabel}`;
+
+  if (!filtered.length) {
+    document.getElementById('allCampaigns').innerHTML = '<tr><td colspan="14" style="text-align:center;color:var(--text3);padding:32px">Nenhuma campanha neste filtro</td></tr>';
+    return;
+  }
+
+  document.getElementById('allCampaigns').innerHTML = filtered.map(c => {
+    const ins = c.insights?.data?.[0];
+    const spend = parseFloat(ins?.spend||0);
+    const roasVal = ins?.purchase_roas?.[0]?.value ? parseFloat(ins.purchase_roas[0].value) : null;
+    const pur = parseInt(ins?.actions?.find(a=>a.action_type==='purchase')?.value||0);
+    const addCart = parseInt(ins?.actions?.find(a=>a.action_type==='add_to_cart')?.value||0);
+    const cpa = pur>0 ? spend/pur : null;
+    const ctr = ins?.ctr ? parseFloat(ins.ctr) : null;
+    const clicks = parseInt(ins?.clicks || 0);
+    const cpc = clicks > 0 && spend > 0 ? spend / clicks : null;
+    const cpm = ins?.cpm ? parseFloat(ins.cpm) : null;
+    const freq = ins?.frequency ? parseFloat(ins.frequency) : null;
+    const budget = c.daily_budget ? `€${(c.daily_budget/100).toFixed(0)}` : '—';
+    const {cls, label} = getCampStatusInfo(c.status, c.start_time);
+    const isScheduled = cls === 'scheduled';
+
+    // AI recommendation
+    let aiRec = '';
+    if (roasVal !== null) {
+      const r = rateMetric('roas', roasVal);
+      if (r?.cls === 'green') aiRec = '<span style="color:var(--green);font-size:11px">📈 Escalar</span>';
+      else if (r?.cls === 'red') aiRec = '<span style="color:var(--red);font-size:11px">🔴 Pausar</span>';
+      else aiRec = '<span style="color:var(--amber);font-size:11px">⚡ Monitorizar</span>';
+    }
+    // Extra alerts
+    const alerts = [];
+    if (ctr !== null && ctr < THRESH.ctr.bad) alerts.push('🔴 CTR crítico');
+    if (freq !== null && freq > THRESH.freq.crit) alerts.push('🔴 Frequência alta');
+    if (cpc !== null && cpc > THRESH.cpc.crit) alerts.push('🔴 CPC crítico');
+    if (alerts.length) aiRec += '<br>' + alerts.map(a=>`<span style="font-size:10px;color:var(--red)">${a}</span>`).join(' ');
+
+    const startInfo = isScheduled && c.start_time ? `<div style="font-size:10px;color:var(--purple);margin-top:2px">📅 ${new Date(c.start_time).toLocaleDateString('pt-PT')}</div>` : '';
+    const toggleBtn = isScheduled ? '' : c.status==='ACTIVE'
+      ? `<button class="btn btn-sm btn-secondary" onclick="toggleCamp('${c.id}','${c.status}')">⏸</button>`
+      : `<button class="btn btn-sm btn-secondary" onclick="toggleCamp('${c.id}','${c.status}')">▶</button>`;
+
+    return `<tr>
+      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${c.name}">${c.name}${startInfo}</td>
+      <td><span class="status-badge ${cls}">${label}</span></td>
+      <td>${budget}</td>
+      <td>${spend>0?`<strong style="color:var(--accent)">€${spend.toFixed(2)}</strong>`:'—'}</td>
+      <td>${metricPill('cpm', cpm, v=>`€${v.toFixed(2)}`)}</td>
+      <td>${metricPill('cpc', cpc, v=>`€${v.toFixed(2)}`)}</td>
+      <td>${metricPill('ctr', ctr, v=>`${v.toFixed(2)}%`)}</td>
+      <td>${addCart>0?addCart:'—'}</td>
+      <td>${pur>0?`<strong style="color:var(--green)">${pur}</strong>`:'—'}</td>
+      <td>${metricPill('roas', roasVal, v=>`${v.toFixed(2)}x`)}</td>
+      <td>${cpa?`€${cpa.toFixed(2)}`:'—'}</td>
+      <td>${metricPill('freq', freq, v=>v.toFixed(1))}</td>
+      <td style="max-width:120px">${aiRec||'—'}</td>
+      <td style="display:flex;gap:4px;align-items:center">
+        <a href="criativos.html?campaign=${c.id}&name=${encodeURIComponent(c.name)}&budget=${(c.daily_budget||0)/100}" class="btn btn-sm btn-secondary" style="text-decoration:none;font-size:11px;padding:5px 8px">🎨</a>
+        ${toggleBtn}
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function showDemoCamps() {
+  allCampsData = [];
+  document.getElementById('campTotalsBar').textContent = 'Dados demo — configura credenciais';
+  document.getElementById('allCampaigns').innerHTML = `
+    <tr><td>CBO - Vestidos Verão</td><td><span class="status-badge active">Ativo</span></td><td>€25</td><td><strong style="color:var(--accent)">€32.61</strong></td><td><span class="metric-pill amber">€6.20</span></td><td><span class="metric-pill green">€0.33</span></td><td><span class="metric-pill green">4.61%</span></td><td>32</td><td><strong style="color:var(--green)">3</strong></td><td><span class="metric-pill green">2.1x</span></td><td>€10.87</td><td><span class="metric-pill green">1.8</span></td><td><span style="color:var(--green);font-size:11px">📈 Escalar</span></td><td><a href="criativos.html" class="btn btn-sm btn-secondary" style="text-decoration:none;font-size:11px;padding:5px 8px">🎨</a></td></tr>
+    <tr><td>CBO - Dalma - 15 Maio</td><td><span class="status-badge scheduled">Agendada</span></td><td>€10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td></td></tr>
+    <tr><td>CBO - Kinga - 9 Maio</td><td><span class="status-badge paused">Pausado</span></td><td>€10</td><td><strong style="color:var(--accent)">€23.97</strong></td><td><span class="metric-pill green">€7.50</span></td><td><span class="metric-pill red">€0.62</span></td><td><span class="metric-pill red">1.1%</span></td><td>5</td><td>—</td><td>—</td><td>—</td><td><span class="metric-pill red">4.1</span></td><td><span style="color:var(--red);font-size:11px">🔴 Pausar</span></td><td><a href="criativos.html" class="btn btn-sm btn-secondary" style="text-decoration:none;font-size:11px;padding:5px 8px">🎨</a> <button class="btn btn-sm btn-secondary">▶</button></td></tr>`;
+}
+
+async function toggleCamp(id, status) {
+  const ns = status==='ACTIVE'?'PAUSED':'ACTIVE';
+  try {
+    showLoad(ns==='PAUSED'?'A pausar campanha...':'A ativar campanha...');
+    await metaPost(`/${id}`, {status:ns});
+    hideLoad();
+    notify(`✅ Campanha ${ns==='PAUSED'?'pausada':'ativada'}!`, 'success');
+    loadCampaigns();
+  } catch(e) { hideLoad(); notify('❌ '+e.message, 'error'); }
+}
+
+// ===== ANALYTICS =====
+async function loadAnalytics() {
+  if (!CFG.token || !CFG.account) { showDemoAna(); return; }
+  const preset = document.getElementById('anaRange')?.value || 'last_7d';
+  try {
+    showLoad('A carregar analytics...');
+    const [sum, camps] = await Promise.all([
+      metaGet(`/${CFG.account}/insights?fields=impressions,clicks,ctr,cpm,spend&date_preset=${preset}`),
+      metaGet(`/${CFG.account}/campaigns?fields=name,insights.date_preset(${preset}){impressions,clicks,ctr,spend,purchase_roas,actions}&limit=20`)
+    ]);
+    hideLoad();
+    const s = sum.data?.[0];
+    if (s) {
+      document.getElementById('an-imp').textContent = parseInt(s.impressions||0).toLocaleString('pt');
+      document.getElementById('an-clk').textContent = parseInt(s.clicks||0).toLocaleString('pt');
+      document.getElementById('an-ctr').textContent = parseFloat(s.ctr||0).toFixed(2)+'%';
+      document.getElementById('an-cpm').textContent = `€${parseFloat(s.cpm||0).toFixed(2)}`;
+    }
+    document.getElementById('anaTable').innerHTML = (camps.data||[]).map(c => {
+      const ins = c.insights?.data?.[0];
+      const pur = ins?.actions?.find(a=>a.action_type==='purchase')?.value||0;
+      const roas = ins?.purchase_roas?.[0]?.value ? parseFloat(ins.purchase_roas[0].value).toFixed(2)+'x' : '—';
+      return `<tr><td>${c.name}</td><td>${parseInt(ins?.impressions||0).toLocaleString('pt')}</td><td>${parseInt(ins?.clicks||0).toLocaleString('pt')}</td><td>${parseFloat(ins?.ctr||0).toFixed(2)}%</td><td>€${parseFloat(ins?.spend||0).toFixed(2)}</td><td>${pur}</td><td>${roas}</td></tr>`;
+    }).join('');
+  } catch(e) { hideLoad(); showDemoAna(); }
+}
+
+function showDemoAna() {
+  document.getElementById('an-imp').textContent = '45.230'; document.getElementById('an-clk').textContent = '1.847';
+  document.getElementById('an-ctr').textContent = '4.08%'; document.getElementById('an-cpm').textContent = '€5.47';
+  document.getElementById('anaTable').innerHTML = `
+    <tr><td>Vestidos Verão 2025</td><td>28.400</td><td>1.230</td><td>4.3%</td><td>€145.20</td><td>17</td><td>4.1x</td></tr>
+    <tr><td>Acessórios — Tráfego</td><td>12.800</td><td>480</td><td>3.7%</td><td>€62.30</td><td>4</td><td>1.8x</td></tr>
+    <tr><td>Óculos Nova Coleção</td><td>4.030</td><td>137</td><td>3.4%</td><td>€40.00</td><td>3</td><td>0.8x</td></tr>`;
+}
+
+// ===== REPORTS =====
+async function genReport() {
+  if (!CFG.claude) { notify('⚠️ Configura a Anthropic API Key nas ⚙️ Configurações', 'error'); showModal('configModal'); return; }
+  const isDaily = currentReportTab === 'daily';
+  showLoad(`🤖 A gerar relatório ${isDaily?'diário':'semanal'}...`);
+  const preset = isDaily ? 'today' : 'last_7d';
+
+  try {
+    let campData = ''; let metricsSnapshot = {};
+    if (CFG.token && CFG.account) {
+      try {
+        const d = await metaGet(
+          `/${CFG.account}/campaigns?fields=name,status,daily_budget,start_time,` +
+          `insights.date_preset(${preset}){spend,purchase_roas,actions,impressions,clicks,ctr,cpm,frequency}&` +
+          `limit=100&effective_status=['ACTIVE','PAUSED','ARCHIVED']`
+        );
+        campData = JSON.stringify(d?.data?.slice(0,20));
+        const camps = d?.data || [];
+        const totalSpend = camps.reduce((s,c)=>s+parseFloat(c.insights?.data?.[0]?.spend||0),0);
+        const totalPur = camps.reduce((s,c)=>s+parseInt(c.insights?.data?.[0]?.actions?.find(a=>a.action_type==='purchase')?.value||0),0);
+        const ctrs = camps.filter(c=>c.insights?.data?.[0]?.ctr).map(c=>parseFloat(c.insights.data[0].ctr));
+        const cpcs = camps.filter(c=>c.insights?.data?.[0]?.cpp).map(c=>parseFloat(c.insights.data[0].cpp));
+        const cpms = camps.filter(c=>c.insights?.data?.[0]?.cpm).map(c=>parseFloat(c.insights.data[0].cpm));
+        metricsSnapshot = {
+          totalSpend: totalSpend.toFixed(2), totalPur,
+          avgCtr: ctrs.length ? (ctrs.reduce((a,b)=>a+b,0)/ctrs.length).toFixed(2) : null,
+          avgCpc: cpcs.length ? (cpcs.reduce((a,b)=>a+b,0)/cpcs.length).toFixed(2) : null,
+          avgCpm: cpms.length ? (cpms.reduce((a,b)=>a+b,0)/cpms.length).toFixed(2) : null,
+          activeCamps: camps.filter(c=>getCampStatusInfo(c.status,c.start_time).cls==='active').length
+        };
+      } catch(e) { campData = 'Erro ao carregar dados reais.'; }
+    } else { campData = 'Sem credenciais Meta configuradas.'; }
+
+    const systemPrompt = `És consultor sénior de Meta Ads para e-commerce de moda na Hungria. Thresholds: CTR <1.5% crítico, 1.5-4% ok, >4% ótimo. CPC >€0.50 atenção, >€0.60 crítico. ROAS <1.0 crítico, 1-2 fraco, 2-3.5 ok, >3.5 ótimo. Freq >2.5 atenção, >3.5 crítico. CPM moda HU: >€8 atenção, >€13 crítico. Respondes em português de Portugal, de forma direta e orientada para ação.`;
+
+    const prompt = isDaily
+      ? `Relatório DIÁRIO de Meta Ads — Noémi Eger Fashion — ${new Date().toLocaleDateString('pt-PT')}
+
+Métricas de hoje: ${JSON.stringify(metricsSnapshot)}
+Dados campanhas: ${campData}
+
+Estrutura obrigatória (usa ## para títulos):
+## RESUMO DO DIA
+## MÉTRICAS CHAVE
+## ALERTAS ATIVOS
+## OPORTUNIDADES
+## O QUE FAZER HOJE (máx 5 ações numeradas, priorizadas por impacto)`
+
+      : `Relatório SEMANAL de Meta Ads — Noémi Eger Fashion — semana de ${new Date(Date.now()-7*24*60*60*1000).toLocaleDateString('pt-PT')} a ${new Date().toLocaleDateString('pt-PT')}
+
+Métricas da semana: ${JSON.stringify(metricsSnapshot)}
+Dados campanhas: ${campData}
+
+Estrutura obrigatória (usa ## para títulos):
+## RESUMO DA SEMANA
+## MÉTRICAS CHAVE
+## O QUE FUNCIONOU
+## O QUE NÃO FUNCIONOU
+## ALERTAS & PROBLEMAS
+## PLANO PARA A PRÓXIMA SEMANA (5 ações para segunda-feira)
+## IDEIAS PARA TESTAR`;
+
+    const report = await askClaude(prompt, systemPrompt);
+    hideLoad();
+
+    const sections = report.split(/^## /m).filter(s=>s.trim());
+    const rendered = sections.map(s => {
+      const nl = s.indexOf('\n');
+      const title = nl>-1 ? s.slice(0,nl).trim() : s.trim();
+      const body = nl>-1 ? s.slice(nl+1).trim() : '';
+      return `<div class="report-section">
+        <div class="report-section-title">${title}</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.85;white-space:pre-line">${body}</div>
+      </div>`;
+    }).join('');
+
+    const now = new Date();
+    document.getElementById('reportOut').innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div>
+          <div style="font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:2px">✦ Relatório ${isDaily?'Diário':'Semanal'}</div>
+          <div style="font-size:13px;color:var(--text3);margin-top:4px">Gerado ${now.toLocaleDateString('pt-PT')} às ${now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})}</div>
+        </div>
+        <div class="flex gap-10">
+          <button class="btn btn-secondary btn-sm" onclick="genReport()">↻ Regenerar</button>
+          <button class="btn btn-secondary btn-sm" onclick="exportReport()">⬇️ Exportar</button>
+        </div>
+      </div>
+      <div class="stats-grid" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-label">Gasto</div><div class="stat-value" style="font-size:22px">€${metricsSnapshot.totalSpend||'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">Compras</div><div class="stat-value" style="font-size:22px;color:var(--green)">${metricsSnapshot.totalPur||'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">CTR Médio</div><div class="stat-value" style="font-size:22px">${metricsSnapshot.avgCtr?metricsSnapshot.avgCtr+'%':'—'}</div></div>
+        <div class="stat-card"><div class="stat-label">CPC Médio</div><div class="stat-value" style="font-size:22px">${metricsSnapshot.avgCpc?'€'+metricsSnapshot.avgCpc:'—'}</div></div>
+      </div>
+      <div class="card"><div class="card-body">${rendered}</div></div>`;
+
+    const history = JSON.parse(localStorage.getItem('neReportHistory')||'[]');
+    history.unshift({ date: now.toISOString(), type: isDaily?'daily':'weekly', metrics: metricsSnapshot });
+    localStorage.setItem('neReportHistory', JSON.stringify(history.slice(0,30)));
+
+  } catch(e) { hideLoad(); notify('❌ '+e.message, 'error'); }
+}
+
+function exportReport() {
+  const content = document.getElementById('reportOut')?.innerText || '';
+  const blob = new Blob([content], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `relatorio-${currentReportTab}-${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();
+}
+
+// ===== NEW CAMPAIGN CREATOR =====
+let ncState = {
+  confirmed: [],
+  changed: [],
+  defaults: {
+    objective:'OUTCOME_SALES', budgettype:'CBO', specialcat:'NONE', spendlimit:'none',
+    convloc:'WEBSITE', perfobj:'OFFSITE_CONVERSIONS', pixel:'1794162401993457',
+    convevent:'PURCHASE', startdate:'tomorrow', enddate:'none',
+    bidstrategy:'LOWEST_COST_WITHOUT_CAP', buytype:'AUCTION',
+    country:'HU', audiencetype:'broad', agemin:18, agemax:65, gender:'0',
+    interests:'none', exclusions:'none', placements:'auto', advcreative:'1',
+    advertiser:'Noemi Eger', payer:'Noemi Eger'
+  }
+};
+
+function initCreator() {
+  // Set tomorrow date label
+  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+  const el = document.getElementById('nc-tomorrow-label');
+  if (el) el.textContent = `(${tomorrow.toLocaleDateString('pt-PT',{day:'numeric',month:'long',year:'numeric'})})`;
+  // Init chat
+  ncChatAdd('ai', `Vamos criar a tua campanha! 🚀 Tens 4 secções para preencher. Cada campo já tem a predefinição recomendada.\n\nComeça pelo tipo de campanha — está definido como <strong>Vendas</strong>. Queres manter ou alterar alguma coisa?`);
+  setQuickReplies([
+    'Manter Vendas e avançar',
+    'O que é ABO vs CBO?',
+    'Alterar o objetivo'
+  ]);
+}
+
+function resetCreator() {
+  ncState = { confirmed:[], changed:[], defaults: ncState.defaults };
+  document.getElementById('nc-summary').style.display = 'none';
+  document.getElementById('nc-chat-msgs').innerHTML = '';
+  document.getElementById('nc-quick-replies').innerHTML = '';
+  [2,3,4].forEach(i => {
+    document.getElementById('ncs'+i).classList.add('nc-section-locked');
+    document.getElementById('ncs'+i).classList.remove('unlocked','confirmed');
+    document.getElementById('nsb'+i).style.display = 'none';
+    document.getElementById('nsa'+i).textContent = '▶';
+    document.getElementById('nsn'+i).className = 'nc-section-num';
+  });
+  document.getElementById('ncs1').classList.remove('confirmed');
+  document.getElementById('nsn1').className = 'nc-section-num active-num';
+  document.getElementById('nsb1').style.display = '';
+  document.getElementById('nsa1').textContent = '▼';
+  initCreator();
+}
+
+function toggleSection(n) {
+  const body = document.getElementById('nsb'+n);
+  const arrow = document.getElementById('nsa'+n);
+  const isLocked = document.getElementById('ncs'+n).classList.contains('nc-section-locked');
+  if (isLocked) return;
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : '';
+  arrow.textContent = isOpen ? '▶' : '▼';
+}
+
+function setToggle(group, el) {
+  document.querySelectorAll(`#tg-${group} .nc-toggle-opt`).forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  const val = el.dataset.val;
+  const def = ncState.defaults[group];
+  if (val !== def) markChanged(group);
+  else unmarkChanged(group);
+}
+
+function getToggleVal(group) {
+  const active = document.querySelector(`#tg-${group} .nc-toggle-opt.active`);
+  return active ? active.dataset.val : null;
+}
+
+function markChanged(field) {
+  if (!ncState.changed.includes(field)) ncState.changed.push(field);
+  const el = document.getElementById('chg-'+field);
+  if (el) el.style.display = 'inline';
+}
+function unmarkChanged(field) {
+  ncState.changed = ncState.changed.filter(f=>f!==field);
+  const el = document.getElementById('chg-'+field);
+  if (el) el.style.display = 'none';
+}
+
+function toggleBudgetLevel() {
+  const isCBO = getToggleVal('budgettype') === 'CBO';
+  document.getElementById('nc-cbo-budget').style.display = isCBO ? '' : 'none';
+  document.getElementById('nc-abo-budget').style.display = isCBO ? 'none' : '';
+}
+
+function initBudgetLevel() {
+  // CBO is default — show CBO budget field on load
+  document.getElementById('nc-cbo-budget').style.display = '';
+  document.getElementById('nc-abo-budget').style.display = 'none';
+}
+function toggleSpendLimit() {
+  document.getElementById('nc-spendlimit-field').style.display = getToggleVal('spendlimit')==='set' ? '' : 'none';
+}
+function toggleStartDate() {
+  document.getElementById('nc-startdate-field').style.display = getToggleVal('startdate')==='custom' ? '' : 'none';
+}
+function toggleEndDate() {
+  document.getElementById('nc-enddate-field').style.display = getToggleVal('enddate')==='set' ? '' : 'none';
+}
+function toggleBidStrategy() {
+  const v = getToggleVal('bidstrategy');
+  document.getElementById('nc-bid-value-field').style.display = v!=='LOWEST_COST_WITHOUT_CAP' ? '' : 'none';
+}
+function toggleAudienceType() {
+  const v = getToggleVal('audiencetype');
+  document.getElementById('nc-audience-extra').style.display = v!=='broad' ? '' : 'none';
+}
+function toggleInterests() {
+  document.getElementById('nc-interests-field').style.display = getToggleVal('interests')==='set' ? '' : 'none';
+}
+function toggleExclusions() {
+  document.getElementById('nc-exclusions-field').style.display = getToggleVal('exclusions')==='set' ? '' : 'none';
+}
+function togglePlacements() {
+  document.getElementById('nc-placements-manual').style.display = getToggleVal('placements')==='manual' ? '' : 'none';
+}
+
+function confirmSection(n) {
+  const name1 = document.getElementById('nc-campname')?.value?.trim();
+  if (n===1 && !name1) { notify('⚠️ Preenche o nome da campanha', 'error'); return; }
+  const name2 = document.getElementById('nc-adsetname')?.value?.trim();
+  if (n===2 && !name2) { notify('⚠️ Preenche o nome do conjunto de anúncios', 'error'); return; }
+
+  ncState.confirmed.push(n);
+
+  // Mark as confirmed
+  document.getElementById('ncs'+n).classList.add('confirmed');
+  document.getElementById('nsn'+n).className = 'nc-section-num done-num';
+  document.getElementById('nsn'+n).textContent = '✓';
+  document.getElementById('nsb'+n).style.display = 'none';
+  document.getElementById('nsa'+n).textContent = '▶';
+
+  // Unlock next section
+  if (n < 4) {
+    const next = document.getElementById('ncs'+(n+1));
+    next.classList.remove('nc-section-locked');
+    next.classList.add('unlocked');
+    document.getElementById('nsn'+(n+1)).className = 'nc-section-num active-num';
+    document.getElementById('nsb'+(n+1)).style.display = '';
+    document.getElementById('nsa'+(n+1)).textContent = '▼';
+    next.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // AI chat response per section
+  const chatMsgs = {
+    1: () => {
+      const obj = getToggleVal('objective');
+      const bt = getToggleVal('budgettype');
+      const name = document.getElementById('nc-campname').value;
+      const budget = bt==='CBO' ? document.getElementById('nc-cbobudget').value : '(definido no conjunto)';
+      const objLabels = {OUTCOME_SALES:'Vendas',OUTCOME_TRAFFIC:'Tráfego',OUTCOME_AWARENESS:'Reconhecimento',OUTCOME_ENGAGEMENT:'Envolvimento',OUTCOME_LEADS:'Leads',OUTCOME_APP_PROMOTION:'App'};
+      ncChatAdd('ai', `Perfeito! ✅\n\nCampanha <strong>"${name}"</strong> com objetivo de <strong>${objLabels[obj]||obj}</strong> e estrutura <strong>${bt}</strong>${bt==='CBO'?` com €${budget}/dia`:''}.\n\nAgora vamos configurar o conjunto de anúncios. O pixel está definido como <strong>Noemi Eger Fashion</strong> e o evento como <strong>Compra</strong>. Confirmas ou queres alterar?`);
+      setQuickReplies(['Manter tudo','Alterar o pixel','Mudar evento de conversão','Alterar data de início']);
+    },
+    2: () => {
+      const sd = getToggleVal('startdate')==='tomorrow' ? 'amanhã às 00h01' : document.getElementById('nc-startdateval')?.value || 'personalizado';
+      const ed = getToggleVal('enddate')==='none' ? 'sem data de fim' : document.getElementById('nc-enddateval')?.value || 'definida';
+      ncChatAdd('ai', `Ótimo! ✅\n\nConjunto configurado para começar <strong>${sd}</strong>, ${ed}.\n\nAgora o público — está definido como <strong>Hungria, Broad, 18-65+</strong>. Queres manter ou segmentar de outra forma?`);
+      setQuickReplies(['Manter Broad — Hungria','Adicionar outro país','Usar público guardado','Configurar placements manual']);
+    },
+    3: () => {
+      const country = document.getElementById('nc-country').value;
+      const at = getToggleVal('audiencetype');
+      const atLabels = {broad:'Broad',saved:'Público Guardado',lookalike:'Lookalike',retargeting:'Retargeting'};
+      const adv = getToggleVal('advcreative')==='1'?'ativado':'desativado';
+      ncChatAdd('ai', `Excelente! ✅\n\nPúblico <strong>${atLabels[at]||at}</strong> em <strong>${country}</strong> com Advantage+ Creative <strong>${adv}</strong>.\n\nÚltima secção — conformidade UE. O anunciante e entidade pagadora estão como <strong>Noemi Eger</strong>. Confirmas?`);
+      setQuickReplies(['Confirmar Noemi Eger','Alterar anunciante','O que é categoria especial?']);
+    },
+    4: () => {
+      ncChatAdd('ai', `🎉 Tudo configurado!\n\nRevê o resumo completo abaixo. Cada campo marcado a 🟦 manteve a predefinição, 🟩 foi alterado por ti.\n\nQuando estiveres pronto, clica em <strong>"Criar Campanha"</strong>!`);
+      setQuickReplies(['O que acontece agora?','Posso editar depois?']);
+      buildSummary();
+    }
+  };
+  chatMsgs[n]?.();
+
+  if (n===4) {
+    document.getElementById('nc-summary').style.display = '';
+    document.getElementById('nc-summary').scrollIntoView({behavior:'smooth'});
+  }
+}
+
+function buildSummary() {
+  const isChanged = (f) => ncState.changed.includes(f);
+  const ind = (f) => `<div class="summary-indicator ${isChanged(f)?'changed':'default'}"></div>`;
+
+  const objLabels = {OUTCOME_SALES:'Vendas',OUTCOME_TRAFFIC:'Tráfego',OUTCOME_AWARENESS:'Reconhecimento',OUTCOME_ENGAGEMENT:'Envolvimento',OUTCOME_LEADS:'Leads',OUTCOME_APP_PROMOTION:'App'};
+  const perfLabels = {OFFSITE_CONVERSIONS:'Maximizar conversões',VALUE:'Maximizar valor',LINK_CLICKS:'Maximizar cliques',REACH:'Alcance único',IMPRESSIONS:'Maximizar impressões',POST_ENGAGEMENT:'Envolvimento',LEAD_GENERATION:'Leads'};
+  const evLabels = {PURCHASE:'Compra',INITIATED_CHECKOUT:'Iniciar Checkout',ADD_TO_CART:'Add to Cart',ADD_PAYMENT_INFO:'Info Pagamento',COMPLETE_REGISTRATION:'Registo',CONTACT:'Contacto',LEAD:'Lead',VIEW_CONTENT:'Ver Conteúdo'};
+  const atLabels = {broad:'Broad (sem segmentação)',saved:'Público Guardado',lookalike:'Lookalike',retargeting:'Retargeting'};
+
+  const obj = getToggleVal('objective');
+  const bt = getToggleVal('budgettype');
+  const budget = bt==='CBO' ? `€${document.getElementById('nc-cbobudget').value}/dia (campanha)` : `€${document.getElementById('nc-abobudget').value}/dia (conjunto)`;
+  const sd = getToggleVal('startdate')==='tomorrow' ? 'Amanhã às 00h01' : document.getElementById('nc-startdateval')?.value||'—';
+  const ed = getToggleVal('enddate')==='none' ? 'Sem data de fim' : document.getElementById('nc-enddateval')?.value||'—';
+  const placements = getToggleVal('placements')==='auto' ? 'Advantage+ automático' : 'Manual';
+  const advcreative = getToggleVal('advcreative')==='1' ? 'Ativado' : 'Desativado';
+
+  const rows = [
+    ['campname','Nome da Campanha', document.getElementById('nc-campname')?.value],
+    ['objective','Objetivo', objLabels[obj]||obj],
+    ['budgettype','Estrutura Orçamento', bt],
+    ['budget','Orçamento', budget],
+    ['adsetname','Nome do Conjunto', document.getElementById('nc-adsetname')?.value],
+    ['convloc','Localização Conversão', getToggleVal('convloc')||'Website'],
+    ['perfobj','Objetivo Desempenho', perfLabels[getToggleVal('perfobj')]||'—'],
+    ['pixel','Pixel', 'Noemi Eger Fashion'],
+    ['convevent','Evento Conversão', evLabels[getToggleVal('convevent')]||'—'],
+    ['startdate','Data Início', sd],
+    ['enddate','Data Fim', ed],
+    ['bidstrategy','Estratégia Licitação', getToggleVal('bidstrategy')||'—'],
+    ['buytype','Tipo Compra', getToggleVal('buytype')||'—'],
+    ['country','País', document.getElementById('nc-country')?.value],
+    ['audiencetype','Tipo Público', atLabels[getToggleVal('audiencetype')]||'—'],
+    ['age','Idade', `${document.getElementById('nc-agemin')?.value} – ${document.getElementById('nc-agemax')?.value}`],
+    ['gender','Género', ['Todos','Homens','Mulheres','Mulheres'][parseInt(getToggleVal('gender')||0)]||'—'],
+    ['placements','Placements', placements],
+    ['advcreative','Advantage+ Creative', advcreative],
+    ['advertiser','Anunciante', document.getElementById('nc-advertiser')?.value],
+    ['payer','Entidade Pagadora', document.getElementById('nc-payer')?.value],
+    ['specialcat','Categoria Especial', document.getElementById('nc-specialcat')?.value||'Nenhuma'],
+  ];
+
+  document.getElementById('nc-summary').innerHTML = `
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📋 Resumo da Campanha</div>
+        <div style="font-size:12px;color:var(--text3)">🟦 predefinição &nbsp; 🟩 alterado por ti</div>
+      </div>
+      <div class="card-body">
+        ${rows.map(([f,label,val]) => `
+          <div class="summary-field">
+            ${ind(f)}
+            <div class="summary-fname">${label}</div>
+            <div class="summary-fval">${val||'—'}</div>
+          </div>`).join('')}
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button class="btn btn-secondary" style="flex:1" onclick="publishNewCamp(false)">🚀 Criar Campanha</button>
+          <button class="btn btn-primary" style="flex:1" onclick="publishNewCamp(true)">🚀 Criar + Adicionar Criativos</button>
+        </div>
+        <div id="nc-publish-result"></div>
+      </div>
+    </div>`;
+}
+
+async function publishNewCamp(withCreatives) {
+  if (!CFG.token || !CFG.account) { notify('⚠️ Configura as credenciais Meta', 'error'); showModal('configModal'); return; }
+  const name = document.getElementById('nc-campname')?.value;
+  // Read values safely — toggles may not have .active if user didn't interact
+  const obj = getToggleVal('objective') || ncState.defaults.objective || 'OUTCOME_SALES';
+  const specialcat = document.getElementById('nc-specialcat')?.value || 'NONE';
+  const bt = getToggleVal('budgettype') || ncState.defaults.budgettype || 'ABO';
+  showLoad('🚀 A criar campanha na Business Manager...');
+  try {
+    const campBody = {
+      name, objective: obj, status: 'PAUSED',
+      special_ad_categories: specialcat==='NONE' ? [] : [specialcat],
+      is_adset_budget_sharing_enabled: bt === 'CBO'
+    };
+    if (bt==='CBO') {
+      const cboB = parseFloat(document.getElementById('nc-cbobudget')?.value||0);
+      if (cboB>0) campBody.daily_budget = Math.round(cboB*100);
+    }
+    const camp = await metaPost(`/${CFG.account}/campaigns`, campBody);
+    console.log('Campanha criada:', JSON.stringify(camp));
+    const campId = camp.id || camp.campaign_id;
+    if (!campId) throw new Error('Campanha criada mas ID não encontrado: ' + JSON.stringify(camp));
+
+    showLoad('A criar conjunto de anúncios...');
+    const adsetName = document.getElementById('nc-adsetname')?.value || name+' — Ad Set';
+    const country = (document.getElementById('nc-country')?.value||'HU').match(/\(([A-Z]{2})\)/)?.[1] || 'HU';
+    const targeting = {
+      geo_locations: { countries: [country] },
+      age_min: parseInt(document.getElementById('nc-agemin')?.value||18),
+      age_max: parseInt(document.getElementById('nc-agemax')?.value||65),
+    };
+    const gender = getToggleVal('gender');
+    if (gender && gender!=='0') targeting.genders = [parseInt(gender)];
+
+    const perfobj = document.getElementById('nc-perfobj')?.value || 'OFFSITE_CONVERSIONS';
+    const pixel = document.getElementById('nc-pixel')?.value || CFG.pixel;
+    const convevent = getToggleVal('convevent') || 'PURCHASE';
+
+    const objToGoal = {
+      OUTCOME_SALES: 'OFFSITE_CONVERSIONS',
+      OUTCOME_TRAFFIC: 'LINK_CLICKS',
+      OUTCOME_AWARENESS: 'REACH',
+      OUTCOME_ENGAGEMENT: 'POST_ENGAGEMENT',
+      OUTCOME_LEADS: 'LEAD_GENERATION',
+      OUTCOME_APP_PROMOTION: 'APP_INSTALLS'
+    };
+    const finalGoal = perfobj || objToGoal[obj] || 'OFFSITE_CONVERSIONS';
+
+    const adsetBody = {
+      name: adsetName,
+      campaign_id: campId,
+      billing_event: 'IMPRESSIONS',
+      optimization_goal: finalGoal,
+      targeting,
+      status: 'PAUSED',
+      bid_amount: 50,
+    };
+    console.log('AdSet body:', JSON.stringify(adsetBody));
+    // Budget — always required
+    const budgetVal = bt === 'CBO'
+      ? parseFloat(document.getElementById('nc-cbobudget')?.value || '25')
+      : parseFloat(document.getElementById('nc-abobudget')?.value || '10');
+    adsetBody.daily_budget = Math.round(Math.max(budgetVal, 1) * 100);
+
+    // Promoted object — required for conversions
+    const pixelToUse = CFG.pixel || '1794162401993457';
+    if (finalGoal === 'OFFSITE_CONVERSIONS' && pixelToUse) {
+      adsetBody.promoted_object = {
+        pixel_id: pixelToUse,
+        custom_event_type: convevent
+      };
+    }
+
+    console.log('AdSet body FINAL:', JSON.stringify(adsetBody));
+    const adset = await metaPost(`/${CFG.account}/adsets`, adsetBody);
+
+    hideLoad();
+    notify('✅ Campanha criada com sucesso!', 'success');
+    ncChatAdd('ai', `🎉 Campanha <strong>"${name}"</strong> criada! Clica em "Criar Criativos" para avançar.`);
+    document.getElementById('nc-publish-result').innerHTML = `
+      <div class="alert success" style="margin-top:16px">
+        ✅ <strong>Campanha criada!</strong> ID: <code>${camp.id}</code><br>
+        Conjunto ID: <code>${adset.id}</code>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        <a href="criativos.html?campaign=${camp.id}&name=${encodeURIComponent(name)}&budget=${budgetVal}" class="btn btn-primary" style="text-decoration:none">🎨 Criar Criativos →</a>
+        <a href="https://business.facebook.com/adsmanager" target="_blank" class="btn btn-secondary" style="text-decoration:none">Abrir Meta Ads Manager</a>
+      </div>`;
+    if (withCreatives) {
+      setTimeout(() => {
+        window.location.href = `criativos.html?campaign=${camp.id}&name=${encodeURIComponent(name)}&budget=${budgetVal}`;
+      }, 1200);
+    }
+  } catch(e) {
+    hideLoad(); notify('❌ '+e.message, 'error');
+    document.getElementById('nc-publish-result').innerHTML = `<div class="alert danger" style="margin-top:12px">❌ ${e.message}</div>`;
+  }
+}
+
+// ===== AI CHAT =====
+function ncChatAdd(role, msg) {
+  const box = document.getElementById('nc-chat-msgs');
+  const div = document.createElement('div');
+  div.className = 'chat-msg '+role;
+  div.innerHTML = msg.replace(/\n/g,'<br>');
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function setQuickReplies(options) {
+  const box = document.getElementById('nc-quick-replies');
+  box.innerHTML = options.map(o => `<button class="chat-qr" onclick="handleQR('${o}')">${o}</button>`).join('');
+}
+
+async function handleQR(msg) {
+  ncChatAdd('user', msg);
+  document.getElementById('nc-quick-replies').innerHTML = '';
+  const lower = msg.toLowerCase();
+  if (lower.includes('abo vs cbo')) {
+    ncChatAdd('ai', `<strong>ABO (Ad Set Budget Optimization)</strong>\nDefines o orçamento ao nível de cada conjunto. Tens controlo total sobre quanto gasta cada conjunto. Recomendado quando estás a testar públicos diferentes.\n\n<strong>CBO (Campaign Budget Optimization)</strong>\nDefines o orçamento ao nível da campanha. O Meta distribui automaticamente pelo melhor conjunto. Recomendado quando já sabes que públicos funcionam.\n\n<em>Para a Noémi Eger em fase de teste — ABO é o ideal.</em>`);
+    setQuickReplies(['Manter ABO','Mudar para CBO']);
+  } else if (lower.includes('advantage+')) {
+    ncChatAdd('ai', `O <strong>Advantage+ Creative</strong> permite ao Meta fazer pequenos ajustes automáticos nos teus criativos — como adicionar filtros, ajustar brilho, ou adicionar elementos visuais — para tentar melhorar a performance.\n\nPode ser útil mas se quiseres controlo total sobre os teus criativos, desativa-o.`);
+    setQuickReplies(['Manter ativado','Desativar']);
+  } else if (lower.includes('lookalike')) {
+    ncChatAdd('ai', `Um <strong>Público Lookalike</strong> é criado pelo Meta encontrando utilizadores semelhantes a uma fonte que defines (ex: os teus clientes, visitantes do site).\n\nPodes definir a % de semelhança — 1% é mais parecido com a fonte, 10% é mais amplo. Para e-commerce de moda, 1-2% costuma ter melhor performance.`);
+    setQuickReplies(['Percebido!','Como criar um Lookalike?']);
+  } else if (lower.includes('categoria especial')) {
+    ncChatAdd('ai', `As <strong>Categorias Especiais</strong> são para anúncios sobre temas sensíveis: crédito, emprego, habitação ou política.\n\nPara a <strong>Noémi Eger</strong> (moda e acessórios) a resposta é sempre <strong>Nenhuma</strong>. Não há restrições especiais para este setor.`);
+    setQuickReplies(['Percebido, manter Nenhuma']);
+  } else if (lower.includes('placements')) {
+    ncChatAdd('ai', `Os <strong>posicionamentos</strong> definem onde os teus anúncios aparecem:\n\n📱 Feed FB/IG — maior visibilidade, mais caro\n📖 Stories/Reels — formato vertical, muito engagement\n🔲 Coluna Direita — só desktop, mais barato\n🛍️ Marketplace — bom para produtos físicos\n📡 Audience Network — apps externas, mais alcance, menos qualidade\n\n<strong>Advantage+</strong> deixa o Meta escolher — recomendado para começar.`);
+    setQuickReplies(['Manter Advantage+','Configurar manual']);
+  } else if (lower.includes('o que acontece agora')) {
+    ncChatAdd('ai', `A campanha é criada na tua Business Manager como <strong>PAUSADA</strong>.\n\nDepois disso:\n1. Vai ao Meta Ads Manager\n2. Adiciona os criativos (imagens/vídeos)\n3. Revê tudo\n4. Publica!\n\nA campanha só gasta dinheiro quando a publicares.`);
+  } else {
+    if (!CFG.claude) {
+      ncChatAdd('ai', 'Configura a Anthropic API Key nas ⚙️ Configurações para respostas personalizadas com IA.');
+      return;
+    }
+    try {
+      const resp = await askClaude(msg, 'És assistente de campanha Meta Ads para a loja Noémi Eger (moda, Hungria). Respondes de forma breve, prática e em português de Portugal. Máximo 3 parágrafos.');
+      ncChatAdd('ai', resp);
+    } catch(e) { ncChatAdd('ai', 'Erro ao contactar a IA: '+e.message); }
+  }
+}
+
+async function sendChatMsg() {
+  const input = document.getElementById('nc-chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  handleQR(msg);
+}
+
+// ===== START =====
+init();
+setTimeout(initCreator, 100);
+</script>
+</body>
+</html>
