@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noémi Eger — Módulo de Criativos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0f; --surface:#111118; --surface2:#1a1a24; --surface3:#22222f;
+    --border:#2a2a3a; --accent:#c9a96e; --accent2:#e8c99a;
+    --text:#f0ede8; --text2:#9a97a0; --text3:#5a576a;
+    --green:#4caf7d; --red:#e05c5c; --blue:#6b9fff; --purple:#9b7fe8; --amber:#f0a840;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; overflow-x:hidden; }
+
+  /* LAYOUT */
+  .layout { display:grid; grid-template-columns:1fr 340px; height:100vh; overflow:hidden; }
+  .main-area { display:flex; flex-direction:column; overflow:hidden; min-height:0; }
+  .topbar { padding:16px 28px; border-bottom:1px solid var(--border); background:var(--surface); display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+  .page-title { font-family:'Playfair Display',serif; font-size:20px; }
+  .page-sub { font-size:12px; color:var(--text3); margin-top:2px; }
+  .content-area { flex:1; overflow-y:auto; padding:28px; min-height:0; }
+
+  /* STEPS NAV */
+  .steps-nav { display:flex; gap:0; margin-bottom:28px; border-bottom:1px solid var(--border); }
+  .step-nav-item { padding:12px 20px; font-size:13px; color:var(--text3); display:flex; align-items:center; gap:8px; border-bottom:2px solid transparent; cursor:pointer; transition:all 0.2s; }
+  .step-nav-item.active { color:var(--accent); border-bottom-color:var(--accent); }
+  .step-nav-item.done { color:var(--green); }
+  .step-nav-item.locked { pointer-events:none; opacity:0.4; }
+  .step-dot { width:20px; height:20px; border-radius:50%; background:var(--surface3); font-size:11px; display:flex; align-items:center; justify-content:center; }
+  .step-nav-item.active .step-dot { background:var(--accent); color:#000; }
+  .step-nav-item.done .step-dot { background:var(--green); color:#000; }
+
+  /* STEP PAGES */
+  .step-page { display:none; }
+  .step-page.active { display:block; }
+
+  /* BUTTONS */
+  .btn { padding:9px 18px; border-radius:8px; font-size:13px; font-family:'DM Sans',sans-serif; font-weight:500; cursor:pointer; transition:all 0.15s; border:none; }
+  .btn-primary { background:var(--accent); color:#0a0a0f; }
+  .btn-primary:hover { background:var(--accent2); }
+  .btn-secondary { background:var(--surface2); color:var(--text2); border:1px solid var(--border); }
+  .btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-success { background:var(--green); color:white; }
+  .btn-danger { background:var(--red); color:white; }
+  .btn-amber { background:rgba(240,168,64,0.15); color:var(--amber); border:1px solid rgba(240,168,64,0.3); }
+  .btn-sm { padding:6px 12px; font-size:12px; }
+  .btn-xs { padding:4px 8px; font-size:11px; }
+
+  /* FORMS */
+  .form-input, .form-select, .form-textarea { width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:14px; font-family:'DM Sans',sans-serif; outline:none; transition:border-color 0.15s; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--accent); }
+  .form-select option { background:var(--surface2); }
+  .form-textarea { resize:vertical; min-height:70px; line-height:1.5; }
+  .form-label { font-size:11px; color:var(--text2); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; display:block; }
+  .form-group { margin-bottom:16px; }
+
+  /* CARDS */
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .card-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .card-title { font-size:14px; font-weight:600; }
+  .card-body { padding:20px; }
+
+  /* UPLOAD AREA */
+  .upload-area { border:2px dashed var(--border); border-radius:12px; padding:48px 24px; text-align:center; cursor:pointer; transition:all 0.2s; background:var(--surface); }
+  .upload-area:hover, .upload-area.drag-over { border-color:var(--accent); background:rgba(201,169,110,0.05); }
+  .upload-icon { font-size:40px; margin-bottom:12px; }
+  .upload-title { font-size:16px; font-weight:500; margin-bottom:6px; }
+  .upload-sub { font-size:13px; color:var(--text3); }
+
+  /* IMAGE GRID */
+  .img-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; margin-top:20px; }
+  .img-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden; position:relative; }
+  .img-card img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+  .img-card-meta { padding:10px; }
+  .img-card-remove { position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.7); border:none; color:white; width:22px; height:22px; border-radius:50%; cursor:pointer; font-size:13px; display:flex; align-items:center; justify-content:center; }
+
+  /* TOGGLE GROUP */
+  .tg { display:flex; gap:6px; flex-wrap:wrap; }
+  .tg-opt { padding:7px 14px; border-radius:8px; border:1px solid var(--border); font-size:13px; cursor:pointer; color:var(--text2); transition:all 0.15s; background:var(--surface2); }
+  .tg-opt:hover { border-color:var(--accent); color:var(--text); }
+  .tg-opt.active { border-color:var(--accent); background:rgba(201,169,110,0.12); color:var(--accent); font-weight:500; }
+
+  /* CREATIVE TYPE CARDS */
+  .ctype-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:20px; }
+  .ctype-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px; cursor:pointer; transition:all 0.2s; }
+  .ctype-card:hover { border-color:var(--accent); }
+  .ctype-card.selected { border-color:var(--accent); background:rgba(201,169,110,0.06); }
+  .ctype-card.disabled { opacity:0.4; pointer-events:none; }
+  .ctype-icon { font-size:24px; margin-bottom:8px; }
+  .ctype-name { font-size:13px; font-weight:600; margin-bottom:4px; }
+  .ctype-sub { font-size:11px; color:var(--text3); }
+  .ctype-funnel { font-size:10px; padding:2px 8px; border-radius:10px; display:inline-block; margin-top:6px; }
+  .ctype-funnel.tofu { background:rgba(107,159,255,0.15); color:var(--blue); }
+  .ctype-funnel.mofu { background:rgba(155,127,232,0.15); color:var(--purple); }
+  .ctype-funnel.bofu { background:rgba(76,175,125,0.15); color:var(--green); }
+  .ctype-qty { display:flex; align-items:center; gap:8px; margin-top:10px; }
+  .qty-btn { width:26px; height:26px; border-radius:6px; background:var(--surface3); border:none; color:var(--text); cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+  .qty-val { font-size:14px; font-weight:600; min-width:20px; text-align:center; }
+
+  /* GENERATION */
+  .gen-progress { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px; text-align:center; }
+  .progress-bar-wrap { background:var(--surface2); border-radius:4px; height:6px; margin:16px 0; overflow:hidden; }
+  .progress-bar { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:4px; transition:width 0.3s; }
+  .gen-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-top:20px; }
+  .gen-item { background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden; position:relative; }
+  .gen-item img { width:100%; aspect-ratio:1; object-fit:cover; display:block; }
+  .gen-item-meta { padding:10px; }
+  .gen-overlay { position:absolute; top:8px; right:8px; }
+  .badge { padding:3px 8px; border-radius:6px; font-size:10px; font-weight:600; }
+  .badge-amber { background:rgba(240,168,64,0.9); color:#000; }
+  .badge-green { background:rgba(76,175,125,0.9); color:#000; }
+  .badge-red { background:rgba(224,92,92,0.9); color:white; }
+  .badge-blue { background:rgba(107,159,255,0.2); color:var(--blue); border:1px solid rgba(107,159,255,0.3); }
+
+  /* REVIEW */
+  .review-single { max-width:600px; margin:0 auto; }
+  .review-img { width:100%; border-radius:12px; aspect-ratio:1; object-fit:cover; border:1px solid var(--border); }
+  .review-nav { display:flex; align-items:center; justify-content:space-between; margin:16px 0; }
+  .review-actions { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px; margin-top:16px; }
+  .preview-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); margin:16px 0; }
+  .preview-tab { padding:8px 16px; font-size:12px; cursor:pointer; color:var(--text3); border-bottom:2px solid transparent; transition:all 0.2s; }
+  .preview-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+
+  /* SUMMARY */
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:12px; margin-bottom:20px; }
+  .summary-stat { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+  .summary-stat-val { font-size:28px; font-family:'Playfair Display',serif; color:var(--accent); }
+  .summary-stat-label { font-size:11px; color:var(--text3); margin-top:4px; }
+  .funnel-bar { display:flex; gap:8px; margin:12px 0; align-items:center; }
+  .funnel-bar-label { font-size:12px; color:var(--text2); min-width:60px; }
+  .funnel-bar-track { flex:1; background:var(--surface2); border-radius:4px; height:8px; overflow:hidden; }
+  .funnel-bar-fill { height:100%; border-radius:4px; }
+
+  /* AI CHAT PANEL */
+  .chat-panel { border-left:1px solid var(--border); display:flex; flex-direction:column; background:var(--surface); overflow:hidden; min-height:0; }
+  .chat-panel-header { padding:16px 20px; border-bottom:1px solid var(--border); flex-shrink:0; }
+  .chat-msgs { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; min-height:0; }
+  .chat-msg { max-width:90%; padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.6; }
+  .chat-msg.ai { background:var(--surface2); border:1px solid var(--border); color:var(--text2); align-self:flex-start; border-radius:4px 12px 12px 12px; }
+  .chat-msg.user { background:rgba(201,169,110,0.12); border:1px solid rgba(201,169,110,0.2); color:var(--text); align-self:flex-end; border-radius:12px 4px 12px 12px; }
+  .chat-qrs { padding:10px 16px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:6px; flex-shrink:0; max-height:100px; overflow-y:auto; }
+  .chat-qr { padding:5px 12px; border-radius:20px; border:1px solid var(--border); font-size:11px; cursor:pointer; color:var(--text2); background:var(--surface2); transition:all 0.15s; }
+  .chat-qr:hover { border-color:var(--accent); color:var(--accent); }
+  .chat-input-row { padding:10px 16px; border-top:1px solid var(--border); display:flex; gap:8px; flex-shrink:0; }
+
+  /* ALERTS */
+  .alert { padding:12px 16px; border-radius:10px; font-size:13px; margin-bottom:12px; line-height:1.5; }
+  .alert.warn { background:rgba(240,168,64,0.1); border:1px solid rgba(240,168,64,0.3); color:var(--amber); }
+  .alert.success { background:rgba(76,175,125,0.1); border:1px solid rgba(76,175,125,0.3); color:var(--green); }
+  .alert.info { background:rgba(107,159,255,0.1); border:1px solid rgba(107,159,255,0.3); color:var(--blue); }
+
+  /* MISC */
+  .flex { display:flex; } .gap-8 { gap:8px; } .gap-12 { gap:12px; }
+  .items-center { align-items:center; } .justify-between { justify-content:space-between; }
+  .mt-16 { margin-top:16px; } .mt-20 { margin-top:20px; }
+  .text-muted { color:var(--text3); font-size:13px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  ::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+
+  /* NOTIFICATION */
+  .notif { position:fixed; bottom:20px; right:20px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 18px; font-size:13px; z-index:500; transform:translateY(80px); opacity:0; transition:all 0.3s; max-width:300px; }
+  .notif.show { transform:translateY(0); opacity:1; }
+  .notif.success { border-color:var(--green); color:var(--green); }
+  .notif.error { border-color:var(--red); color:var(--red); }
+
+  /* MODAL */
+  .modal-bg { display:none; position:fixed; inset:0; background:rgba(10,10,15,0.9); z-index:200; align-items:center; justify-content:center; }
+  .modal-bg.show { display:flex; }
+  .modal { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; width:460px; max-width:90vw; max-height:80vh; overflow-y:auto; }
+  .modal-title { font-family:'Playfair Display',serif; font-size:18px; margin-bottom:16px; }
+  .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:20px; }
+
+  /* LOADING */
+  .loading-bg { display:none; position:fixed; inset:0; background:rgba(10,10,15,0.85); z-index:300; align-items:center; justify-content:center; flex-direction:column; gap:14px; }
+  .loading-bg.show { display:flex; }
+  .spinner { width:36px; height:36px; border:3px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <div class="topbar">
+      <div>
+        <div class="page-title" id="pageTitle">Criativos</div>
+        <div class="page-sub" id="pageSub">Módulo de geração de criativos com IA</div>
+      </div>
+      <div class="flex gap-8 items-center">
+        <span id="campBadge" style="display:none;padding:4px 12px;border-radius:20px;font-size:12px;background:rgba(201,169,110,0.15);color:var(--accent);border:1px solid rgba(201,169,110,0.3)"></span>
+        <a href="index.html" class="btn btn-secondary btn-sm">← Dashboard</a>
+        <button class="btn btn-secondary btn-sm" onclick="openCfg()">⚙️</button>
+      </div>
+    </div>
+
+    <!-- STEPS NAV -->
+    <div style="padding:0 28px;background:var(--surface);border-bottom:1px solid var(--border)">
+      <div class="steps-nav" style="margin-bottom:0">
+        <div class="step-nav-item active" id="snav1" onclick="goToStep(1)"><div class="step-dot">1</div> Upload</div>
+        <div class="step-nav-item locked" id="snav2" onclick="goToStep(2)"><div class="step-dot">2</div> Configuração</div>
+        <div class="step-nav-item locked" id="snav3" onclick="goToStep(3)"><div class="step-dot">3</div> Geração IA</div>
+        <div class="step-nav-item locked" id="snav4" onclick="goToStep(4)"><div class="step-dot">4</div> Revisão</div>
+        <div class="step-nav-item locked" id="snav5" onclick="goToStep(5)"><div class="step-dot">5</div> Sumário</div>
+      </div>
+    </div>
+
+    <div class="content-area">
+
+      <!-- STEP 1: UPLOAD -->
+      <div class="step-page active" id="sp1">
+        <div class="alert info" style="margin-bottom:20px">
+          ℹ️ Estas imagens são usadas apenas como <strong>referência visual</strong> para a IA gerar os criativos. As imagens originais não são publicadas diretamente.
+        </div>
+        <div class="upload-area" id="uploadArea"
+          ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)"
+          onclick="document.getElementById('refInput').click()">
+          <div class="upload-icon">🖼️</div>
+          <div class="upload-title">Arrasta imagens de referência aqui</div>
+          <div class="upload-sub">PNG, JPG, WEBP • múltiplos ficheiros • clica para selecionar</div>
+        </div>
+        <input type="file" id="refInput" multiple accept="image/*" style="display:none" onchange="handleRefFiles(this.files)">
+
+        <div id="refGrid" class="img-grid"></div>
+
+        <div class="flex justify-between mt-20" style="align-items:center">
+          <div class="text-muted" id="refCount">0 imagens carregadas</div>
+          <button class="btn btn-primary" onclick="goToStep(2)" id="step1Next" disabled style="opacity:0.5">Avançar para Configuração →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: CONFIG -->
+      <div class="step-page" id="sp2">
+        <div id="funnelSuggestion" class="alert info" style="margin-bottom:20px;display:none"></div>
+
+        <!-- Quantos criativos -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">📊 Quantos criativos?</div></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Total de criativos a gerar</label>
+              <div class="flex gap-8 items-center">
+                <button class="qty-btn" onclick="adjustTotal(-1)">−</button>
+                <span class="qty-val" id="totalQty" style="font-size:20px;min-width:40px;text-align:center">5</span>
+                <button class="qty-btn" onclick="adjustTotal(1)">+</button>
+                <span class="text-muted" style="margin-left:8px" id="totalHint">Campanha de Produto — máx. 5</span>
+              </div>
+            </div>
+            <div id="aiSuggestionBox" style="margin-top:12px;padding:12px;background:var(--surface2);border-radius:8px;font-size:13px;color:var(--text2);line-height:1.6;display:none"></div>
+          </div>
+        </div>
+
+        <!-- Tipos de criativos -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">🎨 Tipos de Criativos</div><span style="font-size:12px;color:var(--text3)">Seleciona e define quantidade de cada tipo</span></div>
+          <div class="card-body">
+            <div class="ctype-grid">
+
+              <!-- Single Image -->
+              <div class="ctype-card" id="ct-single" onclick="toggleCtype('single')">
+                <div class="ctype-icon">🖼️</div>
+                <div class="ctype-name">Single Image</div>
+                <div class="ctype-sub">Imagem de produto simples, fundo limpo</div>
+                <span class="ctype-funnel bofu">BOFU — Conversão</span>
+                <div class="ctype-qty" id="cq-single" style="display:none" onclick="event.stopPropagation()">
+                  <button class="qty-btn" onclick="adjustQty('single',-1)">−</button>
+                  <span class="qty-val" id="qv-single">2</span>
+                  <button class="qty-btn" onclick="adjustQty('single',1)">+</button>
+                </div>
+                <div id="ct-single-opts" style="display:none;margin-top:10px" onclick="event.stopPropagation()">
+                  <div class="flex gap-8 items-center" style="margin-bottom:6px">
+                    <span style="font-size:12px;color:var(--text2)">Texto sobreposto:</span>
+                    <div class="tg" id="tg-singletext">
+                      <div class="tg-opt active" data-val="no" onclick="setTg('singletext',this)">Sem texto</div>
+                      <div class="tg-opt" data-val="yes" onclick="setTg('singletext',this)">Com texto IA</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collage simples -->
+              <div class="ctype-card" id="ct-collage" onclick="toggleCtype('collage')">
+                <div class="ctype-icon">🔲</div>
+                <div class="ctype-name">Collage</div>
+                <div class="ctype-sub">Composição com múltiplas imagens de referência</div>
+                <span class="ctype-funnel bofu">BOFU — Conversão</span>
+                <div class="ctype-qty" id="cq-collage" style="display:none" onclick="event.stopPropagation()">
+                  <button class="qty-btn" onclick="adjustQty('collage',-1)">−</button>
+                  <span class="qty-val" id="qv-collage">2</span>
+                  <button class="qty-btn" onclick="adjustQty('collage',1)">+</button>
+                </div>
+                <div id="ct-collage-opts" style="display:none;margin-top:10px" onclick="event.stopPropagation()">
+                  <div style="margin-bottom:6px">
+                    <span style="font-size:12px;color:var(--text2)">Imagens na collage:</span>
+                    <div class="tg mt-16" id="tg-collagecnt" style="margin-top:6px">
+                      <div class="tg-opt" data-val="2" onclick="setTg('collagecnt',this)">2</div>
+                      <div class="tg-opt active" data-val="3" onclick="setTg('collagecnt',this)">3</div>
+                      <div class="tg-opt" data-val="4" onclick="setTg('collagecnt',this)">4</div>
+                    </div>
+                  </div>
+                  <div>
+                    <span style="font-size:12px;color:var(--text2)">Fundo:</span>
+                    <div class="tg" id="tg-collagebg" style="margin-top:6px">
+                      <div class="tg-opt active" data-val="#ebebeb" onclick="setTg('collagebg',this)">#ebebeb</div>
+                      <div class="tg-opt" data-val="custom" onclick="setTg('collagebg',this)">Personalizado</div>
+                      <div class="tg-opt" data-val="transparent" onclick="setTg('collagebg',this)">Transparente</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collage IA -->
+              <div class="ctype-card" id="ct-collageia" onclick="toggleCtype('collageia')">
+                <div class="ctype-icon">✨</div>
+                <div class="ctype-name">Collage IA</div>
+                <div class="ctype-sub">IA gera imagens novas do produto com ângulos diferentes</div>
+                <span class="ctype-funnel bofu">BOFU — Conversão</span>
+                <div class="ctype-qty" id="cq-collageia" style="display:none" onclick="event.stopPropagation()">
+                  <button class="qty-btn" onclick="adjustQty('collageia',-1)">−</button>
+                  <span class="qty-val" id="qv-collageia">1</span>
+                  <button class="qty-btn" onclick="adjustQty('collageia',1)">+</button>
+                </div>
+                <div id="ct-collageia-opts" style="display:none;margin-top:10px" onclick="event.stopPropagation()">
+                  <div>
+                    <span style="font-size:12px;color:var(--text2)">Fundo:</span>
+                    <div class="tg" id="tg-collageibg" style="margin-top:6px">
+                      <div class="tg-opt active" data-val="#ebebeb" onclick="setTg('collageibg',this)">#ebebeb neutro</div>
+                      <div class="tg-opt" data-val="parque" onclick="setTg('collageibg',this)">🌳 Parque</div>
+                      <div class="tg-opt" data-val="cidade" onclick="setTg('collageibg',this)">🏙️ Cidade</div>
+                      <div class="tg-opt" data-val="interior" onclick="setTg('collageibg',this)">🏠 Interior</div>
+                      <div class="tg-opt" data-val="estudio" onclick="setTg('collageibg',this)">📸 Estúdio</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Carrossel -->
+              <div class="ctype-card" id="ct-carousel" onclick="toggleCtype('carousel')">
+                <div class="ctype-icon">🎠</div>
+                <div class="ctype-name">Carrossel</div>
+                <div class="ctype-sub">Múltiplos cards, ideal para variantes do produto</div>
+                <span class="ctype-funnel mofu">MOFU — Consideração</span>
+                <div class="ctype-qty" id="cq-carousel" style="display:none" onclick="event.stopPropagation()">
+                  <button class="qty-btn" onclick="adjustQty('carousel',-1)">−</button>
+                  <span class="qty-val" id="qv-carousel">1</span>
+                  <button class="qty-btn" onclick="adjustQty('carousel',1)">+</button>
+                </div>
+                <div id="ct-carousel-opts" style="display:none;margin-top:10px" onclick="event.stopPropagation()">
+                  <div style="margin-bottom:8px">
+                    <span style="font-size:12px;color:var(--text2)">Nº de cards:</span>
+                    <div class="flex gap-8 items-center" style="margin-top:6px">
+                      <button class="qty-btn" onclick="adjustCarouselCards(-1)">−</button>
+                      <span class="qty-val" id="carousel-cards">3</span> cards
+                      <button class="qty-btn" onclick="adjustCarouselCards(1)">+</button>
+                    </div>
+                  </div>
+                  <div>
+                    <span style="font-size:12px;color:var(--text2)">Estilo:</span>
+                    <div class="tg" id="tg-carouselstyle" style="margin-top:6px">
+                      <div class="tg-opt active" data-val="neutral" onclick="setTg('carouselstyle',this);toggleCarouselScene()">Fundo neutro</div>
+                      <div class="tg-opt" data-val="scene" onclick="setTg('carouselstyle',this);toggleCarouselScene()">Com cenário IA</div>
+                    </div>
+                    <div id="carousel-scene-field" style="display:none;margin-top:8px">
+                      <input type="text" class="form-input" id="carousel-scene-txt" placeholder="Descreve o cenário: ex. interior minimalista branco...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vídeo (Em breve) -->
+              <div class="ctype-card disabled">
+                <div class="ctype-icon">🎬</div>
+                <div class="ctype-name">Vídeo <span style="font-size:10px;color:var(--amber);margin-left:4px">Em breve</span></div>
+                <div class="ctype-sub">Geração de vídeo via Higgsfield — brevemente disponível</div>
+                <span class="ctype-funnel tofu">TOFU — Descoberta</span>
+                <div style="margin-top:8px;font-size:11px;color:var(--amber)">📹 Higgsfield integration</div>
+              </div>
+
+            </div>
+
+            <!-- Sumário de tipos -->
+            <div id="ctypeSummary" style="padding:12px;background:var(--surface2);border-radius:8px;font-size:13px;color:var(--text2)">
+              Seleciona pelo menos um tipo de criativo acima.
+            </div>
+          </div>
+        </div>
+
+        <!-- Campanha associada -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">🔗 Associação a Campanha</div></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Campanha</label>
+              <select class="form-select" id="cfg-campaign">
+                <option value="">Nenhuma — download no final</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adcopys -->
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">✍️ Adcopys</div></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Exemplo de adcopy de referência (opcional)</label>
+              <textarea class="form-textarea" id="ac-example" placeholder="Cola aqui uma adcopy que funcionou bem no passado (em qualquer idioma). A IA vai aprender com ela e adaptar o estilo..." style="min-height:70px"></textarea>
+              <div style="font-size:11px;color:var(--text3);margin-top:4px">A IA aprende com os teus exemplos e adapta as novas adcopys ao estilo que melhor converte.</div>
+            </div>
+            <div id="adcopys-list">
+              <div style="font-size:13px;color:var(--text3)">Nenhuma adcopy gerada ainda.</div>
+            </div>
+            <button class="btn btn-secondary btn-sm" style="margin-top:12px" onclick="openAdcopyModal()">+ Criar Adcopys com IA</button>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-20">
+          <button class="btn btn-secondary" onclick="goToStep(1)">← Voltar</button>
+          <button class="btn btn-primary" onclick="startGeneration()" id="step2Next">Gerar Criativos com IA ✨</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: GENERATION -->
+      <div class="step-page" id="sp3">
+        <div class="gen-progress" id="genProgress">
+          <div style="font-size:32px;margin-bottom:12px">✨</div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:4px" id="genTitle">A gerar criativos...</div>
+          <div style="font-size:13px;color:var(--text3)" id="genStatus">A preparar geração</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="genBar" style="width:0%"></div>
+          </div>
+          <div style="font-size:12px;color:var(--text3)" id="genMotor">Motor: —</div>
+        </div>
+        <div class="gen-grid" id="genGrid" style="margin-top:20px"></div>
+        <div class="flex justify-between mt-20" id="step3Actions" style="display:none!important">
+          <button class="btn btn-secondary" onclick="goToStep(2)">← Reconfigurar</button>
+          <button class="btn btn-primary" onclick="goToStep(4)">Rever Criativos →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: REVIEW -->
+      <div class="step-page" id="sp4">
+        <div style="display:flex;gap:12px;margin-bottom:16px;align-items:center">
+          <div class="tg">
+            <div class="tg-opt active" id="view-single-btn" onclick="setReviewView('single')">Vista Individual</div>
+            <div class="tg-opt" id="view-grid-btn" onclick="setReviewView('grid')">Vista Grelha</div>
+          </div>
+          <span style="font-size:13px;color:var(--text3)" id="reviewProgress">—</span>
+        </div>
+
+        <!-- Single view -->
+        <div id="review-single-view" class="review-single" style="max-width:700px">
+          <div class="review-nav">
+            <button class="btn btn-secondary btn-sm" onclick="reviewNav(-1)">← Anterior</button>
+            <span style="font-size:13px;color:var(--text2)" id="reviewNavLabel">1 / 1</span>
+            <button class="btn btn-secondary btn-sm" onclick="reviewNav(1)">Próximo →</button>
+          </div>
+          <div style="position:relative">
+            <img id="reviewImg" src="" class="review-img" alt="Criativo">
+            <div style="position:absolute;top:10px;right:10px" id="reviewBadge"></div>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <span class="badge badge-blue" id="reviewType">—</span>
+            <span class="badge badge-blue" id="reviewFunnel">—</span>
+            <span style="font-size:12px;color:var(--text3)" id="reviewMotorLabel">—</span>
+            <span style="font-size:12px;color:var(--text3)" id="reviewScore">—</span>
+          </div>
+          <div class="review-actions" style="margin-top:16px">
+            <button class="btn btn-success" onclick="approveCreative()">✅ Aprovar</button>
+            <button class="btn btn-secondary" onclick="openRegenModal()">🔄 Regenerar</button>
+            <button class="btn btn-secondary" onclick="openEditModal()">✏️ Editar</button>
+            <button class="btn btn-danger" onclick="openRejectModal()">❌ Rejeitar</button>
+          </div>
+
+          <!-- Adcopy approval section -->
+          <div id="adcopy-review-section" style="margin-top:20px;display:none">
+            <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:var(--accent)">✍️ Adcopys — Aprova as que preferes</div>
+            <div id="adcopy-review-list"></div>
+          </div>
+        </div>
+
+        <!-- Grid view -->
+        <div id="review-grid-view" style="display:none">
+          <div class="gen-grid" id="reviewGridContent"></div>
+        </div>
+
+        <div class="flex justify-between mt-20">
+          <button class="btn btn-secondary" onclick="goToStep(3)">← Ver Geração</button>
+          <button class="btn btn-primary" onclick="goToStep(5)">Concluir Revisão →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: SUMMARY -->
+      <div class="step-page" id="sp5">
+        <div class="summary-grid" id="summaryStats"></div>
+        <div id="summaryFunnel" style="margin-bottom:20px"></div>
+        <div id="summaryWarnings" style="margin-bottom:16px"></div>
+        <div id="summaryMotors" style="margin-bottom:20px"></div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Ações Finais</div></div>
+          <div class="card-body" style="display:flex;flex-wrap:wrap;gap:10px">
+            <button class="btn btn-secondary" onclick="downloadApproved()">⬇️ Download ZIP</button>
+            <button class="btn btn-secondary" onclick="goToStep(2)">➕ Gerar Mais Criativos</button>
+            <button class="btn btn-secondary" onclick="openAdcopyModal()">✍️ Adcopys</button>
+            <button class="btn btn-primary" id="importBtn" onclick="importToCampaign()">📤 Importar para Campanha</button>
+            <button class="btn btn-success" id="publishBtn" onclick="publishCampaign()">🚀 Publicar Campanha</button>
+          </div>
+          <div id="importResult" style="margin-top:12px"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AI CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-panel-header">
+      <div style="font-size:13px;font-weight:600;color:var(--accent)">✦ Assistente IA — Criativos</div>
+      <div style="font-size:11px;color:var(--text3);margin-top:2px">Aprende com cada aprovação</div>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-qrs" id="chatQRs"></div>
+    <div class="chat-input-row">
+      <input type="text" class="form-input" id="chatInput" placeholder="Pergunta sobre criativos..." onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="btn btn-primary btn-sm" onclick="sendChat()">→</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODALS -->
+<!-- Config Modal -->
+<div class="modal-bg" id="cfgModal">
+  <div class="modal">
+    <div class="modal-title">⚙️ Configurações</div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div><label class="form-label">Meta Access Token</label><input type="password" class="form-input" id="cfg-token" placeholder="EAAxxxxx..."></div>
+      <div><label class="form-label">Ad Account ID</label><input type="text" class="form-input" id="cfg-account" placeholder="act_..."></div>
+      <div><label class="form-label">Anthropic API Key</label><input type="password" class="form-input" id="cfg-claude" placeholder="sk-ant-..."></div>
+      <div>
+        <label class="form-label">Replicate API Key <span style="color:var(--green);font-size:10px;margin-left:4px">Geração de imagens</span></label>
+        <input type="password" class="form-input" id="cfg-replicate" placeholder="r8_...">
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">Necessário para gerar imagens reais. Obtém em replicate.com/account/api-tokens</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('cfgModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveCfg()">Guardar</button>
+    </div>
+  </div>
+</div>
+<div class="modal-bg" id="rejectModal">
+  <div class="modal">
+    <div class="modal-title">❌ Motivo da Rejeição</div>
+    <div class="tg" style="flex-direction:column;gap:8px">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="rejectReason" value="quality" style="accent-color:var(--accent)"> Qualidade baixa</label>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="rejectReason" value="product"> Não representa o produto</label>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="rejectReason" value="style"> Estilo não adequado</label>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="rejectReason" value="other"> Outro</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('rejectModal')">Cancelar</button>
+      <button class="btn btn-danger" onclick="confirmReject()">Confirmar Rejeição</button>
+    </div>
+  </div>
+</div>
+
+<!-- Regen Modal -->
+<div class="modal-bg" id="regenModal">
+  <div class="modal">
+    <div class="modal-title">🔄 Regenerar Criativo</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px">Escolhe como regenerar:</div>
+    <div class="tg" style="flex-direction:column;gap:8px;margin-bottom:16px">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="regenType" value="same" checked style="accent-color:var(--accent)"> Mesmo motor, nova variação</label>
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px"><input type="radio" name="regenType" value="alt"> Motor alternativo</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('regenModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmRegen()">Regenerar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-bg" id="editModal">
+  <div class="modal">
+    <div class="modal-title">✏️ Editar Pedido à IA</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:12px">Descreve o ajuste que queres:</div>
+    <textarea class="form-textarea" id="editPrompt" placeholder="Ex: Muda o fundo para branco puro, mantém o produto centrado, adiciona sombra suave..."></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('editModal')">Cancelar</button>
+      <button class="btn btn-primary" onclick="confirmEdit()">Regenerar com Ajuste</button>
+    </div>
+  </div>
+</div>
+
+<!-- Adcopy Modal -->
+<div class="modal-bg" id="adcopyModal">
+  <div class="modal" style="width:580px;max-height:90vh;overflow-y:auto">
+    <div class="modal-title">✍️ Criar Adcopys com IA</div>
+    <div class="alert info" style="margin-bottom:16px;font-size:12px">
+      As adcopys ficam associadas a todos os criativos desta campanha. O Meta permite até 5 textos por conjunto.
+    </div>
+    <div class="form-group">
+      <label class="form-label">Produto / Descrição</label>
+      <textarea class="form-textarea" id="ac-product" placeholder="Ex: Vestidos de verão elegantes, tecido premium, entrega rápida para a Hungria." style="min-height:70px"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Exemplo de referência (opcional) <span style="color:var(--green);font-size:10px">A IA aprende com isto</span></label>
+      <textarea class="form-textarea" id="ac-example-modal" placeholder="Cola uma adcopy que funcionou bem no passado (em qualquer idioma). A IA adapta o estilo..." style="min-height:70px"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tom</label>
+      <div class="tg" id="tg-actone">
+        <div class="tg-opt active" data-val="elegante" onclick="setTg('actone',this)">Elegante</div>
+        <div class="tg-opt" data-val="urgente" onclick="setTg('actone',this)">Urgente</div>
+        <div class="tg-opt" data-val="emocional" onclick="setTg('actone',this)">Emocional</div>
+        <div class="tg-opt" data-val="direto" onclick="setTg('actone',this)">Direto</div>
+      </div>
+    </div>
+    <div id="ac-results" style="display:none;margin-top:16px"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('adcopyModal')">Fechar</button>
+      <button class="btn btn-primary" id="acGenBtn" onclick="generateAdcopys()">✨ Gerar 4 Copies</button>
+    </div>
+  </div>
+</div>
+
+<!-- Publish confirm Modal -->
+<div class="modal-bg" id="publishModal">
+  <div class="modal">
+    <div class="modal-title">🚀 Publicar Campanha</div>
+    <div id="publishModalContent" style="font-size:13px;color:var(--text2);line-height:1.7"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal('publishModal')">Cancelar</button>
+      <button class="btn btn-success" onclick="confirmPublish()">Publicar mesmo assim</button>
+    </div>
+  </div>
+</div>
+
+<div class="loading-bg" id="loadingBg"><div class="spinner"></div><div style="font-size:14px;color:var(--text2)" id="loadingTxt">A processar...</div></div>
+<div class="notif" id="notif"></div>
+
+<script>
+// ===== STATE =====
+let CFG = { token:'', account:'', pixel:'1794162401993457', page:'', claude:'', replicate:'', v:'v21.0' };
+
+// ===== REPLICATE VIA CLOUDFLARE PROXY =====
+const PROXY_URL = 'https://replicate-proxy.tomassnapoles.workers.dev';
+
+async function generateImageReplicate(prompt, refImageBase64, type) {
+  if (!CFG.replicate) throw new Error('Replicate API Key não configurada');
+
+  const hasRef = refImageBase64 && refImageBase64.length > 0;
+  const model = hasRef
+    ? 'black-forest-labs/flux-kontext-pro'
+    : 'black-forest-labs/flux-1.1-pro';
+
+  const input = hasRef ? {
+    prompt,
+    input_image: refImageBase64,
+    aspect_ratio: '1:1',
+    output_format: 'jpg',
+    safety_tolerance: 2
+  } : {
+    prompt,
+    aspect_ratio: '1:1',
+    output_format: 'jpg',
+    output_quality: 90
+  };
+
+  const startRes = await fetch(`${PROXY_URL}/v1/models/${model}/predictions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${CFG.replicate}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'wait=30'
+    },
+    body: JSON.stringify({ input })
+  });
+
+  if (!startRes.ok) {
+    const err = await startRes.json().catch(() => ({}));
+    throw new Error(err.detail || `Erro ${startRes.status}`);
+  }
+
+  const prediction = await startRes.json();
+
+  if (prediction.status === 'succeeded') {
+    const output = prediction.output;
+    return Array.isArray(output) ? output[0] : output;
+  }
+
+  if (prediction.status === 'failed') {
+    throw new Error('Geração falhou: ' + (prediction.error || 'erro desconhecido'));
+  }
+
+  // Still processing — poll
+  return await pollReplicate(prediction.id);
+}
+
+async function pollReplicate(id, maxAttempts = 30) {
+  for (let i = 0; i < maxAttempts; i++) {
+    await sleep(2000);
+    const res = await fetch(`${PROXY_URL}/v1/predictions/${id}`, {
+      headers: { 'Authorization': `Bearer ${CFG.replicate}` }
+    });
+    const data = await res.json();
+    if (data.status === 'succeeded') {
+      const output = data.output;
+      return Array.isArray(output) ? output[0] : output;
+    }
+    if (data.status === 'failed') throw new Error('Geração falhou: ' + (data.error || 'erro'));
+  }
+  throw new Error('Timeout — geração demorou demasiado');
+}
+
+function buildImagePrompt(creative, refs) {
+  const productName = refs[0]?.product || 'produto de moda';
+  const bgMap = {
+    '#ebebeb': 'clean light gray background #ebebeb, product photography',
+    'parque': 'sunny park outdoor background, lifestyle fashion photography',
+    'cidade': 'urban city street background, fashion editorial',
+    'interior': 'clean minimalist white interior, fashion photography',
+    'estudio': 'professional studio white background, e-commerce product shot'
+  };
+
+  const bgVal = document.querySelector('#tg-collageibg .tg-opt.active')?.dataset.val || '#ebebeb';
+  const bg = bgMap[bgVal] || bgMap['#ebebeb'];
+
+  const typePrompts = {
+    single: `Professional e-commerce product photo of ${productName}. ${bg}. High quality, sharp focus, no text, clean composition. Fashion advertising style.`,
+    collage: `Fashion collage of ${productName} showing multiple angles. ${bg}. Clean layout, high quality product photography, e-commerce style.`,
+    collageia: `Professional fashion product photography of ${productName}. ${bg}. Editorial style, high quality, sharp, realistic lighting, suitable for Meta Ads.`,
+    carousel: `Clean product shot of ${productName} variant. ${bg}. Consistent style, professional e-commerce photography, suitable for carousel ads.`
+  };
+
+  return typePrompts[creative.type] || typePrompts.single;
+}
+let STATE = {
+  refs: [],           // uploaded reference images
+  ctypes: {},         // selected creative types + qty
+  totalQty: 5,
+  campaignType: 'product', // 'product' or 'collection'
+  campaignBudget: 10,
+  campaignId: null,
+  campaignName: null,
+  adcopys: [],
+  generated: [],      // all generated creatives
+  currentReview: 0,
+  learningData: {}    // motors performance data
+};
+
+const MOTORS = ['Ideogram','Flux Pro','Recraft','Adobe Firefly'];
+const FUNNEL_ICONS = { tofu:'🔵', mofu:'🟣', bofu:'🟢' };
+
+// ===== INIT =====
+function init() {
+  const s = localStorage.getItem('neCfg');
+  if (s) { CFG = {...CFG, ...JSON.parse(s)}; }
+
+  // Check if came from campaign
+  const params = new URLSearchParams(window.location.search);
+  const campId = params.get('campaign');
+  const campName = params.get('name');
+  const budget = parseFloat(params.get('budget') || 10);
+
+  if (campId) {
+    STATE.campaignId = campId;
+    STATE.campaignName = decodeURIComponent(campName || '');
+    STATE.campaignBudget = budget;
+    document.getElementById('campBadge').textContent = '🔗 ' + STATE.campaignName;
+    document.getElementById('campBadge').style.display = 'inline';
+    document.getElementById('pageSub').textContent = `Criativos para: ${STATE.campaignName}`;
+  }
+
+  STATE.campaignType = budget >= 20 ? 'collection' : 'product';
+  loadCampaignsList();
+
+  const hasReplicate = !!CFG.replicate;
+  chatAdd('ai', `Olá! Vou ajudar-te a criar criativos para a <strong>${STATE.campaignName || 'Noémi Eger'}</strong>. 🎨\n\n${hasReplicate ? '✅ Replicate configurado — vou gerar imagens reais com Flux!' : '⚠️ Replicate API Key não configurada — as imagens não serão geradas. Adiciona nas ⚙️ Configurações.'}\n\nComeça por carregar as imagens de referência dos teus produtos.`);
+  setChatQRs(['O que são imagens de referência?','Como funciona a geração?','Que modelos são usados?']);
+}
+
+// ===== CFG & META =====
+async function metaGet(endpoint) {
+  if (!CFG.token) return null;
+  try {
+    const sep = endpoint.includes('?') ? '&' : '?';
+    const r = await fetch(`https://graph.facebook.com/${CFG.v}${endpoint}${sep}access_token=${CFG.token}`);
+    const d = await r.json();
+    if (d.error) return null;
+    return d;
+  } catch(e) { return null; }
+}
+
+async function metaPost(endpoint, body) {
+  if (!CFG.token) throw new Error('Token não configurado');
+  const sep = endpoint.includes('?') ? '&' : '?';
+  const r = await fetch(`https://graph.facebook.com/${CFG.v}${endpoint}${sep}access_token=${CFG.token}`, {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d;
+}
+
+async function askClaude(prompt, sys='') {
+  if (!CFG.claude) throw new Error('Anthropic API Key não configurada');
+  const r = await fetch('https://replicate-proxy.tomassnapoles.workers.dev/anthropic/v1/messages', {
+    method:'POST', headers:{'Content-Type':'application/json','x-api-key':CFG.claude,'anthropic-version':'2023-06-01'},
+    body: JSON.stringify({
+      model:'claude-sonnet-4-5', max_tokens:1000,
+      system: sys || 'És especialista em Meta Ads e e-commerce de moda. Respondes em português de Portugal de forma breve e prática.',
+      messages:[{role:'user', content:prompt}]
+    })
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+async function loadCampaignsList() {
+  const sel = document.getElementById('cfg-campaign');
+  if (STATE.campaignId) {
+    sel.innerHTML = `<option value="${STATE.campaignId}" selected>${STATE.campaignName}</option><option value="">Nenhuma — download</option>`;
+  }
+  if (!CFG.token || !CFG.account) return;
+  const d = await metaGet(`/${CFG.account}/campaigns?fields=name,status&limit=20&effective_status=['ACTIVE','PAUSED']`);
+  if (d?.data) {
+    sel.innerHTML = '<option value="">Nenhuma — download no final</option>' +
+      d.data.map(c => `<option value="${c.id}" ${c.id===STATE.campaignId?'selected':''}>${c.name} (${c.status==='ACTIVE'?'Ativa':'Pausada'})</option>`).join('');
+  }
+}
+
+// ===== NAVIGATION =====
+let currentStep = 1;
+function goToStep(n) {
+  if (n > currentStep + 1 && n > 2) return; // don't skip
+  document.querySelectorAll('.step-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.step-nav-item').forEach(item => { item.classList.remove('active'); item.classList.remove('locked'); });
+  document.getElementById('sp'+n).classList.add('active');
+  document.getElementById('snav'+n).classList.add('active');
+  for (let i=1; i<=5; i++) {
+    const nav = document.getElementById('snav'+i);
+    if (i < n) nav.classList.add('done');
+    else if (i > n) nav.classList.add('locked');
+  }
+  currentStep = n;
+
+  if (n===2) initStep2();
+  if (n===4) initReview();
+  if (n===5) buildSummary();
+}
+
+// ===== STEP 1: UPLOAD =====
+let refImages = [];
+
+function handleDragOver(e) { e.preventDefault(); document.getElementById('uploadArea').classList.add('drag-over'); }
+function handleDragLeave() { document.getElementById('uploadArea').classList.remove('drag-over'); }
+function handleDrop(e) { e.preventDefault(); document.getElementById('uploadArea').classList.remove('drag-over'); handleRefFiles(e.dataTransfer.files); }
+
+function handleRefFiles(files) {
+  Array.from(files).forEach(f => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      refImages.push({ file:f, url:e.target.result, product:'', hasVariants:false });
+      renderRefGrid();
+    };
+    reader.readAsDataURL(f);
+  });
+}
+
+function renderRefGrid() {
+  const grid = document.getElementById('refGrid');
+  grid.innerHTML = refImages.map((img,i) => `
+    <div class="img-card">
+      <img src="${img.url}" alt="Ref ${i+1}">
+      <button class="img-card-remove" onclick="removeRef(${i})">×</button>
+      <div class="img-card-meta">
+        <input type="text" class="form-input" style="font-size:12px;padding:6px 10px" placeholder="Nome do produto..." value="${img.product}" oninput="refImages[${i}].product=this.value">
+        <div class="flex gap-8 items-center" style="margin-top:6px">
+          <span style="font-size:11px;color:var(--text3)">Variantes:</span>
+          <div class="tg">
+            <div class="tg-opt ${img.hasVariants?'':'active'}" style="padding:3px 8px;font-size:11px" onclick="setRefVariant(${i},false,this)">Não</div>
+            <div class="tg-opt ${img.hasVariants?'active':''}" style="padding:3px 8px;font-size:11px" onclick="setRefVariant(${i},true,this)">Sim</div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('refCount').textContent = `${refImages.length} imagem(ns) carregada(s)`;
+  const btn = document.getElementById('step1Next');
+  btn.disabled = refImages.length === 0;
+  btn.style.opacity = refImages.length > 0 ? '1' : '0.5';
+  STATE.refs = refImages;
+}
+
+function removeRef(i) { refImages.splice(i,1); renderRefGrid(); }
+function setRefVariant(i, val, el) {
+  refImages[i].hasVariants = val;
+  el.closest('.tg').querySelectorAll('.tg-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== STEP 2: CONFIG =====
+let selectedCtypes = {};
+let ctypeQtys = { single:2, collage:2, collageia:1, carousel:1 };
+let carouselCards = 3;
+let totalQty = 5;
+
+function initStep2() {
+  // AI funnel suggestion
+  const type = STATE.campaignType;
+  const budget = STATE.campaignBudget;
+  const maxQty = type === 'collection' ? 8 : 5;
+  totalQty = maxQty;
+  document.getElementById('totalQty').textContent = maxQty;
+  document.getElementById('totalHint').textContent = `Campanha de ${type==='collection'?'Collection':'Produto'} — máx. ${maxQty}`;
+
+  const suggBox = document.getElementById('funnelSuggestion');
+  if (type === 'collection') {
+    suggBox.innerHTML = `📊 <strong>Campanha Collection (€${budget}/dia)</strong> — Recomendo: 1 TOFU (vídeo*), 1 MOFU (carrossel), 6 BOFU (single image + collage). Máx. 8 criativos. *Vídeo em breve disponível.`;
+    suggBox.style.display = '';
+    // Pre-select suggested types
+    toggleCtype('collageia', 1);
+    toggleCtype('carousel', 1);
+    toggleCtype('single', 3);
+    toggleCtype('collage', 3);
+  } else {
+    suggBox.innerHTML = `📊 <strong>Campanha de Produto (€${budget}/dia)</strong> — Recomendo: 1 MOFU (carrossel), 3 BOFU (single image + collage). Máx. 5 criativos.`;
+    suggBox.style.display = '';
+    toggleCtype('carousel', 1);
+    toggleCtype('single', 2);
+    toggleCtype('collage', 1);
+  }
+
+  // Check AI learning data
+  const ld = STATE.learningData;
+  if (ld.collageVsSingle && ld.collageVsSingle.collageWins > 2) {
+    chatAdd('ai', `📈 Nas últimas campanhas, os BOFU de <strong>collage</strong> têm CTR ${ld.collageVsSingle.diff||34}% superior aos de single image. Sugiro usar mais collage nos BOFU desta campanha.`);
+  }
+
+  const bestMotor = getBestMotor();
+  if (bestMotor) chatAdd('ai', `🤖 O motor <strong>${bestMotor.name}</strong> tem a maior taxa de aprovação (${bestMotor.rate}%). Vou usá-lo como principal.`);
+
+  chatAdd('ai', `Esta é uma campanha de <strong>${type==='collection'?'Collection':'Produto'}</strong> (€${budget}/dia). Já pré-selecionei a distribuição recomendada de funil. Queres manter ou configurar manualmente?`);
+  setChatQRs(['Manter distribuição recomendada','Configurar manualmente','O que é TOFU/MOFU/BOFU?']);
+  updateCtypeSummary();
+}
+
+function toggleCtype(type, forceQty) {
+  const card = document.getElementById('ct-'+type);
+  const qtyDiv = document.getElementById('cq-'+type);
+  const optsDiv = document.getElementById('ct-'+type+'-opts');
+  const isSelected = card.classList.contains('selected');
+
+  if (forceQty !== undefined) {
+    // Force select
+    card.classList.add('selected');
+    if (qtyDiv) qtyDiv.style.display = '';
+    if (optsDiv) optsDiv.style.display = '';
+    selectedCtypes[type] = true;
+    ctypeQtys[type] = forceQty;
+    if (document.getElementById('qv-'+type)) document.getElementById('qv-'+type).textContent = forceQty;
+  } else {
+    if (isSelected) {
+      card.classList.remove('selected');
+      if (qtyDiv) qtyDiv.style.display = 'none';
+      if (optsDiv) optsDiv.style.display = 'none';
+      delete selectedCtypes[type];
+    } else {
+      card.classList.add('selected');
+      if (qtyDiv) qtyDiv.style.display = '';
+      if (optsDiv) optsDiv.style.display = '';
+      selectedCtypes[type] = true;
+    }
+  }
+  updateCtypeSummary();
+}
+
+function adjustQty(type, delta) {
+  ctypeQtys[type] = Math.max(1, (ctypeQtys[type]||1) + delta);
+  document.getElementById('qv-'+type).textContent = ctypeQtys[type];
+  updateCtypeSummary();
+}
+
+function adjustTotal(delta) {
+  const max = STATE.campaignType === 'collection' ? 8 : 5;
+  totalQty = Math.max(1, Math.min(50, totalQty + delta));
+  document.getElementById('totalQty').textContent = totalQty;
+}
+
+function adjustCarouselCards(delta) {
+  carouselCards = Math.max(2, Math.min(10, carouselCards + delta));
+  document.getElementById('carousel-cards').textContent = carouselCards;
+}
+
+function updateCtypeSummary() {
+  const types = Object.keys(selectedCtypes);
+  if (!types.length) { document.getElementById('ctypeSummary').textContent = 'Seleciona pelo menos um tipo de criativo acima.'; return; }
+  const labels = { single:'Single Image (BOFU)', collage:'Collage (BOFU)', collageia:'Collage IA (BOFU)', carousel:'Carrossel (MOFU)' };
+  const total = types.reduce((sum,t) => sum + (ctypeQtys[t]||1), 0);
+  document.getElementById('ctypeSummary').innerHTML = types.map(t =>
+    `<span style="color:var(--text)">${ctypeQtys[t]||1}× ${labels[t]||t}</span>`
+  ).join(' &nbsp;+&nbsp; ') + ` &nbsp;=&nbsp; <strong style="color:var(--accent)">${total} criativos</strong>`;
+}
+
+function setTg(group, el) {
+  el.closest('.tg').querySelectorAll('.tg-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function toggleCarouselScene() {
+  const v = document.querySelector('#tg-carouselstyle .tg-opt.active')?.dataset.val;
+  document.getElementById('carousel-scene-field').style.display = v==='scene' ? '' : 'none';
+}
+
+// ===== STEP 3: GENERATION =====
+async function startGeneration() {
+  if (!Object.keys(selectedCtypes).length) { notify('⚠️ Seleciona pelo menos um tipo de criativo', 'error'); return; }
+  goToStep(3);
+
+  const types = Object.keys(selectedCtypes);
+  let allCreatives = [];
+  types.forEach(t => {
+    for (let i=0; i<(ctypeQtys[t]||1); i++) {
+      allCreatives.push({ type:t, idx:i, status:'pending', approved:false, rejected:false, motor:null, score:null, url:null, rejectReason:null });
+    }
+  });
+  STATE.generated = allCreatives;
+
+  chatAdd('ai', `A gerar ${allCreatives.length} criativos... 🎨 Vou verificar a qualidade de cada um antes de te mostrar.`);
+
+  const total = allCreatives.length;
+  for (let i=0; i<total; i++) {
+    const c = allCreatives[i];
+    updateGenProgress(i, total, c.type);
+
+    // Simulate generation with motor selection
+    const motor = selectMotor(i, total);
+    c.motor = motor;
+    await simulateGeneration(c, i);
+
+    // Show in grid
+    const grid = document.getElementById('genGrid');
+    const item = document.createElement('div');
+    item.className = 'gen-item';
+    item.id = 'gi-'+i;
+    const imgContent = c.url
+      ? `<img src="${c.url}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" alt="Criativo ${i+1}">`
+      : `<div style="aspect-ratio:1;background:linear-gradient(135deg,var(--surface2),var(--surface3));display:flex;align-items:center;justify-content:center;font-size:32px">${c.status==='failed'?'❌':getTypeEmoji(c.type)}</div>`;
+    item.innerHTML = `
+      ${imgContent}
+      <div class="gen-overlay"><span class="badge ${c.status==='failed'?'badge-red':'badge-amber'}">${c.status==='failed'?'Falhou':'Para aprovação'}</span></div>
+      <div class="gen-item-meta">
+        <div style="font-size:12px;font-weight:600">${getTypeName(c.type)}</div>
+        <div style="font-size:11px;color:var(--text3)">${c.motor||'—'} · ${c.status==='failed'?'Erro':'Score: '+c.score+'/10'}</div>
+      </div>`;
+    grid.appendChild(item);
+
+    await sleep(300);
+  }
+
+  updateGenProgress(total, total, '');
+  document.getElementById('genTitle').textContent = `${total} criativos gerados! ✅`;
+  document.getElementById('genStatus').textContent = 'Verificação de qualidade concluída';
+
+  const step3Actions = document.getElementById('step3Actions');
+  step3Actions.style.display = 'flex';
+  step3Actions.style.removeProperty('display');
+  // Force show with important override
+  step3Actions.setAttribute('style', 'display:flex!important');
+  // Cleaner approach:
+  step3Actions.style.cssText = 'display:flex;justify-content:space-between;margin-top:20px';
+
+  chatAdd('ai', `✅ ${total} criativos gerados e verificados! Clica em "Rever Criativos" para aprovar, rejeitar ou pedir ajustes.`);
+  setChatQRs(['Ver resumo da geração','Rever agora']);
+}
+
+function selectMotor(idx, total) {
+  // Use best motor 80% of the time, test others 20%
+  const ld = STATE.learningData;
+  const motorScores = MOTORS.map(m => ({ m, score: ld[m]?.approvalRate || 50 }));
+  motorScores.sort((a,b) => b.score - a.score);
+  if (idx % 5 === 4) { // 20% test
+    return motorScores[1]?.m || MOTORS[1];
+  }
+  return motorScores[0]?.m || MOTORS[0];
+}
+
+function getBestMotor() {
+  const ld = STATE.learningData;
+  const motors = MOTORS.map(m => ({ name:m, rate: ld[m]?.approvalRate || null })).filter(m => m.rate !== null);
+  if (!motors.length) return null;
+  motors.sort((a,b) => b.rate - a.rate);
+  return motors[0];
+}
+
+async function simulateGeneration(creative, idx) {
+  if (!CFG.replicate) {
+    // No API key — show placeholder
+    await sleep(400 + Math.random()*400);
+    creative.status = 'generated';
+    creative.score = Math.floor(7 + Math.random()*3);
+    creative.url = null;
+    creative.qualityPass = true;
+    return;
+  }
+
+  try {
+    creative.status = 'generating';
+    const prompt = buildImagePrompt(creative, STATE.refs);
+
+    // Use first ref image if available
+    const refBase64 = STATE.refs[idx % STATE.refs.length]?.url || null;
+
+    const imageUrl = await generateImageReplicate(prompt, refBase64, creative.type);
+    creative.url = imageUrl;
+    creative.status = 'generated';
+    creative.score = 9; // Real image = high score
+    creative.qualityPass = true;
+    creative.motor = 'Flux Kontext Pro';
+  } catch(e) {
+    creative.status = 'failed';
+    creative.score = 0;
+    creative.url = null;
+    creative.error = e.message;
+    chatAdd('ai', `⚠️ Erro ao gerar criativo ${idx+1}: ${e.message}`);
+  }
+}
+
+function updateGenProgress(current, total, type) {
+  const pct = total > 0 ? Math.round((current/total)*100) : 0;
+  document.getElementById('genBar').style.width = pct+'%';
+  document.getElementById('genStatus').textContent = current < total ? `A gerar criativo ${current+1} de ${total} (${getTypeName(type)})...` : 'Geração concluída!';
+  document.getElementById('genMotor').textContent = current < total ? `Motor: ${selectMotor(current, total)}` : '✅ Todos verificados';
+}
+
+// ===== STEP 4: REVIEW =====
+function initReview() {
+  STATE.currentReview = 0;
+  renderReviewSingle();
+  renderReviewGrid();
+  updateReviewProgress();
+  chatAdd('ai', `Tens ${STATE.generated.length} criativos para rever. Para cada um podes <strong>aprovar</strong>, <strong>regenerar</strong>, <strong>editar o pedido</strong> ou <strong>rejeitar</strong> com motivo.`);
+  setChatQRs(['Como funciona a aprovação?','Posso regenerar todos?']);
+}
+
+function renderReviewSingle() {
+  const c = STATE.generated[STATE.currentReview];
+  if (!c) return;
+  const emoji = getTypeEmoji(c.type);
+  const badgeHtml = c.approved ? '<span class="badge badge-green">✅ Aprovado</span>' :
+                    c.rejected ? '<span class="badge badge-red">❌ Rejeitado</span>' :
+                    '<span class="badge badge-amber">Para aprovação</span>';
+  document.getElementById('reviewBadge').innerHTML = badgeHtml;
+  const realImg = c.url || `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><rect width='600' height='600' fill='%231a1a24'/><text x='300' y='290' text-anchor='middle' font-size='80'>${encodeURIComponent(emoji)}</text><text x='300' y='360' text-anchor='middle' font-size='20' fill='%239a97a0'>${encodeURIComponent(getTypeName(c.type))}</text></svg>`;
+  document.getElementById('reviewImg').src = realImg;
+  document.getElementById('reviewType').textContent = getTypeName(c.type);
+  document.getElementById('reviewFunnel').textContent = getFunnelLabel(c.type).toUpperCase();
+  document.getElementById('reviewMotorLabel').textContent = c.motor ? `🤖 ${c.motor}` : '';
+  document.getElementById('reviewScore').textContent = c.score ? `⭐ ${c.score}/10` : '';
+  document.getElementById('reviewNavLabel').textContent = `${STATE.currentReview+1} / ${STATE.generated.length}`;
+
+  // Adcopy approval
+  const adcopySection = document.getElementById('adcopy-review-section');
+  const adcopyList = document.getElementById('adcopy-review-list');
+  if (STATE.adcopys?.length) {
+    adcopySection.style.display = '';
+    if (!STATE.approvedCopies) STATE.approvedCopies = {};
+    const colors = ['var(--red)','var(--green)','var(--blue)','var(--purple)'];
+    const types = ['Urgência','Benefício','Prova Social','Curiosidade'];
+    adcopyList.innerHTML = STATE.adcopys.map((copy, i) => {
+      const isApproved = STATE.approvedCopies[i];
+      return `<div style="background:var(--surface2);border:1px solid ${isApproved?'var(--green)':'var(--border)'};border-radius:8px;padding:12px;margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <span style="font-size:11px;color:${colors[i]||'var(--accent)'};font-weight:600;text-transform:uppercase;letter-spacing:1px">${types[i]||'Copy '+(i+1)}</span>
+          <button class="btn btn-xs ${isApproved?'btn-success':'btn-secondary'}" onclick="toggleAdcopyApproval(${i})">${isApproved?'✅ Aprovada':'👍 Aprovar'}</button>
+        </div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6;white-space:pre-line">${copy.trim()}</div>
+      </div>`;
+    }).join('');
+  } else {
+    adcopySection.style.display = 'none';
+  }
+}
+
+function toggleAdcopyApproval(i) {
+  if (!STATE.approvedCopies) STATE.approvedCopies = {};
+  STATE.approvedCopies[i] = !STATE.approvedCopies[i];
+  // Record for learning
+  recordAdcopyResult(i, STATE.approvedCopies[i]);
+  renderReviewSingle();
+}
+
+function recordAdcopyResult(idx, approved) {
+  const ld = STATE.learningData;
+  const types = ['urgencia','beneficio','prova_social','curiosidade'];
+  const type = types[idx] || 'outro';
+  if (!ld.adcopys) ld.adcopys = {};
+  if (!ld.adcopys[type]) ld.adcopys[type] = { approved:0, rejected:0 };
+  if (approved) ld.adcopys[type].approved++;
+  else ld.adcopys[type].rejected = Math.max(0, ld.adcopys[type].rejected - 1 + 1);
+  localStorage.setItem('neLearning', JSON.stringify(ld));
+}
+
+function renderReviewGrid() {
+  const grid = document.getElementById('reviewGridContent');
+  grid.innerHTML = STATE.generated.map((c,i) => {
+    const emoji = getTypeEmoji(c.type);
+    const badge = c.approved ? 'badge-green' : c.rejected ? 'badge-red' : 'badge-amber';
+    const badgeLabel = c.approved ? '✅' : c.rejected ? '❌' : '⏳';
+    const imgContent = c.url
+      ? `<img src="${c.url}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" alt="Criativo ${i+1}">`
+      : `<div style="aspect-ratio:1;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:36px">${emoji}</div>`;
+    return `<div class="gen-item" onclick="STATE.currentReview=${i};setReviewView('single')" style="cursor:pointer">
+      ${imgContent}
+      <div class="gen-overlay"><span class="badge ${badge}">${badgeLabel}</span></div>
+      <div class="gen-item-meta">
+        <div style="font-size:12px;font-weight:600">${getTypeName(c.type)}</div>
+        <div style="font-size:11px;color:var(--text3)">${c.motor||''}</div>
+        <div class="flex gap-8" style="margin-top:6px">
+          <button class="btn btn-xs btn-success" onclick="event.stopPropagation();STATE.currentReview=${i};approveCreative();renderReviewGrid()">✅</button>
+          <button class="btn btn-xs btn-danger" onclick="event.stopPropagation();STATE.currentReview=${i};openRejectModal()">❌</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setReviewView(v) {
+  document.getElementById('review-single-view').style.display = v==='single' ? '' : 'none';
+  document.getElementById('review-grid-view').style.display = v==='grid' ? '' : 'none';
+  document.getElementById('view-single-btn').classList.toggle('active', v==='single');
+  document.getElementById('view-grid-btn').classList.toggle('active', v==='grid');
+  if (v==='single') renderReviewSingle();
+}
+
+function reviewNav(delta) {
+  STATE.currentReview = Math.max(0, Math.min(STATE.generated.length-1, STATE.currentReview+delta));
+  renderReviewSingle();
+}
+
+function updateReviewProgress() {
+  const approved = STATE.generated.filter(c=>c.approved).length;
+  const rejected = STATE.generated.filter(c=>c.rejected).length;
+  const pending = STATE.generated.length - approved - rejected;
+  document.getElementById('reviewProgress').textContent = `✅ ${approved} aprovados · ❌ ${rejected} rejeitados · ⏳ ${pending} pendentes`;
+}
+
+function setPreviewTab(tab, el) {
+  document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function approveCreative() {
+  const c = STATE.generated[STATE.currentReview];
+  c.approved = true; c.rejected = false;
+  recordMotorResult(c.motor, true, c.type);
+  renderReviewSingle(); updateReviewProgress(); renderReviewGrid();
+  notify('✅ Criativo aprovado!', 'success');
+  if (STATE.currentReview < STATE.generated.length-1) setTimeout(() => reviewNav(1), 500);
+}
+
+function openRejectModal() { document.getElementById('rejectModal').classList.add('show'); }
+function openRegenModal() { document.getElementById('regenModal').classList.add('show'); }
+function openEditModal() { document.getElementById('editModal').classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+function confirmReject() {
+  const reason = document.querySelector('input[name="rejectReason"]:checked')?.value || 'other';
+  const c = STATE.generated[STATE.currentReview];
+  c.rejected = true; c.approved = false; c.rejectReason = reason;
+  recordMotorResult(c.motor, false, c.type, reason);
+  closeModal('rejectModal');
+  renderReviewSingle(); updateReviewProgress(); renderReviewGrid();
+  notify('❌ Criativo rejeitado. Motivo registado.', 'error');
+  chatAdd('ai', `Registei a rejeição do criativo ${STATE.currentReview+1} por "${reason}". Isto ajuda-me a melhorar os próximos. Queres regenerar este criativo?`);
+  setChatQRs(['Regenerar este criativo','Seguir em frente']);
+}
+
+async function confirmRegen() {
+  const regenType = document.querySelector('input[name="regenType"]:checked')?.value || 'same';
+  closeModal('regenModal');
+  const c = STATE.generated[STATE.currentReview];
+  showLoad('A regenerar criativo com Flux...');
+  try {
+    const motor = regenType==='alt' ? getAltMotor(c.motor) : c.motor;
+    const prompt = buildImagePrompt(c, STATE.refs);
+    const refBase64 = STATE.refs[STATE.currentReview % STATE.refs.length]?.url || null;
+    const newUrl = await generateImageReplicate(prompt, refBase64, c.type);
+    c.url = newUrl;
+    c.motor = motor;
+    c.score = 9;
+    c.approved = false; c.rejected = false;
+    hideLoad();
+    renderReviewSingle();
+    notify('🔄 Criativo regenerado!', 'success');
+  } catch(e) {
+    hideLoad();
+    notify('❌ Erro: ' + e.message, 'error');
+  }
+}
+
+async function confirmEdit() {
+  const prompt = document.getElementById('editPrompt').value.trim();
+  if (!prompt) { notify('⚠️ Descreve o ajuste', 'error'); return; }
+  closeModal('editModal');
+  const c = STATE.generated[STATE.currentReview];
+  showLoad('✏️ A aplicar ajuste com Flux Kontext Pro...');
+  try {
+    // Image-to-image: use current image as reference + edit prompt
+    const editedUrl = await generateImageReplicate(prompt, c.url, c.type);
+    c.url = editedUrl;
+    c.approved = false; c.rejected = false;
+    c.score = 9;
+    hideLoad();
+    renderReviewSingle();
+    notify('✏️ Criativo editado!', 'success');
+    chatAdd('ai', `Ajuste aplicado: "${prompt}". Revê o resultado!`);
+  } catch(e) {
+    hideLoad();
+    notify('❌ Erro ao editar: ' + e.message, 'error');
+  }
+}
+
+function getAltMotor(current) {
+  return MOTORS.find(m => m !== current) || MOTORS[0];
+}
+
+// ===== DOWNLOAD ZIP =====
+async function downloadApproved() {
+  const approved = STATE.generated.filter(c => c.approved && c.url);
+  if (!approved.length) { notify('⚠️ Nenhum criativo aprovado com imagem', 'error'); return; }
+  notify(`⬇️ A preparar download de ${approved.length} imagens...`, 'success');
+  try {
+    if (!window.JSZip) {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+    }
+    const zip = new window.JSZip();
+    const folder = zip.folder('criativos-noemi-eger');
+    for (let i = 0; i < approved.length; i++) {
+      const c = approved[i];
+      try {
+        const res = await fetch(c.url);
+        const blob = await res.blob();
+        folder.file(`criativo-${i+1}-${getTypeName(c.type).replace(/ /g,'-')}.jpg`, blob);
+      } catch(e) {}
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(content);
+    a.download = `criativos-noemi-eger-${new Date().toISOString().slice(0,10)}.zip`;
+    a.click();
+    notify(`✅ ZIP com ${approved.length} criativos a descarregar!`, 'success');
+  } catch(e) {
+    // Fallback: open each image
+    approved.forEach((c, i) => {
+      setTimeout(() => { window.open(c.url, '_blank'); }, i * 500);
+    });
+    notify(`⬇️ A abrir ${approved.length} imagens`, 'success');
+  }
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+// ===== IMPORT TO CAMPAIGN =====
+async function importToCampaign() {
+  const campId = document.getElementById('cfg-campaign')?.value || STATE.campaignId;
+  if (!campId) { notify('⚠️ Seleciona uma campanha no passo 2', 'error'); return; }
+  const approved = STATE.generated.filter(c => c.approved && c.url);
+  if (!approved.length) { notify('⚠️ Nenhum criativo aprovado', 'error'); return; }
+  if (!CFG.token || !CFG.account) { notify('⚠️ Configura o Meta Access Token', 'error'); return; }
+
+  showLoad(`📤 A importar ${approved.length} criativos para a campanha...`);
+  let success = 0;
+
+  for (const c of approved) {
+    try {
+      const imgRes = await metaPost(`/${CFG.account}/adimages`, {
+        url: c.url,
+        name: `Criativo-${getTypeName(c.type)}-${Date.now()}`
+      });
+      if (imgRes?.images) success++;
+    } catch(e) {}
+  }
+
+  hideLoad();
+  const resultEl = document.getElementById('importResult');
+  if (success > 0) {
+    notify(`✅ ${success} criativos importados!`, 'success');
+    resultEl.innerHTML = `
+      <div class="alert success" style="margin-top:12px">
+        ✅ <strong>${success} criativos importados</strong> para a conta de anúncios.<br>
+        Vai ao Meta Ads Manager para criar os anúncios com estes criativos.
+        <br><br>
+        <a href="https://business.facebook.com/adsmanager" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">Abrir Meta Ads Manager →</a>
+      </div>`;
+    chatAdd('ai', `✅ ${success} criativos importados! Vai ao Meta Ads Manager para os associar aos anúncios.`);
+  } else {
+    notify('⚠️ Não foi possível importar automaticamente', 'error');
+    resultEl.innerHTML = `<div class="alert warn" style="margin-top:12px">⚠️ Faz download dos criativos e carrega manualmente no Meta Ads Manager.</div>`;
+  }
+}
+
+// ===== STEP 5: SUMMARY =====
+function buildSummary() {
+  const all = STATE.generated;
+  const approved = all.filter(c=>c.approved);
+  const rejected = all.filter(c=>c.rejected);
+  const pending = all.filter(c=>!c.approved&&!c.rejected);
+
+  // Stats
+  document.getElementById('summaryStats').innerHTML = `
+    <div class="summary-stat"><div class="summary-stat-val">${all.length}</div><div class="summary-stat-label">Total gerados</div></div>
+    <div class="summary-stat"><div class="summary-stat-val" style="color:var(--green)">${approved.length}</div><div class="summary-stat-label">Aprovados</div></div>
+    <div class="summary-stat"><div class="summary-stat-val" style="color:var(--red)">${rejected.length}</div><div class="summary-stat-label">Rejeitados</div></div>
+    <div class="summary-stat"><div class="summary-stat-val" style="color:var(--amber)">${pending.length}</div><div class="summary-stat-label">Pendentes</div></div>`;
+
+  // Funnel distribution
+  const tofu = approved.filter(c=>getFunnelLabel(c.type)==='tofu').length;
+  const mofu = approved.filter(c=>getFunnelLabel(c.type)==='mofu').length;
+  const bofu = approved.filter(c=>getFunnelLabel(c.type)==='bofu').length;
+  const totalApp = approved.length || 1;
+
+  document.getElementById('summaryFunnel').innerHTML = `
+    <div class="card"><div class="card-header"><div class="card-title">📊 Distribuição de Funil (Aprovados)</div></div>
+    <div class="card-body">
+      <div class="funnel-bar"><div class="funnel-bar-label">🔵 TOFU</div><div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${(tofu/totalApp)*100}%;background:var(--blue)"></div></div><span style="font-size:13px;color:var(--text2);min-width:20px">${tofu}</span></div>
+      <div class="funnel-bar"><div class="funnel-bar-label">🟣 MOFU</div><div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${(mofu/totalApp)*100}%;background:var(--purple)"></div></div><span style="font-size:13px;color:var(--text2);min-width:20px">${mofu}</span></div>
+      <div class="funnel-bar"><div class="funnel-bar-label">🟢 BOFU</div><div class="funnel-bar-track"><div class="funnel-bar-fill" style="width:${(bofu/totalApp)*100}%;background:var(--green)"></div></div><span style="font-size:13px;color:var(--text2);min-width:20px">${bofu}</span></div>
+    </div></div>`;
+
+  // Warnings
+  let warnings = '';
+  if (tofu === 0) warnings += `<div class="alert warn">⚠️ Não tens nenhum criativo TOFU (vídeo). Recomendo adicionar um vídeo assim que possível para awareness.</div>`;
+  if (mofu === 0) warnings += `<div class="alert warn">⚠️ Sem criativos MOFU (carrossel). Considera adicionar um carrossel para a fase de consideração.</div>`;
+  if (approved.length === 0) warnings += `<div class="alert warn">⚠️ Nenhum criativo aprovado ainda. Revê os criativos antes de publicar.</div>`;
+  document.getElementById('summaryWarnings').innerHTML = warnings;
+
+  // Motors
+  const motorCounts = {};
+  approved.forEach(c => { motorCounts[c.motor] = (motorCounts[c.motor]||0)+1; });
+  document.getElementById('summaryMotors').innerHTML = `
+    <div class="card"><div class="card-header"><div class="card-title">🤖 Motores de IA Usados</div></div>
+    <div class="card-body" style="display:flex;gap:12px;flex-wrap:wrap">
+      ${Object.entries(motorCounts).map(([m,c]) => `<span class="badge badge-blue" style="padding:6px 12px;font-size:12px">${m}: ${c} aprovados</span>`).join('')}
+      ${Object.keys(motorCounts).length===0?'<span style="font-size:13px;color:var(--text3)">Nenhum criativo aprovado</span>':''}
+    </div></div>`;
+
+  // Publish button
+  const pubBtn = document.getElementById('publishBtn');
+  if (!STATE.campaignId) { pubBtn.style.opacity='0.5'; pubBtn.title='Nenhuma campanha associada'; }
+
+  chatAdd('ai', `🎉 Resumo completo! Tens <strong>${approved.length} criativos aprovados</strong>. ${approved.length===0?'Volta à revisão para aprovar criativos antes de publicar.':STATE.campaignId?'Podes publicar a campanha agora ou fazer download dos criativos.':'Associa a uma campanha ou faz download dos aprovados.'}`);
+}
+
+function downloadApproved() {
+  const approved = STATE.generated.filter(c => c.approved && c.url);
+  if (!approved.length) { notify('⚠️ Nenhum criativo aprovado com imagem', 'error'); return; }
+  notify(`⬇️ A preparar download de ${approved.length} imagens...`, 'success');
+  // Try JSZip, fallback to individual opens
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js').then(async () => {
+    const zip = new window.JSZip();
+    const folder = zip.folder('criativos-noemi-eger');
+    for (let i = 0; i < approved.length; i++) {
+      const c = approved[i];
+      try {
+        const res = await fetch(c.url);
+        const blob = await res.blob();
+        folder.file(`criativo-${i+1}-${getTypeName(c.type).replace(/ /g,'-')}.jpg`, blob);
+      } catch(e) {}
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(content);
+    a.download = `criativos-noemi-eger-${new Date().toISOString().slice(0,10)}.zip`;
+    a.click();
+    notify(`✅ ZIP com ${approved.length} criativos a descarregar!`, 'success');
+  }).catch(() => {
+    approved.forEach((c, i) => setTimeout(() => window.open(c.url, '_blank'), i * 600));
+    notify(`⬇️ A abrir ${approved.length} imagens`, 'success');
+  });
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+async function importToCampaign() {
+  const campId = document.getElementById('cfg-campaign')?.value || STATE.campaignId;
+  if (!campId) { notify('⚠️ Seleciona uma campanha no passo 2', 'error'); return; }
+  const approved = STATE.generated.filter(c => c.approved && c.url);
+  if (!approved.length) { notify('⚠️ Nenhum criativo aprovado', 'error'); return; }
+  if (!CFG.token || !CFG.account) { notify('⚠️ Configura o Meta Access Token', 'error'); return; }
+
+  // Get approved adcopys
+  const approvedCopyIndices = Object.entries(STATE.approvedCopies || {})
+    .filter(([,v]) => v).map(([k]) => parseInt(k));
+  const copiesToUse = approvedCopyIndices.length > 0
+    ? approvedCopyIndices.map(i => STATE.adcopys[i]).filter(Boolean)
+    : STATE.adcopys?.slice(0,4) || [];
+
+  showLoad(`📤 A importar ${approved.length} criativos para a campanha...`);
+
+  let success = 0;
+  const resultEl = document.getElementById('importResult');
+
+  try {
+    // 1. Get adsets for this campaign
+    const adsetsData = await metaGet(`/${campId}/adsets?fields=id,name&limit=5`);
+    const adsetId = adsetsData?.data?.[0]?.id;
+    if (!adsetId) throw new Error('Nenhum conjunto de anúncios encontrado para esta campanha');
+
+    // 2. Get page ID
+    const pageId = CFG.page || '61568917760858';
+
+    for (let i = 0; i < approved.length; i++) {
+      const c = approved[i];
+      try {
+        showLoad(`📤 A criar anúncio ${i+1} de ${approved.length}...`);
+
+        // Upload image to Meta
+        const imgRes = await metaPost(`/${CFG.account}/adimages`, {
+          url: c.url,
+          name: `criativo-${getTypeName(c.type)}-${Date.now()}`
+        });
+
+        const imgHash = imgRes?.images ? Object.values(imgRes.images)[0]?.hash : null;
+        if (!imgHash) continue;
+
+        // Build creative
+        const adCreativeBody = {
+          name: `Criativo ${getTypeName(c.type)} ${i+1}`,
+          object_story_spec: {
+            page_id: pageId,
+            link_data: {
+              image_hash: imgHash,
+              link: 'https://www.facebook.com',
+              message: copiesToUse[0] || 'Nova coleção disponível.',
+              call_to_action: { type: 'SHOP_NOW' }
+            }
+          }
+        };
+
+        const creativeRes = await metaPost(`/${CFG.account}/adcreatives`, adCreativeBody);
+        if (!creativeRes?.id) continue;
+
+        // Create ad
+        await metaPost(`/${CFG.account}/ads`, {
+          name: `Ad ${getTypeName(c.type)} ${i+1}`,
+          adset_id: adsetId,
+          creative: { creative_id: creativeRes.id },
+          status: 'PAUSED'
+        });
+
+        success++;
+      } catch(e) {
+        console.error('Erro criativo', i, e.message);
+      }
+    }
+
+    hideLoad();
+    if (success > 0) {
+      notify(`✅ ${success} anúncios criados na campanha!`, 'success');
+      resultEl.innerHTML = `
+        <div class="alert success" style="margin-top:12px">
+          ✅ <strong>${success} anúncios criados</strong> na campanha como rascunho.<br>
+          Vai ao Meta Ads Manager para rever e publicar.
+          <br><br>
+          <a href="https://business.facebook.com/adsmanager" target="_blank" class="btn btn-primary btn-sm" style="text-decoration:none">Abrir Meta Ads Manager →</a>
+        </div>`;
+      chatAdd('ai', `🎉 ${success} anúncios criados na campanha! Vai ao Meta Ads Manager para publicar.`);
+    } else {
+      throw new Error('Não foi possível criar nenhum anúncio');
+    }
+  } catch(e) {
+    hideLoad();
+    notify('⚠️ ' + e.message, 'error');
+    resultEl.innerHTML = `<div class="alert warn" style="margin-top:12px">⚠️ ${e.message}<br>Faz download e carrega manualmente no Meta Ads Manager.</div>`;
+  }
+}
+
+function publishCampaign() {
+  const approved = STATE.generated.filter(c=>c.approved);
+  if (!STATE.campaignId) { notify('⚠️ Nenhuma campanha associada', 'error'); return; }
+  if (approved.length === 0) {
+    document.getElementById('publishModalContent').innerHTML = `<div class="alert warn">⚠️ Esta campanha ainda não tem criativos aprovados. Queres publicar na mesma?</div><p>A campanha será publicada sem criativos. Terás de adicionar criativos manualmente no Meta Ads Manager.</p>`;
+    document.getElementById('publishModal').classList.add('show');
+  } else {
+    confirmPublish();
+  }
+}
+
+async function confirmPublish() {
+  closeModal('publishModal');
+  showLoad('A publicar campanha...');
+  try {
+    await metaPost(`/${STATE.campaignId}`, { status: 'ACTIVE' });
+    hideLoad();
+    notify('🚀 Campanha publicada com sucesso!', 'success');
+    chatAdd('ai', `🚀 Campanha publicada! Está agora ativa. Monitoriza a performance no Dashboard.`);
+    setChatQRs(['Ver no Dashboard','O que monitorizar agora?']);
+    document.getElementById('publishBtn').textContent = '✅ Publicada';
+    document.getElementById('publishBtn').disabled = true;
+  } catch(e) {
+    hideLoad();
+    notify('❌ Erro ao publicar: '+e.message, 'error');
+  }
+}
+
+// ===== ADCOPY MODAL =====
+function openAdcopyModal() {
+  const products = STATE.refs.map(r => r.product).filter(Boolean);
+  const productField = document.getElementById('ac-product');
+  if (products.length && !productField.value) {
+    productField.value = products.join(', ');
+  }
+  // Sync example from step 2 field
+  const exampleStep2 = document.getElementById('ac-example')?.value;
+  if (exampleStep2) document.getElementById('ac-example-modal').value = exampleStep2;
+  document.getElementById('ac-results').style.display = 'none';
+  document.getElementById('adcopyModal').classList.add('show');
+}
+
+async function generateAdcopys() {
+  const product = document.getElementById('ac-product').value.trim();
+  const tone = document.querySelector('#tg-actone .tg-opt.active')?.dataset.val || 'elegante';
+  const example = document.getElementById('ac-example-modal')?.value?.trim() || document.getElementById('ac-example')?.value?.trim() || '';
+  if (!product) { notify('⚠️ Descreve o produto', 'error'); return; }
+  if (!CFG.claude) { notify('⚠️ Anthropic API Key não configurada', 'error'); return; }
+
+  const btn = document.getElementById('acGenBtn');
+  btn.textContent = '⏳ A gerar...';
+  btn.disabled = true;
+
+  // Build learning context from approved copies
+  const ld = STATE.learningData;
+  const adcopyLearning = ld.adcopys || {};
+  const bestTypes = Object.entries(adcopyLearning)
+    .sort((a,b) => (b[1].approved||0) - (a[1].approved||0))
+    .slice(0,2).map(([t]) => t).join(', ');
+
+  const learningContext = bestTypes
+    ? `\nCom base no histórico de aprovações, os ângulos "${bestTypes}" têm melhor performance — dá prioridade a estes estilos.`
+    : '';
+
+  const exampleContext = example
+    ? `\nExemplo de adcopy de referência que funcionou bem:\n"${example}"\nAdapta o tom e estilo deste exemplo.`
+    : '';
+
+  try {
+    const r = await askClaude(
+      `Escreve EXATAMENTE 4 adcopys para Meta Ads da Noémi Eger Fashion (Hungria).\n\nProduto: ${product}\nTom: ${tone}${exampleContext}${learningContext}\n\n4 ângulos DIFERENTES:\n1. URGÊNCIA — urgência para comprar agora\n2. BENEFÍCIO — como o cliente se vai sentir\n3. PROVA SOCIAL — confiança e credibilidade\n4. CURIOSIDADE — começa com problema ou pergunta\n\nPara cada copy:\nTIPO: [ângulo]\nHEADLINE: [título chamativo, máx 40 caracteres]\nTEXTO PRINCIPAL: [2-3 linhas envolventes]\nCTA: [call to action]\n\nSepara cada copy com "==="`,
+      'És especialista em Meta Ads para e-commerce de moda na Hungria. Respondes em português de Portugal. Escreves copies persuasivos e eficazes que convertem.'
+    );
+
+    const copies = r.split('===').filter(c => c.trim());
+    STATE.adcopys = copies;
+    STATE.approvedCopies = {};
+
+    const colors = ['var(--red)','var(--green)','var(--blue)','var(--purple)'];
+    const types = ['Urgência','Benefício','Prova Social','Curiosidade'];
+
+    document.getElementById('ac-results').style.display = '';
+    document.getElementById('ac-results').innerHTML = `
+      <div style="font-size:12px;color:var(--green);margin-bottom:12px">✅ ${copies.length} adcopys geradas. Aprova as que preferes na etapa de revisão dos criativos.</div>
+      ${copies.map((c, i) => `
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px">
+          <div style="font-size:11px;color:${colors[i]||'var(--accent)'};text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600">${types[i]||'Copy '+(i+1)}</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.75;white-space:pre-line">${c.trim()}</div>
+        </div>`).join('')}`;
+
+    document.getElementById('adcopys-list').innerHTML = `
+      <div style="color:var(--green);font-size:13px;margin-bottom:8px">✅ ${copies.length} adcopys geradas</div>
+      ${copies.map((c,i) => `<div style="font-size:11px;color:var(--text3);margin-bottom:2px">• ${types[i]}</div>`).join('')}`;
+
+    notify('✅ Adcopys geradas!', 'success');
+    chatAdd('ai', `✍️ ${copies.length} adcopys geradas! Na etapa de revisão podes aprovar individualmente as que preferes — a IA aprende com as tuas escolhas.`);
+  } catch(e) {
+    notify('❌ ' + e.message, 'error');
+  } finally {
+    btn.textContent = '✨ Gerar 4 Copies';
+    btn.disabled = false;
+  }
+}
+
+function openCfg() {
+  document.getElementById('cfg-token').value = CFG.token||'';
+  document.getElementById('cfg-account').value = CFG.account||'';
+  document.getElementById('cfg-claude').value = CFG.claude||'';
+  document.getElementById('cfg-replicate').value = CFG.replicate||'';
+  document.getElementById('cfgModal').classList.add('show');
+}
+
+function saveCfg() {
+  CFG.token = document.getElementById('cfg-token').value.trim();
+  CFG.account = document.getElementById('cfg-account').value.trim();
+  CFG.claude = document.getElementById('cfg-claude').value.trim();
+  CFG.replicate = document.getElementById('cfg-replicate').value.trim();
+  localStorage.setItem('neCfg', JSON.stringify(CFG));
+  closeModal('cfgModal');
+  notify('✅ Configurações guardadas!', 'success');
+  if (CFG.replicate) chatAdd('ai', '✅ Replicate configurado! Agora vou gerar imagens reais com Flux.');
+}
+
+// ===== LEARNING SYSTEM =====
+function recordMotorResult(motor, approved, type, reason) {
+  if (!motor) return;
+  const ld = STATE.learningData;
+  if (!ld[motor]) ld[motor] = { approved:0, rejected:0, approvalRate:50 };
+  if (approved) ld[motor].approved++;
+  else ld[motor].rejected++;
+  const total = ld[motor].approved + ld[motor].rejected;
+  ld[motor].approvalRate = Math.round((ld[motor].approved/total)*100);
+
+  // Track collage vs single
+  if (type==='collage' && approved) { ld.collageVsSingle = ld.collageVsSingle || {collageWins:0,diff:0}; ld.collageVsSingle.collageWins++; }
+
+  localStorage.setItem('neLearning', JSON.stringify(ld));
+}
+
+// ===== AI CHAT =====
+function chatAdd(role, msg) {
+  const box = document.getElementById('chatMsgs');
+  const div = document.createElement('div');
+  div.className = 'chat-msg '+role;
+  div.innerHTML = msg.replace(/\n/g,'<br>');
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function setChatQRs(opts) {
+  document.getElementById('chatQRs').innerHTML = opts.map(o =>
+    `<button class="chat-qr" onclick="handleChatQR('${o.replace(/'/g,"\\'")}') ">${o}</button>`
+  ).join('');
+}
+
+async function handleChatQR(msg) {
+  chatAdd('user', msg);
+  document.getElementById('chatQRs').innerHTML = '';
+  const lower = msg.toLowerCase();
+
+  if (lower.includes('imagens de referência')) {
+    chatAdd('ai', `As <strong>imagens de referência</strong> são fotos reais dos teus produtos que a IA usa para entender a aparência, cores e estilo.\n\nA IA usa-as para:\n• Gerar novas composições do produto\n• Remover fundos e aplicar cenários\n• Criar collages com múltiplos ângulos\n\nAs imagens originais <strong>nunca são publicadas</strong> diretamente nos anúncios.`);
+  } else if (lower.includes('tofu') || lower.includes('mofu') || lower.includes('bofu')) {
+    chatAdd('ai', `🔵 <strong>TOFU</strong> (Top of Funnel) — Descoberta e Awareness. Vídeos, conteúdo inspiracional. Objetivo: mostrar a marca a novos utilizadores.\n\n🟣 <strong>MOFU</strong> (Middle of Funnel) — Consideração. Carrosséis com variantes e detalhes. Objetivo: aprofundar o interesse.\n\n🟢 <strong>BOFU</strong> (Bottom of Funnel) — Conversão. Single images e collages diretas. Objetivo: levar à compra.`);
+  } else if (lower.includes('motores') || lower.includes('ideogram') || lower.includes('flux')) {
+    const ld = STATE.learningData;
+    const motorInfo = MOTORS.map(m => `${m}: ${ld[m]?.approvalRate ?? 'sem dados'}% aprovação`).join('\n');
+    chatAdd('ai', `Os motores de IA disponíveis são:\n\n<strong>Ideogram</strong> — Excelente para produtos de moda e composições elegantes\n<strong>Flux Pro</strong> — Alta qualidade fotorrealista\n<strong>Recraft</strong> — Bom para fundos limpos e product shots\n<strong>Adobe Firefly</strong> — Seguro para direitos de autor\n\nTaxa de aprovação até agora:\n${motorInfo}`);
+  } else if (lower.includes('rever agora') || lower.includes('ver resumo')) {
+    if (currentStep >= 3) goToStep(4);
+  } else {
+    if (!CFG.claude) { chatAdd('ai', 'Configura a Anthropic API Key para respostas personalizadas.'); return; }
+    try {
+      const resp = await askClaude(msg, 'És especialista em criativos para Meta Ads de moda. Respondes brevemente em português de Portugal. Máx 3 parágrafos.');
+      chatAdd('ai', resp);
+    } catch(e) { chatAdd('ai', 'Erro: '+e.message); }
+  }
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  handleChatQR(msg);
+}
+
+// ===== HELPERS =====
+function getTypeEmoji(type) {
+  return { single:'🖼️', collage:'🔲', collageia:'✨', carousel:'🎠' }[type] || '🎨';
+}
+function getTypeName(type) {
+  return { single:'Single Image', collage:'Collage', collageia:'Collage IA', carousel:'Carrossel' }[type] || type;
+}
+function getFunnelLabel(type) {
+  return { single:'bofu', collage:'bofu', collageia:'bofu', carousel:'mofu' }[type] || 'bofu';
+}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function notify(msg, type='success') {
+  const n = document.getElementById('notif'); n.textContent=msg;
+  n.className='notif show '+type; setTimeout(()=>n.classList.remove('show'),3500);
+}
+function showLoad(t='A processar...') { document.getElementById('loadingTxt').textContent=t; document.getElementById('loadingBg').classList.add('show'); }
+function hideLoad() { document.getElementById('loadingBg').classList.remove('show'); }
+function adjustTotal(delta) { totalQty=Math.max(1,Math.min(50,totalQty+delta)); document.getElementById('totalQty').textContent=totalQty; }
+
+// Close modals on background click
+document.querySelectorAll('.modal-bg').forEach(m => m.addEventListener('click', e => { if(e.target===m) m.classList.remove('show'); }));
+
+init();
+</script>
+</body>
+</html>
