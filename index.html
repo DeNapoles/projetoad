@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS — Ecom Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08080d;
+  --s1: #0f0f16;
+  --s2: #161620;
+  --s3: #1e1e2a;
+  --s4: #26263a;
+  --bd: #2a2a3e;
+  --bd2: #353550;
+  --acc: #6c6fff;
+  --acc2: #9b9dff;
+  --txt: #f0eeff;
+  --txt2: #9896b0;
+  --txt3: #4e4c6a;
+  --grn: #3ecf8e;
+  --red: #e05c6a;
+  --amb: #f0a840;
+  --blu: #4dabf7;
+  --pur: #b07fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-size:14px;height:100vh;overflow:hidden;display:flex;}
+
+/* SIDEBAR */
+.sb{width:56px;background:var(--s1);border-right:1px solid var(--bd);display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px;transition:width .22s ease;flex-shrink:0;z-index:100;}
+.sb.open{width:210px;align-items:stretch;padding:12px 8px;}
+.sb-logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--acc),#4a4ddd);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;flex-shrink:0;margin:0 auto 8px;}
+.sb.open .sb-logo{margin:0 0 8px 4px;}
+.nav-i{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--txt3);transition:all .15s;white-space:nowrap;overflow:hidden;width:40px;}
+.sb.open .nav-i{width:100%;}
+.nav-i:hover{background:var(--s3);color:var(--txt2);}
+.nav-i.on{background:var(--s3);color:var(--acc2);}
+.nav-i svg{flex-shrink:0;width:18px;height:18px;}
+.nav-lbl{font-size:12px;font-weight:500;opacity:0;transition:opacity .15s;pointer-events:none;}
+.sb.open .nav-lbl{opacity:1;}
+.sb-div{width:28px;height:1px;background:var(--bd);margin:4px auto;}
+.sb.open .sb-div{width:calc(100%-16px);margin:4px 0;}
+.sb-bot{margin-top:auto;width:40px;display:flex;flex-direction:column;gap:4px;}
+.sb.open .sb-bot{width:100%;}
+.obs-btn{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;color:var(--txt3);border:1px solid var(--bd);background:var(--s2);transition:all .15s;white-space:nowrap;overflow:hidden;}
+.obs-btn:hover{border-color:var(--bd2);color:var(--txt2);}
+.store-tag{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;background:var(--s2);border:1px solid var(--bd);cursor:pointer;overflow:hidden;white-space:nowrap;}
+.s-dot{width:7px;height:7px;border-radius:50%;background:var(--grn);flex-shrink:0;}
+.store-tag span{font-size:11px;color:var(--txt2);}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
+.topbar{height:50px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex-shrink:0;background:var(--s1);}
+.tb-l{display:flex;align-items:center;gap:10px;}
+.tb-r{display:flex;align-items:center;gap:8px;}
+.menu-btn{background:none;border:none;cursor:pointer;color:var(--txt3);padding:4px;display:flex;align-items:center;border-radius:6px;}
+.menu-btn:hover{color:var(--txt2);background:var(--s3);}
+.page-ttl{font-size:15px;font-weight:600;color:var(--txt);}
+.date-chip{font-size:11px;color:var(--txt3);background:var(--s2);border:1px solid var(--bd);padding:3px 8px;border-radius:5px;}
+.sync-btn{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--txt3);background:var(--s2);border:1px solid var(--bd);padding:4px 9px;border-radius:6px;cursor:pointer;}
+.sync-btn:hover{color:var(--txt2);}
+.claude-toggle{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--acc2);background:var(--s3);border:1px solid var(--bd);padding:5px 11px;border-radius:6px;cursor:pointer;transition:all .15s;}
+.claude-toggle:hover{border-color:var(--acc);background:rgba(108,111,255,.1);}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--s3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--acc2);cursor:pointer;}
+
+/* CONTENT */
+.content{flex:1;overflow-y:auto;padding:20px 24px;}
+.page{display:none;}
+.page.on{display:block;}
+::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:transparent;} ::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px;}
+
+/* WELCOME */
+.welcome-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.welcome-txt{font-family:'Sora',sans-serif;font-size:22px;font-weight:600;color:var(--txt);}
+.welcome-txt span{color:var(--acc2);}
+.welcome-sub{font-size:12px;color:var(--txt3);margin-top:3px;}
+
+/* TOKEN BANNER */
+.tok-banner{display:none;padding:8px 20px;font-size:12px;align-items:center;justify-content:space-between;gap:10px;}
+.tok-banner.warn{background:rgba(240,168,64,.1);border-bottom:1px solid rgba(240,168,64,.25);color:var(--amb);display:flex;}
+.tok-banner.crit{background:rgba(224,92,106,.1);border-bottom:1px solid rgba(224,92,106,.25);color:var(--red);display:flex;}
+
+/* METRIC CARDS */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.met-card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;}
+.met-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--bd);opacity:.6;}
+.met-card.hi::after{background:linear-gradient(90deg,var(--acc),var(--pur));}
+.met-card.g::after{background:var(--grn);}
+.met-card.a::after{background:var(--amb);}
+.met-card.r::after{background:var(--red);}
+.met-lbl{font-size:11px;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;}
+.met-val{font-family:'Sora',sans-serif;font-size:26px;font-weight:600;letter-spacing:-1px;color:var(--txt);}
+.met-card.hi .met-val{color:var(--acc2);}
+.met-sub{font-size:11px;margin-top:5px;}
+.up{color:var(--grn);} .dn{color:var(--red);} .ne{color:var(--txt3);}
+
+/* GRID 2 */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+
+/* CARDS */
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:12px;overflow:hidden;}
+.card-hd{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.card-hd h3{font-size:13px;font-weight:600;color:var(--txt2);}
+.card-bd{padding:16px 18px;}
+
+/* ALERTS */
+.alert-list{display:flex;flex-direction:column;gap:8px;}
+.alert-row{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:8px;}
+.alert-row.sc{background:rgba(62,207,142,.07);border:1px solid rgba(62,207,142,.2);}
+.alert-row.kl{background:rgba(224,92,106,.07);border:1px solid rgba(224,92,106,.2);}
+.alert-row.mo{background:rgba(240,168,64,.07);border:1px solid rgba(240,168,64,.18);}
+.alert-row.nw{background:rgba(77,171,247,.07);border:1px solid rgba(77,171,247,.18);}
+.al-ico{font-size:14px;flex-shrink:0;margin-top:1px;}
+.al-body{flex:1;}
+.al-name{font-size:12px;font-weight:500;color:var(--txt);}
+.al-desc{font-size:11px;color:var(--txt3);margin-top:2px;}
+.al-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;}
+.badge-sc{background:rgba(62,207,142,.15);color:var(--grn);}
+.badge-kl{background:rgba(224,92,106,.15);color:var(--red);}
+.badge-mo{background:rgba(240,168,64,.15);color:var(--amb);}
+.badge-nw{background:rgba(77,171,247,.15);color:var(--blu);}
+
+/* CHART */
+.chart-wrap{display:flex;align-items:flex-end;gap:5px;height:64px;}
+.bar-w{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end;}
+.bar{width:100%;border-radius:3px 3px 0 0;transition:opacity .2s;cursor:pointer;}
+.bar:hover{opacity:.7;}
+.bar.g{background:var(--grn);opacity:.7;}
+.bar.g:hover{opacity:1;}
+.bar.r{background:var(--red);opacity:.5;}
+.bar.n{background:var(--s3);}
+.bar-lbl{font-size:9px;color:var(--txt3);}
+.chart-stats{display:flex;gap:20px;margin-top:12px;padding-top:12px;border-top:1px solid var(--bd);}
+.cs-item .cs-lbl{font-size:10px;color:var(--txt3);}
+.cs-item .cs-val{font-size:15px;font-weight:600;color:var(--txt);margin-top:2px;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;}
+.pill.g{background:rgba(62,207,142,.12);color:var(--grn);}
+.pill.a{background:rgba(240,168,64,.12);color:var(--amb);}
+.pill.r{background:rgba(224,92,106,.12);color:var(--red);}
+.pill.b{background:rgba(77,171,247,.12);color:var(--blu);}
+
+/* STATUS */
+.status{padding:3px 9px;border-radius:12px;font-size:11px;font-weight:500;}
+.status.act{background:rgba(62,207,142,.12);color:var(--grn);}
+.status.pau{background:rgba(78,76,106,.2);color:var(--txt3);}
+.status.sch{background:rgba(176,127,255,.12);color:var(--pur);}
+.status.err{background:rgba(224,92,106,.12);color:var(--red);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{text-align:left;font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:.8px;padding:9px 14px;border-bottom:1px solid var(--bd);white-space:nowrap;}
+.tbl td{padding:12px 14px;font-size:12px;border-bottom:1px solid rgba(42,42,62,.4);white-space:nowrap;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:rgba(255,255,255,.015);}
+.tbl-wrap{overflow-x:auto;}
+
+/* FILTER TABS */
+.ftabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.ftab{padding:5px 14px;border-radius:16px;font-size:12px;cursor:pointer;border:1px solid var(--bd);color:var(--txt3);background:var(--s2);transition:all .15s;}
+.ftab:hover{border-color:var(--bd2);color:var(--txt2);}
+.ftab.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:500;}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-g{margin-bottom:0;}
+.form-g.full{grid-column:1/-1;}
+.lbl{font-size:11px;color:var(--txt2);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;display:block;}
+.inp,.sel,.ta{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:9px 12px;color:var(--txt);font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(--acc);}
+.sel option{background:var(--s2);}
+.ta{resize:vertical;min-height:72px;line-height:1.5;}
+
+/* TOGGLE GROUP */
+.tg{display:flex;gap:6px;flex-wrap:wrap;}
+.tg-o{padding:6px 12px;border-radius:7px;border:1px solid var(--bd);font-size:12px;cursor:pointer;color:var(--txt2);transition:all .15s;background:var(--s2);}
+.tg-o:hover{border-color:var(--bd2);color:var(--txt);}
+.tg-o.on{border-color:var(--acc);background:rgba(108,111,255,.12);color:var(--acc2);font-weight:500;}
+
+/* SECTION WIZARD */
+.wiz-sec{background:var(--s1);border:1px solid var(--bd);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:border-color .2s;}
+.wiz-sec.done{border-color:rgba(62,207,142,.35);}
+.wiz-sec.locked{opacity:.5;pointer-events:none;}
+.wiz-hd{padding:16px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;}
+.wiz-hd:hover{background:rgba(255,255,255,.015);}
+.wiz-num{width:26px;height:26px;border-radius:50%;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;}
+.wiz-num.act{background:var(--acc);color:#fff;}
+.wiz-num.done{background:var(--grn);color:#fff;}
+.wiz-ttl{font-size:14px;font-weight:600;}
+.wiz-sub{font-size:11px;color:var(--txt3);margin-top:2px;}
+.wiz-arr{margin-left:auto;font-size:11px;color:var(--txt3);}
+.wiz-bd{padding:0 18px 18px;border-top:1px solid var(--bd);}
+.wiz-field{margin-top:16px;}
+.wiz-note{font-size:11px;color:var(--txt3);margin-top:5px;line-height:1.5;}
+.chg-pill{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(62,207,142,.12);color:var(--grn);border:1px solid rgba(62,207,142,.25);display:none;}
+.def-pill{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(78,76,106,.2);color:var(--txt3);}
+
+/* BUTTONS */
+.btn{padding:8px 16px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;font-weight:500;cursor:pointer;transition:all .15s;border:none;}
+.btn-p{background:var(--acc);color:#fff;} .btn-p:hover{background:var(--acc2);}
+.btn-s{background:var(--s2);color:var(--txt2);border:1px solid var(--bd);} .btn-s:hover{border-color:var(--acc);color:var(--acc2);}
+.btn-g{background:var(--grn);color:#08080d;} .btn-g:hover{opacity:.85;}
+.btn-r{background:var(--red);color:#fff;} .btn-r:hover{opacity:.85;}
+.btn-sm{padding:5px 11px;font-size:11px;}
+.btn-xs{padding:3px 8px;font-size:11px;}
+.btn-full{width:100%;}
+
+/* MODAL */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(8,8,13,.88);z-index:300;align-items:center;justify-content:center;}
+.modal-ov.on{display:flex;}
+.modal{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:28px;width:480px;max-width:92vw;max-height:88vh;overflow-y:auto;}
+.modal-ttl{font-family:'Sora',sans-serif;font-size:18px;font-weight:600;margin-bottom:18px;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:22px;}
+
+/* NOTIFICATIONS */
+.notif{position:fixed;bottom:22px;right:22px;background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:12px 18px;font-size:13px;z-index:500;transform:translateY(80px);opacity:0;transition:all .25s;max-width:300px;}
+.notif.on{transform:translateY(0);opacity:1;}
+.notif.ok{border-color:var(--grn);color:var(--grn);}
+.notif.err{border-color:var(--red);color:var(--red);}
+
+/* LOADING */
+.load-ov{display:none;position:fixed;inset:0;background:rgba(8,8,13,.85);z-index:400;align-items:center;justify-content:center;flex-direction:column;gap:14px;}
+.load-ov.on{display:flex;}
+.spin{width:36px;height:36px;border:2px solid var(--bd);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.load-txt{font-size:13px;color:var(--txt2);}
+
+/* CLAUDE PANEL */
+.cp{width:0;background:var(--s1);border-left:1px solid var(--bd);display:flex;flex-direction:column;transition:width .22s ease;overflow:hidden;flex-shrink:0;}
+.cp.on{width:280px;}
+.cp-hd{height:50px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 14px;flex-shrink:0;}
+.cp-title{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--txt2);}
+.cp-dot{width:6px;height:6px;border-radius:50%;background:var(--grn);}
+.cp-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;}
+.msg{padding:8px 11px;border-radius:9px;font-size:12px;line-height:1.6;max-width:95%;}
+.msg.ai{background:var(--s2);border:1px solid var(--bd);color:var(--txt2);align-self:flex-start;}
+.msg.user{background:rgba(108,111,255,.12);border:1px solid rgba(108,111,255,.2);color:var(--acc2);align-self:flex-end;text-align:right;}
+.cp-in{padding:10px 12px;border-top:1px solid var(--bd);display:flex;gap:6px;flex-shrink:0;}
+.cp-inp{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:6px 10px;font-size:12px;color:var(--txt);outline:none;font-family:'Inter',sans-serif;}
+.cp-inp:focus{border-color:var(--acc);}
+.cp-inp::placeholder{color:var(--txt3);}
+.cp-send{width:30px;height:30px;border-radius:7px;background:var(--s3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--acc2);}
+.cp-send:hover{background:rgba(108,111,255,.15);}
+
+/* ANALYSIS PAGE */
+.camp-block{background:var(--s1);border:1px solid var(--bd);border-radius:12px;margin-bottom:14px;overflow:hidden;}
+.camp-block-hd{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;border-bottom:1px solid var(--bd);}
+.camp-block-hd:hover{background:rgba(255,255,255,.015);}
+.creative-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;padding:16px 18px;}
+.cr-card{border-radius:8px;background:var(--s2);border:1px solid var(--bd);overflow:hidden;cursor:pointer;}
+.cr-card.best{border-color:var(--grn);}
+.cr-img{aspect-ratio:1;background:var(--s3);display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--txt3);}
+.cr-meta{padding:8px;}
+.cr-name{font-size:10px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cr-stat{font-size:11px;font-weight:600;margin-top:3px;}
+
+/* SUGGESTIONS */
+.sug-list{display:flex;flex-direction:column;gap:8px;padding:0 18px 16px;}
+.sug-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;background:rgba(108,111,255,.05);border:1px solid rgba(108,111,255,.15);}
+.sug-ico{font-size:16px;flex-shrink:0;}
+.sug-txt{font-size:12px;color:var(--txt2);line-height:1.6;}
+.sug-actions{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;}
+
+/* AI REPORT */
+.ai-report{background:linear-gradient(135deg,rgba(108,111,255,.08),rgba(176,127,255,.05));border:1px solid rgba(108,111,255,.2);border-radius:12px;padding:18px;margin-bottom:20px;}
+.ai-report-lbl{font-size:11px;color:var(--acc2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
+.ai-report-txt{font-size:13px;color:var(--txt2);line-height:1.7;}
+.ai-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.ai-tag{padding:4px 11px;border-radius:14px;font-size:11px;}
+.ai-tag.ok{background:rgba(62,207,142,.1);color:var(--grn);border:1px solid rgba(62,207,142,.25);}
+.ai-tag.wa{background:rgba(240,168,64,.1);color:var(--amb);border:1px solid rgba(240,168,64,.25);}
+.ai-tag.ba{background:rgba(224,92,106,.1);color:var(--red);border:1px solid rgba(224,92,106,.25);}
+
+/* REPORT PAGE */
+.rep-section{margin-bottom:20px;}
+.rep-section-ttl{font-size:11px;color:var(--acc2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.rep-section-body{font-size:13px;color:var(--txt2);line-height:1.8;white-space:pre-line;}
+
+/* SUMMARY */
+.sum-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(42,42,62,.4);}
+.sum-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.sum-dot.d{background:var(--blu);}
+.sum-dot.c{background:var(--grn);}
+.sum-key{font-size:11px;color:var(--txt3);min-width:150px;}
+.sum-val{font-size:12px;color:var(--txt);}
+
+/* CHAT MSGS CREATOR */
+.cc-msg{max-width:88%;padding:9px 13px;border-radius:10px;font-size:12px;line-height:1.6;}
+.cc-msg.ai{background:var(--s3);border:1px solid var(--bd);color:var(--txt2);align-self:flex-start;border-radius:3px 10px 10px 10px;}
+.cc-msg.user{background:rgba(108,111,255,.1);border:1px solid rgba(108,111,255,.2);color:var(--txt);align-self:flex-end;border-radius:10px 3px 10px 10px;}
+.qr-btn{padding:5px 11px;border-radius:14px;border:1px solid var(--bd);font-size:11px;cursor:pointer;color:var(--txt2);background:var(--s2);transition:all .15s;white-space:nowrap;}
+.qr-btn:hover{border-color:var(--acc);color:var(--acc2);}
+
+/* SHOPIFY PAGE */
+.shopify-placeholder{text-align:center;padding:60px 20px;}
+.shopify-placeholder h3{font-size:16px;margin-bottom:8px;color:var(--txt2);}
+.shopify-placeholder p{font-size:13px;color:var(--txt3);line-height:1.6;}
+
+/* EMPTY */
+.empty{text-align:center;padding:48px 20px;}
+.empty-ico{font-size:40px;margin-bottom:12px;opacity:.3;}
+.empty h3{font-size:15px;margin-bottom:6px;color:var(--txt2);}
+.empty p{font-size:12px;color:var(--txt3);}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sb" id="sb">
+  <div class="sb-logo" onclick="toggleSB()">J</div>
+  <div class="nav-i on" onclick="goPage('overview',this)" title="Overview">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span class="nav-lbl">Overview</span>
+  </div>
+  <div class="nav-i" onclick="goPage('campaigns',this)" title="Campanhas">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <span class="nav-lbl">Campanhas</span>
+  </div>
+  <div class="nav-i" onclick="goPage('creator',this)" title="Criar Campanha">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    <span class="nav-lbl">Criar Campanha</span>
+  </div>
+  <div class="nav-i" onclick="goPage('analysis',this)" title="Análise">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+    <span class="nav-lbl">Análise</span>
+  </div>
+  <div class="nav-i" onclick="goPage('reports',this)" title="Relatórios IA">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <span class="nav-lbl">Relatórios IA</span>
+  </div>
+  <div class="sb-div"></div>
+  <div class="nav-i" onclick="goPage('shopify',this)" title="Shopify">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <span class="nav-lbl">Shopify</span>
+  </div>
+  <div class="nav-i" onclick="showModal('cfgModal')" title="Definições">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span class="nav-lbl">Definições</span>
+  </div>
+  <div class="sb-bot">
+    <div class="obs-btn" onclick="triggerObsidian()" title="Gravar no Vault">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+      <span class="nav-lbl" style="opacity:1;font-size:11px;">Gravar no Vault</span>
+    </div>
+    <div class="store-tag">
+      <div class="s-dot"></div>
+      <span>Noémi Eger · HU</span>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <!-- Token Banner -->
+  <div class="tok-banner" id="tokBanner">
+    <span id="tokMsg"></span>
+    <button class="btn btn-sm btn-s" onclick="showModal('cfgModal')">Renovar →</button>
+  </div>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="tb-l">
+      <button class="menu-btn" onclick="toggleSB()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span class="page-ttl" id="pageTtl">Overview</span>
+      <span class="date-chip" id="dateLbl"></span>
+    </div>
+    <div class="tb-r">
+      <div class="sync-btn" onclick="refreshPage()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        <span id="syncLbl">Atualizar</span>
+      </div>
+      <div class="claude-toggle" onclick="toggleCP()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Claude
+      </div>
+      <div class="avatar" onclick="showModal('cfgModal')">TN</div>
+    </div>
+  </div>
+
+  <!-- PAGES -->
+  <div class="content" id="mainContent">
+
+    <!-- ====== OVERVIEW ====== -->
+    <div id="p-overview" class="page on">
+      <div class="welcome-row">
+        <div>
+          <div class="welcome-txt">Bem-vindo, <span>Tomás</span></div>
+          <div class="welcome-sub" id="welcomeSub">A carregar dados...</div>
+        </div>
+        <button class="btn btn-p btn-sm" onclick="goPage('creator',null)">+ Nova Campanha</button>
+      </div>
+
+      <div class="ai-report" id="aiReport">
+        <div class="ai-report-lbl">✦ Análise IA</div>
+        <div class="ai-report-txt" id="aiTxt">A carregar análise...</div>
+        <div class="ai-tags" id="aiTags"></div>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="met-card hi">
+          <div class="met-lbl">Revenue hoje</div>
+          <div class="met-val" id="m-rev">—</div>
+          <div class="met-sub ne" id="m-rev-s">Shopify não ligado</div>
+        </div>
+        <div class="met-card">
+          <div class="met-lbl">ROAS 48h</div>
+          <div class="met-val" id="m-roas">—</div>
+          <div class="met-sub ne" id="m-roas-s">—</div>
+        </div>
+        <div class="met-card">
+          <div class="met-lbl">Gasto hoje</div>
+          <div class="met-val" id="m-spend">—</div>
+          <div class="met-sub ne" id="m-spend-s">—</div>
+        </div>
+        <div class="met-card">
+          <div class="met-lbl">Margem hoje</div>
+          <div class="met-val" id="m-margin">—</div>
+          <div class="met-sub ne" id="m-margin-s">—</div>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-hd"><h3>Avisos — Blueprint</h3><span style="font-size:11px;color:var(--txt3)" id="alertCount">—</span></div>
+          <div class="card-bd" id="alertsBox"><div style="color:var(--txt3);font-size:12px;">A carregar...</div></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><h3>ROAS — Últimos 7 dias</h3></div>
+          <div class="card-bd">
+            <div class="chart-wrap" id="roasChart"></div>
+            <div style="display:flex;gap:4px;margin-top:3px;" id="roasChartLabels"></div>
+            <div class="chart-stats">
+              <div class="cs-item"><div class="cs-lbl">Média 7d</div><div class="cs-val" id="cs-avg">—</div></div>
+              <div class="cs-item"><div class="cs-lbl">Melhor</div><div class="cs-val" id="cs-best">—</div></div>
+              <div class="cs-item"><div class="cs-lbl">Gasto total</div><div class="cs-val" id="cs-spend">—</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ====== CAMPAIGNS ====== -->
+    <div id="p-campaigns" class="page">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <div class="ftabs">
+          <div class="ftab on" id="ft-active" onclick="setCF('active')">Ativas</div>
+          <div class="ftab" id="ft-scheduled" onclick="setCF('scheduled')">Agendadas</div>
+          <div class="ftab" id="ft-paused" onclick="setCF('paused')">Pausadas</div>
+          <div class="ftab" id="ft-all" onclick="setCF('all')">Todas</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <select class="sel" id="campRange" style="width:auto;padding:5px 12px;font-size:12px;" onchange="loadCamps()">
+            <option value="today">Hoje</option>
+            <option value="yesterday">Ontem</option>
+            <option value="last_7d" selected>7 dias</option>
+            <option value="last_14d">14 dias</option>
+            <option value="last_30d">30 dias</option>
+            <option value="this_month">Este mês</option>
+          </select>
+          <button class="btn btn-sm btn-s" onclick="loadCamps()">↻ Atualizar</button>
+          <button class="btn btn-sm btn-p" onclick="goPage('creator',null)">+ Nova</button>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--txt3);margin-bottom:10px;" id="campTotals"></div>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>Nome</th><th>Estado</th><th>Orç/dia</th><th>Gasto</th><th>CPM</th><th>CPC</th><th>CTR</th><th>ATC</th><th>Compras</th><th>ROAS</th><th>CPA</th><th>Freq.</th><th>Sinal IA</th><th></th></tr></thead>
+            <tbody id="campsTbody"><tr><td colspan="14" style="text-align:center;color:var(--txt3);padding:32px;">A carregar...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== CREATOR ====== -->
+    <div id="p-creator" class="page">
+      <div style="display:grid;grid-template-columns:1fr 340px;height:calc(100vh - 100px);gap:0;">
+        <div style="overflow-y:auto;padding-right:0;" id="wizContent">
+          <!-- Section 1 -->
+          <div class="wiz-sec" id="ws1">
+            <div class="wiz-hd" onclick="toggleWiz(1)">
+              <div class="wiz-num act" id="wn1">1</div>
+              <div><div class="wiz-ttl">Campanha</div><div class="wiz-sub" id="wsub1">Objetivo, orçamento e nome</div></div>
+              <div class="wiz-arr" id="wa1">▼</div>
+            </div>
+            <div class="wiz-bd" id="wb1">
+              <div class="wiz-field">
+                <span class="lbl">Tipo / Objetivo <span class="def-pill">Predefinição: Vendas</span></span>
+                <div class="tg" id="tg-obj">
+                  <div class="tg-o on" data-val="OUTCOME_SALES" onclick="setTG('obj',this)">Vendas</div>
+                  <div class="tg-o" data-val="OUTCOME_TRAFFIC" onclick="setTG('obj',this)">Tráfego</div>
+                  <div class="tg-o" data-val="OUTCOME_AWARENESS" onclick="setTG('obj',this)">Reconhecimento</div>
+                  <div class="tg-o" data-val="OUTCOME_ENGAGEMENT" onclick="setTG('obj',this)">Envolvimento</div>
+                  <div class="tg-o" data-val="OUTCOME_LEADS" onclick="setTG('obj',this)">Leads</div>
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Estrutura Orçamento <span class="def-pill">Predefinição: CBO</span></span>
+                <div class="tg" id="tg-bt">
+                  <div class="tg-o on" data-val="CBO" onclick="setTG('bt',this);toggleBudgetLevel()">CBO — Por Campanha</div>
+                  <div class="tg-o" data-val="ABO" onclick="setTG('bt',this);toggleBudgetLevel()">ABO — Por Conjunto</div>
+                </div>
+                <div class="wiz-note">CBO = Meta distribui automaticamente &nbsp;|&nbsp; ABO = mais controlo</div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Nome da Campanha <span style="color:var(--red);font-size:10px;">*obrigatório</span></span>
+                <input class="inp" id="nc-name" placeholder="Ex: CBO - Vestidos Verão - Hungria - Jun 2026" oninput="mchg('campname')">
+              </div>
+              <div class="wiz-field" id="cbo-bud-f">
+                <span class="lbl">Orçamento Diário <span class="chg-pill" id="chg-cbobudget">alterado</span></span>
+                <div style="position:relative;"><span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--txt3)">€</span>
+                <input class="inp" type="number" id="nc-cbobudget" style="padding-left:26px;" placeholder="50" min="1" oninput="mchg('cbobudget')"></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Limite Total <span class="def-pill">Sem limite</span></span>
+                <div class="tg" id="tg-sl">
+                  <div class="tg-o on" data-val="none" onclick="setTG('sl',this);toggleSL()">Sem limite</div>
+                  <div class="tg-o" data-val="set" onclick="setTG('sl',this);toggleSL()">Definir limite</div>
+                </div>
+                <div id="sl-f" style="display:none;margin-top:8px;"><div style="position:relative;"><span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--txt3)">€</span><input class="inp" type="number" id="nc-sl" style="padding-left:26px;" placeholder="500" min="1"></div></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Categoria Especial <span class="def-pill">Nenhuma</span></span>
+                <select class="sel" id="nc-scat">
+                  <option value="NONE">Nenhuma</option>
+                  <option value="CREDIT">Crédito</option>
+                  <option value="EMPLOYMENT">Emprego</option>
+                  <option value="HOUSING">Habitação</option>
+                </select>
+                <div class="wiz-note">Para moda/vestuário seleciona sempre Nenhuma</div>
+              </div>
+              <button class="btn btn-p btn-full" style="margin-top:12px;" onclick="confirmWiz(1)">Confirmar Secção 1 →</button>
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="wiz-sec locked" id="ws2">
+            <div class="wiz-hd" onclick="toggleWiz(2)">
+              <div class="wiz-num" id="wn2">2</div>
+              <div><div class="wiz-ttl">Conjunto de Anúncios</div><div class="wiz-sub" id="wsub2">Pixel, conversão, datas e licitação</div></div>
+              <div class="wiz-arr" id="wa2">▶</div>
+            </div>
+            <div class="wiz-bd" id="wb2" style="display:none;">
+              <div class="wiz-field">
+                <span class="lbl">Nome do Conjunto <span style="color:var(--red);font-size:10px;">*obrigatório</span></span>
+                <input class="inp" id="nc-adname" placeholder="Ex: Broad — Hungria — Compra" oninput="mchg('adname')">
+              </div>
+              <div class="wiz-field" id="abo-bud-f" style="display:none;">
+                <span class="lbl">Orçamento Diário do Conjunto</span>
+                <div style="position:relative;"><span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--txt3)">€</span>
+                <input class="inp" type="number" id="nc-abobudget" style="padding-left:26px;" placeholder="50" min="1"></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Localização Conversão <span class="def-pill">Site</span></span>
+                <div class="tg" id="tg-cl">
+                  <div class="tg-o on" data-val="WEBSITE" onclick="setTG('cl',this)">Site</div>
+                  <div class="tg-o" data-val="APP" onclick="setTG('cl',this)">App</div>
+                  <div class="tg-o" data-val="MESSENGER" onclick="setTG('cl',this)">Messenger</div>
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Objetivo de Desempenho <span class="def-pill">Maximizar Conversões</span></span>
+                <select class="sel" id="nc-pobj">
+                  <option value="OFFSITE_CONVERSIONS">Maximizar conversões</option>
+                  <option value="VALUE">Maximizar valor</option>
+                  <option value="LINK_CLICKS">Maximizar cliques</option>
+                  <option value="REACH">Alcance único diário</option>
+                  <option value="IMPRESSIONS">Maximizar impressões</option>
+                </select>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Evento de Conversão <span class="def-pill">Compra</span></span>
+                <div class="tg" id="tg-ev">
+                  <div class="tg-o on" data-val="PURCHASE" onclick="setTG('ev',this)">Compra</div>
+                  <div class="tg-o" data-val="INITIATED_CHECKOUT" onclick="setTG('ev',this)">Checkout</div>
+                  <div class="tg-o" data-val="ADD_TO_CART" onclick="setTG('ev',this)">Add to Cart</div>
+                  <div class="tg-o" data-val="VIEW_CONTENT" onclick="setTG('ev',this)">Ver Conteúdo</div>
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Data de Início <span class="def-pill">Amanhã às 00h01</span></span>
+                <div class="tg" id="tg-sd">
+                  <div class="tg-o on" data-val="tomorrow" onclick="setTG('sd',this);toggleSD()">Amanhã às 00h01</div>
+                  <div class="tg-o" data-val="custom" onclick="setTG('sd',this);toggleSD()">Personalizar</div>
+                </div>
+                <div id="sd-f" style="display:none;margin-top:8px;"><input type="datetime-local" class="inp" id="nc-sdval"></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Data de Fim <span class="def-pill">Sem data de fim</span></span>
+                <div class="tg" id="tg-ed">
+                  <div class="tg-o on" data-val="none" onclick="setTG('ed',this);toggleED()">Sem data de fim</div>
+                  <div class="tg-o" data-val="set" onclick="setTG('ed',this);toggleED()">Definir data</div>
+                </div>
+                <div id="ed-f" style="display:none;margin-top:8px;"><input type="datetime-local" class="inp" id="nc-edval"></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Estratégia de Licitação <span class="def-pill">Custo mais baixo</span></span>
+                <div class="tg" id="tg-bid">
+                  <div class="tg-o on" data-val="LOWEST_COST_WITHOUT_CAP" onclick="setTG('bid',this);toggleBid()">Custo mais baixo</div>
+                  <div class="tg-o" data-val="COST_CAP" onclick="setTG('bid',this);toggleBid()">Limite de custo</div>
+                  <div class="tg-o" data-val="LOWEST_COST_WITH_BID_CAP" onclick="setTG('bid',this);toggleBid()">Limite de licitação</div>
+                </div>
+                <div id="bid-f" style="display:none;margin-top:8px;"><input type="number" class="inp" id="nc-bidval" placeholder="Ex: 15 (custo €) ou 2.0 (ROAS)"></div>
+              </div>
+              <button class="btn btn-p btn-full" style="margin-top:12px;" onclick="confirmWiz(2)">Confirmar Secção 2 →</button>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="wiz-sec locked" id="ws3">
+            <div class="wiz-hd" onclick="toggleWiz(3)">
+              <div class="wiz-num" id="wn3">3</div>
+              <div><div class="wiz-ttl">Público</div><div class="wiz-sub" id="wsub3">País, segmentação e placements</div></div>
+              <div class="wiz-arr" id="wa3">▶</div>
+            </div>
+            <div class="wiz-bd" id="wb3" style="display:none;">
+              <div class="wiz-field">
+                <span class="lbl">País <span class="def-pill">Hungria</span></span>
+                <input class="inp" id="nc-country" value="Hungria (HU)" oninput="mchg('country')">
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Tipo de Público <span class="def-pill">Broad</span></span>
+                <div class="tg" id="tg-at">
+                  <div class="tg-o on" data-val="broad" onclick="setTG('at',this);toggleAT()">Broad</div>
+                  <div class="tg-o" data-val="saved" onclick="setTG('at',this);toggleAT()">Guardado</div>
+                  <div class="tg-o" data-val="lookalike" onclick="setTG('at',this);toggleAT()">Lookalike</div>
+                  <div class="tg-o" data-val="retargeting" onclick="setTG('at',this);toggleAT()">Retargeting</div>
+                </div>
+                <div id="at-f" style="display:none;margin-top:8px;"><input class="inp" id="nc-atdet" placeholder="Nome do público ou fonte..."></div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Idade <span class="def-pill">18 – 65+</span></span>
+                <div style="display:flex;gap:10px;align-items:center;">
+                  <input type="number" class="inp" id="nc-agemin" value="18" min="18" max="65" style="width:90px;">
+                  <span style="color:var(--txt3)">até</span>
+                  <input type="number" class="inp" id="nc-agemax" value="65" min="18" max="65" style="width:90px;">
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Género <span class="def-pill">Todos</span></span>
+                <div class="tg" id="tg-gen">
+                  <div class="tg-o on" data-val="0" onclick="setTG('gen',this)">Todos</div>
+                  <div class="tg-o" data-val="2" onclick="setTG('gen',this)">Mulheres</div>
+                  <div class="tg-o" data-val="1" onclick="setTG('gen',this)">Homens</div>
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Placements <span class="def-pill">Advantage+ Auto</span></span>
+                <div class="tg" id="tg-pl">
+                  <div class="tg-o on" data-val="auto" onclick="setTG('pl',this);togglePL()">Advantage+ Auto</div>
+                  <div class="tg-o" data-val="manual" onclick="setTG('pl',this);togglePL()">Manual</div>
+                </div>
+                <div id="pl-f" style="display:none;margin-top:10px;">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-fb-feed" checked> Feed Facebook</label>
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-ig-feed" checked> Feed Instagram</label>
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-ig-stories" checked> Stories IG</label>
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-ig-reels" checked> Reels IG</label>
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-marketplace"> Marketplace</label>
+                    <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);cursor:pointer;"><input type="checkbox" id="pl-audience-net"> Audience Net</label>
+                  </div>
+                </div>
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Advantage+ Creative <span class="def-pill">Ativado</span></span>
+                <div class="tg" id="tg-advc">
+                  <div class="tg-o on" data-val="1" onclick="setTG('advc',this)">Ativado</div>
+                  <div class="tg-o" data-val="0" onclick="setTG('advc',this)">Desativado</div>
+                </div>
+              </div>
+              <button class="btn btn-p btn-full" style="margin-top:12px;" onclick="confirmWiz(3)">Confirmar Secção 3 →</button>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="wiz-sec locked" id="ws4">
+            <div class="wiz-hd" onclick="toggleWiz(4)">
+              <div class="wiz-num" id="wn4">4</div>
+              <div><div class="wiz-ttl">Conformidade UE</div><div class="wiz-sub" id="wsub4">Anunciante e entidade pagadora</div></div>
+              <div class="wiz-arr" id="wa4">▶</div>
+            </div>
+            <div class="wiz-bd" id="wb4" style="display:none;">
+              <div class="wiz-field">
+                <span class="lbl">Nome do Anunciante <span class="def-pill">Noemi Eger</span></span>
+                <input class="inp" id="nc-adv" value="Noemi Eger">
+              </div>
+              <div class="wiz-field">
+                <span class="lbl">Entidade Pagadora <span class="def-pill">Noemi Eger</span></span>
+                <input class="inp" id="nc-payer" value="Noemi Eger">
+              </div>
+              <button class="btn btn-p btn-full" style="margin-top:12px;" onclick="confirmWiz(4)">Ver Resumo →</button>
+            </div>
+          </div>
+
+          <div id="wiz-summary" style="display:none;margin-top:12px;"></div>
+        </div>
+
+        <!-- AI Chat Creator -->
+        <div style="border-left:1px solid var(--bd);display:flex;flex-direction:column;background:var(--s1);">
+          <div style="padding:14px 16px;border-bottom:1px solid var(--bd);">
+            <div style="font-size:12px;font-weight:600;color:var(--acc2);">✦ Assistente de Campanha</div>
+            <div style="font-size:11px;color:var(--txt3);margin-top:2px;">Dúvidas sobre cada secção</div>
+          </div>
+          <div id="wiz-chat" style="flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;"></div>
+          <div id="wiz-qrs" style="padding:10px 12px;border-top:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:5px;"></div>
+          <div style="padding:10px 12px;border-top:1px solid var(--bd);display:flex;gap:8px;">
+            <input class="inp" id="wiz-inp" placeholder="Faz uma pergunta..." style="font-size:12px;flex:1;" onkeydown="if(event.key==='Enter')wizSend()">
+            <button class="btn btn-p btn-sm" onclick="wizSend()">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== ANALYSIS ====== -->
+    <div id="p-analysis" class="page">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="display:flex;gap:8px;">
+          <select class="sel" id="anaRange" style="width:auto;padding:5px 12px;font-size:12px;" onchange="loadAnalysis()">
+            <option value="last_7d" selected>Últimos 7 dias</option>
+            <option value="last_14d">Últimos 14 dias</option>
+            <option value="last_30d">Últimos 30 dias</option>
+          </select>
+          <button class="btn btn-sm btn-s" onclick="loadAnalysis()">↻ Atualizar</button>
+        </div>
+        <a href="criativos.html" class="btn btn-sm btn-p" style="text-decoration:none;">Módulo Criativos →</a>
+      </div>
+      <div id="analysisContent">
+        <div class="empty"><div class="empty-ico">📊</div><h3>Análise de Criativos</h3><p>Seleciona um período e clica em Atualizar</p></div>
+      </div>
+    </div>
+
+    <!-- ====== REPORTS ====== -->
+    <div id="p-reports" class="page">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+        <div class="ftabs">
+          <div class="ftab on" id="rt-daily" onclick="setRT('daily')">Diário</div>
+          <div class="ftab" id="rt-weekly" onclick="setRT('weekly')">Semanal</div>
+          <div class="ftab" id="rt-consult" onclick="setRT('consult')">Consultor IA</div>
+        </div>
+        <button class="btn btn-p btn-sm" id="genRepBtn" onclick="genReport()">✦ Gerar Relatório</button>
+      </div>
+      <div id="repContent">
+        <div class="empty"><div class="empty-ico">🤖</div><h3>Relatórios IA</h3><p>Clica em "Gerar Relatório" para analisar as tuas campanhas com IA</p></div>
+      </div>
+      <div id="consultContent" style="display:none;flex-direction:column;height:calc(100vh - 140px);">
+        <div id="consultMsgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:10px;"></div>
+        <div id="consultQRs" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;"></div>
+        <div style="display:flex;gap:8px;">
+          <input class="inp" id="consultInp" placeholder="Pergunta sobre campanhas, estratégia..." style="flex:1;" onkeydown="if(event.key==='Enter')consultSend()">
+          <button class="btn btn-p" onclick="consultSend()">Enviar →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SHOPIFY ====== -->
+    <div id="p-shopify" class="page">
+      <div class="shopify-placeholder">
+        <div style="font-size:48px;margin-bottom:16px;">🛍️</div>
+        <h3>Shopify não configurado</h3>
+        <p style="max-width:380px;margin:0 auto 20px;">Para ver a revenue real, encomendas, produtos OOS e mais, liga a tua loja Shopify.</p>
+        <button class="btn btn-p" onclick="showModal('cfgModal')">Configurar Shopify →</button>
+        <div style="margin-top:32px;background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:20px;max-width:400px;margin:20px auto 0;text-align:left;">
+          <div style="font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:10px;">Como ligar:</div>
+          <div style="font-size:12px;color:var(--txt3);line-height:1.8;">1. Vai ao painel admin da Shopify<br>2. Apps → Develop apps → Create app<br>3. Admin API: activar <code style="background:var(--s3);padding:1px 5px;border-radius:3px;">read_orders</code> e <code style="background:var(--s3);padding:1px 5px;border-radius:3px;">read_products</code><br>4. Copia o token para as Definições aqui</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- CLAUDE PANEL -->
+<div class="cp" id="cp">
+  <div class="cp-hd">
+    <div class="cp-title"><div class="cp-dot"></div>Claude</div>
+    <button class="menu-btn" onclick="toggleCP()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cp-msgs" id="cpMsgs">
+    <div class="msg ai">Boas Tomás! Estou ligado às tuas campanhas. Podes perguntar-me qualquer coisa sobre os teus dados ou estratégia.</div>
+  </div>
+  <div class="cp-in">
+    <input class="cp-inp" id="cpInp" placeholder="Pergunta algo..." onkeydown="if(event.key==='Enter')cpSend()">
+    <div class="cp-send" onclick="cpSend()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIG MODAL -->
+<div class="modal-ov" id="cfgModal">
+  <div class="modal">
+    <div class="modal-ttl">⚙️ Definições</div>
+    <p style="font-size:12px;color:var(--txt3);margin-bottom:18px;line-height:1.6;">Credenciais guardadas apenas no teu browser.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div><label class="lbl">Meta Access Token</label><input type="password" class="inp" id="cfg-token" placeholder="EAAxxxxx..."></div>
+      <div><label class="lbl">Ad Account ID</label><input class="inp" id="cfg-acc" placeholder="act_1459571755242461"></div>
+      <div><label class="lbl">Pixel ID</label><input class="inp" id="cfg-pixel" placeholder="1794162401993457"></div>
+      <div><label class="lbl">Facebook Page ID</label><input class="inp" id="cfg-page" placeholder="ID da tua página"></div>
+      <div><label class="lbl">Anthropic API Key</label><input type="password" class="inp" id="cfg-claude" placeholder="sk-ant-..."></div>
+      <div><label class="lbl">Replicate API Key <span style="color:var(--grn);font-size:10px;">Geração de imagens</span></label><input type="password" class="inp" id="cfg-rep" placeholder="r8_..."></div>
+      <div><label class="lbl">Shopify Token <span style="color:var(--blu);font-size:10px;">Revenue real</span></label><input type="password" class="inp" id="cfg-shpf" placeholder="shpat_..."></div>
+      <div><label class="lbl">Shopify Store <span style="font-size:10px;color:var(--txt3);">ex: noemieger.myshopify.com</span></label><input class="inp" id="cfg-shpf-store" placeholder="noemieger.myshopify.com"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-s" onclick="closeModal('cfgModal')">Cancelar</button>
+      <button class="btn btn-p" onclick="saveCfg()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="load-ov" id="loadOv"><div class="spin"></div><div class="load-txt" id="loadTxt">A processar...</div></div>
+<div class="notif" id="notif"></div>
+
+<script>
+// ===== CONFIG =====
+let CFG = {token:'',acc:'',pixel:'1794162401993457',page:'',claude:'',rep:'',shpf:'',shpfStore:'',v:'v21.0'};
+let allCamps = [], campFilter = 'active', reportTab = 'daily';
+let consultHistory = [];
+let sbOpen = false, cpOpen = false;
+
+function init() {
+  const s = localStorage.getItem('neCfg');
+  if(s) { CFG = {...CFG,...JSON.parse(s)}; fillCfg(); }
+  setDate();
+  if(!CFG.token || !CFG.acc) { setTimeout(()=>showModal('cfgModal'),500); showDemo(); }
+  else { loadDashboard(); checkTok(); }
+}
+
+function fillCfg() {
+  el('cfg-token').value=CFG.token||''; el('cfg-acc').value=CFG.acc||'';
+  el('cfg-pixel').value=CFG.pixel||''; el('cfg-page').value=CFG.page||'';
+  el('cfg-claude').value=CFG.claude||''; el('cfg-rep').value=CFG.rep||'';
+  el('cfg-shpf').value=CFG.shpf||''; el('cfg-shpf-store').value=CFG.shpfStore||'';
+}
+
+function saveCfg() {
+  const nt = el('cfg-token').value.trim();
+  if(nt !== CFG.token) localStorage.setItem('neTokDate', new Date().toISOString());
+  CFG.token=nt; CFG.acc=el('cfg-acc').value.trim(); CFG.pixel=el('cfg-pixel').value.trim();
+  CFG.page=el('cfg-page').value.trim(); CFG.claude=el('cfg-claude').value.trim();
+  CFG.rep=el('cfg-rep').value.trim(); CFG.shpf=el('cfg-shpf').value.trim();
+  CFG.shpfStore=el('cfg-shpf-store').value.trim();
+  localStorage.setItem('neCfg', JSON.stringify(CFG));
+  closeModal('cfgModal'); notify('✅ Configurações guardadas!','ok');
+  checkTok(); loadDashboard();
+}
+
+function checkTok() {
+  const saved = localStorage.getItem('neTokDate');
+  if(!saved||!CFG.token) return;
+  const days = Math.floor((new Date()-new Date(saved))/(86400000));
+  const left = 60-days;
+  const b = el('tokBanner');
+  if(left<=0) { b.className='tok-banner crit'; el('tokMsg').textContent='🔴 Token expirou! Renova agora.'; }
+  else if(left<=7) { b.className='tok-banner crit'; el('tokMsg').textContent=`🔴 Token expira em ${left} dia(s)! Renova agora.`; }
+  else if(left<=14) { b.className='tok-banner warn'; el('tokMsg').textContent=`⚠️ Token expira em ${left} dias.`; }
+}
+
+// ===== UTILS =====
+function el(id) { return document.getElementById(id); }
+function setDate() {
+  const d = new Date();
+  const days = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+  el('dateLbl').textContent = `${days[d.getDay()]} · ${d.toLocaleDateString('pt-PT',{day:'numeric',month:'short',year:'numeric'})}`;
+  el('welcomeSub').textContent = getTimeGreeting();
+}
+function getTimeGreeting() {
+  const h = new Date().getHours();
+  if(h<12) return 'Bom dia — a carregar dados...';
+  if(h<18) return 'Boa tarde — a carregar dados...';
+  return 'Boa noite — a carregar dados...';
+}
+function showLoad(t='A processar...') { el('loadTxt').textContent=t; el('loadOv').classList.add('on'); }
+function hideLoad() { el('loadOv').classList.remove('on'); }
+function notify(msg,type='ok') {
+  const n=el('notif'); n.textContent=msg; n.className='notif on '+type;
+  setTimeout(()=>n.classList.remove('on'),3200);
+}
+function showModal(id) { el(id).classList.add('on'); }
+function closeModal(id) { el(id).classList.remove('on'); }
+document.querySelectorAll('.modal-ov').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on');}));
+
+// ===== NAV =====
+function toggleSB() {
+  sbOpen=!sbOpen;
+  el('sb').classList.toggle('open',sbOpen);
+}
+function toggleCP() {
+  cpOpen=!cpOpen;
+  el('cp').classList.toggle('on',cpOpen);
+}
+
+const pageNames = {overview:'Overview',campaigns:'Campanhas',creator:'Criar Campanha',analysis:'Análise',reports:'Relatórios IA',shopify:'Shopify'};
+
+function goPage(p, navEl) {
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.nav-i').forEach(x=>x.classList.remove('on'));
+  el('p-'+p).classList.add('on');
+  if(navEl) navEl.classList.add('on');
+  el('pageTtl').textContent = pageNames[p]||p;
+  if(p==='overview') loadDashboard();
+  if(p==='campaigns') loadCamps();
+  if(p==='analysis') loadAnalysis();
+  if(p==='creator') { initWiz(); }
+}
+
+function refreshPage() {
+  const ttl = el('pageTtl').textContent;
+  const rev = Object.entries(pageNames).find(([k,v])=>v===ttl);
+  if(rev) goPage(rev[0], null);
+}
+
+// ===== META API =====
+async function metaGet(ep) {
+  if(!CFG.token){showModal('cfgModal');throw new Error('Token não configurado');}
+  const sep=ep.includes('?')?'&':'?';
+  const r=await fetch(`https://graph.facebook.com/${CFG.v}${ep}${sep}access_token=${CFG.token}`);
+  const d=await r.json();
+  if(d.error) throw new Error(d.error.message);
+  return d;
+}
+async function metaPost(ep,body) {
+  if(!CFG.token){showModal('cfgModal');throw new Error('Token não configurado');}
+  const sep=ep.includes('?')?'&':'?';
+  const r=await fetch(`https://graph.facebook.com/${CFG.v}${ep}${sep}access_token=${CFG.token}`,
+    {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const d=await r.json();
+  if(d.error) throw new Error(d.error.message);
+  return d;
+}
+
+// ===== CLAUDE API =====
+async function askClaude(prompt,sys='') {
+  if(!CFG.claude) throw new Error('Anthropic API Key não configurada.');
+  const r=await fetch('https://replicate-proxy.tomassnapoles.workers.dev/anthropic/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':CFG.claude,'anthropic-version':'2023-06-01'},
+    body:JSON.stringify({
+      model:'claude-sonnet-4-6',max_tokens:1000,
+      system:sys||'És especialista em Meta Ads e e-commerce de moda. Respondes em português de Portugal de forma direta e prática.',
+      messages:[{role:'user',content:prompt}]
+    })
+  });
+  const d=await r.json();
+  if(d.error) throw new Error(d.error.message);
+  return d.content[0].text;
+}
+
+// ===== THRESHOLDS =====
+const TH = {
+  ctr:{bad:1.5,ok:4},
+  cpc:{warn:.50,crit:.60},
+  roas:{crit:1.0,bad:2.0,ok:3.5},
+  freq:{warn:2.5,crit:3.5},
+  cpm:{warn:8,crit:13}
+};
+
+function rateMet(type,val) {
+  if(val===null||val===undefined||isNaN(val)) return null;
+  const t=TH[type];
+  if(!t) return null;
+  if(type==='ctr') { if(val<t.bad) return{cls:'r',lbl:'Crítico'}; if(val>=t.ok) return{cls:'g',lbl:'Ótimo'}; return{cls:'a',lbl:'Ok'}; }
+  if(type==='cpc') { if(val>t.crit) return{cls:'r',lbl:'Crítico'}; if(val>t.warn) return{cls:'a',lbl:'Atenção'}; return{cls:'g',lbl:'Bom'}; }
+  if(type==='roas') { if(val<t.crit) return{cls:'r',lbl:'Crítico'}; if(val<t.bad) return{cls:'a',lbl:'Fraco'}; if(val<t.ok) return{cls:'b',lbl:'Ok'}; return{cls:'g',lbl:'Ótimo'}; }
+  if(type==='freq') { if(val>t.crit) return{cls:'r',lbl:'Cansativo'}; if(val>t.warn) return{cls:'a',lbl:'Atenção'}; return{cls:'g',lbl:'Ok'}; }
+  if(type==='cpm') { if(val>t.crit) return{cls:'r',lbl:'Crítico'}; if(val>t.warn) return{cls:'a',lbl:'Alto'}; return{cls:'g',lbl:'Ok'}; }
+  return null;
+}
+
+function pill(type,val,fmt) {
+  if(val===null||val===undefined||isNaN(val)) return '<span style="color:var(--txt3)">—</span>';
+  const r=rateMet(type,val);
+  const d=fmt?fmt(val):val;
+  if(!r) return `<span style="font-size:12px">${d}</span>`;
+  return `<span class="pill ${r.cls}">${d}</span>`;
+}
+
+function blueprintSignal(ins) {
+  if(!ins) return {sig:'nw',lbl:'NEW',ico:'🆕',desc:'Sem dados suficientes'};
+  const roas=ins.purchase_roas?.[0]?.value?parseFloat(ins.purchase_roas[0].value):null;
+  const spend=parseFloat(ins.spend||0);
+  if(roas===null) return {sig:'nw',lbl:'NEW',ico:'🆕',desc:'A aguardar dados'};
+  if(roas<1.0) return {sig:'kl',lbl:'KILL',ico:'🔴',desc:`ROAS ${roas.toFixed(2)}x — abaixo de 1.0`};
+  if(roas>=3.5) return {sig:'sc',lbl:'SCALE',ico:'📈',desc:`ROAS ${roas.toFixed(2)}x — pronto para escalar`};
+  if(roas>=2.0) return {sig:'mo',lbl:'MONITOR',ico:'⏳',desc:`ROAS ${roas.toFixed(2)}x — monitorizar 48h`};
+  return {sig:'kl',lbl:'DESCALE',ico:'⬇️',desc:`ROAS ${roas.toFixed(2)}x — fraco`};
+}
+
+// ===== DASHBOARD =====
+async function loadDashboard() {
+  if(!CFG.token||!CFG.acc) { showDemo(); return; }
+  try {
+    showLoad('A carregar dados Meta Ads...');
+    const [ins7,insTod,camps] = await Promise.all([
+      metaGet(`/${CFG.acc}/insights?fields=spend,purchase_roas,actions,impressions,ctr,cpm&date_preset=last_7d`),
+      metaGet(`/${CFG.acc}/insights?fields=spend,purchase_roas,actions,cpm,ctr&date_preset=today`),
+      metaGet(`/${CFG.acc}/campaigns?fields=name,status,start_time,daily_budget,insights.date_preset(today){spend,purchase_roas,actions,ctr,cpm,frequency}&limit=20&effective_status=['ACTIVE','PAUSED']`)
+    ]);
+    hideLoad();
+    renderDashMetrics(insTod.data?.[0], ins7.data?.[0]);
+    renderDashAlerts(camps.data);
+    renderDashChart(camps.data);
+    genAIInsight(insTod.data?.[0], camps.data);
+    el('welcomeSub').textContent = `${getDayGreeting()} — ${new Date().toLocaleDateString('pt-PT',{weekday:'long'})}`;
+    el('syncLbl').textContent = 'Sincronizado ' + new Date().toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});
+  } catch(e) { hideLoad(); showDemo(); console.error(e); }
+}
+
+function getDayGreeting() {
+  const h=new Date().getHours();
+  if(h<12) return 'Bom dia';
+  if(h<18) return 'Boa tarde';
+  return 'Boa noite';
+}
+
+function renderDashMetrics(tod,w7) {
+  const spend=parseFloat(tod?.spend||0);
+  const roas7=w7?.purchase_roas?.[0]?.value?parseFloat(w7.purchase_roas[0].value):null;
+  const pur=parseInt(tod?.actions?.find(a=>a.action_type==='purchase')?.value||0);
+  const convVal=spend*((roas7||0));
+  const cogs = spend * 0.35;
+  const margin = convVal>0 ? ((convVal-spend-cogs)/convVal*100) : null;
+
+  el('m-spend').textContent = spend>0 ? `€${spend.toFixed(2)}` : '—';
+  el('m-spend-s').innerHTML = `<span class="ne">${pur>0?pur+' compra(s)':'Sem compras hoje'}</span>`;
+  el('m-roas').textContent = roas7 ? roas7.toFixed(2)+'x' : '—';
+  const rR=rateMet('roas',roas7);
+  el('m-roas-s').innerHTML = rR ? `<span class="${rR.cls}">${rR.lbl}</span>` : '';
+  el('m-rev').textContent = CFG.shpf ? 'A carregar...' : '—';
+  el('m-rev-s').innerHTML = CFG.shpf ? '' : '<span class="ne">Shopify não ligado</span>';
+  el('m-margin').textContent = margin!==null ? Math.round(margin)+'%' : '—';
+  const mCls = margin===null?'ne':margin>20?'up':margin>0?'ne':'dn';
+  el('m-margin-s').innerHTML = margin!==null ? `<span class="${mCls}">${margin>20?'↑ Acima threshold':margin>0?'Positiva':'⚠️ Negativa'}</span>` : '';
+
+  if(CFG.shpf) loadShopifyRevenue();
+}
+
+async function loadShopifyRevenue() {
+  if(!CFG.shpf||!CFG.shpfStore){el('m-rev').textContent='—';el('m-rev-s').innerHTML='<span class="ne">Shopify não ligado</span>';return;}
+  try {
+    const today = new Date().toISOString().split('T')[0];
+    const query = `{ orders(first:50, query:"created_at:>=${today}T00:00:00 AND financial_status:paid") { edges { node { totalPriceSet { shopMoney { amount } } } } } }`;
+    const r = await fetch(`https://${CFG.shpfStore}/admin/api/2024-01/graphql.json`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Shopify-Access-Token':CFG.shpf},
+      body: JSON.stringify({query})
+    });
+    const d = await r.json();
+    if(d.data?.orders?.edges) {
+      const orders = d.data.orders.edges;
+      const rev = orders.reduce((s,o)=>s+parseFloat(o.node.totalPriceSet.shopMoney.amount),0);
+      el('m-rev').textContent = `€${rev.toFixed(2)}`;
+      el('m-rev-s').innerHTML = orders.length>0 ? `<span class="up">↑ ${orders.length} encomendas</span>` : `<span class="ne">0 encomendas hoje</span>`;
+    } else {
+      el('m-rev').textContent='—';
+      el('m-rev-s').innerHTML='<span class="ne">Sem dados Shopify</span>';
+    }
+  } catch(e) { el('m-rev').textContent='—'; el('m-rev-s').innerHTML='<span class="ne">Erro Shopify</span>'; }
+}
+
+function renderDashAlerts(camps) {
+  const alerts=[];
+  if(camps?.length) {
+    camps.forEach(c=>{
+      const i=c.insights?.data?.[0];
+      if(!i) return;
+      const sig=blueprintSignal(i);
+      const name=c.name.length>32?c.name.slice(0,32)+'…':c.name;
+      alerts.push({...sig,name,campId:c.id,campName:c.name});
+    });
+  }
+  alerts.sort((a,b)=>{const o={kl:0,sc:1,mo:2,nw:3};return(o[a.sig]||3)-(o[b.sig]||3);});
+  const cls={sc:'sc',kl:'kl',mo:'mo',nw:'nw'};
+  const bc={sc:'badge-sc',kl:'badge-kl',mo:'badge-mo',nw:'badge-nw'};
+  el('alertsBox').innerHTML = alerts.length
+    ? '<div class="alert-list">'+alerts.slice(0,5).map(a=>`
+        <div class="alert-row ${cls[a.sig]}">
+          <span class="al-ico">${a.ico}</span>
+          <div class="al-body"><div class="al-name">${a.name}</div><div class="al-desc">${a.desc}</div></div>
+          <span class="al-badge ${bc[a.sig]}">${a.lbl}</span>
+        </div>`).join('')+'</div>'
+    : '<div style="color:var(--txt3);font-size:12px;">Sem alertas — tudo ok ✅</div>';
+  el('alertCount').textContent = alerts.length + ' alertas';
+}
+
+function renderDashChart(camps) {
+  const vals = [0.8,1.2,1.8,2.41,2.1,2.8,3.35];
+  const days = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
+  const max=Math.max(...vals);
+  el('roasChart').innerHTML = vals.map((v,i)=>`
+    <div class="bar-w">
+      <div class="bar ${v>=TH.roas.ok?'g':v<TH.roas.crit?'r':'n'}" style="height:${Math.round(v/max*100)}%;min-height:4px;" title="ROAS ${v}x"></div>
+    </div>`).join('');
+  el('roasChartLabels').innerHTML = days.map(d=>`<div style="flex:1;text-align:center;font-size:9px;color:var(--txt3);">${d}</div>`).join('');
+  el('cs-avg').textContent = (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2)+'x';
+  el('cs-best').textContent = Math.max(...vals)+'x';
+}
+
+function renderDashCamps(camps) {
+  if(!camps?.length) return;
+  const active=camps.filter(c=>c.status==='ACTIVE').slice(0,6);
+  el('dashCamps').innerHTML = active.map(c=>{
+    const i=c.insights?.data?.[0];
+    const sp=i?`€${parseFloat(i.spend||0).toFixed(2)}`:'—';
+    const r=i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value):null;
+    const pur=i?.actions?.find(a=>a.action_type==='purchase')?.value||0;
+    const cpa=pur>0&&i?`€${(parseFloat(i.spend)/pur).toFixed(2)}`:'—';
+    const sig=blueprintSignal(i);
+    const bc={sc:'badge-sc',kl:'badge-kl',mo:'badge-mo',nw:'badge-nw'};
+    return `<tr>
+      <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;">${c.name}</td>
+      <td><span class="status act">Ativo</span></td>
+      <td>${sp}</td>
+      <td>${r?pill('roas',r,v=>v.toFixed(2)+'x'):'—'}</td>
+      <td>${cpa}</td>
+      <td><span class="al-badge ${bc[sig.sig]}">${sig.lbl}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+async function genAIInsight(ins,camps) {
+  if(!CFG.claude) { el('aiTxt').textContent='Configura a Anthropic API Key para análise IA automática.'; return; }
+  try {
+    const snap=ins?`Gasto: €${parseFloat(ins.spend||0).toFixed(2)}, ROAS: ${ins.purchase_roas?.[0]?.value?parseFloat(ins.purchase_roas[0].value).toFixed(2):'—'}x, CTR: ${parseFloat(ins.ctr||0).toFixed(2)}%`:'Sem dados hoje';
+    const campSnap=camps?.slice(0,5).map(c=>{const i=c.insights?.data?.[0];return`${c.name}: ROAS ${i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value).toFixed(2):'—'}x`;}).join(', ');
+    const txt=await askClaude(`Dados Meta Ads Noémi Eger hoje: ${snap}. Campanhas: ${campSnap||'sem dados'}. Resume em 2 frases o estado e a ação mais urgente. Máximo 50 palavras.`);
+    el('aiTxt').textContent=txt;
+    const hasGood=camps?.some(c=>c.insights?.data?.[0]?.purchase_roas?.[0]?.value>3.5);
+    const hasBad=camps?.some(c=>c.insights?.data?.[0]?.purchase_roas?.[0]?.value<1);
+    el('aiTags').innerHTML=(hasGood?'<span class="ai-tag ok">✓ Campanha para escalar</span>':'')+(hasBad?'<span class="ai-tag ba">✗ Campanha crítica</span>':'')+'<span class="ai-tag wa">⚡ Ver alertas</span>';
+  } catch(e) { el('aiTxt').textContent='Erro na análise IA: '+e.message; }
+}
+
+function showDemo() {
+  el('m-spend').textContent='—'; el('m-spend-s').innerHTML='<span class="ne">Configura Meta API Key</span>';
+  el('m-roas').textContent='—'; el('m-roas-s').innerHTML='';
+  el('m-rev').textContent='—'; el('m-rev-s').innerHTML='<span class="ne">Configura credenciais</span>';
+  el('m-margin').textContent='—'; el('m-margin-s').innerHTML='';
+  el('aiTxt').textContent='Configura as credenciais em Definições para ver dados reais.';
+  el('aiTags').innerHTML='';
+  el('alertsBox').innerHTML='<div style="color:var(--txt3);font-size:12px;">Configura as credenciais para ver alertas reais.</div>';
+  el('alertCount').textContent='';
+  el('roasChart').innerHTML='';
+  el('roasChartLabels').innerHTML='';
+  el('cs-avg').textContent='—'; el('cs-best').textContent='—'; el('cs-spend').textContent='—';
+  el('welcomeSub').textContent = 'Configura as credenciais em Definições para começar';
+}
+
+// ===== CAMPAIGNS PAGE =====
+function setCF(f) {
+  campFilter=f;
+  ['active','scheduled','paused','all'].forEach(x=>el('ft-'+x)?.classList.toggle('on',x===f));
+  renderCamps(allCamps);
+}
+
+async function loadCamps() {
+  if(!CFG.token||!CFG.acc) { showDemoCamps(); return; }
+  const preset=el('campRange')?.value||'last_7d';
+  showLoad('A carregar campanhas...');
+  try {
+    const base=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,daily_budget,start_time&limit=100&effective_status=['ACTIVE','PAUSED','ARCHIVED','WITH_ISSUES']`);
+    let insMap={};
+    try {
+      const ins=await metaGet(`/${CFG.acc}/campaigns?fields=id,insights.date_preset(${preset}){spend,purchase_roas,actions,impressions,clicks,ctr,cpm,frequency}&limit=100&effective_status=['ACTIVE','PAUSED','ARCHIVED']`);
+      ins?.data?.forEach(c=>{insMap[c.id]=c.insights?.data?.[0]||null;});
+    } catch(e2){}
+    allCamps=base.data.map(c=>({...c,insights:{data:[insMap[c.id]||null]}}));
+    hideLoad();
+    const ts=allCamps.reduce((s,c)=>s+parseFloat(c.insights?.data?.[0]?.spend||0),0);
+    const tp=allCamps.reduce((s,c)=>s+parseInt(c.insights?.data?.[0]?.actions?.find(a=>a.action_type==='purchase')?.value||0),0);
+    el('campTotals').innerHTML=`${allCamps.length} campanhas &nbsp;·&nbsp; Gasto: <strong style="color:var(--acc2)">€${ts.toFixed(2)}</strong> &nbsp;·&nbsp; Compras: <strong style="color:var(--grn)">${tp}</strong>`;
+    renderCamps(allCamps);
+  } catch(e) { hideLoad(); el('campsTbody').innerHTML=`<tr><td colspan="14" style="text-align:center;color:var(--red);padding:28px;">Erro: ${e.message}</td></tr>`; }
+}
+
+function getCampInfo(c) {
+  const now=new Date(); const st=c.start_time?new Date(c.start_time):null;
+  if(c.status==='ACTIVE'&&st&&st>now) return{cls:'sch',lbl:'Agendada',ord:1};
+  const map={'ACTIVE':{cls:'act',lbl:'Ativo',ord:0},'PAUSED':{cls:'pau',lbl:'Pausado',ord:2},'ARCHIVED':{cls:'pau',lbl:'Arquivada',ord:3},'WITH_ISSUES':{cls:'err',lbl:'Com erros',ord:1}};
+  return map[c.status]||{cls:'pau',lbl:c.status,ord:4};
+}
+
+function renderCamps(camps) {
+  if(!camps?.length){el('campsTbody').innerHTML='<tr><td colspan="14" style="text-align:center;color:var(--txt3);padding:28px;">Sem campanhas</td></tr>';return;}
+  let fil=camps.filter(c=>{const{cls}=getCampInfo(c);
+    if(campFilter==='active') return cls==='act';
+    if(campFilter==='scheduled') return cls==='sch';
+    if(campFilter==='paused') return cls==='pau'||cls==='err';
+    return true;
+  }).sort((a,b)=>getCampInfo(a).ord-getCampInfo(b).ord);
+  el('campsTbody').innerHTML=fil.map(c=>{
+    const i=c.insights?.data?.[0];
+    const sp=parseFloat(i?.spend||0);
+    const roas=i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value):null;
+    const pur=parseInt(i?.actions?.find(a=>a.action_type==='purchase')?.value||0);
+    const atc=parseInt(i?.actions?.find(a=>a.action_type==='add_to_cart')?.value||0);
+    const clk=parseInt(i?.clicks||0);
+    const cpc=clk>0&&sp>0?sp/clk:null;
+    const ctr=i?.ctr?parseFloat(i.ctr):null;
+    const cpm=i?.cpm?parseFloat(i.cpm):null;
+    const freq=i?.frequency?parseFloat(i.frequency):null;
+    const cpa=pur>0?sp/pur:null;
+    const bud=c.daily_budget?`€${(c.daily_budget/100).toFixed(0)}`:'—';
+    const{cls,lbl}=getCampInfo(c);
+    const sig=blueprintSignal(i);
+    const bc={sc:'badge-sc',kl:'badge-kl',mo:'badge-mo',nw:'badge-nw'};
+    const tog=c.status==='ACTIVE'
+      ?`<button class="btn btn-xs btn-s" onclick="toggleCamp('${c.id}','ACTIVE')">⏸</button>`
+      :`<button class="btn btn-xs btn-s" onclick="toggleCamp('${c.id}','PAUSED')">▶</button>`;
+    return `<tr>
+      <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;" title="${c.name}">${c.name}</td>
+      <td><span class="status ${cls}">${lbl}</span></td>
+      <td>${bud}</td>
+      <td>${sp>0?`<strong style="color:var(--acc2)">€${sp.toFixed(2)}</strong>`:'—'}</td>
+      <td>${pill('cpm',cpm,v=>`€${v.toFixed(2)}`)}</td>
+      <td>${pill('cpc',cpc,v=>`€${v.toFixed(2)}`)}</td>
+      <td>${pill('ctr',ctr,v=>`${v.toFixed(2)}%`)}</td>
+      <td>${atc||'—'}</td>
+      <td>${pur?`<strong style="color:var(--grn)">${pur}</strong>`:'—'}</td>
+      <td>${pill('roas',roas,v=>v.toFixed(2)+'x')}</td>
+      <td>${cpa?`€${cpa.toFixed(2)}`:'—'}</td>
+      <td>${pill('freq',freq,v=>v.toFixed(1))}</td>
+      <td><span class="al-badge ${bc[sig.sig]}">${sig.lbl}</span></td>
+      <td style="display:flex;gap:4px;align-items:center;">
+        <a href="criativos.html?campaign=${c.id}&name=${encodeURIComponent(c.name)}" class="btn btn-xs btn-s" style="text-decoration:none;">🎨</a>
+        ${tog}
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function showDemoCamps() {
+  el('campsTbody').innerHTML=`
+    <tr><td>CBO - Collection Floral Ruhak</td><td><span class="status act">Ativo</span></td><td>€50</td><td><strong style="color:var(--acc2)">€209</strong></td><td><span class="pill g">€7.38</span></td><td><span class="pill g">€0.15</span></td><td><span class="pill g">4.80%</span></td><td>89</td><td><strong style="color:var(--grn)">9</strong></td><td><span class="pill g">3.35x</span></td><td>€23</td><td><span class="pill g">1.4</span></td><td><span class="al-badge badge-sc">SCALE</span></td><td><a href="criativos.html" class="btn btn-xs btn-s" style="text-decoration:none;">🎨</a></td></tr>
+    <tr><td>CBO - Farmerkollekció-F</td><td><span class="status act">Ativo</span></td><td>€50</td><td><strong style="color:var(--acc2)">€162</strong></td><td><span class="pill a">€9.12</span></td><td><span class="pill g">€0.14</span></td><td><span class="pill g">8.68%</span></td><td>44</td><td><strong style="color:var(--grn)">3</strong></td><td><span class="pill r">0.8x</span></td><td>€54</td><td><span class="pill a">2.1</span></td><td><span class="al-badge badge-kl">KILL</span></td><td></td></tr>
+    <tr><td>CBO - Dalma - 16 Mai</td><td><span class="status act">Ativo</span></td><td>€25</td><td><strong style="color:var(--acc2)">€30</strong></td><td><span class="pill g">€8.20</span></td><td><span class="pill g">€0.18</span></td><td><span class="pill g">7.49%</span></td><td>12</td><td><strong style="color:var(--grn)">2</strong></td><td><span class="pill b">1.8x</span></td><td>€15</td><td><span class="pill g">1.1</span></td><td><span class="al-badge badge-mo">MONITOR</span></td><td></td></tr>`;
+}
+
+async function toggleCamp(id,st) {
+  const ns=st==='ACTIVE'?'PAUSED':'ACTIVE';
+  try { showLoad(ns==='PAUSED'?'A pausar...':'A ativar...'); await metaPost(`/${id}`,{status:ns}); hideLoad(); notify(`✅ Campanha ${ns==='PAUSED'?'pausada':'ativada'}!`,'ok'); loadCamps(); }
+  catch(e){hideLoad();notify('❌ '+e.message,'err');}
+}
+
+// ===== ANALYSIS PAGE =====
+async function loadAnalysis() {
+  const preset=el('anaRange')?.value||'last_7d';
+  if(!CFG.token||!CFG.acc){showDemoAnalysis();return;}
+  showLoad('A carregar análise...');
+  try {
+    const camps=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,insights.date_preset(${preset}){spend,purchase_roas,actions,ctr,cpm,frequency,impressions}&limit=20&effective_status=['ACTIVE','PAUSED']`);
+    hideLoad();
+    if(!camps.data?.length){el('analysisContent').innerHTML='<div class="empty"><div class="empty-ico">📊</div><h3>Sem dados</h3><p>Não há campanhas com dados para este período</p></div>';return;}
+    let html='';
+    for(const c of camps.data) {
+      const i=c.insights?.data?.[0];
+      const roas=i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value):null;
+      const ctr=i?.ctr?parseFloat(i.ctr):null;
+      const sig=blueprintSignal(i);
+      const bc={sc:'badge-sc',kl:'badge-kl',mo:'badge-mo',nw:'badge-nw'};
+      html+=`<div class="camp-block">
+        <div class="camp-block-hd">
+          <div>
+            <div style="font-size:13px;font-weight:600;">${c.name}</div>
+            <div style="font-size:11px;color:var(--txt3);margin-top:2px;">
+              ${roas?`ROAS ${roas.toFixed(2)}x`:'—'} &nbsp;·&nbsp; ${ctr?`CTR ${ctr.toFixed(2)}%`:'—'} &nbsp;·&nbsp; Gasto €${parseFloat(i?.spend||0).toFixed(2)}
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="al-badge ${bc[sig.sig]}">${sig.lbl}</span>
+            <a href="criativos.html?campaign=${c.id}&name=${encodeURIComponent(c.name)}" class="btn btn-sm btn-p" style="text-decoration:none;">Ver Criativos →</a>
+          </div>
+        </div>
+        <div class="sug-list" id="sug-${c.id}">
+          <div style="font-size:11px;color:var(--txt3);padding:8px 0;">A gerar sugestões IA...</div>
+        </div>
+      </div>`;
+    }
+    el('analysisContent').innerHTML=html;
+    if(CFG.claude) {
+      for(const c of camps.data.slice(0,3)) {
+        genCampSuggestions(c);
+      }
+    }
+  } catch(e) { hideLoad(); showDemoAnalysis(); }
+}
+
+async function genCampSuggestions(c) {
+  const i=c.insights?.data?.[0];
+  const roas=i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value):null;
+  const ctr=i?.ctr?parseFloat(i.ctr):null;
+  const freq=i?.frequency?parseFloat(i.frequency):null;
+  try {
+    const txt=await askClaude(
+      `Campanha "${c.name}" Meta Ads: ROAS ${roas?.toFixed(2)||'—'}x, CTR ${ctr?.toFixed(2)||'—'}%, frequência ${freq?.toFixed(1)||'—'}, gasto €${parseFloat(i?.spend||0).toFixed(2)}.
+Thresholds: CTR<1.5% crítico, ROAS>3.5 escalar, freq>3.5 renovar criativos.
+Dá 2-3 sugestões práticas e específicas. Formato: lista simples, máximo 15 palavras por sugestão.`,
+      'Consultor Meta Ads. Respondes em português de Portugal. Direto e prático.'
+    );
+    const sugEl=el('sug-'+c.id);
+    if(sugEl) {
+      const lines=txt.split('\n').filter(l=>l.trim()&&!l.startsWith('#')).slice(0,3);
+      sugEl.innerHTML=lines.map(l=>`<div class="sug-item"><span class="sug-ico">💡</span><div class="sug-txt">${l.replace(/^[-•*\d.]\s*/,'')}</div></div>`).join('');
+    }
+  } catch(e) { const s=el('sug-'+c.id); if(s)s.innerHTML='<div style="font-size:11px;color:var(--txt3);padding:4px 0;">Configura API Key para sugestões IA</div>'; }
+}
+
+function showDemoAnalysis() {
+  el('analysisContent').innerHTML=`
+    <div class="camp-block">
+      <div class="camp-block-hd">
+        <div><div style="font-size:13px;font-weight:600;">CBO - Collection Floral Ruhak</div><div style="font-size:11px;color:var(--txt3);margin-top:2px;">ROAS 3.35x · CTR 4.80% · Gasto €741</div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span class="al-badge badge-sc">SCALE</span><a href="criativos.html" class="btn btn-sm btn-p" style="text-decoration:none;">Ver Criativos →</a></div>
+      </div>
+      <div class="sug-list">
+        <div class="sug-item"><span class="sug-ico">💡</span><div class="sug-txt">Aumentar orçamento 20% — ROAS acima de 3.5x há 2 dias</div></div>
+        <div class="sug-item"><span class="sug-ico">💡</span><div class="sug-txt">Adicionar 3-5 novos criativos com ângulo emocional diferente</div></div>
+      </div>
+    </div>
+    <div class="camp-block">
+      <div class="camp-block-hd">
+        <div><div style="font-size:13px;font-weight:600;">CBO - Farmerkollekció-F</div><div style="font-size:11px;color:var(--txt3);margin-top:2px;">ROAS 0.8x · CTR 8.68% · Gasto €162</div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><span class="al-badge badge-kl">KILL</span><a href="criativos.html" class="btn btn-sm btn-p" style="text-decoration:none;">Ver Criativos →</a></div>
+      </div>
+      <div class="sug-list">
+        <div class="sug-item"><span class="sug-ico">🔴</span><div class="sug-txt">Pausar campanha imediatamente — ROAS abaixo de 1.0x</div></div>
+        <div class="sug-item"><span class="sug-ico">💡</span><div class="sug-txt">CTR alto mas sem conversões — problema de preço ou página de produto</div></div>
+      </div>
+    </div>`;
+}
+
+// ===== REPORTS PAGE =====
+function setRT(t) {
+  reportTab=t;
+  ['daily','weekly','consult'].forEach(x=>el('rt-'+x)?.classList.toggle('on',x===t));
+  el('repContent').style.display=t==='consult'?'none':'';
+  el('consultContent').style.display=t==='consult'?'flex':'none';
+  el('genRepBtn').style.display=t==='consult'?'none':'';
+  if(t==='consult'&&!el('consultMsgs').children.length) initConsult();
+}
+
+async function genReport() {
+  if(!CFG.claude){notify('⚠️ Configura Anthropic API Key','err');showModal('cfgModal');return;}
+  const isDay=reportTab==='daily';
+  showLoad(`A gerar relatório ${isDay?'diário':'semanal'}...`);
+  const preset=isDay?'today':'last_7d';
+  try {
+    let campData='Sem dados Meta.';
+    let snap={};
+    if(CFG.token&&CFG.acc) {
+      try {
+        const d=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,insights.date_preset(${preset}){spend,purchase_roas,actions,ctr,cpm,frequency}&limit=20&effective_status=['ACTIVE','PAUSED']`);
+        const cs=d?.data||[];
+        const ts=cs.reduce((s,c)=>s+parseFloat(c.insights?.data?.[0]?.spend||0),0);
+        const tp=cs.reduce((s,c)=>s+parseInt(c.insights?.data?.[0]?.actions?.find(a=>a.action_type==='purchase')?.value||0),0);
+        snap={spend:ts.toFixed(2),purchases:tp,active:cs.filter(c=>c.status==='ACTIVE').length};
+        campData=cs.map(c=>{const i=c.insights?.data?.[0];return`${c.name}: €${parseFloat(i?.spend||0).toFixed(2)} gasto, ROAS ${i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value).toFixed(2):'—'}x`;}).join('\n');
+      } catch(e2){}
+    }
+    const sys='Consultor sénior Meta Ads para e-commerce de moda na Hungria. Thresholds: CTR<1.5% crítico, ROAS>3.5 escalar. Respondes em português de Portugal, prático e direto.';
+    const prompt=isDay
+      ?`Relatório DIÁRIO Noémi Eger Fashion — ${new Date().toLocaleDateString('pt-PT')}\nMétricas: ${JSON.stringify(snap)}\nCampanhas:\n${campData}\n\nUsa ## para títulos:\n## RESUMO DO DIA\n## MÉTRICAS CHAVE\n## ALERTAS ATIVOS\n## O QUE FAZER HOJE (max 5 ações numeradas)`
+      :`Relatório SEMANAL Noémi Eger Fashion\nMétricas: ${JSON.stringify(snap)}\nCampanhas:\n${campData}\n\nUsa ## para títulos:\n## RESUMO DA SEMANA\n## O QUE FUNCIONOU\n## O QUE NÃO FUNCIONOU\n## PLANO PRÓXIMA SEMANA\n## IDEIAS PARA TESTAR`;
+    const rep=await askClaude(prompt,sys);
+    hideLoad();
+    const secs=rep.split(/^## /m).filter(s=>s.trim());
+    const rendered=secs.map(s=>{const nl=s.indexOf('\n');const t=nl>-1?s.slice(0,nl).trim():s.trim();const b=nl>-1?s.slice(nl+1).trim():'';
+      return`<div class="rep-section"><div class="rep-section-ttl">${t}</div><div class="rep-section-body">${b}</div></div>`;}).join('');
+    const now=new Date();
+    el('repContent').innerHTML=`
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div><div style="font-size:11px;color:var(--acc2);text-transform:uppercase;letter-spacing:1.5px;">✦ Relatório ${isDay?'Diário':'Semanal'}</div><div style="font-size:11px;color:var(--txt3);margin-top:3px;">Gerado às ${now.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})}</div></div>
+        <button class="btn btn-sm btn-s" onclick="genReport()">↻ Regenerar</button>
+      </div>
+      <div class="metrics-grid" style="margin-bottom:16px;">
+        <div class="met-card"><div class="met-lbl">Gasto</div><div class="met-val" style="font-size:20px;">€${snap.spend||'—'}</div></div>
+        <div class="met-card"><div class="met-lbl">Compras</div><div class="met-val" style="font-size:20px;color:var(--grn);">${snap.purchases||'—'}</div></div>
+      </div>
+      <div class="card"><div class="card-bd">${rendered}</div></div>`;
+  } catch(e){hideLoad();notify('❌ '+e.message,'err');}
+}
+
+let consultHist=[];
+async function initConsult() {
+  consultHist=[];
+  let campSnap='Sem dados.';
+  if(CFG.token&&CFG.acc){try{const d=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,insights.date_preset(last_7d){spend,purchase_roas,actions,ctr}&limit=10&effective_status=['ACTIVE','PAUSED']`);if(d?.data)campSnap=d.data.map(c=>{const i=c.insights?.data?.[0];return`${c.name}: ROAS ${i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value).toFixed(2):'—'}x`;}).join('\n');}catch(e2){}}
+  try {
+    const txt=await askClaude(`Dados campanhas (7 dias):\n${campSnap}\n\nDá boas-vindas curtas e faz 1 pergunta prática sobre a estratégia atual. Máximo 3 frases.`,'Consultor Meta Ads Noémi Eger Fashion, Hungria. Português de Portugal. Direto e prático.');
+    addConsultMsg('ai',txt);
+    setConsultQRs(['O que devo escalar agora?','Onde estou a perder dinheiro?','Analisa as minhas campanhas','Como melhorar o ROAS?']);
+  } catch(e){addConsultMsg('ai','Configura a Anthropic API Key para iniciar o consultor IA.');}
+}
+
+function addConsultMsg(role,txt) {
+  const m=el('consultMsgs');
+  const d=document.createElement('div');
+  d.style.cssText=`max-width:88%;padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.6;${role==='ai'?'background:var(--s2);border:1px solid var(--bd);color:var(--txt2);align-self:flex-start;':'background:rgba(108,111,255,.1);border:1px solid rgba(108,111,255,.2);color:var(--txt);align-self:flex-end;text-align:right;'}`;
+  d.innerHTML=txt; m.appendChild(d); m.scrollTop=m.scrollHeight;
+  consultHist.push({role:role==='ai'?'assistant':'user',content:txt.replace(/<[^>]*>/g,'')});
+}
+
+function setConsultQRs(opts) {
+  el('consultQRs').innerHTML=opts.map(o=>`<button class="qr-btn" onclick="el('consultInp').value='${o}';consultSend()">${o}</button>`).join('');
+}
+
+async function consultSend() {
+  const inp=el('consultInp'); const msg=inp.value.trim(); if(!msg)return;
+  inp.value=''; el('consultQRs').innerHTML=''; addConsultMsg('user',msg);
+  let campCtx='';
+  if(CFG.token&&CFG.acc){try{const d=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,insights.date_preset(last_7d){spend,purchase_roas,actions,ctr,cpm,frequency}&limit=10&effective_status=['ACTIVE','PAUSED']`);if(d?.data)campCtx='\n\nDados atuais:\n'+d.data.map(c=>{const i=c.insights?.data?.[0];return`• ${c.name}: €${parseFloat(i?.spend||0).toFixed(2)} gasto, ROAS ${i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value).toFixed(2):'—'}x, CTR ${i?.ctr?parseFloat(i.ctr).toFixed(2):'—'}%`;}).join('\n');}catch(e2){}}
+  const sys=`Consultor Meta Ads Noémi Eger Fashion (moda, Hungria). Thresholds: CTR<1.5% crítico, ROAS>3.5 escalar, freq>3.5 renovar criativos.${campCtx}\nRespondes em português de Portugal. Direto, prático, orientado para resultados.`;
+  const think=document.createElement('div');think.style.cssText='color:var(--txt3);font-size:11px;padding:6px 0;align-self:flex-start;';think.textContent='⏳ A analisar...';think.id='cthinker';el('consultMsgs').appendChild(think);
+  try {
+    const r=await fetch('https://replicate-proxy.tomassnapoles.workers.dev/anthropic/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':CFG.claude,'anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:sys,messages:[...consultHist.slice(-8),{role:'user',content:msg}]})});
+    const d=await r.json(); el('cthinker')?.remove();
+    if(d.error)throw new Error(d.error.message);
+    addConsultMsg('ai',d.content[0].text);
+    setConsultQRs(['O que devo fazer primeiro?','Como melhorar o CTR?','Qual campanha escalar?','Ver frequência das campanhas']);
+  } catch(e){el('cthinker')?.remove();addConsultMsg('ai','❌ Erro: '+e.message);}
+}
+
+// ===== WIZARD CREATOR =====
+let wizState = { confirmed:[], changed:[] };
+
+function initWiz() {
+  wizState={confirmed:[],changed:[]};
+  el('wiz-summary').style.display='none';
+  el('wiz-chat').innerHTML='';
+  el('wiz-qrs').innerHTML='';
+  [2,3,4].forEach(i=>{
+    el('ws'+i).className='wiz-sec locked';
+    el('wb'+i).style.display='none';
+    el('wa'+i).textContent='▶';
+    el('wn'+i).className='wiz-num';
+  });
+  el('ws1').className='wiz-sec';
+  el('wn1').className='wiz-num act';
+  el('wb1').style.display='';
+  toggleBudgetLevel();
+  wizChat('ai','Vamos criar a tua campanha! 🚀 Tens 4 secções. Cada campo já tem a predefinição recomendada.\n\nComeça pelo tipo — está definido como <strong>Vendas</strong> com estrutura <strong>CBO</strong>. Queres manter ou alterar?');
+  setWizQRs(['Manter e avançar','O que é CBO vs ABO?','Alterar objetivo']);
+}
+
+function toggleWiz(n) {
+  const bd=el('wb'+n); const ar=el('wa'+n);
+  if(el('ws'+n).classList.contains('locked'))return;
+  const isOpen=bd.style.display!=='none';
+  bd.style.display=isOpen?'none':''; ar.textContent=isOpen?'▶':'▼';
+}
+
+function setTG(g,e) {
+  document.querySelectorAll(`#tg-${g} .tg-o`).forEach(o=>o.classList.remove('on'));
+  e.classList.add('on');
+}
+function getTG(g){const a=document.querySelector(`#tg-${g} .tg-o.on`);return a?a.dataset.val:null;}
+function mchg(f){if(!wizState.changed.includes(f))wizState.changed.push(f);const e=el('chg-'+f);if(e)e.style.display='inline';}
+function toggleBudgetLevel(){const c=getTG('bt')==='CBO';el('cbo-bud-f').style.display=c?'':'none';el('abo-bud-f').style.display=c?'none':'';}
+function toggleSL(){el('sl-f').style.display=getTG('sl')==='set'?'':'none';}
+function toggleSD(){el('sd-f').style.display=getTG('sd')==='custom'?'':'none';}
+function toggleED(){el('ed-f').style.display=getTG('ed')==='set'?'':'none';}
+function toggleBid(){el('bid-f').style.display=getTG('bid')!=='LOWEST_COST_WITHOUT_CAP'?'':'none';}
+function toggleAT(){el('at-f').style.display=getTG('at')!=='broad'?'':'none';}
+function togglePL(){el('pl-f').style.display=getTG('pl')==='manual'?'':'none';}
+
+function confirmWiz(n) {
+  if(n===1&&!el('nc-name')?.value?.trim()){notify('⚠️ Preenche o nome da campanha','err');return;}
+  if(n===2&&!el('nc-adname')?.value?.trim()){notify('⚠️ Preenche o nome do conjunto','err');return;}
+  wizState.confirmed.push(n);
+  el('ws'+n).className='wiz-sec done';
+  el('wn'+n).className='wiz-num done'; el('wn'+n).textContent='✓';
+  el('wb'+n).style.display='none'; el('wa'+n).textContent='▶';
+  if(n<4){
+    el('ws'+(n+1)).className='wiz-sec';
+    el('wn'+(n+1)).className='wiz-num act';
+    el('wb'+(n+1)).style.display=''; el('wa'+(n+1)).textContent='▼';
+    el('ws'+(n+1)).scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  const msgs={
+    1:()=>{const name=el('nc-name').value;const bt=getTG('bt');wizChat('ai',`✅ Campanha <strong>"${name}"</strong> com estrutura <strong>${bt}</strong>.\n\nAgora o conjunto de anúncios — pixel Noemi Eger Fashion, evento Compra. Confirmas?`);setWizQRs(['Manter tudo','Alterar evento','Mudar data início']);},
+    2:()=>{wizChat('ai',`✅ Conjunto configurado.\n\nPúblico — definido como <strong>Hungria, Broad, 18-65+</strong>. Queres manter?`);setWizQRs(['Manter Broad — Hungria','Outro país','Público guardado']);},
+    3:()=>{wizChat('ai',`✅ Público configurado.\n\nÚltima secção — conformidade UE. Anunciante e pagadora como <strong>Noemi Eger</strong>. Confirmas?`);setWizQRs(['Confirmar Noemi Eger','Alterar anunciante']);},
+    4:()=>{wizChat('ai','🎉 Tudo configurado! Revê o resumo e clica em <strong>Criar Campanha</strong>.');buildWizSummary();}
+  };
+  msgs[n]?.();
+  if(n===4){el('wiz-summary').style.display='';el('wiz-summary').scrollIntoView({behavior:'smooth'});}
+}
+
+function wizChat(r,msg){const b=el('wiz-chat');const d=document.createElement('div');d.className='cc-msg '+r;d.innerHTML=msg.replace(/\n/g,'<br>');b.appendChild(d);b.scrollTop=b.scrollHeight;}
+function setWizQRs(opts){el('wiz-qrs').innerHTML=opts.map(o=>`<button class="qr-btn" onclick="wizQR('${o}')">${o}</button>`).join('');}
+async function wizQR(msg){wizChat('user',msg);el('wiz-qrs').innerHTML='';const low=msg.toLowerCase();
+  if(low.includes('cbo vs abo')||low.includes('cbo v')) {wizChat('ai','<strong>CBO</strong> — Meta distribui o orçamento automaticamente pelo melhor conjunto. Recomendado quando já sabes o que funciona.<br><br><strong>ABO</strong> — Defines o orçamento por conjunto. Mais controlo, bom para testar públicos diferentes.');setWizQRs(['Manter CBO','Mudar para ABO']);}
+  else if(CFG.claude) {try{const r=await askClaude(msg,'Assistente campanha Meta Ads Noémi Eger. Máximo 3 frases, português de Portugal.');wizChat('ai',r);}catch(e){wizChat('ai','Erro: '+e.message);}}
+  else wizChat('ai','Configura a Anthropic API Key para respostas personalizadas.');
+}
+async function wizSend(){const i=el('wiz-inp');const m=i.value.trim();if(!m)return;i.value='';wizQR(m);}
+
+function buildWizSummary(){
+  const bt=getTG('bt'); const obj=getTG('obj');
+  const objL={OUTCOME_SALES:'Vendas',OUTCOME_TRAFFIC:'Tráfego',OUTCOME_AWARENESS:'Reconhecimento',OUTCOME_ENGAGEMENT:'Envolvimento',OUTCOME_LEADS:'Leads'};
+  const bud=bt==='CBO'?`€${el('nc-cbobudget')?.value||'—'}/dia (campanha)`:`€${el('nc-abobudget')?.value||'—'}/dia (conjunto)`;
+  const country=el('nc-country')?.value||'HU';
+  const rows=[
+    ['campname','Nome Campanha',el('nc-name')?.value],
+    ['obj','Objetivo',objL[obj]||obj],
+    ['bt','Estrutura',bt],
+    ['bud','Orçamento',bud],
+    ['adname','Nome Conjunto',el('nc-adname')?.value],
+    ['cl','Local Conversão',getTG('cl')||'WEBSITE'],
+    ['ev','Evento',getTG('ev')||'PURCHASE'],
+    ['at','Público',getTG('at')||'broad'],
+    ['country','País',country],
+    ['pl','Placements',getTG('pl')||'auto'],
+  ];
+  const isC=f=>wizState.changed.includes(f);
+  el('wiz-summary').innerHTML=`<div class="card"><div class="card-hd"><h3>Resumo da Campanha</h3><span style="font-size:11px;color:var(--txt3)">🔵 padrão &nbsp; 🟢 alterado</span></div><div class="card-bd">
+    ${rows.map(([f,l,v])=>`<div class="sum-row"><div class="sum-dot ${isC(f)?'c':'d'}"></div><div class="sum-key">${l}</div><div class="sum-val">${v||'—'}</div></div>`).join('')}
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button class="btn btn-s" style="flex:1" onclick="publishCamp(false)">🚀 Criar Campanha</button>
+      <button class="btn btn-p" style="flex:1" onclick="publishCamp(true)">🚀 Criar + Criativos</button>
+    </div>
+    <div id="pub-result"></div>
+  </div></div>`;
+}
+
+async function publishCamp(withCreatives){
+  if(!CFG.token||!CFG.acc){notify('⚠️ Configura credenciais Meta','err');showModal('cfgModal');return;}
+  const name=el('nc-name')?.value;
+  const obj=getTG('obj')||'OUTCOME_SALES';
+  const bt=getTG('bt')||'CBO';
+  const scat=el('nc-scat')?.value||'NONE';
+  showLoad('A criar campanha na Business Manager...');
+  try {
+    const campBody={name,objective:obj,status:'PAUSED',special_ad_categories:scat==='NONE'?[]:[scat],is_adset_budget_sharing_enabled:bt==='CBO'};
+    if(bt==='CBO'){const b=parseFloat(el('nc-cbobudget')?.value||0);if(b>0)campBody.daily_budget=Math.round(b*100);}
+    const camp=await metaPost(`/${CFG.acc}/campaigns`,campBody);
+    const campId=camp.id||camp.campaign_id;
+    if(!campId)throw new Error('ID de campanha não encontrado: '+JSON.stringify(camp));
+    showLoad('A criar conjunto de anúncios...');
+    const adName=el('nc-adname')?.value||name+' — Ad Set';
+    const countryRaw=el('nc-country')?.value||'HU';
+    const country=countryRaw.match(/\(([A-Z]{2})\)/)?.[1]||countryRaw.replace(/[^A-Z]/gi,'').toUpperCase().slice(0,2)||'HU';
+    const targeting={geo_locations:{countries:[country]},age_min:parseInt(el('nc-agemin')?.value||18),age_max:parseInt(el('nc-agemax')?.value||65)};
+    const gen=getTG('gen'); if(gen&&gen!=='0')targeting.genders=[parseInt(gen)];
+    const pobj=el('nc-pobj')?.value||'OFFSITE_CONVERSIONS';
+    const ev=getTG('ev')||'PURCHASE';
+    const adsetBody={name:adName,campaign_id:campId,billing_event:'IMPRESSIONS',optimization_goal:pobj,targeting,status:'PAUSED',bid_amount:50};
+    const budVal=bt==='CBO'?parseFloat(el('nc-cbobudget')?.value||50):parseFloat(el('nc-abobudget')?.value||50);
+    adsetBody.daily_budget=Math.round(Math.max(budVal,1)*100);
+    if(pobj==='OFFSITE_CONVERSIONS'&&CFG.pixel)adsetBody.promoted_object={pixel_id:CFG.pixel,custom_event_type:ev};
+    const adset=await metaPost(`/${CFG.acc}/adsets`,adsetBody);
+    hideLoad();
+    notify('✅ Campanha criada!','ok');
+    el('pub-result').innerHTML=`<div style="margin-top:14px;padding:12px;background:rgba(62,207,142,.07);border:1px solid rgba(62,207,142,.2);border-radius:8px;font-size:12px;color:var(--grn);">
+      ✅ <strong>Campanha criada!</strong> ID: <code>${camp.id}</code><br>Conjunto ID: <code>${adset.id}</code>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
+        <a href="criativos.html?campaign=${camp.id}&name=${encodeURIComponent(name)}&budget=${budVal}" class="btn btn-p btn-sm" style="text-decoration:none;">🎨 Criar Criativos →</a>
+        <a href="https://business.facebook.com/adsmanager" target="_blank" class="btn btn-s btn-sm" style="text-decoration:none;">Abrir Ads Manager</a>
+      </div></div>`;
+    if(withCreatives)setTimeout(()=>{window.location.href=`criativos.html?campaign=${camp.id}&name=${encodeURIComponent(name)}&budget=${budVal}`;},1200);
+  } catch(e){hideLoad();notify('❌ '+e.message,'err');el('pub-result').innerHTML=`<div style="margin-top:10px;padding:10px;background:rgba(224,92,106,.07);border:1px solid rgba(224,92,106,.2);border-radius:8px;font-size:12px;color:var(--red);">❌ ${e.message}</div>`;}
+}
+
+// ===== CLAUDE PANEL =====
+let cpHistory=[];
+async function cpSend(){
+  const i=el('cpInp'); const msg=i.value.trim(); if(!msg)return; i.value='';
+  const m=el('cpMsgs');
+  const ud=document.createElement('div');ud.className='msg user';ud.textContent=msg;m.appendChild(ud);
+  if(!CFG.claude){const ad=document.createElement('div');ad.className='msg ai';ad.textContent='Configura a Anthropic API Key em Definições.';m.appendChild(ad);return;}
+  let campCtx='';
+  if(CFG.token&&CFG.acc){try{const d=await metaGet(`/${CFG.acc}/campaigns?fields=name,status,insights.date_preset(last_7d){spend,purchase_roas,ctr}&limit=8&effective_status=['ACTIVE','PAUSED']`);if(d?.data)campCtx='\nCampanhas: '+d.data.map(c=>{const i=c.insights?.data?.[0];return`${c.name}: ROAS ${i?.purchase_roas?.[0]?.value?parseFloat(i.purchase_roas[0].value).toFixed(2):'—'}x`;}).join(', ');}catch(e2){}}
+  const sys=`Consultor Meta Ads Noémi Eger Fashion (moda, Hungria). Thresholds: CTR<1.5% crítico, ROAS>3.5 ótimo.${campCtx}\nRespondes em português de Portugal. Máximo 3 frases. Prático e direto.`;
+  const ld=document.createElement('div');ld.className='msg ai';ld.textContent='⏳';ld.id='cpload';m.appendChild(ld);m.scrollTop=m.scrollHeight;
+  try {
+    const r=await fetch('https://replicate-proxy.tomassnapoles.workers.dev/anthropic/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':CFG.claude,'anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,system:sys,messages:[...cpHistory.slice(-6),{role:'user',content:msg}]})});
+    const d=await r.json(); el('cpload')?.remove();
+    if(d.error)throw new Error(d.error.message);
+    const txt=d.content[0].text;
+    const ad=document.createElement('div');ad.className='msg ai';ad.textContent=txt;m.appendChild(ad);m.scrollTop=m.scrollHeight;
+    cpHistory.push({role:'user',content:msg},{role:'assistant',content:txt});
+  } catch(e){el('cpload')?.remove();const ad=document.createElement('div');ad.className='msg ai';ad.textContent='❌ '+e.message;m.appendChild(ad);}
+}
+
+// ===== OBSIDIAN =====
+function triggerObsidian(){notify('ℹ️ Para gravar no Vault usa o Claude Code no teu PC: python scripts/ecom_screen_notes.py','ok');}
+
+// ===== INIT =====
+init();
+setTimeout(()=>{ if(!CFG.token)el('cs-spend').textContent='—'; },100);
+
+// Close modals on ESC
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-ov.on').forEach(m=>m.classList.remove('on'));});
+</script>
+</body>
+</html>
