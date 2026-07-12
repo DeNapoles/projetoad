@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T23:10:50.649Z",
+  "generated_at": "2026-07-12T23:24:10.585Z",
   "eur_huf_rate": 356.4,
   "stores": [
     {
@@ -22,16 +22,16 @@
           "message": "8 encomendas por cumprir (3 há mais de 48h)",
           "examples": [
             {
+              "number": 1202,
+              "hours": 77
+            },
+            {
               "number": 1201,
               "hours": 77
             },
             {
-              "number": 1202,
-              "hours": 76
-            },
-            {
               "number": 1204,
-              "hours": 52
+              "hours": 53
             },
             {
               "number": 1206,
@@ -693,12 +693,12 @@
           "name": "cbo - Mala Ava - 1.66 - 11 Julho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 22.14,
+          "spend": 22.15,
           "cpc": 0.23,
-          "ctr": 4.94,
+          "ctr": 4.93,
           "atc": 11,
           "purchases": 0,
-          "frequency": 1.153845,
+          "frequency": 1.154345,
           "roas": 0,
           "cpa": null
         },
@@ -706,14 +706,14 @@
           "name": "cbo - Mala Macskás - 1.71 - 8 julho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 49.83,
+          "spend": 49.84,
           "cpc": 0.26,
           "ctr": 2.13,
           "atc": 6,
           "purchases": 2,
-          "frequency": 1.3334716,
+          "frequency": 1.3329732,
           "roas": 5.364954,
-          "cpa": 24.915
+          "cpa": 24.92
         },
         {
           "name": "cbo - Mala Róza - ber - 17 Junho",
@@ -732,14 +732,14 @@
           "name": "cbo - Malas antigos - 27 Junho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 424.21,
+          "spend": 424.23,
           "cpc": 0.14,
           "ctr": 4.3,
           "atc": 107,
           "purchases": 17,
-          "frequency": 1.3960855625,
-          "roas": 2.979863,
-          "cpa": 24.953529411764706
+          "frequency": 1.395993875,
+          "roas": 2.9797514545454544,
+          "cpa": 24.954705882352943
         },
         {
           "name": "cbo - Malas Necessaires - 3 Julho",
@@ -763,7 +763,7 @@
           "ctr": 2.23,
           "atc": 92,
           "purchases": 23,
-          "frequency": 1.24119,
+          "frequency": 1.2411710769230768,
           "roas": 4.302819235294118,
           "cpa": 18.66
         },
@@ -932,7 +932,7 @@
           "ctr": 9.87,
           "atc": 0,
           "purchases": 0,
-          "frequency": 1.0593425,
+          "frequency": 1.0593367333333332,
           "roas": 0,
           "cpa": null
         },
@@ -950,8 +950,8 @@
           "cpa": null
         }
       ],
-      "ads_spend_total": 1219.47,
-      "ads_revenue_attributed": 4429.47255057353
+      "ads_spend_total": 1219.51,
+      "ads_revenue_attributed": 4429.538476445348
     },
     {
       "id": "monika_munchen",
