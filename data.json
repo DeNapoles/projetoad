@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T21:35:36.969Z",
+  "generated_at": "2026-07-12T22:27:27.849Z",
   "eur_huf_rate": 356.4,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 23781,
-      "revenue_avg7d": 82836.58571428571,
-      "orders_today": 2,
-      "aov": 11890.5,
+      "revenue_today": 0,
+      "revenue_avg7d": 75399.01428571428,
+      "orders_today": 0,
+      "aov": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -22,27 +22,27 @@
           "message": "8 encomendas por cumprir (3 há mais de 48h)",
           "examples": [
             {
+              "number": 1202,
+              "hours": 76
+            },
+            {
               "number": 1201,
               "hours": 76
             },
             {
-              "number": 1202,
-              "hours": 75
-            },
-            {
               "number": 1204,
-              "hours": 51
-            },
-            {
-              "number": 1207,
-              "hours": 37
+              "hours": 52
             },
             {
               "number": 1206,
-              "hours": 37
+              "hours": 38
             },
             {
               "number": 1205,
+              "hours": 38
+            },
+            {
+              "number": 1207,
               "hours": 37
             },
             {
@@ -51,7 +51,7 @@
             },
             {
               "number": 1209,
-              "hours": 27
+              "hours": 28
             }
           ]
         },
@@ -692,12 +692,12 @@
           "name": "cbo - Mala Ava - 1.66 - 11 Julho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 22.08,
+          "spend": 22.13,
           "cpc": 0.23,
-          "ctr": 4.98,
+          "ctr": 4.95,
           "atc": 11,
           "purchases": 0,
-          "frequency": 1.153789,
+          "frequency": 1.1529695,
           "roas": 0,
           "cpa": null
         },
@@ -705,14 +705,14 @@
           "name": "cbo - Mala Macskás - 1.71 - 8 julho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 49.47,
+          "spend": 49.79,
           "cpc": 0.26,
-          "ctr": 2.12,
+          "ctr": 2.11,
           "atc": 6,
           "purchases": 2,
-          "frequency": 1.3323654,
+          "frequency": 1.3331134,
           "roas": 5.364954,
-          "cpa": 24.735
+          "cpa": 24.895
         },
         {
           "name": "cbo - Mala Róza - ber - 17 Junho",
@@ -731,40 +731,40 @@
           "name": "cbo - Malas antigos - 27 Junho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 423.58,
+          "spend": 424.05,
           "cpc": 0.14,
           "ctr": 4.3,
           "atc": 107,
           "purchases": 17,
-          "frequency": 1.3967886875,
-          "roas": 2.9834475454545455,
-          "cpa": 24.916470588235292
+          "frequency": 1.396086,
+          "roas": 2.980760272727273,
+          "cpa": 24.944117647058825
         },
         {
           "name": "cbo - Malas Necessaires - 3 Julho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 263.97,
+          "spend": 264.32,
           "cpc": 0.1,
-          "ctr": 8.19,
+          "ctr": 8.18,
           "atc": 43,
           "purchases": 11,
-          "frequency": 1.1944298,
+          "frequency": 1.1945181,
           "roas": 3.973714,
-          "cpa": 23.99727272727273
+          "cpa": 24.029090909090908
         },
         {
           "name": "cbo - Mala Zita - 1.48 - 17 Junho",
           "status": "ACTIVE",
           "objective": "OUTCOME_SALES",
-          "spend": 428.78,
+          "spend": 429.09,
           "cpc": 0.17,
           "ctr": 2.23,
           "atc": 92,
           "purchases": 23,
-          "frequency": 1.2413640384615385,
+          "frequency": 1.2412279230769232,
           "roas": 4.302819235294118,
-          "cpa": 18.64260869565217
+          "cpa": 18.656086956521737
         },
         {
           "name": "CBO - Márk - BER - 18Maio",
@@ -926,12 +926,12 @@
           "name": "Nova campanha de Interação",
           "status": "ACTIVE",
           "objective": "OUTCOME_ENGAGEMENT",
-          "spend": 29.49,
+          "spend": 29.5,
           "cpc": 0.01,
-          "ctr": 9.87,
+          "ctr": 9.86,
           "atc": 0,
           "purchases": 0,
-          "frequency": 1.0595613,
+          "frequency": 1.0594636333333334,
           "roas": 0,
           "cpa": null
         },
@@ -949,8 +949,8 @@
           "cpa": null
         }
       ],
-      "ads_spend_total": 1217.3700000000001,
-      "ads_revenue_attributed": 4423.037101973048
+      "ads_spend_total": 1218.8799999999999,
+      "ads_revenue_attributed": 4427.741243462353
     },
     {
       "id": "monika_munchen",
