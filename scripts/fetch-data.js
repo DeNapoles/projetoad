@@ -140,7 +140,7 @@ async function fetchFlyweelCampaigns(store) {
                 dataSource: 'ads',
                 ad_account_id: store.flyweel_ad_account_id,
                 metrics: ['spend', 'converted_product_value', 'purchase_roas', 'purchases', 'ctr', 'frequency'],
-                dimensions: ['campaign_name'],
+                dimensions: ['campaign'],
                 date_range: 'last_7d'
               }
             ]
@@ -156,7 +156,7 @@ async function fetchFlyweelCampaigns(store) {
     console.log('DEBUG Flyweel resposta:', JSON.stringify(data).slice(0, 2000));
     const rows = data?.result?.structuredContent?.results?.[0]?.rows || data?.result?.content?.[0]?.rows || data?.result?.rows || [];
     const campaigns = rows.map(r => ({
-      name: r.campaign_name,
+      name: r.campaign,
       spend: r.spend,
       revenue: r.converted_product_value,
       roas: r.purchase_roas,
