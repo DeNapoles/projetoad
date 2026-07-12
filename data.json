@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T18:03:07.726Z",
+  "generated_at": "2026-07-12T18:32:50.479Z",
   "eur_huf_rate": 356.4,
   "stores": [
     {
@@ -9,22 +9,26 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 12990,
+      "revenue_today": 23781,
       "revenue_yesterday": 100724,
-      "revenue_avg7d": 81295.01428571428,
-      "orders_today": 1,
-      "aov": 12990,
+      "revenue_avg7d": 82836.58571428571,
+      "orders_today": 2,
+      "aov": 11890.5,
       "alerts": [
+        {
+          "message": "Encomenda #1209 por cumprir há 24h",
+          "severity": "medium"
+        },
         {
           "message": "Encomenda #1209 com desconto de 33%",
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1208 por cumprir há 28h",
+          "message": "Encomenda #1208 por cumprir há 29h",
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1207 por cumprir há 33h",
+          "message": "Encomenda #1207 por cumprir há 34h",
           "severity": "medium"
         },
         {
@@ -36,7 +40,7 @@
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1204 por cumprir há 47h",
+          "message": "Encomenda #1204 por cumprir há 48h",
           "severity": "medium"
         },
         {
@@ -44,16 +48,12 @@
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1202 por cumprir há 71h",
+          "message": "Encomenda #1202 por cumprir há 72h",
           "severity": "high"
         },
         {
           "message": "Encomenda #1201 por cumprir há 72h",
           "severity": "high"
-        },
-        {
-          "message": "Encomenda #1195 com desconto de 33%",
-          "severity": "medium"
         }
       ],
       "campaigns": [],
