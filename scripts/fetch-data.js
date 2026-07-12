@@ -125,7 +125,8 @@ async function fetchFlyweelCampaigns(store) {
   }
   try {
     const res = await fetch('https://api.flyweel.co/functions/v1/mcp-server/mcp', {
-      method: 'POST',
+      method: 'POST',metrics: ['spend', 'converted_product_value', 'purchase_roas', 'purchases', 'ctr', 'frequency'],
+      
       headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
       body: JSON.stringify({
         jsonrpc: '2.0',
@@ -153,10 +154,15 @@ async function fetchFlyweelCampaigns(store) {
     }
     const data = await res.json();
     console.log('DEBUG Flyweel resposta:', JSON.stringify(data).slice(0, 2000));
-    const rows = data?.result?.content?.[0]?.rows || data?.result?.rows || [];
+    const rows = data?.result?.structuredContent?.results?.[0]?.rows || data?.result?.content?.[0]?.rows || data?.result?.rows || [];
     const campaigns = rows.map(r => ({
-      name: r.campaign_name, spend: r.spend, revenue: r.revenue,
-      roas: r.roas, cpa: r.cpa, ctr: r.ctr, frequency: r.frequency
+      name: r.campaign_name,
+      spend: r.spend,
+      revenue: r.converted_product_value,
+      roas: r.purchase_roas,
+      cpa: (r.spend && r.purchases) ? r.spend / r.purchases : null,
+      ctr: r.ctr,
+      frequency: r.frequency
     }));
     const spend_total = campaigns.reduce((s, c) => s + (c.spend || 0), 0);
     const revenue_attributed = campaigns.reduce((s, c) => s + (c.revenue || 0), 0);
