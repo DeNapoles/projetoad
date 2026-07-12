@@ -134,10 +134,14 @@ async function fetchFlyweelCampaigns(store) {
         params: {
           name: 'query_metrics',
           arguments: {
-            ad_account_id: store.flyweel_ad_account_id,
-            metrics: ['spend', 'revenue', 'roas', 'cpa', 'ctr', 'frequency'],
-            dimensions: ['campaign_name'],
-            date_range: 'last_7d'
+            queries: [
+              {
+                ad_account_id: store.flyweel_ad_account_id,
+                metrics: ['spend', 'revenue', 'roas', 'cpa', 'ctr', 'frequency'],
+                dimensions: ['campaign_name'],
+                date_range: 'last_7d'
+              }
+            ]
           }
         }
       })
