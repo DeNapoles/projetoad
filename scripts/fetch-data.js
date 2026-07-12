@@ -155,15 +155,22 @@ async function fetchFlyweelCampaigns(store) {
     const data = await res.json();
     console.log('DEBUG Flyweel resposta:', JSON.stringify(data).slice(0, 2000));
     const rows = data?.result?.structuredContent?.results?.[0]?.data?.data || data?.result?.structuredContent?.results?.[0]?.rows || data?.result?.content?.[0]?.rows || data?.result?.rows || [];
-    const campaigns = rows.map(r => ({
-      name: r.campaign,
-      spend: r.spend,
-      revenue: r.converted_product_value,
-      roas: r.purchase_roas,
-      cpa: (r.spend && r.purchases) ? r.spend / r.purchases : null,
-      ctr: r.ctr,
-      frequency: r.frequency
-    }));
+    const campaigns = rows.map(r => {
+    const roas = r.purchase_roas || 0;
+    const spend = r.spend || 0;
+    const revenue = (r.converted_product_value && r.converted_product_value > 0)
+        ? r.converted_product_value
+        : (roas && spend ? roas * spend : 0);
+    return {
+        name: r.campaign,
+        spend,
+        revenue,
+        roas,
+        cpa: (spend && r.purchases) ? spend / r.purchases : null,
+        ctr: r.ctr,
+        frequency: r.frequency
+      };
+    });
     const spend_total = campaigns.reduce((s, c) => s + (c.spend || 0), 0);
     const revenue_attributed = campaigns.reduce((s, c) => s + (c.revenue || 0), 0);
     return { campaigns, ads_spend_total: spend_total, ads_revenue_attributed: revenue_attributed };
