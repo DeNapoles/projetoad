@@ -136,6 +136,7 @@ async function fetchFlyweelCampaigns(store) {
           arguments: {
             queries: [
               {
+                dataSource: 'meta',
                 ad_account_id: store.flyweel_ad_account_id,
                 metrics: ['spend', 'revenue', 'roas', 'cpa', 'ctr', 'frequency'],
                 dimensions: ['campaign_name'],
