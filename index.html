@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Lojas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14131a; --surface:#1d1c25; --surface-2:#262530; --border:#322f3d;
+    --gold:#c9a25c; --text:#f1efe9; --text-muted:#9d99a8;
+    --red:#e2564a; --amber:#d9a441; --green:#6fa989; --blue:#7a9cc9; --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:radial-gradient(ellipse at top,#1a1922 0%,#100f15 60%); color:var(--text);
+    font-family:'Inter',sans-serif; min-height:100vh; padding:32px 20px 64px; }
+  .wrap{ max-width:920px; margin:0 auto; position:relative; }
+  header{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:16px; }
+  h1{ font-family:'Fraunces',serif; font-weight:600; font-size:25px; }
+  .sub{ color:var(--text-muted); font-size:13px; margin-top:2px; }
+  #lastUpdated{ font-size:12px; color:var(--text-muted); }
+  .headerRight{ display:flex; align-items:center; gap:10px; position:relative; }
+  .iconBtn2{ background:var(--surface-2); border:1px solid var(--border); color:var(--text-muted); width:34px; height:34px;
+    border-radius:9px; cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; }
+  .iconBtn2:hover{ color:var(--text); border-color:var(--gold); }
+  .iconBtn2.hasItems::after{ content:''; position:absolute; top:-2px; right:-2px; width:8px; height:8px; border-radius:50%; background:var(--red); }
+
+  .tabs{ display:flex; gap:4px; border-bottom:1px solid var(--border); margin-bottom:26px; }
+  .tab{ background:none; border:none; color:var(--text-muted); font-size:14px; font-weight:500;
+    padding:10px 4px; margin-right:22px; cursor:pointer; position:relative; top:1px; }
+  .tab.active{ color:var(--text); }
+  .tab.active::after{ content:''; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--gold); }
+  .panel{ display:none; } .panel.active{ display:block; }
+
+  .kpiGrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:26px; }
+  .kpi{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; }
+  .kpi .label{ font-size:12px; color:var(--text-muted); margin-bottom:8px; }
+  .kpi .value{ font-family:'Inter',sans-serif; font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; }
+  .value.positive{ color:var(--green); } .value.negative{ color:var(--red); }
+  .curSub{ font-size:12.5px; color:var(--text-muted); font-weight:500; }
+  .profitTag{ font-size:13px; font-weight:600; }
+  .profitTag.positive{ color:var(--green); } .profitTag.negative{ color:var(--red); }
+
+  .sectionTitle{ font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted);
+    margin:26px 0 12px; display:flex; align-items:center; gap:8px; }
+  .sectionTitle::after{ content:''; flex:1; height:1px; background:var(--border); }
+  .sectionTitle .count{ background:var(--surface-2); padding:1px 8px; border-radius:20px; font-size:11px; }
+
+  .alertsList{ display:flex; flex-direction:column; gap:8px; }
+  .card{ background:var(--surface); border:1px solid var(--border);
+    border-left:3px solid var(--green); border-radius:10px; padding:12px 16px; font-size:13.5px; }
+  .card.high{ border-left-color:var(--red); } .card.medium{ border-left-color:var(--amber); }
+  .card.clickable{ cursor:pointer; }
+  .cardRow{ display:flex; align-items:flex-start; gap:12px; }
+  .card .dot{ width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; }
+  .alertDetail{ display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:12.5px; color:var(--text-muted); }
+  .alertDetail.open{ display:block; }
+  .alertDetail .exampleRow{ display:flex; justify-content:space-between; padding:3px 0; }
+  .alertToggle{ font-size:11.5px; color:var(--gold); cursor:pointer; margin-top:6px; display:inline-block; }
+  .emptyState{ color:var(--text-muted); font-size:13.5px; padding:14px 0; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  thead th{ text-align:left; font-weight:500; color:var(--text-muted); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.5px; padding:0 12px 10px; border-bottom:1px solid var(--border); }
+  tbody td{ padding:12px; border-bottom:1px solid var(--border); font-variant-numeric:tabular-nums; vertical-align:top; }
+  .roasGood{ color:var(--green); font-weight:600; } .roasBad{ color:var(--red); font-weight:600; }
+  .statusBadge{ font-size:10.5px; padding:2px 7px; border-radius:20px; background:var(--surface-2); color:var(--text-muted); text-transform:uppercase; }
+
+  select, input, textarea{
+    background:var(--surface-2); border:1px solid var(--border); color:var(--text);
+    padding:9px 11px; border-radius:8px; font-family:'Inter'; font-size:13.5px;
+  }
+  select:focus, input:focus, textarea:focus{ outline:2px solid var(--gold); outline-offset:1px; border-color:var(--gold); }
+
+  .formCard{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:28px; }
+  .formGrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  .field label{ display:block; font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.4px; margin-bottom:6px; }
+  .field select, .field input, .field textarea{ width:100%; }
+  textarea{ resize:vertical; min-height:56px; }
+  .fullRow{ grid-column:1 / -1; }
+  button.primary{ background:var(--gold); color:#1a1610; border:none; padding:10px 20px; border-radius:9px;
+    font-family:'Inter'; font-weight:600; font-size:13.5px; cursor:pointer; margin-top:4px; }
+  button.primary:hover{ filter:brightness(1.08); }
+  button.primary:disabled{ opacity:.5; cursor:default; }
+  button.small{ padding:6px 12px; font-size:12px; }
+  .toolbar{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; align-items:center; }
+  .toolbar select, .toolbar input[type="text"], .toolbar input[type="date"]{ width:auto; min-width:130px; }
+  .toolbar input[type="text"]{ flex:1; min-width:160px; }
+  .countTag{ font-size:12px; color:var(--text-muted); margin-left:auto; white-space:nowrap; }
+  .dayGroup{ margin-bottom:22px; }
+  .dayLabel{ font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;
+    margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .dayLabel::after{ content:''; flex:1; height:1px; background:var(--border); }
+  .entry{ display:flex; gap:12px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--gold);
+    border-radius:10px; padding:12px 14px; margin-bottom:8px; font-size:13.5px; align-items:flex-start; }
+  .entry.escalou{ border-left-color:var(--green); } .entry.desescalou{ border-left-color:var(--amber); }
+  .entry.criativo_novo{ border-left-color:var(--blue); } .entry.criativo_desligado{ border-left-color:var(--text-muted); }
+  .entry.pausou{ border-left-color:var(--red); } .entry.reativou{ border-left-color:var(--green); }
+  .entry.publico{ border-left-color:var(--blue); } .entry.outro{ border-left-color:var(--text-muted); }
+  .entryBody{ flex:1; }
+  .entryTop{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
+  .badge{ font-size:11px; padding:2px 8px; border-radius:20px; background:var(--surface-2); color:var(--text-muted); }
+  .campName{ font-weight:600; }
+  .entryNote{ color:var(--text-muted); font-size:13px; margin-top:2px; }
+  .iconBtn{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:13px; padding:2px 6px; }
+  .iconBtn:hover{ color:var(--text); }
+  #logSaveStatus, #notesSaveStatus{ font-size:11.5px; color:var(--text-muted); margin-top:8px; min-height:14px; }
+
+  .modalOverlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); align-items:center; justify-content:center; z-index:50; }
+  .modalOverlay.active{ display:flex; }
+  .modal{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; width:min(420px, 90vw); }
+  .modal h2{ font-family:'Fraunces',serif; font-size:18px; margin-bottom:6px; }
+  .modal .sub{ margin-bottom:18px; }
+  .modal .field{ margin-bottom:12px; }
+  .modal .field input{ width:100%; }
+  .modalActions{ display:flex; justify-content:flex-end; gap:8px; margin-top:16px; }
+  button.secondary{ background:var(--surface-2); border:1px solid var(--border); color:var(--text); padding:9px 16px;
+    border-radius:9px; font-size:13px; cursor:pointer; }
+
+  /* Painel de notas (quadro por urgência) */
+  .notesPanel{ display:none; position:absolute; top:44px; right:0; width:320px; max-width:88vw; z-index:40;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:0 12px 30px rgba(0,0,0,.4); }
+  .notesPanel.active{ display:block; }
+  .notesPanel h3{ font-family:'Fraunces',serif; font-size:15px; margin-bottom:10px; }
+  .noteAddRow{ display:flex; gap:6px; margin-bottom:12px; }
+  .noteAddRow input{ flex:1; min-width:0; }
+  .noteAddRow select{ width:auto; }
+  .noteGroup{ margin-bottom:10px; }
+  .noteGroupLabel{ font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); margin-bottom:6px; }
+  .noteItem{ display:flex; align-items:flex-start; gap:8px; padding:7px 0; border-bottom:1px solid var(--border); font-size:13px; }
+  .noteItem:last-child{ border-bottom:none; }
+  .noteDot{ width:7px; height:7px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .noteDot.alta{ background:var(--red); } .noteDot.media{ background:var(--amber); } .noteDot.baixa{ background:var(--blue); }
+  .noteText{ flex:1; }
+  .noteDelete{ background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:12px; }
+  .noteDelete:hover{ color:var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div><h1>Dashboard</h1><div class="sub">Visão geral das lojas</div></div>
+    <div class="headerRight">
+      <div id="lastUpdated">A carregar…</div>
+      <button class="iconBtn2" id="notesToggleBtn" onclick="toggleNotesPanel()" title="Notas">📝</button>
+      <button class="iconBtn2" onclick="openSettings()" title="Configurar GitHub">⚙</button>
+
+      <div class="notesPanel" id="notesPanel">
+        <h3>Notas &amp; avisos</h3>
+        <div class="noteAddRow">
+          <input type="text" id="noteText" placeholder="Nova nota…">
+          <select id="noteUrgency">
+            <option value="alta">Alta</option>
+            <option value="media" selected>Média</option>
+            <option value="baixa">Baixa</option>
+          </select>
+        </div>
+        <button class="primary small" onclick="addNote()">+ Adicionar</button>
+        <div id="notesSaveStatus"></div>
+        <div id="notesList" style="margin-top:12px;"><div class="emptyState">A carregar…</div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="geral" onclick="switchTab('geral')">Visão Geral</button>
+    <button class="tab" data-tab="loja" onclick="switchTab('loja')">Loja</button>
+    <button class="tab" data-tab="registo" onclick="switchTab('registo')">Registo</button>
+  </div>
+
+  <div class="panel active" id="panel-geral">
+    <div class="kpiGrid" id="kpiGeralTotals"></div>
+    <div class="sectionTitle">Lojas</div>
+    <div class="alertsList" id="storeCards"><div class="emptyState">A carregar…</div></div>
+  </div>
+
+  <div class="panel" id="panel-loja">
+    <select id="storeSelect" onchange="renderStoreDetail(this.value)" style="margin-bottom:20px;"></select>
+    <div class="kpiGrid" id="kpiGrid"></div>
+    <div class="sectionTitle">Alertas <span class="count" id="alertsCount"></span></div>
+    <div class="alertsList" id="alertsList"></div>
+    <div class="sectionTitle">Campanhas ativas</div>
+    <table>
+      <thead><tr><th>Campanha</th><th>Spend</th><th>Receita</th><th>ROAS</th><th>CPA</th><th>CTR</th></tr></thead>
+      <tbody id="campaignsActiveBody"></tbody>
+    </table>
+    <div class="sectionTitle">Campanhas agendadas</div>
+    <table>
+      <thead><tr><th>Campanha</th><th>Estado</th></tr></thead>
+      <tbody id="campaignsScheduledBody"></tbody>
+    </table>
+  </div>
+
+  <div class="panel" id="panel-registo">
+    <div class="formCard">
+      <div class="formGrid">
+        <div class="field">
+          <label>Data</label>
+          <input type="date" id="fData">
+        </div>
+        <div class="field">
+          <label>Loja</label>
+          <select id="fLoja" onchange="renderCampanhaSelect()">
+            <option value="Arany Luna">Arany Luna</option>
+            <option value="Monika München">Monika München</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Campanha</label>
+          <select id="fCampanha" onchange="onCampanhaSelectChange()"></select>
+          <input type="text" id="fCampanhaManual" placeholder="Nome da campanha" style="display:none; margin-top:6px;">
+        </div>
+        <div class="field">
+          <label>Tipo de ação</label>
+          <select id="fTipo">
+            <option value="escalou">Escalou orçamento</option>
+            <option value="desescalou">Desescalou orçamento</option>
+            <option value="criativo_novo">Criativo novo</option>
+            <option value="criativo_desligado">Criativo desligado</option>
+            <option value="pausou">Pausou campanha</option>
+            <option value="reativou">Reativou campanha</option>
+            <option value="publico">Alterou público/segmentação</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="field fullRow">
+          <label>Nota (opcional)</label>
+          <textarea id="fNota" placeholder="ex: dupliquei o orçamento de 20€ para 40€/dia depois de 3 dias com ROAS > 3x"></textarea>
+        </div>
+      </div>
+      <button class="primary" id="saveLogBtn" onclick="addLogEntry()">+ Registar</button>
+      <div id="logSaveStatus"></div>
+    </div>
+
+    <div class="toolbar">
+      <select id="filterLoja" onchange="renderLogList()">
+        <option value="">Todas as lojas</option>
+        <option value="Arany Luna">Arany Luna</option>
+        <option value="Monika München">Monika München</option>
+      </select>
+      <select id="filterCampanha" onchange="renderLogList()"><option value="">Todas as campanhas</option></select>
+      <select id="filterTipo" onchange="renderLogList()">
+        <option value="">Todos os tipos</option>
+        <option value="escalou">Escalou orçamento</option>
+        <option value="desescalou">Desescalou orçamento</option>
+        <option value="criativo_novo">Criativo novo</option>
+        <option value="criativo_desligado">Criativo desligado</option>
+        <option value="pausou">Pausou campanha</option>
+        <option value="reativou">Reativou campanha</option>
+        <option value="publico">Alterou público/segmentação</option>
+        <option value="outro">Outro</option>
+      </select>
+      <input type="text" id="filterSearch" placeholder="Pesquisar campanha ou nota…" oninput="renderLogList()">
+      <span class="countTag" id="countTag"></span>
+    </div>
+
+    <div id="entriesContainer"><div class="emptyState">A carregar…</div></div>
+  </div>
+</div>
+
+<div class="modalOverlay" id="settingsModal">
+  <div class="modal">
+    <h2>Configurar GitHub</h2>
+    <div class="sub">Necessário para o Registo e as Notas gravarem no repositório. O dashboard (Visão Geral/Loja) não precisa disto.</div>
+    <div class="field"><label>Utilizador GitHub</label><input type="text" id="cfgOwner" placeholder="ex: tomas123"></div>
+    <div class="field"><label>Nome do repositório</label><input type="text" id="cfgRepo" placeholder="ex: dashboard-lojas"></div>
+    <div class="field"><label>Token (fine-grained, só Contents R/W deste repo)</label><input type="password" id="cfgToken" placeholder="github_pat_..."></div>
+    <div class="modalActions">
+      <button class="secondary" onclick="closeSettings()">Cancelar</button>
+      <button class="primary" onclick="saveSettings()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let DATA = null;
+let logEntries = [];
+let logSha = null;
+let notes = [];
+let notesSha = null;
+
+/* ---------- helpers ---------- */
+function fmt(n, currency){ if(n==null) return '—'; return new Intl.NumberFormat('pt-PT',{maximumFractionDigits:0}).format(n) + (currency==='HUF'?' Ft':' '+currency); }
+function fmtEUR(n){ if(n==null) return '—'; return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n); }
+function toEUR(amount, currency, rate){ if(amount==null) return null; if(currency==='EUR') return amount; if(currency==='HUF'&&rate) return amount/rate; return null; }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function fmtDatePT(iso){ const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
+
+// Devolve HTML: valor principal em EUR (grande) + valor nativo em pequeno entre parênteses.
+function fmtMoneyStacked(amountNative, currency, rate){
+  const eur = toEUR(amountNative, currency, rate);
+  if(currency === 'EUR'){
+    return `<span>${fmtEUR(amountNative)}</span>`;
+  }
+  if(eur == null){
+    return `<span>${fmt(amountNative, currency)}</span>`;
+  }
+  return `<span>${fmtEUR(eur)}</span> <span class="curSub">(${fmt(amountNative, currency)})</span>`;
+}
+function fmtMoneyInline(amountNative, currency, rate){
+  const eur = toEUR(amountNative, currency, rate);
+  if(currency === 'EUR') return fmtEUR(amountNative);
+  if(eur == null) return fmt(amountNative, currency);
+  return `${fmtEUR(eur)} <span class="curSub">(${fmt(amountNative, currency)})</span>`;
+}
+
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+}
+function roasOf(s){ return (s.ads_spend_total && s.ads_revenue_attributed) ? (s.ads_revenue_attributed / s.ads_spend_total) : null; }
+
+function pickTopAlert(alerts){
+  if(!alerts || alerts.length === 0) return null;
+  const sorted = [...alerts].sort((a,b) => (a.severity==='high'?0:1) - (b.severity==='high'?0:1));
+  return sorted[0];
+}
+
+/* ---------- Visão Geral / Loja (lê data.json) ---------- */
+function renderOverview(){
+  const rate = DATA.eur_huf_rate;
+  const activeStores = DATA.stores.filter(s => s.active);
+  let totalRevenueEUR = 0, totalProfitEUR = 0;
+  activeStores.forEach(s => {
+    const eur = toEUR(s.revenue_today, s.currency, rate) || 0;
+    totalRevenueEUR += eur;
+    if(s.profit_margin_pct != null) totalProfitEUR += eur * (s.profit_margin_pct / 100);
+  });
+  document.getElementById('kpiGeralTotals').innerHTML = `
+    <div class="kpi"><div class="label">Receita total (hoje)</div><div class="value">${fmtEUR(totalRevenueEUR)}</div></div>
+    <div class="kpi"><div class="label">Profit estimado (hoje)</div>
+      <div class="profitTag ${totalProfitEUR>=0?'positive':'negative'}">${totalProfitEUR>=0?'▲':'▼'} ${fmtEUR(totalProfitEUR)}</div>
+    </div>`;
+  document.getElementById('storeCards').innerHTML = DATA.stores.map(s => {
+    if(!s.active) return `<div class="card" style="opacity:.6; cursor:default;"><div class="cardRow"><div class="dot" style="background:var(--text-muted);"></div>
+      <div><strong>${s.name}</strong> — ${s.country||''} — por configurar</div></div></div>`;
+    const roas = roasOf(s);
+    const top = pickTopAlert(s.alerts);
+    const sev = top ? top.severity : null;
+    return `<div class="card clickable ${sev==='high'?'high':sev==='medium'?'medium':''}" onclick="goToStore('${s.id}')">
+      <div class="cardRow">
+        <div class="dot" style="background:${sev==='high'?'var(--red)':sev==='medium'?'var(--amber)':'var(--green)'};"></div>
+        <div style="flex:1;"><strong>${s.name}</strong> — ${s.country||''} ${roas>=2?'🔥 a destacar-se':''}<br>
+        <span style="color:var(--text-muted)">Receita: ${fmtMoneyInline(s.revenue_today, s.currency, rate)} · ROAS: ${roas!=null?roas.toFixed(2)+'x':'—'} · Encomendas: ${s.orders_today??'—'}</span><br>
+        <span style="font-size:12.5px; color:${sev==='high'?'var(--red)':sev==='medium'?'var(--amber)':'var(--green)'};">${top?top.message:'✓ Sem problemas'}</span></div>
+      </div></div>`;
+  }).join('');
+}
+function goToStore(id){ document.getElementById('storeSelect').value = id; renderStoreDetail(id); switchTab('loja'); }
+
+function renderStoreDetail(id){
+  const s = DATA.stores.find(x => x.id === id);
+  const rate = DATA.eur_huf_rate;
+  if(!s || !s.active){
+    document.getElementById('kpiGrid').innerHTML = `<div class="emptyState">Esta loja ainda não está configurada.</div>`;
+    document.getElementById('alertsList').innerHTML = '';
+    document.getElementById('alertsCount').textContent = '';
+    document.getElementById('campaignsActiveBody').innerHTML = '';
+    document.getElementById('campaignsScheduledBody').innerHTML = '';
+    return;
+  }
+  const roas = roasOf(s);
+  const revClass = roas!=null ? (roas>=1?'positive':'negative') : '';
+  document.getElementById('kpiGrid').innerHTML = `
+    <div class="kpi"><div class="label">Receita hoje</div><div class="value ${revClass}">${fmtMoneyStacked(s.revenue_today, s.currency, rate)}</div></div>
+    <div class="kpi"><div class="label">Encomendas hoje</div><div class="value">${s.orders_today??'—'}</div></div>
+    <div class="kpi"><div class="label">AOV</div><div class="value">${fmtMoneyStacked(s.aov, s.currency, rate)}</div></div>`;
+
+  const alerts = s.alerts || [];
+  document.getElementById('alertsCount').textContent = alerts.length || '';
+  document.getElementById('alertsList').innerHTML = alerts.length ? alerts.map((a, idx) => {
+    const hasDetail = a.examples && a.examples.length > 0;
+    const detailId = `alertDetail_${idx}`;
+    return `
+    <div class="card ${a.severity}">
+      <div class="cardRow ${hasDetail?'clickable':''}" ${hasDetail?`onclick="toggleAlertDetail('${detailId}')"`:''}>
+        <div class="dot" style="background:${a.severity==='high'?'var(--red)':'var(--amber)'};"></div>
+        <div style="flex:1;">
+          ${a.message}
+          ${hasDetail ? `<div class="alertToggle">ver detalhes ▾</div>` : ''}
+        </div>
+      </div>
+      ${hasDetail ? `<div class="alertDetail" id="${detailId}">${a.examples.map(ex => `
+        <div class="exampleRow"><span>#${ex.number}</span><span>${ex.hours!=null?ex.hours+'h':ex.pct!=null?ex.pct+'%':''}</span></div>
+      `).join('')}</div>` : ''}
+    </div>`;
+  }).join('') : `<div class="emptyState">Sem alertas — tudo em dia.</div>`;
+
+  const campaigns = s.campaigns || [];
+  const active = campaigns.filter(c => c.status === 'ACTIVE');
+  const scheduled = campaigns.filter(c => c.status === 'SCHEDULED');
+
+  document.getElementById('campaignsActiveBody').innerHTML = active.length ? active.map(c => `
+    <tr><td>${c.name}</td><td>${fmtMoneyStacked(c.spend, s.currency, rate)}</td><td>${fmtMoneyStacked(c.revenue, s.currency, rate)}</td>
+      <td class="${c.roas>=2?'roasGood':c.roas<1?'roasBad':''}">${c.roas!=null?c.roas.toFixed(2)+'x':'—'}</td>
+      <td>${fmtMoneyStacked(c.cpa, s.currency, rate)}</td><td>${c.ctr!=null?c.ctr.toFixed(1)+'%':'—'}</td></tr>
+  `).join('') : `<tr><td colspan="6" class="emptyState">Sem campanhas ativas.</td></tr>`;
+
+  document.getElementById('campaignsScheduledBody').innerHTML = scheduled.length ? scheduled.map(c => `
+    <tr><td>${c.name}</td><td><span class="statusBadge">${c.status}</span></td></tr>
+  `).join('') : `<tr><td colspan="2" class="emptyState">Sem campanhas agendadas.</td></tr>`;
+}
+
+function toggleAlertDetail(id){
+  document.getElementById(id).classList.toggle('open');
+}
+
+/* ---------- Settings (GitHub) ---------- */
+function getConfig(){
+  try{ return JSON.parse(localStorage.getItem('gh-config') || '{}'); }catch(e){ return {}; }
+}
+function openSettings(){
+  const cfg = getConfig();
+  document.getElementById('cfgOwner').value = cfg.owner || '';
+  document.getElementById('cfgRepo').value = cfg.repo || '';
+  document.getElementById('cfgToken').value = cfg.token || '';
+  document.getElementById('settingsModal').classList.add('active');
+}
+function closeSettings(){ document.getElementById('settingsModal').classList.remove('active'); }
+function saveSettings(){
+  const cfg = { owner: document.getElementById('cfgOwner').value.trim(), repo: document.getElementById('cfgRepo').value.trim(), token: document.getElementById('cfgToken').value.trim() };
+  localStorage.setItem('gh-config', JSON.stringify(cfg));
+  closeSettings();
+  loadLog();
+  loadNotes();
+}
+
+/* ---------- GitHub Contents API (genérico, usado pelo Registo e pelas Notas) ---------- */
+async function githubGetFile(path){
+  const cfg = getConfig();
+  if(!cfg.owner || !cfg.repo || !cfg.token) return { items: [], sha: null, configured: false };
+  try{
+    const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`, {
+      headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' }
+    });
+    if(res.status === 404) return { items: [], sha: null, configured: true };
+    if(!res.ok) throw new Error(`GitHub erro ${res.status}`);
+    const json = await res.json();
+    const content = decodeURIComponent(escape(atob(json.content)));
+    return { items: JSON.parse(content), sha: json.sha, configured: true };
+  }catch(e){
+    console.error(`Falha ao ler ${path} do GitHub:`, e);
+    return { items: [], sha: null, configured: true, error: e.message };
+  }
+}
+async function githubPutFile(path, items, currentSha){
+  const cfg = getConfig();
+  if(!cfg.owner || !cfg.repo || !cfg.token) return { ok: false };
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(items, null, 2))));
+  const body = { message: `Atualizar ${path}`, content };
+  if(currentSha) body.sha = currentSha;
+  const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(body)
+  });
+  if(!res.ok){ console.error(`Falha ao gravar ${path}:`, res.status, await res.text()); return { ok: false }; }
+  const json = await res.json();
+  return { ok: true, sha: json.content.sha };
+}
+
+/* ---------- Notas (quadro por urgência) ---------- */
+const URGENCY_LABELS = { alta: 'Alta', media: 'Média', baixa: 'Baixa' };
+const URGENCY_ORDER = ['alta', 'media', 'baixa'];
+
+function toggleNotesPanel(){
+  document.getElementById('notesPanel').classList.toggle('active');
+}
+async function loadNotes(){
+  const result = await githubGetFile('notes.json');
+  notes = result.items || [];
+  notesSha = result.sha;
+  const status = document.getElementById('notesSaveStatus');
+  if(!result.configured) status.textContent = 'Configura o GitHub (⚙) para gravar notas.';
+  else if(result.error) status.textContent = 'Erro a ligar ao GitHub.';
+  else status.textContent = '';
+  renderNotes();
+}
+function renderNotes(){
+  const container = document.getElementById('notesList');
+  const btn = document.getElementById('notesToggleBtn');
+  btn.classList.toggle('hasItems', notes.length > 0);
+  if(notes.length === 0){
+    container.innerHTML = `<div class="emptyState">Sem notas.</div>`;
+    return;
+  }
+  container.innerHTML = URGENCY_ORDER.map(level => {
+    const items = notes.filter(n => n.urgency === level);
+    if(items.length === 0) return '';
+    return `<div class="noteGroup">
+      <div class="noteGroupLabel">${URGENCY_LABELS[level]}</div>
+      ${items.map(n => `
+        <div class="noteItem">
+          <div class="noteDot ${level}"></div>
+          <div class="noteText">${n.text}</div>
+          <button class="noteDelete" onclick="deleteNote('${n.id}')">✕</button>
+        </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+async function addNote(){
+  const text = document.getElementById('noteText').value.trim();
+  if(!text) return;
+  const urgency = document.getElementById('noteUrgency').value;
+  notes.unshift({ id: 'n_' + Date.now() + '_' + Math.random().toString(36).slice(2,7), text, urgency, createdAt: Date.now() });
+  document.getElementById('notesSaveStatus').textContent = 'A gravar…';
+  const result = await githubPutFile('notes.json', notes, notesSha);
+  if(result.ok){ notesSha = result.sha; document.getElementById('notesSaveStatus').textContent = ''; }
+  else document.getElementById('notesSaveStatus').textContent = 'Erro ao guardar — confirma o token em ⚙.';
+  document.getElementById('noteText').value = '';
+  renderNotes();
+}
+async function deleteNote(id){
+  notes = notes.filter(n => n.id !== id);
+  const result = await githubPutFile('notes.json', notes, notesSha);
+  if(result.ok) notesSha = result.sha;
+  renderNotes();
+}
+
+/* ---------- Registo (grava no repo via GitHub API) ---------- */
+const TYPE_LABELS = { escalou:'Escalou orçamento', desescalou:'Desescalou orçamento', criativo_novo:'Criativo novo',
+  criativo_desligado:'Criativo desligado', pausou:'Pausou', reativou:'Reativou', publico:'Público/Segmentação', outro:'Outro' };
+
+async function loadLog(){
+  const status = document.getElementById('logSaveStatus');
+  const result = await githubGetFile('log.json');
+  logEntries = result.items || [];
+  logSha = result.sha;
+  if(!result.configured) status.textContent = 'Configura o GitHub (⚙ no topo) para poderes registar e ver o histórico.';
+  else if(result.error) status.textContent = 'Erro a ligar ao GitHub — confirma o token/repositório em ⚙.';
+  else status.textContent = '';
+  document.getElementById('fData').value = todayStr();
+  renderCampanhaSelect();
+  updateCampanhaFilterList();
+  renderLogList();
+}
+
+function renderCampanhaSelect(){
+  const loja = document.getElementById('fLoja').value;
+  const store = DATA ? DATA.stores.find(s => s.name === loja) : null;
+  const names = (store && store.campaigns) ? store.campaigns.map(c => c.name) : [];
+  const select = document.getElementById('fCampanha');
+  const options = names.length ? names.map(c => `<option value="${c}">${c}</option>`).join('') : `<option value="" disabled>Sem campanhas encontradas para esta loja</option>`;
+  select.innerHTML = `<option value="">Seleciona uma campanha…</option>` + options + `<option value="__other__">Outra / escrever manualmente…</option>`;
+  onCampanhaSelectChange();
+}
+function onCampanhaSelectChange(){
+  const select = document.getElementById('fCampanha'); const manual = document.getElementById('fCampanhaManual');
+  if(select.value === '__other__'){ manual.style.display = 'block'; manual.focus(); }
+  else{ manual.style.display = 'none'; manual.value = ''; }
+}
+function getCampanhaValue(){
+  const select = document.getElementById('fCampanha');
+  if(select.value === '__other__') return document.getElementById('fCampanhaManual').value.trim();
+  return select.value;
+}
+function updateCampanhaFilterList(){
+  const fromDataJson = DATA ? DATA.stores.flatMap(s => (s.campaigns||[]).map(c => c.name)) : [];
+  const fromEntries = logEntries.map(e => e.campanha).filter(Boolean);
+  const names = [...new Set([...fromDataJson, ...fromEntries])].sort((a,b) => a.localeCompare(b));
+  const filterSelect = document.getElementById('filterCampanha');
+  const current = filterSelect.value;
+  filterSelect.innerHTML = `<option value="">Todas as campanhas</option>` + names.map(n => `<option value="${n}">${n}</option>`).join('');
+  filterSelect.value = names.includes(current) ? current : '';
+}
+
+async function addLogEntry(){
+  const cfg = getConfig();
+  const status = document.getElementById('logSaveStatus');
+  if(!cfg.owner || !cfg.repo || !cfg.token){ status.textContent = 'Configura o GitHub primeiro (⚙ no topo).'; return; }
+  const campanha = getCampanhaValue();
+  if(!campanha){ document.getElementById('fCampanha').focus(); return; }
+
+  const btn = document.getElementById('saveLogBtn');
+  btn.disabled = true; status.textContent = 'A gravar…';
+
+  logEntries.unshift({
+    id: 'e_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+    data: document.getElementById('fData').value || todayStr(),
+    loja: document.getElementById('fLoja').value,
+    campanha, tipo: document.getElementById('fTipo').value,
+    nota: document.getElementById('fNota').value.trim(),
+    createdAt: Date.now()
+  });
+
+  const result = await githubPutFile('log.json', logEntries, logSha);
+  if(result.ok){ logSha = result.sha; status.textContent = 'Guardado.'; setTimeout(() => { status.textContent = ''; }, 1500); }
+  else status.textContent = 'Erro ao guardar — confirma o token em ⚙.';
+
+  updateCampanhaFilterList();
+  document.getElementById('fCampanhaManual').value = ''; document.getElementById('fCampanhaManual').style.display = 'none';
+  document.getElementById('fNota').value = '';
+  renderLogList();
+  btn.disabled = false;
+}
+
+async function deleteLogEntry(id){
+  logEntries = logEntries.filter(e => e.id !== id);
+  const result = await githubPutFile('log.json', logEntries, logSha);
+  if(result.ok) logSha = result.sha;
+  renderLogList();
+}
+
+function renderLogList(){
+  const loja = document.getElementById('filterLoja').value;
+  const campanhaFiltro = document.getElementById('filterCampanha').value;
+  const tipo = document.getElementById('filterTipo').value;
+  const search = document.getElementById('filterSearch').value.toLowerCase();
+  const filtered = logEntries.filter(e => {
+    if(loja && e.loja !== loja) return false;
+    if(campanhaFiltro && e.campanha !== campanhaFiltro) return false;
+    if(tipo && e.tipo !== tipo) return false;
+    if(search && !(e.campanha.toLowerCase().includes(search) || (e.nota||'').toLowerCase().includes(search))) return false;
+    return true;
+  });
+  document.getElementById('countTag').textContent = `${filtered.length} registo${filtered.length!==1?'s':''}`;
+  const container = document.getElementById('entriesContainer');
+  if(filtered.length === 0){
+    container.innerHTML = `<div class="emptyState">Sem registos${logEntries.length?' com estes filtros':' ainda — regista a primeira alteração acima'}.</div>`;
+    return;
+  }
+  const byDate = {};
+  filtered.forEach(e => { (byDate[e.data] = byDate[e.data] || []).push(e); });
+  const sortedDates = Object.keys(byDate).sort((a,b) => b.localeCompare(a));
+  container.innerHTML = sortedDates.map(date => `
+    <div class="dayGroup">
+      <div class="dayLabel">${fmtDatePT(date)}</div>
+      ${byDate[date].sort((a,b) => b.createdAt - a.createdAt).map(e => `
+        <div class="entry ${e.tipo}">
+          <div class="entryBody">
+            <div class="entryTop"><span class="campName">${e.campanha}</span><span class="badge">${e.loja}</span><span class="badge">${TYPE_LABELS[e.tipo]||e.tipo}</span></div>
+            ${e.nota ? `<div class="entryNote">${e.nota}</div>` : ''}
+          </div>
+          <div><button class="iconBtn" onclick="deleteLogEntry('${e.id}')" title="Apagar">✕</button></div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+/* ---------- init ---------- */
+async function init(){
+  try{
+    const res = await fetch('./data.json?t=' + Date.now());
+    DATA = await res.json();
+    document.getElementById('lastUpdated').textContent = 'Dados de ' + new Date(DATA.generated_at).toLocaleString('pt-PT');
+    document.getElementById('storeSelect').innerHTML = DATA.stores.map(s => `<option value="${s.id}" ${!s.active?'disabled':''}>${s.name}${!s.active?' — por configurar':''}</option>`).join('');
+    renderOverview();
+    const firstActive = DATA.stores.find(s => s.active);
+    if(firstActive) renderStoreDetail(firstActive.id);
+  }catch(e){
+    document.getElementById('lastUpdated').textContent = 'Erro ao carregar data.json';
+    console.error(e);
+  }
+  await loadLog();
+  await loadNotes();
+}
+init();
+</script>
+</body>
+</html>
