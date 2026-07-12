@@ -125,7 +125,7 @@ async function fetchFlyweelCampaigns(store) {
   }
   try {
     const res = await fetch('https://api.flyweel.co/functions/v1/mcp-server/mcp', {
-      method: 'POST',metrics: ['spend', 'converted_product_value', 'purchase_roas', 'purchases', 'ctr', 'frequency'],
+      method: 'POST',
       
       headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
       body: JSON.stringify({
@@ -139,7 +139,7 @@ async function fetchFlyweelCampaigns(store) {
               {
                 dataSource: 'ads',
                 ad_account_id: store.flyweel_ad_account_id,
-                metrics: ['spend', 'revenue', 'roas', 'cpa', 'ctr', 'frequency'],
+                metrics: ['spend', 'converted_product_value', 'purchase_roas', 'purchases', 'ctr', 'frequency'],
                 dimensions: ['campaign_name'],
                 date_range: 'last_7d'
               }
