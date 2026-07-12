@@ -147,6 +147,7 @@ async function fetchFlyweelCampaigns(store) {
       return null;
     }
     const data = await res.json();
+    console.log('DEBUG Flyweel resposta:', JSON.stringify(data).slice(0, 2000));
     const rows = data?.result?.content?.[0]?.rows || data?.result?.rows || [];
     const campaigns = rows.map(r => ({
       name: r.campaign_name, spend: r.spend, revenue: r.revenue,
