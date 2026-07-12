@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T17:41:00.991Z",
+  "generated_at": "2026-07-12T17:58:51.415Z",
   "eur_huf_rate": 356.4,
   "stores": [
     {
@@ -9,6 +9,53 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
+      "revenue_today": 12990,
+      "revenue_yesterday": 100724,
+      "revenue_avg7d": 81295.01428571428,
+      "orders_today": 1,
+      "aov": 12990,
+      "alerts": [
+        {
+          "message": "Encomenda #1209 com desconto de 33%",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1208 por cumprir há 28h",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1207 por cumprir há 33h",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1206 por cumprir há 34h",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1205 por cumprir há 34h",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1204 por cumprir há 47h",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1203 com desconto de 33%",
+          "severity": "medium"
+        },
+        {
+          "message": "Encomenda #1202 por cumprir há 71h",
+          "severity": "high"
+        },
+        {
+          "message": "Encomenda #1201 por cumprir há 72h",
+          "severity": "high"
+        },
+        {
+          "message": "Encomenda #1195 com desconto de 33%",
+          "severity": "medium"
+        }
+      ],
       "campaigns": [],
       "ads_spend_total": 0,
       "ads_revenue_attributed": 0
