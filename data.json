@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T19:20:36.378Z",
+  "generated_at": "2026-07-12T19:29:37.798Z",
   "eur_huf_rate": 356.4,
   "stores": [
     {
@@ -24,11 +24,11 @@
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1208 por cumprir há 29h",
+          "message": "Encomenda #1208 por cumprir há 30h",
           "severity": "medium"
         },
         {
-          "message": "Encomenda #1207 por cumprir há 34h",
+          "message": "Encomenda #1207 por cumprir há 35h",
           "severity": "medium"
         },
         {
@@ -87,7 +87,7 @@
         {
           "name": "cbo - Camilla - 1.65 - 30 Junho",
           "spend": 80.12,
-          "revenue": 0,
+          "revenue": 276.44023930000003,
           "roas": 3.4503275,
           "cpa": 40.06,
           "ctr": 8.56,
@@ -501,7 +501,7 @@
         {
           "name": "cbo - Mala Macskás - 1.71 - 8 julho",
           "spend": 48.76,
-          "revenue": 0,
+          "revenue": 261.59515704,
           "roas": 5.364954,
           "cpa": 24.38,
           "ctr": 2.18,
@@ -510,7 +510,7 @@
         {
           "name": "cbo - Mala Róza - ber - 17 Junho",
           "spend": 132.12,
-          "revenue": 0,
+          "revenue": 527.34257892,
           "roas": 3.991391,
           "cpa": 33.03,
           "ctr": 5.29,
@@ -519,7 +519,7 @@
         {
           "name": "cbo - Malas antigos - 27 Junho",
           "spend": 421.87,
-          "revenue": 0,
+          "revenue": 1263.0455289736362,
           "roas": 2.9939211818181817,
           "cpa": 24.815882352941177,
           "ctr": 4.3,
@@ -528,7 +528,7 @@
         {
           "name": "cbo - Malas Necessaires - 3 Julho",
           "spend": 262.58,
-          "revenue": 0,
+          "revenue": 1043.41782212,
           "roas": 3.973714,
           "cpa": 23.87090909090909,
           "ctr": 8.21,
@@ -537,7 +537,7 @@
         {
           "name": "cbo - Mala Zita - 1.48 - 17 Junho",
           "spend": 427.23,
-          "revenue": 0,
+          "revenue": 1838.293461894706,
           "roas": 4.302819235294118,
           "cpa": 18.57521739130435,
           "ctr": 2.23,
@@ -662,7 +662,7 @@
         }
       ],
       "ads_spend_total": 1423.63,
-      "ads_revenue_attributed": 0
+      "ads_revenue_attributed": 5210.134788248342
     },
     {
       "id": "monika_munchen",
