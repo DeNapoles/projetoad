@@ -1,8 +1,23 @@
 {
-  "generated_at": null,
-  "eur_huf_rate": null,
+  "generated_at": "2026-07-12T16:27:23.783Z",
+  "eur_huf_rate": 356.4,
   "stores": [
-    { "id": "arany_luna", "name": "Arany Luna", "country": "Hungria", "active": false },
-    { "id": "monika_munchen", "name": "Monika München", "country": "Alemanha", "active": false }
+    {
+      "id": "arany_luna",
+      "name": "Arany Luna",
+      "country": "Hungria",
+      "currency": "HUF",
+      "active": true,
+      "profit_margin_pct": 30,
+      "campaigns": [],
+      "ads_spend_total": 0,
+      "ads_revenue_attributed": 0
+    },
+    {
+      "id": "monika_munchen",
+      "name": "Monika München",
+      "country": "Alemanha",
+      "active": false
+    }
   ]
 }
