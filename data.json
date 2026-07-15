@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-15T05:24:25.618Z",
+  "generated_at": "2026-07-15T07:26:01.039Z",
   "eur_huf_rate": 361.33,
   "stores": [
     {
@@ -15,7 +15,7 @@
       "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 26.68648148148148,
+      "avg_fulfillment_hours": 26.289722222222224,
       "alerts": [],
       "top_products": [],
       "campaigns_by_range": {
@@ -128,14 +128,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 31.03,
-            "cpc": 0.24,
-            "ctr": 4.29,
+            "spend": 33.21,
+            "cpc": 0.23,
+            "ctr": 4.47,
             "atc": 6,
             "purchases": 1,
-            "frequency": 1.2861725,
-            "roas": 1.257115,
-            "cpa": 31.03
+            "frequency": 1.378882,
+            "roas": 1.256293,
+            "cpa": 33.21
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -687,40 +687,40 @@
             "name": "cbo - Malas antigos - 27 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 482.83,
+            "spend": 483.84,
             "cpc": 0.14,
             "ctr": 4.26,
             "atc": 116,
             "purchases": 18,
-            "frequency": 1.426418105263158,
+            "frequency": 1.4131360526315788,
             "roas": 2.85455175,
-            "cpa": 26.823888888888888
+            "cpa": 26.88
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 321.34,
+            "spend": 322.56,
             "cpc": 0.1,
-            "ctr": 7.98,
+            "ctr": 7.97,
             "atc": 48,
             "purchases": 12,
-            "frequency": 1.174483076923077,
+            "frequency": 1.179183923076923,
             "roas": 3.83261125,
-            "cpa": 26.778333333333332
+            "cpa": 26.88
           },
           {
             "name": "cbo - Mala Zita - 1.48 - 17 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 465.75,
+            "spend": 467.26,
             "cpc": 0.17,
             "ctr": 2.19,
             "atc": 95,
             "purchases": 23,
-            "frequency": 1.2434568275862068,
+            "frequency": 1.2428096551724137,
             "roas": 4.302819235294118,
-            "cpa": 20.25
+            "cpa": 20.315652173913044
           },
           {
             "name": "CBO - Márk - BER - 18Maio",
@@ -882,12 +882,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 28.66,
+            "spend": 28.69,
             "cpc": 0.01,
             "ctr": 9.7,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0554780666666668,
+            "frequency": 1.0566538,
             "roas": 0,
             "cpa": null
           },
@@ -2786,14 +2786,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 33.21,
-            "cpc": 0.23,
-            "ctr": 4.47,
+            "spend": 39.09,
+            "cpc": 0.24,
+            "ctr": 4.13,
             "atc": 6,
             "purchases": 1,
-            "frequency": 1.378882,
-            "roas": 1.256293,
-            "cpa": 33.21
+            "frequency": 1.3177665,
+            "roas": 1.255882,
+            "cpa": 39.09
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3345,40 +3345,40 @@
             "name": "cbo - Malas antigos - 27 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 483.84,
+            "spend": 490.15,
             "cpc": 0.14,
             "ctr": 4.26,
             "atc": 116,
             "purchases": 18,
-            "frequency": 1.4131360526315788,
+            "frequency": 1.4030773157894736,
             "roas": 2.85455175,
-            "cpa": 26.88
+            "cpa": 27.230555555555554
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 322.56,
-            "cpc": 0.1,
-            "ctr": 7.97,
+            "spend": 327.68,
+            "cpc": 0.11,
+            "ctr": 7.98,
             "atc": 48,
             "purchases": 12,
-            "frequency": 1.179183923076923,
+            "frequency": 1.1842586923076923,
             "roas": 3.83261125,
-            "cpa": 26.88
+            "cpa": 27.30666666666667
           },
           {
             "name": "cbo - Mala Zita - 1.48 - 17 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 467.26,
+            "spend": 469.45,
             "cpc": 0.17,
             "ctr": 2.19,
-            "atc": 95,
+            "atc": 97,
             "purchases": 23,
-            "frequency": 1.2428096551724137,
+            "frequency": 1.2373872413793103,
             "roas": 4.302819235294118,
-            "cpa": 20.315652173913044
+            "cpa": 20.41086956521739
           },
           {
             "name": "CBO - Márk - BER - 18Maio",
@@ -3540,12 +3540,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 28.69,
+            "spend": 28.76,
             "cpc": 0.01,
-            "ctr": 9.7,
+            "ctr": 9.69,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0566538,
+            "frequency": 1.0600476333333333,
             "roas": 0,
             "cpa": null
           },
@@ -3564,8 +3564,8 @@
           }
         ]
       },
-      "ads_spend_total": 1329.6100000000001,
-      "ads_revenue_attributed": 4652.880857815735,
+      "ads_spend_total": 1335.56,
+      "ads_revenue_attributed": 4669.650209933529,
       "revenue_history": [
         {
           "date": "2026-07-13",
