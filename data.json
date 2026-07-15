@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T23:07:32.891Z",
+  "generated_at": "2026-07-15T00:01:59.448Z",
   "eur_huf_rate": 361.33,
   "stores": [
     {
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1211,
-              "hours": 53
+              "hours": 54
             }
           ]
         }
@@ -147,7 +147,7 @@
             "ctr": 4.35,
             "atc": 6,
             "purchases": 1,
-            "frequency": 1.520759,
+            "frequency": 1.519713,
             "roas": 1.257115,
             "cpa": 30.57
           },
@@ -701,14 +701,14 @@
             "name": "cbo - Malas antigos - 27 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 482.58,
+            "spend": 482.6,
             "cpc": 0.14,
             "ctr": 4.26,
             "atc": 116,
             "purchases": 18,
-            "frequency": 1.4086253333333334,
+            "frequency": 1.408615611111111,
             "roas": 2.85455175,
-            "cpa": 26.81
+            "cpa": 26.811111111111114
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -719,7 +719,7 @@
             "ctr": 7.98,
             "atc": 48,
             "purchases": 12,
-            "frequency": 1.18510375,
+            "frequency": 1.184863,
             "roas": 3.832743875,
             "cpa": 26.749166666666667
           },
@@ -896,12 +896,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.69,
+            "spend": 28.59,
             "cpc": 0.01,
-            "ctr": 9.76,
+            "ctr": 9.7,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0588989666666666,
+            "frequency": 1.0574595172413792,
             "roas": 0,
             "cpa": null
           },
@@ -1033,7 +1033,7 @@
             "ctr": 4.35,
             "atc": 6,
             "purchases": 1,
-            "frequency": 1.520759,
+            "frequency": 1.519713,
             "roas": 1.257115,
             "cpa": 30.57
           },
@@ -1587,14 +1587,14 @@
             "name": "cbo - Malas antigos - 27 Junho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 482.58,
+            "spend": 482.6,
             "cpc": 0.14,
             "ctr": 4.26,
             "atc": 116,
             "purchases": 18,
-            "frequency": 1.4086253333333334,
+            "frequency": 1.408615611111111,
             "roas": 2.85455175,
-            "cpa": 26.81
+            "cpa": 26.811111111111114
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -1605,7 +1605,7 @@
             "ctr": 7.98,
             "atc": 48,
             "purchases": 12,
-            "frequency": 1.18510375,
+            "frequency": 1.184863,
             "roas": 3.832743875,
             "cpa": 26.749166666666667
           },
@@ -1782,12 +1782,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.69,
+            "spend": 28.59,
             "cpc": 0.01,
-            "ctr": 9.76,
+            "ctr": 9.7,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0588989666666666,
+            "frequency": 1.0574595172413792,
             "roas": 0,
             "cpa": null
           },
@@ -2668,12 +2668,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.69,
+            "spend": 28.59,
             "cpc": 0.01,
-            "ctr": 9.76,
+            "ctr": 9.7,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0585745,
+            "frequency": 1.0574595172413792,
             "roas": 0,
             "cpa": null
           },
@@ -3554,12 +3554,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.69,
+            "spend": 28.59,
             "cpc": 0.01,
-            "ctr": 9.76,
+            "ctr": 9.7,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0585745,
+            "frequency": 1.0574595172413792,
             "roas": 0,
             "cpa": null
           },
@@ -3578,8 +3578,8 @@
           }
         ]
       },
-      "ads_spend_total": 1329.31,
-      "ads_revenue_attributed": 4649.128343145956,
+      "ads_spend_total": 1328.23,
+      "ads_revenue_attributed": 4649.185434180956,
       "revenue_history": [
         {
           "date": "2026-07-13",
