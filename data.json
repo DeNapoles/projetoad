@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T18:28:04.479Z",
+  "generated_at": "2026-07-18T19:40:38.014Z",
   "eur_huf_rate": 363.53,
   "stores": [
     {
@@ -16,7 +16,21 @@
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
-      "alerts": [],
+      "alerts": [
+        {
+          "type": "unfulfilled_orders",
+          "severity": "medium",
+          "count": 1,
+          "count_severe": 0,
+          "message": "1 encomenda por cumprir",
+          "examples": [
+            {
+              "number": 1220,
+              "hours": 24
+            }
+          ]
+        }
+      ],
       "top_products": [
         {
           "name": "Madison | Kézzel készített, steppelt mindennapi táska",
