@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T20:26:02.172Z",
+  "generated_at": "2026-07-18T21:10:58.389Z",
   "eur_huf_rate": 363.53,
   "stores": [
     {
@@ -20,16 +20,20 @@
         {
           "type": "unfulfilled_orders",
           "severity": "medium",
-          "count": 2,
+          "count": 3,
           "count_severe": 0,
-          "message": "2 encomendas por cumprir",
+          "message": "3 encomendas por cumprir",
           "examples": [
             {
               "number": 1220,
-              "hours": 25
+              "hours": 26
             },
             {
               "number": 1221,
+              "hours": 25
+            },
+            {
+              "number": 1222,
               "hours": 24
             }
           ]
