@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T07:07:45.657Z",
+  "generated_at": "2026-07-18T08:56:46.490Z",
   "eur_huf_rate": 363.53,
   "stores": [
     {
@@ -9,15 +9,36 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 30007.714285714286,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 37691,
+      "revenue_avg7d": 35392.142857142855,
+      "orders_today": 2,
+      "aov": 18845.5,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Madison | Kézzel készített, steppelt mindennapi táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Charlotte | Kézzel készült, steppelt napi táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Camilla | Kézműves, laza fazonú táska",
+          "quantity": 1,
+          "revenue": 12990
+        },
+        {
+          "name": "Tip",
+          "quantity": 1,
+          "revenue": 517
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -3693,7 +3714,7 @@
         },
         {
           "date": "2026-07-18",
-          "revenue": 0
+          "revenue": 37691
         }
       ]
     },
