@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-18T21:10:58.389Z",
+  "generated_at": "2026-07-18T22:04:53.594Z",
   "eur_huf_rate": 363.53,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 59774,
-      "revenue_avg7d": 38546.857142857145,
-      "orders_today": 3,
-      "aov": 19924.666666666668,
+      "revenue_today": 0,
+      "revenue_avg7d": 35149.57142857143,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -26,46 +26,20 @@
           "examples": [
             {
               "number": 1220,
-              "hours": 26
+              "hours": 27
             },
             {
               "number": 1221,
-              "hours": 25
+              "hours": 26
             },
             {
               "number": 1222,
-              "hours": 24
+              "hours": 25
             }
           ]
         }
       ],
-      "top_products": [
-        {
-          "name": "Madison | Kézzel készített, steppelt mindennapi táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Charlotte | Kézzel készült, steppelt napi táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Díszes Flamingó Válltáska",
-          "quantity": 1,
-          "revenue": 12990
-        },
-        {
-          "name": "Az Empátia Öröme",
-          "quantity": 1,
-          "revenue": 12990
-        },
-        {
-          "name": "Camilla | Kézműves, laza fazonú táska",
-          "quantity": 1,
-          "revenue": 12990
-        }
-      ],
+      "top_products": [],
       "revenue_history": [
         {
           "date": "2026-07-13",
@@ -90,6 +64,10 @@
         {
           "date": "2026-07-18",
           "revenue": 59774
+        },
+        {
+          "date": "2026-07-19",
+          "revenue": 0
         }
       ]
     },
