@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T16:07:33.440Z",
+  "generated_at": "2026-07-19T17:11:20.315Z",
   "eur_huf_rate": 363.53,
   "stores": [
     {
@@ -9,15 +9,20 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 25980,
-      "revenue_avg7d": 38861,
-      "orders_today": 2,
-      "aov": 12990,
+      "revenue_today": 39471,
+      "revenue_avg7d": 40788.28571428572,
+      "orders_today": 3,
+      "aov": 13157,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 25.667777777777776,
       "alerts": [],
       "top_products": [
+        {
+          "name": "Kézzel Készített Fekete Macskás Táska Szívvel és Margarétákkal",
+          "quantity": 1,
+          "revenue": 14990
+        },
         {
           "name": "Bélelt Virágos Táska",
           "quantity": 1,
@@ -139,14 +144,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 146.03,
+            "spend": 147.12,
             "cpc": 0.23,
-            "ctr": 3.24,
-            "atc": 25,
+            "ctr": 3.25,
+            "atc": 27,
             "purchases": 5,
-            "frequency": 1.3475201666666667,
-            "roas": 2.313704,
-            "cpa": 29.206
+            "frequency": 1.3504156666666667,
+            "roas": 2.27623125,
+            "cpa": 29.424
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -711,14 +716,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 67,
+            "spend": 68.44,
             "cpc": 0.13,
-            "ctr": 4.98,
+            "ctr": 4.95,
             "atc": 13,
             "purchases": 3,
-            "frequency": 1.1916963333333332,
+            "frequency": 1.1958853333333332,
             "roas": 2.490636,
-            "cpa": 22.333333333333332
+            "cpa": 22.813333333333333
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -802,14 +807,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 31.14,
+            "spend": 31.79,
             "cpc": 0.15,
-            "ctr": 8.83,
+            "ctr": 8.78,
             "atc": 2,
             "purchases": 1,
-            "frequency": 1.3017313333333334,
+            "frequency": 1.2998306666666666,
             "roas": 2.822924,
-            "cpa": 31.14
+            "cpa": 31.79
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -919,12 +924,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.51,
+            "spend": 29.53,
             "cpc": 0.02,
-            "ctr": 9.48,
+            "ctr": 9.49,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0504766666666667,
+            "frequency": 1.0507507,
             "roas": 0,
             "cpa": null
           },
@@ -1051,14 +1056,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 147.12,
+            "spend": 148.33,
             "cpc": 0.23,
-            "ctr": 3.25,
-            "atc": 27,
+            "ctr": 3.26,
+            "atc": 32,
             "purchases": 5,
-            "frequency": 1.3504156666666667,
-            "roas": 2.27623125,
-            "cpa": 29.424
+            "frequency": 1.352208,
+            "roas": 2.2385385,
+            "cpa": 29.666000000000004
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -1623,14 +1628,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 68.44,
+            "spend": 71.72,
             "cpc": 0.13,
-            "ctr": 4.95,
-            "atc": 13,
+            "ctr": 4.94,
+            "atc": 15,
             "purchases": 3,
-            "frequency": 1.1958853333333332,
+            "frequency": 1.1981553333333332,
             "roas": 2.490636,
-            "cpa": 22.813333333333333
+            "cpa": 23.906666666666666
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -1714,14 +1719,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 31.79,
+            "spend": 32.27,
             "cpc": 0.15,
-            "ctr": 8.78,
+            "ctr": 8.75,
             "atc": 2,
             "purchases": 1,
-            "frequency": 1.2998306666666666,
+            "frequency": 1.3018443333333334,
             "roas": 2.822924,
-            "cpa": 31.79
+            "cpa": 32.27
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -1831,12 +1836,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.53,
+            "spend": 29.6,
             "cpc": 0.02,
-            "ctr": 9.49,
+            "ctr": 9.52,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0507507,
+            "frequency": 1.0505510333333332,
             "roas": 0,
             "cpa": null
           },
@@ -1963,14 +1968,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 147.12,
+            "spend": 148.33,
             "cpc": 0.23,
-            "ctr": 3.25,
-            "atc": 27,
+            "ctr": 3.26,
+            "atc": 32,
             "purchases": 5,
-            "frequency": 1.3504156666666667,
-            "roas": 2.27623125,
-            "cpa": 29.424
+            "frequency": 1.352208,
+            "roas": 2.2385385,
+            "cpa": 29.666000000000004
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -2535,14 +2540,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 68.44,
+            "spend": 71.72,
             "cpc": 0.13,
-            "ctr": 4.95,
-            "atc": 13,
+            "ctr": 4.94,
+            "atc": 15,
             "purchases": 3,
-            "frequency": 1.1958853333333332,
+            "frequency": 1.1981553333333332,
             "roas": 2.490636,
-            "cpa": 22.813333333333333
+            "cpa": 23.906666666666666
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -2626,14 +2631,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 31.79,
+            "spend": 32.27,
             "cpc": 0.15,
-            "ctr": 8.78,
+            "ctr": 8.75,
             "atc": 2,
             "purchases": 1,
-            "frequency": 1.2998306666666666,
+            "frequency": 1.3018443333333334,
             "roas": 2.822924,
-            "cpa": 31.79
+            "cpa": 32.27
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -2743,12 +2748,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.53,
+            "spend": 29.6,
             "cpc": 0.02,
-            "ctr": 9.49,
+            "ctr": 9.52,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0507507,
+            "frequency": 1.0505510333333332,
             "roas": 0,
             "cpa": null
           },
@@ -2875,14 +2880,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 147.12,
+            "spend": 148.33,
             "cpc": 0.23,
-            "ctr": 3.25,
-            "atc": 27,
+            "ctr": 3.26,
+            "atc": 32,
             "purchases": 5,
-            "frequency": 1.3504156666666667,
-            "roas": 2.27623125,
-            "cpa": 29.424
+            "frequency": 1.352208,
+            "roas": 2.2385385,
+            "cpa": 29.666000000000004
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3447,14 +3452,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 68.44,
+            "spend": 71.72,
             "cpc": 0.13,
-            "ctr": 4.95,
-            "atc": 13,
+            "ctr": 4.94,
+            "atc": 15,
             "purchases": 3,
-            "frequency": 1.1958853333333332,
+            "frequency": 1.1981553333333332,
             "roas": 2.490636,
-            "cpa": 22.813333333333333
+            "cpa": 23.906666666666666
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -3538,14 +3543,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 31.79,
+            "spend": 32.27,
             "cpc": 0.15,
-            "ctr": 8.78,
+            "ctr": 8.75,
             "atc": 2,
             "purchases": 1,
-            "frequency": 1.2998306666666666,
+            "frequency": 1.3018443333333334,
             "roas": 2.822924,
-            "cpa": 31.79
+            "cpa": 32.27
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -3655,12 +3660,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.53,
+            "spend": 29.6,
             "cpc": 0.02,
-            "ctr": 9.49,
+            "ctr": 9.52,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0507507,
+            "frequency": 1.0505510333333332,
             "roas": 0,
             "cpa": null
           },
@@ -3679,8 +3684,8 @@
           }
         ]
       },
-      "ads_spend_total": 273.68,
-      "ads_revenue_attributed": 592.64866048,
+      "ads_spend_total": 276.88,
+      "ads_revenue_attributed": 595.0790233,
       "revenue_history": [
         {
           "date": "2026-07-13",
@@ -3708,7 +3713,7 @@
         },
         {
           "date": "2026-07-19",
-          "revenue": 25980
+          "revenue": 39471
         }
       ]
     },
