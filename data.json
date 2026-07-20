@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-20T12:03:21.081Z",
-  "eur_huf_rate": 363.53,
+  "generated_at": "2026-07-20T14:26:54.878Z",
+  "eur_huf_rate": 361.35,
   "stores": [
     {
       "id": "arany_luna",
@@ -128,14 +128,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 164.63,
+            "spend": 167.41,
             "cpc": 0.23,
-            "ctr": 3.29,
+            "ctr": 3.27,
             "atc": 39,
             "purchases": 5,
-            "frequency": 1.3274052857142857,
-            "roas": 2.13540225,
-            "cpa": 32.926
+            "frequency": 1.329743142857143,
+            "roas": 2.13518425,
+            "cpa": 33.482
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -700,14 +700,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 85.72,
+            "spend": 88.23,
             "cpc": 0.13,
-            "ctr": 4.83,
+            "ctr": 4.82,
             "atc": 15,
             "purchases": 3,
-            "frequency": 1.183848,
+            "frequency": 1.18331025,
             "roas": 2.490636,
-            "cpa": 28.573333333333334
+            "cpa": 29.41
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -791,14 +791,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 38.57,
+            "spend": 40.34,
             "cpc": 0.14,
-            "ctr": 8.48,
-            "atc": 4,
+            "ctr": 8.42,
+            "atc": 5,
             "purchases": 2,
-            "frequency": 1.3291535,
+            "frequency": 1.32008,
             "roas": 2.7188275,
-            "cpa": 19.285
+            "cpa": 20.17
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -908,12 +908,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.35,
+            "spend": 29.52,
             "cpc": 0.02,
-            "ctr": 9.4,
+            "ctr": 9.44,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0516891666666668,
+            "frequency": 1.0510854333333333,
             "roas": 0,
             "cpa": null
           },
@@ -3668,8 +3668,8 @@
           }
         ]
       },
-      "ads_spend_total": 318.27000000000004,
-      "ads_revenue_attributed": 669.9137670125,
+      "ads_spend_total": 325.5,
+      "ads_revenue_attributed": 686.8775109225,
       "revenue_history": [
         {
           "date": "2026-07-13",
