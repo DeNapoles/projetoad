@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T21:54:01.611Z",
+  "generated_at": "2026-07-22T22:42:23.968Z",
   "eur_huf_rate": 363.9,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 23783,
-      "revenue_avg7d": 26911.714285714286,
-      "orders_today": 1,
-      "aov": 23783,
+      "revenue_today": 0,
+      "revenue_avg7d": 24913.14285714286,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -25,18 +25,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Hollis | Kézműves, laza fazonú táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Kézműves táska - Labrador",
-          "quantity": 1,
-          "revenue": 12990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -147,14 +136,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 223.89,
+            "spend": 224.36,
             "cpc": 0.22,
             "ctr": 3.15,
             "atc": 46,
             "purchases": 6,
-            "frequency": 1.3248015555555557,
-            "roas": 2.3276366,
-            "cpa": 37.315
+            "frequency": 1.323755888888889,
+            "roas": 2.3141632,
+            "cpa": 37.39333333333334
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -823,27 +812,27 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.32,
+            "spend": 10.53,
             "cpc": 0.18,
-            "ctr": 4.17,
+            "ctr": 4.23,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.32205,
+            "frequency": 1.324786,
             "roas": 0,
             "cpa": null
           },
           {
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 65.22,
+            "spend": 65.3,
             "cpc": 0.12,
-            "ctr": 8.65,
+            "ctr": 8.68,
             "atc": 14,
             "purchases": 2,
-            "frequency": 1.3716611666666667,
+            "frequency": 1.3723053333333333,
             "roas": 2.7188275,
-            "cpa": 32.61
+            "cpa": 32.65
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -966,12 +955,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.8,
+            "spend": 29.81,
             "cpc": 0.02,
             "ctr": 9.36,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0500673,
+            "frequency": 1.0496999333333332,
             "roas": 0,
             "cpa": null
           },
@@ -1098,14 +1087,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 224.32,
+            "spend": 224.36,
             "cpc": 0.22,
-            "ctr": 3.14,
+            "ctr": 3.15,
             "atc": 46,
             "purchases": 6,
-            "frequency": 1.32408,
-            "roas": 2.315287,
-            "cpa": 37.38666666666666
+            "frequency": 1.323755888888889,
+            "roas": 2.3141632,
+            "cpa": 37.39333333333334
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -1774,12 +1763,12 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 10.53,
             "cpc": 0.18,
-            "ctr": 4.24,
+            "ctr": 4.23,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.322887,
+            "frequency": 1.324786,
             "roas": 0,
             "cpa": null
           },
@@ -1922,7 +1911,7 @@
             "ctr": 9.36,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0498988,
+            "frequency": 1.0496999333333332,
             "roas": 0,
             "cpa": null
           },
@@ -2049,14 +2038,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 224.32,
+            "spend": 224.36,
             "cpc": 0.22,
-            "ctr": 3.14,
+            "ctr": 3.15,
             "atc": 46,
             "purchases": 6,
-            "frequency": 1.32408,
-            "roas": 2.315287,
-            "cpa": 37.38666666666666
+            "frequency": 1.323755888888889,
+            "roas": 2.3141632,
+            "cpa": 37.39333333333334
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -2725,12 +2714,12 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 10.53,
             "cpc": 0.18,
-            "ctr": 4.24,
+            "ctr": 4.23,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.322887,
+            "frequency": 1.324786,
             "roas": 0,
             "cpa": null
           },
@@ -2873,7 +2862,7 @@
             "ctr": 9.36,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0498988,
+            "frequency": 1.0496999333333332,
             "roas": 0,
             "cpa": null
           },
@@ -3000,14 +2989,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 224.32,
+            "spend": 224.36,
             "cpc": 0.22,
-            "ctr": 3.14,
+            "ctr": 3.15,
             "atc": 46,
             "purchases": 6,
-            "frequency": 1.32408,
-            "roas": 2.315287,
-            "cpa": 37.38666666666666
+            "frequency": 1.323755888888889,
+            "roas": 2.3141632,
+            "cpa": 37.39333333333334
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3676,12 +3665,12 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 10.53,
             "cpc": 0.18,
-            "ctr": 4.24,
+            "ctr": 4.23,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.322887,
+            "frequency": 1.324786,
             "roas": 0,
             "cpa": null
           },
@@ -3824,7 +3813,7 @@
             "ctr": 9.36,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0498988,
+            "frequency": 1.0496999333333332,
             "roas": 0,
             "cpa": null
           },
@@ -3843,8 +3832,8 @@
           }
         ]
       },
-      "ads_spend_total": 329.22999999999996,
-      "ads_revenue_attributed": 698.456487924,
+      "ads_spend_total": 264.7,
+      "ads_revenue_attributed": 519.205655552,
       "revenue_history": [
         {
           "date": "2026-07-13",
@@ -3885,6 +3874,10 @@
         {
           "date": "2026-07-22",
           "revenue": 23783
+        },
+        {
+          "date": "2026-07-23",
+          "revenue": 0
         }
       ]
     },
