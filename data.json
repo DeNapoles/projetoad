@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T12:16:10.409Z",
+  "generated_at": "2026-07-22T14:23:30.757Z",
   "eur_huf_rate": 360.4,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 23514.14285714286,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 23783,
+      "revenue_avg7d": 26911.714285714286,
+      "orders_today": 1,
+      "aov": 23783,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -25,7 +25,18 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Hollis | Kézműves, laza fazonú táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézműves táska - Labrador",
+          "quantity": 1,
+          "revenue": 12990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -2989,14 +3000,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 214.63,
+            "spend": 217.52,
             "cpc": 0.22,
             "ctr": 3.19,
-            "atc": 42,
-            "purchases": 5,
-            "frequency": 1.32309,
-            "roas": 2.13518425,
-            "cpa": 42.926
+            "atc": 46,
+            "purchases": 6,
+            "frequency": 1.3312077777777778,
+            "roas": 2.5948096,
+            "cpa": 36.25333333333334
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3574,14 +3585,14 @@
             "name": "cbo - Malas carrousel - 17 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 122.67,
+            "spend": 122.7,
             "cpc": 0.12,
             "ctr": 5.02,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.1498661666666667,
+            "frequency": 1.1499805,
             "roas": 2.490636,
-            "cpa": 40.89
+            "cpa": 40.9
           },
           {
             "name": "cbo - Malas Necessaires - 3 Julho",
@@ -3665,12 +3676,12 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 6.43,
-            "cpc": 0.18,
-            "ctr": 4.32,
+            "spend": 7.68,
+            "cpc": 0.2,
+            "ctr": 4.06,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.275157,
+            "frequency": 1.370425,
             "roas": 0,
             "cpa": null
           },
@@ -3678,14 +3689,14 @@
             "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 61.65,
+            "spend": 62.81,
             "cpc": 0.12,
-            "ctr": 8.71,
+            "ctr": 8.75,
             "atc": 12,
             "purchases": 2,
-            "frequency": 1.3629686666666667,
+            "frequency": 1.3704826666666667,
             "roas": 2.7188275,
-            "cpa": 30.825
+            "cpa": 31.405
           },
           {
             "name": "CBO - Nyari ruhak - 17 Maio",
@@ -3808,12 +3819,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.38,
+            "spend": 29.44,
             "cpc": 0.02,
-            "ctr": 9.32,
+            "ctr": 9.33,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0495199666666668,
+            "frequency": 1.0510486666666667,
             "roas": 0,
             "cpa": null
           },
@@ -3873,7 +3884,7 @@
         },
         {
           "date": "2026-07-22",
-          "revenue": 0
+          "revenue": 23783
         }
       ]
     },
