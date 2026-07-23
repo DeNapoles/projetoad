@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T09:30:47.522Z",
+  "generated_at": "2026-07-23T11:24:53.694Z",
   "eur_huf_rate": 363.9,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 24913.14285714286,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 45345,
+      "revenue_avg7d": 31391,
+      "orders_today": 1,
+      "aov": 45345,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -32,7 +32,28 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "3D-s gitárbögre",
+          "quantity": 1,
+          "revenue": 19490
+        },
+        {
+          "name": "Ava | Kézműves, könnyű stílusú táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézműves táska - Mézes zümmögés",
+          "quantity": 1,
+          "revenue": 12990
+        },
+        {
+          "name": "Kézzel készített steppelt táska sötét fülekkel",
+          "quantity": 1,
+          "revenue": 12990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -3074,14 +3095,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 234.62,
-            "cpc": 0.22,
+            "spend": 237.99,
+            "cpc": 0.21,
             "ctr": 3.15,
-            "atc": 49,
-            "purchases": 6,
-            "frequency": 1.320483,
-            "roas": 2.313323,
-            "cpa": 39.10333333333333
+            "atc": 56,
+            "purchases": 7,
+            "frequency": 1.3281124,
+            "roas": 3.450563333333333,
+            "cpa": 33.99857142857143
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3620,12 +3641,12 @@
             "name": "cbo - Mala Emma - 1.71 - 23 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 4.57,
-            "cpc": 0.33,
-            "ctr": 2.76,
+            "spend": 5.07,
+            "cpc": 0.3,
+            "ctr": 3,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.101952,
+            "frequency": 1.107422,
             "roas": 0,
             "cpa": null
           },
@@ -3646,12 +3667,12 @@
             "name": "cbo - Mala Olivia - 1,53 - 23 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 5.4,
+            "spend": 6.25,
             "cpc": 0.13,
-            "ctr": 6.92,
+            "ctr": 6.97,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.127042,
+            "frequency": 1.113086,
             "roas": 0,
             "cpa": null
           },
@@ -3776,12 +3797,12 @@
             "name": "cbo - Necessaire Gatos - 1.38 - 22 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 14.18,
+            "spend": 15.3,
             "cpc": 0.2,
-            "ctr": 3.66,
+            "ctr": 3.75,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.234595,
+            "frequency": 1.244485,
             "roas": 0,
             "cpa": null
           },
@@ -3919,12 +3940,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.2,
+            "spend": 29.31,
             "cpc": 0.02,
             "ctr": 9.35,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0484736666666667,
+            "frequency": 1.0482500666666668,
             "roas": 0,
             "cpa": null
           },
@@ -3988,7 +4009,7 @@
         },
         {
           "date": "2026-07-23",
-          "revenue": 0
+          "revenue": 45345
         }
       ]
     },
