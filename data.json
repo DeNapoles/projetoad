@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T14:13:48.702Z",
+  "generated_at": "2026-07-26T15:20:52.546Z",
   "eur_huf_rate": 361.88,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 13990,
-      "revenue_avg7d": 25416.014285714286,
-      "orders_today": 1,
-      "aov": 13990,
+      "revenue_today": 36073,
+      "revenue_avg7d": 28570.72857142857,
+      "orders_today": 2,
+      "aov": 18036.5,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 16.221666666666668,
@@ -26,16 +26,26 @@
           "examples": [
             {
               "number": 1234,
-              "hours": 33
+              "hours": 34
             }
           ]
         }
       ],
       "top_products": [
         {
+          "name": "Elegáns macska figura",
+          "quantity": 1,
+          "revenue": 13990
+        },
+        {
           "name": "Zita | párnázott táska vicces, virágos macskával",
           "quantity": 1,
           "revenue": 13990
+        },
+        {
+          "name": "Szikrázó cirkónia-köves nemes ezüst karkötő",
+          "quantity": 1,
+          "revenue": 11990
         }
       ],
       "campaigns_by_range": {
@@ -3365,14 +3375,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 332.72,
+            "spend": 334.44,
             "cpc": 0.2,
-            "ctr": 3.15,
+            "ctr": 3.13,
             "atc": 76,
-            "purchases": 9,
-            "frequency": 1.3601611538461538,
-            "roas": 2.8489395714285712,
-            "cpa": 36.96888888888889
+            "purchases": 10,
+            "frequency": 1.3606846923076923,
+            "roas": 2.797866125,
+            "cpa": 33.444
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -3937,14 +3947,14 @@
             "name": "cbo - Mala Cruz - ber - 25 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 17.57,
+            "spend": 18.46,
             "cpc": 0.16,
-            "ctr": 3.65,
+            "ctr": 3.55,
             "atc": 16,
             "purchases": 3,
-            "frequency": 1.388236,
-            "roas": 6.2344815,
-            "cpa": 5.8566666666666665
+            "frequency": 1.41217,
+            "roas": 5.9918525,
+            "cpa": 6.153333333333333
           },
           {
             "name": "cbo - Mala Emma - 1.71 - 23 Julho",
@@ -3963,14 +3973,14 @@
             "name": "cbo - Mala gato amarelo - 1.64 - 25 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 15.98,
-            "cpc": 0.24,
-            "ctr": 1.8,
+            "spend": 16.54,
+            "cpc": 0.23,
+            "ctr": 1.93,
             "atc": 1,
             "purchases": 1,
-            "frequency": 1.3279625,
+            "frequency": 1.340505,
             "roas": 4.734554,
-            "cpa": 15.98
+            "cpa": 16.54
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -4067,14 +4077,14 @@
             "name": "cbo - Mala Zita 2 - 1.48 - 24 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 27.13,
+            "spend": 27.65,
             "cpc": 0.15,
-            "ctr": 1.68,
+            "ctr": 1.71,
             "atc": 5,
             "purchases": 1,
-            "frequency": 1.442818,
+            "frequency": 1.4515666666666667,
             "roas": 3.555349,
-            "cpa": 27.13
+            "cpa": 27.65
           },
           {
             "name": "CBO - Márk - BER - 18Maio",
@@ -4288,12 +4298,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.25,
+            "spend": 29.31,
             "cpc": 0.02,
             "ctr": 9.63,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0465470666666667,
+            "frequency": 1.0468656666666667,
             "roas": 0,
             "cpa": null
           },
@@ -4369,7 +4379,7 @@
         },
         {
           "date": "2026-07-26",
-          "revenue": 13990
+          "revenue": 36073
         }
       ]
     },
