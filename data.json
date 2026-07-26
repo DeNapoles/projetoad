@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T03:50:20.961Z",
+  "generated_at": "2026-07-26T06:25:14.206Z",
   "eur_huf_rate": 361.88,
   "stores": [
     {
@@ -16,7 +16,21 @@
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
-      "alerts": [],
+      "alerts": [
+        {
+          "type": "unfulfilled_orders",
+          "severity": "medium",
+          "count": 1,
+          "count_severe": 0,
+          "message": "1 encomenda por cumprir",
+          "examples": [
+            {
+              "number": 1234,
+              "hours": 25
+            }
+          ]
+        }
+      ],
       "top_products": [],
       "campaigns_by_range": {
         "today": [
@@ -141,14 +155,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 309.81,
+            "spend": 310.29,
             "cpc": 0.2,
             "ctr": 3.19,
             "atc": 75,
             "purchases": 9,
-            "frequency": 1.3693546153846154,
+            "frequency": 1.4172350769230768,
             "roas": 2.8489395714285712,
-            "cpa": 34.42333333333333
+            "cpa": 34.47666666666667
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -713,14 +727,14 @@
             "name": "cbo - Mala Cruz - ber - 25 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 9.84,
-            "cpc": 0.2,
-            "ctr": 3.09,
+            "spend": 9.9,
+            "cpc": 0.19,
+            "ctr": 3.12,
             "atc": 13,
             "purchases": 2,
-            "frequency": 1.3069725,
+            "frequency": 1.434245,
             "roas": 7.64749,
-            "cpa": 4.92
+            "cpa": 4.95
           },
           {
             "name": "cbo - Mala Emma - 1.71 - 23 Julho",
@@ -739,14 +753,14 @@
             "name": "cbo - Mala gato amarelo - 1.64 - 25 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 8.85,
+            "spend": 8.86,
             "cpc": 0.23,
-            "ctr": 1.68,
+            "ctr": 1.67,
             "atc": 1,
             "purchases": 1,
-            "frequency": 1.3550635,
+            "frequency": 1.519537,
             "roas": 4.745413,
-            "cpa": 8.85
+            "cpa": 8.86
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -843,14 +857,14 @@
             "name": "cbo - Mala Zita 2 - 1.48 - 24 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 19.6,
+            "spend": 19.8,
             "cpc": 0.16,
-            "ctr": 1.62,
+            "ctr": 1.63,
             "atc": 4,
             "purchases": 1,
-            "frequency": 1.5099653333333334,
+            "frequency": 1.6107336666666667,
             "roas": 3.555349,
-            "cpa": 19.6
+            "cpa": 19.8
           },
           {
             "name": "CBO - Márk - BER - 18Maio",
@@ -1051,12 +1065,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 28.55,
+            "spend": 28.69,
             "cpc": 0.02,
-            "ctr": 9.56,
+            "ctr": 9.57,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0469427666666666,
+            "frequency": 1.0522185666666668,
             "roas": 0,
             "cpa": null
           },
@@ -4240,8 +4254,8 @@
           }
         ]
       },
-      "ads_spend_total": 376.65000000000003,
-      "ads_revenue_attributed": 1069.5630156742857,
+      "ads_spend_total": 377.54,
+      "ads_revenue_attributed": 1072.1478799985714,
       "revenue_history": [
         {
           "date": "2026-07-13",
