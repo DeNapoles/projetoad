@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-28T15:32:27.234Z",
-  "eur_huf_rate": 360.9,
+  "generated_at": "2026-07-28T17:01:52.099Z",
+  "eur_huf_rate": null,
   "stores": [
     {
       "id": "arany_luna",
@@ -26,11 +26,11 @@
           "examples": [
             {
               "number": 1239,
-              "hours": 32
+              "hours": 33
             },
             {
               "number": 1242,
-              "hours": 27
+              "hours": 29
             }
           ]
         },
@@ -1161,12 +1161,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.33,
+            "spend": 29.39,
             "cpc": 0.02,
-            "ctr": 9.9,
+            "ctr": 9.89,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0465102,
+            "frequency": 1.0463245,
             "roas": 0,
             "cpa": null
           },
@@ -2268,12 +2268,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.33,
+            "spend": 29.39,
             "cpc": 0.02,
-            "ctr": 9.9,
+            "ctr": 9.89,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0465102,
+            "frequency": 1.0463245,
             "roas": 0,
             "cpa": null
           },
@@ -3375,12 +3375,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.33,
+            "spend": 29.39,
             "cpc": 0.02,
-            "ctr": 9.9,
+            "ctr": 9.89,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0465102,
+            "frequency": 1.0463245,
             "roas": 0,
             "cpa": null
           },
@@ -4482,12 +4482,12 @@
             "name": "Nova campanha de Interação",
             "status": "ACTIVE",
             "objective": "OUTCOME_ENGAGEMENT",
-            "spend": 29.33,
+            "spend": 29.39,
             "cpc": 0.02,
-            "ctr": 9.9,
+            "ctr": 9.89,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.0465102,
+            "frequency": 1.0463245,
             "roas": 0,
             "cpa": null
           },
@@ -4506,7 +4506,7 @@
           }
         ]
       },
-      "ads_spend_total": 523.63,
+      "ads_spend_total": 523.69,
       "ads_revenue_attributed": 1798.057079888,
       "revenue_history": [
         {
