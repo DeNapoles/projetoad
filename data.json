@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T23:06:34.017Z",
+  "generated_at": "2026-08-13T23:52:49.013Z",
   "eur_huf_rate": 362.85,
   "stores": [
     {
@@ -17,13 +17,6 @@
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [
-        {
-          "type": "campaign_roas",
-          "severity": "high",
-          "message": "Campanha \"cbo - Mala Madison - ber - 13 Agosto\" com ROAS abaixo de 1x hoje (0.00x)",
-          "campaign": "cbo - Mala Madison - ber - 13 Agosto",
-          "roas": 0
-        },
         {
           "type": "campaign_roas",
           "severity": "high",
@@ -174,7 +167,7 @@
             "ctr": 5.24,
             "atc": 105,
             "purchases": 17,
-            "frequency": 1.3593941,
+            "frequency": 1.3594322,
             "roas": 5.437893714285714,
             "cpa": 14.812941176470588
           },
@@ -856,14 +849,14 @@
           },
           {
             "name": "cbo - Mala Madison - ber - 13 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 10.18,
+            "spend": 10.19,
             "cpc": 0.34,
             "ctr": 2.22,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.334322,
+            "frequency": 1.332347,
             "roas": 0,
             "cpa": null
           },
@@ -5139,7 +5132,7 @@
           }
         ]
       },
-      "ads_spend_total": 1585.8599999999997,
+      "ads_spend_total": 1575.6799999999998,
       "ads_revenue_attributed": 7109.375554719762,
       "revenue_history": [
         {
