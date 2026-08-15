@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T21:57:46.291Z",
+  "generated_at": "2026-08-15T22:15:16.722Z",
   "eur_huf_rate": 362.58,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 164484,
-      "revenue_avg7d": 138936.65714285715,
-      "orders_today": 8,
-      "aov": 20560.5,
+      "revenue_today": 0,
+      "revenue_avg7d": 126488.08571428573,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 20.278425925925927,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "campaign_roas",
@@ -32,33 +32,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Kézműves Ezüstszínű Táska",
-          "quantity": 2,
-          "revenue": 25980
-        },
-        {
-          "name": "Bélelt Kolibris Hátizsák",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Harper | Kézműves kényelmes hordozótáska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Camilla | Kézműves, laza fazonú táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Rowan | Kézzel készített puha napi táska",
-          "quantity": 1,
-          "revenue": 14990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -5273,10 +5247,6 @@
       "ads_revenue_attributed": 6347.211711673378,
       "revenue_history": [
         {
-          "date": "2026-07-17",
-          "revenue": 51364
-        },
-        {
           "date": "2026-07-18",
           "revenue": 59774
         },
@@ -5391,6 +5361,10 @@
         {
           "date": "2026-08-15",
           "revenue": 164484
+        },
+        {
+          "date": "2026-08-16",
+          "revenue": 0
         }
       ]
     },
