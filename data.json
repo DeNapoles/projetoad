@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-15T17:00:33.686Z",
+  "generated_at": "2026-08-15T17:22:15.308Z",
   "eur_huf_rate": 362.58,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 101329,
-      "revenue_avg7d": 129914.5142857143,
-      "orders_today": 5,
-      "aov": 20265.8,
+      "revenue_today": 118117,
+      "revenue_avg7d": 132312.80000000002,
+      "orders_today": 6,
+      "aov": 19686.166666666668,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 20.278425925925927,
@@ -5390,7 +5390,7 @@
         },
         {
           "date": "2026-08-15",
-          "revenue": 101329
+          "revenue": 118117
         }
       ]
     },
