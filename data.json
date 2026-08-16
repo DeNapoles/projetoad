@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T22:42:07.549Z",
+  "generated_at": "2026-08-16T22:56:42.124Z",
   "eur_huf_rate": 362.58,
   "stores": [
     {
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1353,
-              "hours": 29
+              "hours": 30
             }
           ]
         },
@@ -110,14 +110,14 @@
             "name": "cbo - Collection 2 Necessaires - 13 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 104.57,
+            "spend": 104.6,
             "cpc": 0.21,
             "ctr": 5.14,
             "atc": 13,
             "purchases": 3,
-            "frequency": 1.30812425,
+            "frequency": 1.3083205,
             "roas": 3.209419,
-            "cpa": 34.85666666666666
+            "cpa": 34.86666666666667
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -994,14 +994,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 171.42,
+            "spend": 171.46,
             "cpc": 0.15,
             "ctr": 7.69,
             "atc": 46,
             "purchases": 8,
-            "frequency": 1.2619132857142856,
+            "frequency": 1.2621115714285713,
             "roas": 4.0055322,
-            "cpa": 21.4275
+            "cpa": 21.4325
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -1412,14 +1412,14 @@
             "name": "cbo - Collection 2 Necessaires - 13 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 104.57,
+            "spend": 104.6,
             "cpc": 0.21,
             "ctr": 5.14,
             "atc": 13,
             "purchases": 3,
-            "frequency": 1.30812425,
+            "frequency": 1.3083205,
             "roas": 3.209419,
-            "cpa": 34.85666666666666
+            "cpa": 34.86666666666667
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -2296,14 +2296,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 171.42,
+            "spend": 171.46,
             "cpc": 0.15,
             "ctr": 7.69,
             "atc": 46,
             "purchases": 8,
-            "frequency": 1.2619132857142856,
+            "frequency": 1.2621115714285713,
             "roas": 4.0055322,
-            "cpa": 21.4275
+            "cpa": 21.4325
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -5249,8 +5249,8 @@
           }
         ]
       },
-      "ads_spend_total": 1676.7700000000002,
-      "ads_revenue_attributed": 7063.081645751777,
+      "ads_spend_total": 1676.84,
+      "ads_revenue_attributed": 7063.338149609778,
       "revenue_history": [
         {
           "date": "2026-07-19",
