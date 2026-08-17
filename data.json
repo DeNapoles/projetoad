@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T21:53:24.006Z",
+  "generated_at": "2026-08-17T22:09:13.791Z",
   "eur_huf_rate": 361.93,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 29980,
-      "revenue_avg7d": 107773.90000000001,
-      "orders_today": 2,
-      "aov": 14990,
+      "revenue_today": 0,
+      "revenue_avg7d": 88438.04285714286,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 17.19185185185185,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -29,12 +29,12 @@
               "hours": 53
             },
             {
-              "number": 1357,
+              "number": 1358,
               "hours": 31
             },
             {
-              "number": 1358,
-              "hours": 30
+              "number": 1357,
+              "hours": 31
             }
           ]
         },
@@ -53,18 +53,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Kézzel Készített Teknős Ölelés Táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Rózsákkal díszített fekete macska – kárpitozott tote táska",
-          "quantity": 1,
-          "revenue": 14990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -188,14 +177,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 843.33,
+            "spend": 843.4,
             "cpc": 0.18,
             "ctr": 3.26,
             "atc": 273,
             "purchases": 28,
-            "frequency": 1.4207611333333332,
-            "roas": 3.2885582631578947,
-            "cpa": 30.118928571428572
+            "frequency": 1.4209265333333334,
+            "roas": 3.2882735263157894,
+            "cpa": 30.12142857142857
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -1490,14 +1479,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 843.33,
+            "spend": 843.4,
             "cpc": 0.18,
             "ctr": 3.26,
             "atc": 273,
             "purchases": 28,
-            "frequency": 1.4207611333333332,
-            "roas": 3.2885582631578947,
-            "cpa": 30.118928571428572
+            "frequency": 1.4209265333333334,
+            "roas": 3.2882735263157894,
+            "cpa": 30.12142857142857
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -2792,14 +2781,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 843.33,
+            "spend": 843.4,
             "cpc": 0.18,
             "ctr": 3.26,
             "atc": 273,
             "purchases": 28,
-            "frequency": 1.4207611333333332,
-            "roas": 3.2885582631578947,
-            "cpa": 30.118928571428572
+            "frequency": 1.4209265333333334,
+            "roas": 3.2882735263157894,
+            "cpa": 30.12142857142857
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -4094,14 +4083,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 843.33,
+            "spend": 843.4,
             "cpc": 0.18,
             "ctr": 3.26,
             "atc": 273,
             "purchases": 28,
-            "frequency": 1.4207611333333332,
-            "roas": 3.2885582631578947,
-            "cpa": 30.118928571428572
+            "frequency": 1.4209265333333334,
+            "roas": 3.2882735263157894,
+            "cpa": 30.12142857142857
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -5275,13 +5264,9 @@
           }
         ]
       },
-      "ads_spend_total": 1761.8100000000002,
-      "ads_revenue_attributed": 7460.459826502725,
+      "ads_spend_total": 1761.8800000000003,
+      "ads_revenue_attributed": 7460.449878528515,
       "revenue_history": [
-        {
-          "date": "2026-07-19",
-          "revenue": 39471
-        },
         {
           "date": "2026-07-20",
           "revenue": 0
@@ -5397,6 +5382,10 @@
         {
           "date": "2026-08-17",
           "revenue": 29980
+        },
+        {
+          "date": "2026-08-18",
+          "revenue": 0
         }
       ]
     },
