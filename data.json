@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T11:52:45.018Z",
+  "generated_at": "2026-08-19T12:15:28.626Z",
   "eur_huf_rate": 364.3,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 109225,
-      "revenue_avg7d": 91972.42857142857,
-      "orders_today": 7,
-      "aov": 15603.57142857143,
+      "revenue_today": 136356,
+      "revenue_avg7d": 95848.28571428571,
+      "orders_today": 9,
+      "aov": 15150.666666666666,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 11.164814814814813,
@@ -49,6 +49,11 @@
           "revenue": 28980
         },
         {
+          "name": "Fekete Macska Bundás Steppelt Táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
           "name": "Kézzel Készített Chat Noir a Könyveken Táska",
           "quantity": 1,
           "revenue": 14990
@@ -60,11 +65,6 @@
         },
         {
           "name": "Kézzel Készített Táska - A Lagúna Szelleme",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Kézműves Elefántos Táska",
           "quantity": 1,
           "revenue": 14990
         }
@@ -205,27 +205,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 830.34,
+            "spend": 830.77,
             "cpc": 0.17,
             "ctr": 3.34,
             "atc": 279,
             "purchases": 27,
-            "frequency": 1.4168337,
+            "frequency": 1.4178214333333332,
             "roas": 3.230543421052632,
-            "cpa": 30.753333333333334
+            "cpa": 30.769259259259258
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 387.83,
+            "spend": 388.57,
             "cpc": 0.13,
-            "ctr": 5.03,
-            "atc": 150,
+            "ctr": 5.02,
+            "atc": 151,
             "purchases": 23,
-            "frequency": 1.388787625,
+            "frequency": 1.3908996875,
             "roas": 5.771010444444444,
-            "cpa": 16.862173913043478
+            "cpa": 16.894347826086957
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -1507,27 +1507,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 830.34,
+            "spend": 830.77,
             "cpc": 0.17,
             "ctr": 3.34,
             "atc": 279,
             "purchases": 27,
-            "frequency": 1.4168337,
+            "frequency": 1.4178214333333332,
             "roas": 3.230543421052632,
-            "cpa": 30.753333333333334
+            "cpa": 30.769259259259258
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 387.83,
+            "spend": 388.57,
             "cpc": 0.13,
-            "ctr": 5.03,
-            "atc": 150,
+            "ctr": 5.02,
+            "atc": 151,
             "purchases": 23,
-            "frequency": 1.388787625,
+            "frequency": 1.3908996875,
             "roas": 5.771010444444444,
-            "cpa": 16.862173913043478
+            "cpa": 16.894347826086957
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -2809,27 +2809,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 830.34,
+            "spend": 830.77,
             "cpc": 0.17,
             "ctr": 3.34,
             "atc": 279,
             "purchases": 27,
-            "frequency": 1.4168337,
+            "frequency": 1.4178214333333332,
             "roas": 3.230543421052632,
-            "cpa": 30.753333333333334
+            "cpa": 30.769259259259258
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 387.83,
+            "spend": 388.57,
             "cpc": 0.13,
-            "ctr": 5.03,
-            "atc": 150,
+            "ctr": 5.02,
+            "atc": 151,
             "purchases": 23,
-            "frequency": 1.388787625,
+            "frequency": 1.3908996875,
             "roas": 5.771010444444444,
-            "cpa": 16.862173913043478
+            "cpa": 16.894347826086957
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -4111,27 +4111,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 830.34,
+            "spend": 830.77,
             "cpc": 0.17,
             "ctr": 3.34,
             "atc": 279,
             "purchases": 27,
-            "frequency": 1.4168337,
+            "frequency": 1.4178214333333332,
             "roas": 3.230543421052632,
-            "cpa": 30.753333333333334
+            "cpa": 30.769259259259258
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 387.83,
+            "spend": 388.57,
             "cpc": 0.13,
-            "ctr": 5.03,
-            "atc": 150,
+            "ctr": 5.02,
+            "atc": 151,
             "purchases": 23,
-            "frequency": 1.388787625,
+            "frequency": 1.3908996875,
             "roas": 5.771010444444444,
-            "cpa": 16.862173913043478
+            "cpa": 16.894347826086957
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -5279,8 +5279,8 @@
           }
         ]
       },
-      "ads_spend_total": 1796.46,
-      "ads_revenue_attributed": 7238.230310765731,
+      "ads_spend_total": 1797.63,
+      "ads_revenue_attributed": 7243.889992165672,
       "revenue_history": [
         {
           "date": "2026-07-21",
@@ -5400,7 +5400,7 @@
         },
         {
           "date": "2026-08-19",
-          "revenue": 109225
+          "revenue": 136356
         }
       ]
     },
