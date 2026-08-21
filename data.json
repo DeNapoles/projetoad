@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T09:00:45.682Z",
+  "generated_at": "2026-08-21T09:39:21.498Z",
   "eur_huf_rate": 365.1,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 102178.42857142857,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 13990,
+      "revenue_avg7d": 104177,
+      "orders_today": 1,
+      "aov": 13990,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 17.165972222222223,
@@ -38,7 +38,7 @@
             },
             {
               "number": 1379,
-              "hours": 24
+              "hours": 25
             }
           ]
         },
@@ -57,7 +57,13 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Kézzel Készített Matelassé Táska: Könyvek és Virágok",
+          "quantity": 1,
+          "revenue": 13990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -207,27 +213,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 824.53,
+            "spend": 825.86,
             "cpc": 0.17,
             "ctr": 3.5,
             "atc": 278,
             "purchases": 27,
-            "frequency": 1.4091478,
+            "frequency": 1.4085946,
             "roas": 3.1281052631578947,
-            "cpa": 30.538148148148146
+            "cpa": 30.587407407407408
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 431.89,
+            "spend": 432.83,
             "cpc": 0.13,
-            "ctr": 5.04,
+            "ctr": 5.05,
             "atc": 159,
             "purchases": 26,
-            "frequency": 1.3925151111111111,
-            "roas": 5.6359171,
-            "cpa": 16.611153846153847
+            "frequency": 1.3933865,
+            "roas": 5.6357465,
+            "cpa": 16.64730769230769
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -1509,27 +1515,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 824.53,
+            "spend": 825.86,
             "cpc": 0.17,
             "ctr": 3.5,
             "atc": 278,
             "purchases": 27,
-            "frequency": 1.4091478,
+            "frequency": 1.4085946,
             "roas": 3.1281052631578947,
-            "cpa": 30.538148148148146
+            "cpa": 30.587407407407408
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 431.89,
+            "spend": 432.83,
             "cpc": 0.13,
-            "ctr": 5.04,
+            "ctr": 5.05,
             "atc": 159,
             "purchases": 26,
-            "frequency": 1.3925151111111111,
-            "roas": 5.6359171,
-            "cpa": 16.611153846153847
+            "frequency": 1.3933865,
+            "roas": 5.6357465,
+            "cpa": 16.64730769230769
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -2811,27 +2817,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 824.53,
+            "spend": 825.86,
             "cpc": 0.17,
             "ctr": 3.5,
             "atc": 278,
             "purchases": 27,
-            "frequency": 1.4091478,
+            "frequency": 1.4085946,
             "roas": 3.1281052631578947,
-            "cpa": 30.538148148148146
+            "cpa": 30.587407407407408
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 431.89,
+            "spend": 432.83,
             "cpc": 0.13,
-            "ctr": 5.04,
+            "ctr": 5.05,
             "atc": 159,
             "purchases": 26,
-            "frequency": 1.3925151111111111,
-            "roas": 5.6359171,
-            "cpa": 16.611153846153847
+            "frequency": 1.3933865,
+            "roas": 5.6357465,
+            "cpa": 16.64730769230769
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -4113,27 +4119,27 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 824.53,
+            "spend": 825.86,
             "cpc": 0.17,
             "ctr": 3.5,
             "atc": 278,
             "purchases": 27,
-            "frequency": 1.4091478,
+            "frequency": 1.4085946,
             "roas": 3.1281052631578947,
-            "cpa": 30.538148148148146
+            "cpa": 30.587407407407408
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 431.89,
+            "spend": 432.83,
             "cpc": 0.13,
-            "ctr": 5.04,
+            "ctr": 5.05,
             "atc": 159,
             "purchases": 26,
-            "frequency": 1.3925151111111111,
-            "roas": 5.6359171,
-            "cpa": 16.611153846153847
+            "frequency": 1.3933865,
+            "roas": 5.6357465,
+            "cpa": 16.64730769230769
           },
           {
             "name": "cbo - Collection misc - 10 Março",
@@ -5268,8 +5274,8 @@
           }
         ]
       },
-      "ads_spend_total": 1824.2099999999996,
-      "ads_revenue_attributed": 7080.1699559605795,
+      "ads_spend_total": 1826.48,
+      "ads_revenue_attributed": 7089.554257236578,
       "revenue_history": [
         {
           "date": "2026-07-23",
@@ -5389,7 +5395,7 @@
         },
         {
           "date": "2026-08-21",
-          "revenue": 0
+          "revenue": 13990
         }
       ]
     },
