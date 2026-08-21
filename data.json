@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T21:54:10.050Z",
+  "generated_at": "2026-08-21T22:09:00.698Z",
   "eur_huf_rate": 362.78,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 131779,
-      "revenue_avg7d": 121004,
-      "orders_today": 7,
-      "aov": 18825.571428571428,
+      "revenue_today": 0,
+      "revenue_avg7d": 97506.28571428571,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 31.0187037037037,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -38,33 +38,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Kézműves Elefántos Táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Handgemaakte Schnauzer Tas",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Talia | Kézműves, laza szabású táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Gev quilted libelle tas",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Emily | Kézműves, steppelt mindennapi táska",
-          "quantity": 1,
-          "revenue": 14990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -201,27 +175,27 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 22.57,
+            "spend": 22.59,
             "cpc": 0.28,
-            "ctr": 6.46,
+            "ctr": 6.44,
             "atc": 5,
             "purchases": 1,
-            "frequency": 1.149351,
-            "roas": 4.815685,
-            "cpa": 22.57
+            "frequency": 1.153061,
+            "roas": 4.811421,
+            "cpa": 22.59
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 841.05,
+            "spend": 841.17,
             "cpc": 0.17,
             "ctr": 3.55,
             "atc": 282,
             "purchases": 28,
-            "frequency": 1.4102687,
-            "roas": 3.07582005,
-            "cpa": 30.037499999999998
+            "frequency": 1.4103380666666667,
+            "roas": 3.07518835,
+            "cpa": 30.041785714285712
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -318,14 +292,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 129.93,
+            "spend": 130.07,
             "cpc": 0.17,
-            "ctr": 7.37,
-            "atc": 24,
+            "ctr": 7.39,
+            "atc": 26,
             "purchases": 3,
-            "frequency": 1.2350914,
-            "roas": 2.711057,
-            "cpa": 43.31
+            "frequency": 1.2351436,
+            "roas": 2.69664,
+            "cpa": 43.35666666666666
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -942,14 +916,14 @@
             "name": "cbo - Mala Jayla 2 - 1.88 - 14 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 78.59,
+            "spend": 78.76,
             "cpc": 0.22,
-            "ctr": 5.07,
+            "ctr": 5.06,
             "atc": 11,
             "purchases": 1,
-            "frequency": 1.358144125,
+            "frequency": 1.359903625,
             "roas": 3.514091,
-            "cpa": 78.59
+            "cpa": 78.76
           },
           {
             "name": "cbo - Mala Jayla  - ber - 10 Agosto",
@@ -1033,12 +1007,12 @@
             "name": "cbo - Mala Napfényes Mopsz - ber - 19 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 30.18,
+            "spend": 30.51,
             "cpc": 0.27,
             "ctr": 6.06,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.3852976666666668,
+            "frequency": 1.3844483333333333,
             "roas": 0,
             "cpa": null
           },
@@ -1137,14 +1111,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 301.53,
+            "spend": 301.68,
             "cpc": 0.16,
-            "ctr": 6,
+            "ctr": 5.99,
             "atc": 91,
             "purchases": 15,
-            "frequency": 1.2519163333333334,
+            "frequency": 1.2520875,
             "roas": 4.534914428571429,
-            "cpa": 20.101999999999997
+            "cpa": 20.112000000000002
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -1215,14 +1189,14 @@
             "name": "cbo - Mala Teknős - ber - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 51.22,
+            "spend": 51.23,
             "cpc": 0.23,
-            "ctr": 6.96,
+            "ctr": 6.95,
             "atc": 16,
             "purchases": 2,
-            "frequency": 1.286142,
-            "roas": 6.185062,
-            "cpa": 25.61
+            "frequency": 1.2859274,
+            "roas": 6.1813095,
+            "cpa": 25.615
           },
           {
             "name": "cbo - Mala Zita - 1.48 - 17 Junho",
@@ -1516,14 +1490,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 841.05,
+            "spend": 841.17,
             "cpc": 0.17,
             "ctr": 3.55,
             "atc": 282,
             "purchases": 28,
-            "frequency": 1.4102687,
-            "roas": 3.07582005,
-            "cpa": 30.037499999999998
+            "frequency": 1.4103380666666667,
+            "roas": 3.07518835,
+            "cpa": 30.041785714285712
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -2818,14 +2792,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 841.05,
+            "spend": 841.17,
             "cpc": 0.17,
             "ctr": 3.55,
             "atc": 282,
             "purchases": 28,
-            "frequency": 1.4102687,
-            "roas": 3.07582005,
-            "cpa": 30.037499999999998
+            "frequency": 1.4103380666666667,
+            "roas": 3.07518835,
+            "cpa": 30.041785714285712
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -4120,14 +4094,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 841.05,
+            "spend": 841.17,
             "cpc": 0.17,
             "ctr": 3.55,
             "atc": 282,
             "purchases": 28,
-            "frequency": 1.4102687,
-            "roas": 3.07582005,
-            "cpa": 30.037499999999998
+            "frequency": 1.4103380666666667,
+            "roas": 3.07518835,
+            "cpa": 30.041785714285712
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -5275,13 +5249,9 @@
           }
         ]
       },
-      "ads_spend_total": 1455.07,
-      "ads_revenue_attributed": 5008.2401344896425,
+      "ads_spend_total": 1456.01,
+      "ads_revenue_attributed": 5007.729427215928,
       "revenue_history": [
-        {
-          "date": "2026-07-23",
-          "revenue": 45345
-        },
         {
           "date": "2026-07-24",
           "revenue": 53323.1
@@ -5397,6 +5367,10 @@
         {
           "date": "2026-08-21",
           "revenue": 131779
+        },
+        {
+          "date": "2026-08-22",
+          "revenue": 0
         }
       ]
     },
