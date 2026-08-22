@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T22:51:45.601Z",
+  "generated_at": "2026-08-22T23:02:18.344Z",
   "eur_huf_rate": 362.78,
   "stores": [
     {
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1388,
-              "hours": 31
+              "hours": 32
             },
             {
               "number": 1390,
@@ -58,7 +58,7 @@
             "ctr": 6.43,
             "atc": 2,
             "purchases": 1,
-            "frequency": 1.390977,
+            "frequency": 1.390684,
             "roas": 1.273695,
             "cpa": 29.12
           },
@@ -201,7 +201,7 @@
             "ctr": 6.22,
             "atc": 16,
             "purchases": 1,
-            "frequency": 1.1364155,
+            "frequency": 1.1355195,
             "roas": 4.788106,
             "cpa": 47.13
           },
@@ -318,7 +318,7 @@
             "ctr": 7.17,
             "atc": 28,
             "purchases": 3,
-            "frequency": 1.2297006666666668,
+            "frequency": 1.2298088333333332,
             "roas": 2.682423,
             "cpa": 49.36666666666667
           },
@@ -1221,7 +1221,7 @@
           },
           {
             "name": "cbo - Mala Teknős - ber - 17 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 59.73,
             "cpc": 0.24,
@@ -5257,8 +5257,8 @@
           }
         ]
       },
-      "ads_spend_total": 1495.03,
-      "ads_revenue_attributed": 5155.826042132894,
+      "ads_spend_total": 1435.3,
+      "ads_revenue_attributed": 4791.393780422894,
       "revenue_history": [
         {
           "date": "2026-07-25",
