@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T22:43:54.650Z",
+  "generated_at": "2026-08-23T22:58:13.628Z",
   "eur_huf_rate": 362.78,
   "stores": [
     {
@@ -26,16 +26,9 @@
           "examples": [
             {
               "number": 1395,
-              "hours": 37
+              "hours": 38
             }
           ]
-        },
-        {
-          "type": "campaign_roas",
-          "severity": "high",
-          "message": "Campanha \"cbo - Malas Csillagos - ber - 23 Agosto\" com ROAS abaixo de 1x hoje (0.00x)",
-          "campaign": "cbo - Malas Csillagos - ber - 23 Agosto",
-          "roas": 0
         }
       ],
       "top_products": [],
@@ -50,7 +43,7 @@
             "ctr": 6.03,
             "atc": 10,
             "purchases": 2,
-            "frequency": 1.370131,
+            "frequency": 1.369255,
             "roas": 1.1359055,
             "cpa": 33.14
           },
@@ -305,14 +298,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 181.13,
+            "spend": 181.18,
             "cpc": 0.16,
-            "ctr": 7.22,
+            "ctr": 7.23,
             "atc": 63,
             "purchases": 4,
-            "frequency": 1.2285825714285714,
-            "roas": 2.496173333333333,
-            "cpa": 45.2825
+            "frequency": 1.228562,
+            "roas": 2.495102,
+            "cpa": 45.295
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -1137,14 +1130,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 348.12,
+            "spend": 348.14,
             "cpc": 0.16,
             "ctr": 5.9,
             "atc": 99,
             "purchases": 17,
-            "frequency": 1.2354035,
+            "frequency": 1.2354745,
             "roas": 4.6401595,
-            "cpa": 20.47764705882353
+            "cpa": 20.478823529411763
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -1161,7 +1154,7 @@
           },
           {
             "name": "cbo - Malas Csillagos - ber - 23 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 11.55,
             "cpc": 0.35,
@@ -1352,7 +1345,7 @@
             "ctr": 6.03,
             "atc": 10,
             "purchases": 2,
-            "frequency": 1.370131,
+            "frequency": 1.369255,
             "roas": 1.1359055,
             "cpa": 33.14
           },
@@ -1607,14 +1600,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 181.13,
+            "spend": 181.18,
             "cpc": 0.16,
-            "ctr": 7.22,
+            "ctr": 7.23,
             "atc": 63,
             "purchases": 4,
-            "frequency": 1.2285825714285714,
-            "roas": 2.496173333333333,
-            "cpa": 45.2825
+            "frequency": 1.228562,
+            "roas": 2.495102,
+            "cpa": 45.295
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -2439,14 +2432,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 348.12,
+            "spend": 348.14,
             "cpc": 0.16,
             "ctr": 5.9,
             "atc": 99,
             "purchases": 17,
-            "frequency": 1.2354035,
+            "frequency": 1.2354745,
             "roas": 4.6401595,
-            "cpa": 20.47764705882353
+            "cpa": 20.478823529411763
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -2463,7 +2456,7 @@
           },
           {
             "name": "cbo - Malas Csillagos - ber - 23 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 11.55,
             "cpc": 0.35,
@@ -2654,7 +2647,7 @@
             "ctr": 6.03,
             "atc": 10,
             "purchases": 2,
-            "frequency": 1.370131,
+            "frequency": 1.369255,
             "roas": 1.1359055,
             "cpa": 33.14
           },
@@ -2909,14 +2902,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 181.13,
+            "spend": 181.18,
             "cpc": 0.16,
-            "ctr": 7.22,
+            "ctr": 7.23,
             "atc": 63,
             "purchases": 4,
-            "frequency": 1.2285825714285714,
-            "roas": 2.496173333333333,
-            "cpa": 45.2825
+            "frequency": 1.228562,
+            "roas": 2.495102,
+            "cpa": 45.295
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -3741,14 +3734,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 348.12,
+            "spend": 348.14,
             "cpc": 0.16,
             "ctr": 5.9,
             "atc": 99,
             "purchases": 17,
-            "frequency": 1.2354035,
+            "frequency": 1.2354745,
             "roas": 4.6401595,
-            "cpa": 20.47764705882353
+            "cpa": 20.478823529411763
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -3765,7 +3758,7 @@
           },
           {
             "name": "cbo - Malas Csillagos - ber - 23 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 11.55,
             "cpc": 0.35,
@@ -3956,7 +3949,7 @@
             "ctr": 6.03,
             "atc": 10,
             "purchases": 2,
-            "frequency": 1.370131,
+            "frequency": 1.369255,
             "roas": 1.1359055,
             "cpa": 33.14
           },
@@ -4211,14 +4204,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 181.13,
+            "spend": 181.18,
             "cpc": 0.16,
-            "ctr": 7.22,
+            "ctr": 7.23,
             "atc": 63,
             "purchases": 4,
-            "frequency": 1.2285825714285714,
-            "roas": 2.496173333333333,
-            "cpa": 45.2825
+            "frequency": 1.228562,
+            "roas": 2.495102,
+            "cpa": 45.295
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -5043,14 +5036,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 348.12,
+            "spend": 348.14,
             "cpc": 0.16,
             "ctr": 5.9,
             "atc": 99,
             "purchases": 17,
-            "frequency": 1.2354035,
+            "frequency": 1.2354745,
             "roas": 4.6401595,
-            "cpa": 20.47764705882353
+            "cpa": 20.478823529411763
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -5067,7 +5060,7 @@
           },
           {
             "name": "cbo - Malas Csillagos - ber - 23 Agosto",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 11.55,
             "cpc": 0.35,
@@ -5249,8 +5242,8 @@
           }
         ]
       },
-      "ads_spend_total": 1598.3999999999999,
-      "ads_revenue_attributed": 5228.320914634035,
+      "ads_spend_total": 1586.92,
+      "ads_revenue_attributed": 5228.344422317368,
       "revenue_history": [
         {
           "date": "2026-07-26",
