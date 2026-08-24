@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T16:18:07.796Z",
+  "generated_at": "2026-08-24T16:57:05.427Z",
   "eur_huf_rate": 362.55,
   "stores": [
     {
@@ -26,15 +26,15 @@
           "examples": [
             {
               "number": 1395,
-              "hours": 55
+              "hours": 56
             },
             {
               "number": 1401,
-              "hours": 33
+              "hours": 34
             },
             {
               "number": 1403,
-              "hours": 32
+              "hours": 33
             },
             {
               "number": 1407,
@@ -99,7 +99,7 @@
             "ctr": 5.97,
             "atc": 22,
             "purchases": 3,
-            "frequency": 1.367049,
+            "frequency": 1.3647923333333334,
             "roas": 1.6584806666666667,
             "cpa": 30.763333333333335
           },
@@ -242,7 +242,7 @@
             "ctr": 4.54,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.18059725,
+            "frequency": 1.1796845,
             "roas": 5.541675,
             "cpa": 32.03666666666667
           },
@@ -255,7 +255,7 @@
             "ctr": 3.74,
             "atc": 269,
             "purchases": 28,
-            "frequency": 1.3908795333333333,
+            "frequency": 1.3907176666666667,
             "roas": 2.86884575,
             "cpa": 29.769642857142856
           },
@@ -359,7 +359,7 @@
             "ctr": 7.4,
             "atc": 64,
             "purchases": 5,
-            "frequency": 1.211668,
+            "frequency": 1.21170325,
             "roas": 2.4280685,
             "cpa": 39.954
           },
@@ -966,11 +966,11 @@
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
             "spend": 10.27,
-            "cpc": 0.33,
-            "ctr": 2.27,
+            "cpc": 0.32,
+            "ctr": 2.33,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.284774,
+            "frequency": 1.285581,
             "roas": 0,
             "cpa": null
           },
@@ -1031,11 +1031,11 @@
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
             "spend": 30.48,
-            "cpc": 0.24,
-            "ctr": 6.47,
+            "cpc": 0.23,
+            "ctr": 6.54,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.2264316666666666,
+            "frequency": 1.2299446666666667,
             "roas": 3.417081,
             "cpa": 30.48
           },
@@ -1096,11 +1096,11 @@
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
             "spend": 8.37,
-            "cpc": 0.29,
-            "ctr": 2.67,
+            "cpc": 0.28,
+            "ctr": 2.74,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.331701,
+            "frequency": 1.336996,
             "roas": 0,
             "cpa": null
           },
@@ -1217,7 +1217,7 @@
             "ctr": 5.89,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2268359333333334,
+            "frequency": 1.2268718666666667,
             "roas": 4.447190666666667,
             "cpa": 20.683888888888887
           },
@@ -1401,7 +1401,7 @@
             "ctr": 5.97,
             "atc": 22,
             "purchases": 3,
-            "frequency": 1.3656506666666668,
+            "frequency": 1.3647923333333334,
             "roas": 1.6584806666666667,
             "cpa": 30.763333333333335
           },
@@ -1544,7 +1544,7 @@
             "ctr": 4.54,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.18031025,
+            "frequency": 1.1796845,
             "roas": 5.541675,
             "cpa": 32.03666666666667
           },
@@ -1557,7 +1557,7 @@
             "ctr": 3.74,
             "atc": 269,
             "purchases": 28,
-            "frequency": 1.3908795333333333,
+            "frequency": 1.3907176666666667,
             "roas": 2.86884575,
             "cpa": 29.769642857142856
           },
@@ -1661,7 +1661,7 @@
             "ctr": 7.4,
             "atc": 64,
             "purchases": 5,
-            "frequency": 1.211385375,
+            "frequency": 1.21170325,
             "roas": 2.4280685,
             "cpa": 39.954
           },
@@ -2269,10 +2269,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 10.27,
             "cpc": 0.32,
-            "ctr": 2.34,
+            "ctr": 2.33,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.283302,
+            "frequency": 1.285581,
             "roas": 0,
             "cpa": null
           },
@@ -2334,10 +2334,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 30.48,
             "cpc": 0.23,
-            "ctr": 6.56,
+            "ctr": 6.54,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.229686,
+            "frequency": 1.2299446666666667,
             "roas": 3.417081,
             "cpa": 30.48
           },
@@ -2399,10 +2399,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 8.37,
             "cpc": 0.28,
-            "ctr": 2.75,
+            "ctr": 2.74,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.334149,
+            "frequency": 1.336996,
             "roas": 0,
             "cpa": null
           },
@@ -2519,7 +2519,7 @@
             "ctr": 5.89,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2268033333333332,
+            "frequency": 1.2268718666666667,
             "roas": 4.447190666666667,
             "cpa": 20.683888888888887
           },
@@ -2703,7 +2703,7 @@
             "ctr": 5.97,
             "atc": 22,
             "purchases": 3,
-            "frequency": 1.3656506666666668,
+            "frequency": 1.3647923333333334,
             "roas": 1.6584806666666667,
             "cpa": 30.763333333333335
           },
@@ -2846,7 +2846,7 @@
             "ctr": 4.54,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.18031025,
+            "frequency": 1.1796845,
             "roas": 5.541675,
             "cpa": 32.03666666666667
           },
@@ -2859,7 +2859,7 @@
             "ctr": 3.74,
             "atc": 269,
             "purchases": 28,
-            "frequency": 1.3908795333333333,
+            "frequency": 1.3907176666666667,
             "roas": 2.86884575,
             "cpa": 29.769642857142856
           },
@@ -2963,7 +2963,7 @@
             "ctr": 7.4,
             "atc": 64,
             "purchases": 5,
-            "frequency": 1.211385375,
+            "frequency": 1.21170325,
             "roas": 2.4280685,
             "cpa": 39.954
           },
@@ -3571,10 +3571,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 10.27,
             "cpc": 0.32,
-            "ctr": 2.34,
+            "ctr": 2.33,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.283302,
+            "frequency": 1.285581,
             "roas": 0,
             "cpa": null
           },
@@ -3636,10 +3636,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 30.48,
             "cpc": 0.23,
-            "ctr": 6.56,
+            "ctr": 6.54,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.229686,
+            "frequency": 1.2299446666666667,
             "roas": 3.417081,
             "cpa": 30.48
           },
@@ -3701,10 +3701,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 8.37,
             "cpc": 0.28,
-            "ctr": 2.75,
+            "ctr": 2.74,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.334149,
+            "frequency": 1.336996,
             "roas": 0,
             "cpa": null
           },
@@ -3821,7 +3821,7 @@
             "ctr": 5.89,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2268033333333332,
+            "frequency": 1.2268718666666667,
             "roas": 4.447190666666667,
             "cpa": 20.683888888888887
           },
@@ -4005,7 +4005,7 @@
             "ctr": 5.97,
             "atc": 22,
             "purchases": 3,
-            "frequency": 1.3656506666666668,
+            "frequency": 1.3647923333333334,
             "roas": 1.6584806666666667,
             "cpa": 30.763333333333335
           },
@@ -4148,7 +4148,7 @@
             "ctr": 4.54,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.18031025,
+            "frequency": 1.1796845,
             "roas": 5.541675,
             "cpa": 32.03666666666667
           },
@@ -4161,7 +4161,7 @@
             "ctr": 3.74,
             "atc": 269,
             "purchases": 28,
-            "frequency": 1.3908795333333333,
+            "frequency": 1.3907176666666667,
             "roas": 2.86884575,
             "cpa": 29.769642857142856
           },
@@ -4265,7 +4265,7 @@
             "ctr": 7.4,
             "atc": 64,
             "purchases": 5,
-            "frequency": 1.211385375,
+            "frequency": 1.21170325,
             "roas": 2.4280685,
             "cpa": 39.954
           },
@@ -4873,10 +4873,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 10.27,
             "cpc": 0.32,
-            "ctr": 2.34,
+            "ctr": 2.33,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.283302,
+            "frequency": 1.285581,
             "roas": 0,
             "cpa": null
           },
@@ -4938,10 +4938,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 30.48,
             "cpc": 0.23,
-            "ctr": 6.56,
+            "ctr": 6.54,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.229686,
+            "frequency": 1.2299446666666667,
             "roas": 3.417081,
             "cpa": 30.48
           },
@@ -5003,10 +5003,10 @@
             "objective": "OUTCOME_SALES",
             "spend": 8.37,
             "cpc": 0.28,
-            "ctr": 2.75,
+            "ctr": 2.74,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.334149,
+            "frequency": 1.336996,
             "roas": 0,
             "cpa": null
           },
@@ -5123,7 +5123,7 @@
             "ctr": 5.89,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2268033333333332,
+            "frequency": 1.2268718666666667,
             "roas": 4.447190666666667,
             "cpa": 20.683888888888887
           },
