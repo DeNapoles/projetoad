@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T22:54:00.347Z",
+  "generated_at": "2026-08-24T23:10:55.234Z",
   "eur_huf_rate": 362.55,
   "stores": [
     {
@@ -37,11 +37,11 @@
               "hours": 39
             },
             {
-              "number": 1407,
-              "hours": 31
+              "number": 1406,
+              "hours": 32
             },
             {
-              "number": 1406,
+              "number": 1407,
               "hours": 31
             }
           ]
@@ -73,7 +73,7 @@
             "ctr": 6.21,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.3793493333333333,
+            "frequency": 1.3787606666666667,
             "roas": 1.4700616666666666,
             "cpa": 33.04
           },
@@ -211,14 +211,14 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.61,
+            "spend": 100.63,
             "cpc": 0.26,
             "ctr": 4.51,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.1880675,
-            "roas": 4.890143,
-            "cpa": 33.53666666666667
+            "frequency": 1.1881595,
+            "roas": 4.887849,
+            "cpa": 33.54333333333333
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
@@ -333,7 +333,7 @@
             "ctr": 7.39,
             "atc": 70,
             "purchases": 5,
-            "frequency": 1.21695425,
+            "frequency": 1.2168175,
             "roas": 2.28691475,
             "cpa": 41.196
           },
@@ -1186,14 +1186,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 377.85,
+            "spend": 377.86,
             "cpc": 0.15,
-            "ctr": 5.93,
+            "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2279495333333332,
-            "roas": 4.386953777777777,
-            "cpa": 20.991666666666667
+            "frequency": 1.2278874,
+            "roas": 4.386865333333334,
+            "cpa": 20.992222222222225
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -2493,7 +2493,7 @@
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2278874,
+            "frequency": 1.227904,
             "roas": 4.386865333333334,
             "cpa": 20.992222222222225
           },
@@ -3795,7 +3795,7 @@
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2278874,
+            "frequency": 1.227904,
             "roas": 4.386865333333334,
             "cpa": 20.992222222222225
           },
@@ -5097,7 +5097,7 @@
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2278874,
+            "frequency": 1.227904,
             "roas": 4.386865333333334,
             "cpa": 20.992222222222225
           },
@@ -5272,8 +5272,8 @@
           }
         ]
       },
-      "ads_spend_total": 1677.6799999999998,
-      "ads_revenue_attributed": 5272.287045103833,
+      "ads_spend_total": 1677.7099999999996,
+      "ads_revenue_attributed": 5272.164452663834,
       "revenue_history": [
         {
           "date": "2026-07-27",
