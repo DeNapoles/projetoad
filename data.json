@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T03:30:41.504Z",
+  "generated_at": "2026-08-25T04:08:50.073Z",
   "eur_huf_rate": 362.55,
   "stores": [
     {
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1395,
-              "hours": 66
+              "hours": 67
             },
             {
               "number": 1401,
@@ -34,14 +34,14 @@
             },
             {
               "number": 1403,
-              "hours": 43
-            },
-            {
-              "number": 1407,
-              "hours": 36
+              "hours": 44
             },
             {
               "number": 1406,
+              "hours": 37
+            },
+            {
+              "number": 1407,
               "hours": 36
             }
           ]
@@ -68,14 +68,14 @@
             "name": "abo - Collection Malas - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.72,
+            "spend": 101.44,
             "cpc": 0.26,
-            "ctr": 6.27,
+            "ctr": 6.24,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.336702,
+            "frequency": 1.374432,
             "roas": 1.4700616666666666,
-            "cpa": 33.57333333333333
+            "cpa": 33.81333333333333
           },
           {
             "name": "CBO - Adrián - BER - 28 Abril",
@@ -211,27 +211,27 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.74,
+            "spend": 100.77,
             "cpc": 0.26,
-            "ctr": 4.54,
+            "ctr": 4.52,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.233861,
-            "roas": 4.887849,
-            "cpa": 33.58
+            "frequency": 1.281613,
+            "roas": 4.8867035,
+            "cpa": 33.589999999999996
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 806.36,
+            "spend": 806.58,
             "cpc": 0.16,
             "ctr": 3.85,
             "atc": 267,
             "purchases": 27,
-            "frequency": 1.3851929666666667,
+            "frequency": 1.3842066333333334,
             "roas": 2.90643,
-            "cpa": 29.865185185185187
+            "cpa": 29.873333333333335
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -328,14 +328,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 206.32,
+            "spend": 207.5,
             "cpc": 0.15,
-            "ctr": 7.39,
+            "ctr": 7.4,
             "atc": 70,
             "purchases": 5,
-            "frequency": 1.2215332222222222,
+            "frequency": 1.2182694444444444,
             "roas": 2.28691475,
-            "cpa": 41.263999999999996
+            "cpa": 41.5
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -939,12 +939,12 @@
             "name": "cbo - Mala Hétalvó macska - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 11.89,
+            "spend": 11.92,
             "cpc": 0.34,
-            "ctr": 2.11,
+            "ctr": 2.09,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.305469,
+            "frequency": 1.247498,
             "roas": 0,
             "cpa": null
           },
@@ -1004,14 +1004,14 @@
             "name": "cbo - Mala libelle - ber - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 32.68,
+            "spend": 32.95,
             "cpc": 0.23,
-            "ctr": 6.13,
+            "ctr": 6.09,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.18524725,
+            "frequency": 1.29503275,
             "roas": 3.417081,
-            "cpa": 32.68
+            "cpa": 32.95
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -1069,12 +1069,12 @@
             "name": "cbo - Mala Mopsz - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.06,
-            "cpc": 0.28,
-            "ctr": 2.83,
+            "spend": 10.26,
+            "cpc": 0.26,
+            "ctr": 3.04,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.364191,
+            "frequency": 1.322524,
             "roas": 0,
             "cpa": null
           },
@@ -1114,6 +1114,19 @@
             "atc": 0,
             "purchases": 0,
             "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Mala Őszi - ber - 25 Agosto",
+            "status": "ACTIVE",
+            "objective": "OUTCOME_SALES",
+            "spend": 0.23,
+            "cpc": 0.23,
+            "ctr": 2,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 1.785714,
             "roas": 0,
             "cpa": null
           },
@@ -1186,14 +1199,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 378.31,
+            "spend": 378.72,
             "cpc": 0.15,
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2205811875,
-            "roas": 4.386600555555556,
-            "cpa": 21.017222222222223
+            "frequency": 1.221732375,
+            "roas": 4.386248222222222,
+            "cpa": 21.040000000000003
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -1340,19 +1353,6 @@
           },
           {
             "name": "CBO - Mary Jane cipo - 1 Maio",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
-            "name": "CBO - Maté - 1,52 - 27 Abril (+)",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -1370,14 +1370,14 @@
             "name": "abo - Collection Malas - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.72,
+            "spend": 101.44,
             "cpc": 0.26,
-            "ctr": 6.27,
+            "ctr": 6.24,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.336702,
+            "frequency": 1.374432,
             "roas": 1.4700616666666666,
-            "cpa": 33.57333333333333
+            "cpa": 33.81333333333333
           },
           {
             "name": "CBO - Adrián - BER - 28 Abril",
@@ -1513,27 +1513,27 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.74,
+            "spend": 100.77,
             "cpc": 0.26,
-            "ctr": 4.54,
+            "ctr": 4.52,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.233861,
-            "roas": 4.887849,
-            "cpa": 33.58
+            "frequency": 1.281613,
+            "roas": 4.8867035,
+            "cpa": 33.589999999999996
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 806.36,
+            "spend": 806.58,
             "cpc": 0.16,
             "ctr": 3.85,
             "atc": 267,
             "purchases": 27,
-            "frequency": 1.3851929666666667,
+            "frequency": 1.3842066333333334,
             "roas": 2.90643,
-            "cpa": 29.865185185185187
+            "cpa": 29.873333333333335
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -1630,14 +1630,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 206.32,
+            "spend": 207.5,
             "cpc": 0.15,
-            "ctr": 7.39,
+            "ctr": 7.4,
             "atc": 70,
             "purchases": 5,
-            "frequency": 1.2215332222222222,
+            "frequency": 1.2182694444444444,
             "roas": 2.28691475,
-            "cpa": 41.263999999999996
+            "cpa": 41.5
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -2241,12 +2241,12 @@
             "name": "cbo - Mala Hétalvó macska - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 11.89,
+            "spend": 11.92,
             "cpc": 0.34,
-            "ctr": 2.11,
+            "ctr": 2.09,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.305469,
+            "frequency": 1.247498,
             "roas": 0,
             "cpa": null
           },
@@ -2306,14 +2306,14 @@
             "name": "cbo - Mala libelle - ber - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 32.68,
+            "spend": 32.95,
             "cpc": 0.23,
-            "ctr": 6.13,
+            "ctr": 6.09,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.18524725,
+            "frequency": 1.29503275,
             "roas": 3.417081,
-            "cpa": 32.68
+            "cpa": 32.95
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -2371,12 +2371,12 @@
             "name": "cbo - Mala Mopsz - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.06,
-            "cpc": 0.28,
-            "ctr": 2.83,
+            "spend": 10.26,
+            "cpc": 0.26,
+            "ctr": 3.04,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.364191,
+            "frequency": 1.322524,
             "roas": 0,
             "cpa": null
           },
@@ -2416,6 +2416,19 @@
             "atc": 0,
             "purchases": 0,
             "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Mala Őszi - ber - 25 Agosto",
+            "status": "ACTIVE",
+            "objective": "OUTCOME_SALES",
+            "spend": 0.23,
+            "cpc": 0.23,
+            "ctr": 2,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 1.785714,
             "roas": 0,
             "cpa": null
           },
@@ -2488,14 +2501,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 378.31,
+            "spend": 378.72,
             "cpc": 0.15,
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2205811875,
-            "roas": 4.386600555555556,
-            "cpa": 21.017222222222223
+            "frequency": 1.221732375,
+            "roas": 4.386248222222222,
+            "cpa": 21.040000000000003
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -2642,19 +2655,6 @@
           },
           {
             "name": "CBO - Mary Jane cipo - 1 Maio",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
-            "name": "CBO - Maté - 1,52 - 27 Abril (+)",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -2672,14 +2672,14 @@
             "name": "abo - Collection Malas - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.72,
+            "spend": 101.44,
             "cpc": 0.26,
-            "ctr": 6.27,
+            "ctr": 6.24,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.336702,
+            "frequency": 1.374432,
             "roas": 1.4700616666666666,
-            "cpa": 33.57333333333333
+            "cpa": 33.81333333333333
           },
           {
             "name": "CBO - Adrián - BER - 28 Abril",
@@ -2815,27 +2815,27 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.74,
+            "spend": 100.77,
             "cpc": 0.26,
-            "ctr": 4.54,
+            "ctr": 4.52,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.233861,
-            "roas": 4.887849,
-            "cpa": 33.58
+            "frequency": 1.281613,
+            "roas": 4.8867035,
+            "cpa": 33.589999999999996
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 806.36,
+            "spend": 806.58,
             "cpc": 0.16,
             "ctr": 3.85,
             "atc": 267,
             "purchases": 27,
-            "frequency": 1.3851929666666667,
+            "frequency": 1.3842066333333334,
             "roas": 2.90643,
-            "cpa": 29.865185185185187
+            "cpa": 29.873333333333335
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -2932,14 +2932,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 206.32,
+            "spend": 207.5,
             "cpc": 0.15,
-            "ctr": 7.39,
+            "ctr": 7.4,
             "atc": 70,
             "purchases": 5,
-            "frequency": 1.2215332222222222,
+            "frequency": 1.2182694444444444,
             "roas": 2.28691475,
-            "cpa": 41.263999999999996
+            "cpa": 41.5
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -3543,12 +3543,12 @@
             "name": "cbo - Mala Hétalvó macska - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 11.89,
+            "spend": 11.92,
             "cpc": 0.34,
-            "ctr": 2.11,
+            "ctr": 2.09,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.305469,
+            "frequency": 1.247498,
             "roas": 0,
             "cpa": null
           },
@@ -3608,14 +3608,14 @@
             "name": "cbo - Mala libelle - ber - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 32.68,
+            "spend": 32.95,
             "cpc": 0.23,
-            "ctr": 6.13,
+            "ctr": 6.09,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.18524725,
+            "frequency": 1.29503275,
             "roas": 3.417081,
-            "cpa": 32.68
+            "cpa": 32.95
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -3673,12 +3673,12 @@
             "name": "cbo - Mala Mopsz - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.06,
-            "cpc": 0.28,
-            "ctr": 2.83,
+            "spend": 10.26,
+            "cpc": 0.26,
+            "ctr": 3.04,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.364191,
+            "frequency": 1.322524,
             "roas": 0,
             "cpa": null
           },
@@ -3718,6 +3718,19 @@
             "atc": 0,
             "purchases": 0,
             "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Mala Őszi - ber - 25 Agosto",
+            "status": "ACTIVE",
+            "objective": "OUTCOME_SALES",
+            "spend": 0.23,
+            "cpc": 0.23,
+            "ctr": 2,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 1.785714,
             "roas": 0,
             "cpa": null
           },
@@ -3790,14 +3803,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 378.31,
+            "spend": 378.72,
             "cpc": 0.15,
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2205811875,
-            "roas": 4.386600555555556,
-            "cpa": 21.017222222222223
+            "frequency": 1.221732375,
+            "roas": 4.386248222222222,
+            "cpa": 21.040000000000003
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -3944,19 +3957,6 @@
           },
           {
             "name": "CBO - Mary Jane cipo - 1 Maio",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
-            "name": "CBO - Maté - 1,52 - 27 Abril (+)",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -3974,14 +3974,14 @@
             "name": "abo - Collection Malas - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.72,
+            "spend": 101.44,
             "cpc": 0.26,
-            "ctr": 6.27,
+            "ctr": 6.24,
             "atc": 23,
             "purchases": 3,
-            "frequency": 1.336702,
+            "frequency": 1.374432,
             "roas": 1.4700616666666666,
-            "cpa": 33.57333333333333
+            "cpa": 33.81333333333333
           },
           {
             "name": "CBO - Adrián - BER - 28 Abril",
@@ -4117,27 +4117,27 @@
             "name": "cbo - Collection Malas 2 (avisos) - 21 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 100.74,
+            "spend": 100.77,
             "cpc": 0.26,
-            "ctr": 4.54,
+            "ctr": 4.52,
             "atc": 30,
             "purchases": 3,
-            "frequency": 1.233861,
-            "roas": 4.887849,
-            "cpa": 33.58
+            "frequency": 1.281613,
+            "roas": 4.8867035,
+            "cpa": 33.589999999999996
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 806.36,
+            "spend": 806.58,
             "cpc": 0.16,
             "ctr": 3.85,
             "atc": 267,
             "purchases": 27,
-            "frequency": 1.3851929666666667,
+            "frequency": 1.3842066333333334,
             "roas": 2.90643,
-            "cpa": 29.865185185185187
+            "cpa": 29.873333333333335
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -4234,14 +4234,14 @@
             "name": "cbo - Collection Single IMG c/Collage - 17 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 206.32,
+            "spend": 207.5,
             "cpc": 0.15,
-            "ctr": 7.39,
+            "ctr": 7.4,
             "atc": 70,
             "purchases": 5,
-            "frequency": 1.2215332222222222,
+            "frequency": 1.2182694444444444,
             "roas": 2.28691475,
-            "cpa": 41.263999999999996
+            "cpa": 41.5
           },
           {
             "name": "cbo - Collection TOP 2 - 2 Abril",
@@ -4845,12 +4845,12 @@
             "name": "cbo - Mala Hétalvó macska - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 11.89,
+            "spend": 11.92,
             "cpc": 0.34,
-            "ctr": 2.11,
+            "ctr": 2.09,
             "atc": 1,
             "purchases": 0,
-            "frequency": 1.305469,
+            "frequency": 1.247498,
             "roas": 0,
             "cpa": null
           },
@@ -4910,14 +4910,14 @@
             "name": "cbo - Mala libelle - ber - 22 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 32.68,
+            "spend": 32.95,
             "cpc": 0.23,
-            "ctr": 6.13,
+            "ctr": 6.09,
             "atc": 9,
             "purchases": 1,
-            "frequency": 1.18524725,
+            "frequency": 1.29503275,
             "roas": 3.417081,
-            "cpa": 32.68
+            "cpa": 32.95
           },
           {
             "name": "cbo - Mala Macskás - 1.71 - 8 julho",
@@ -4975,12 +4975,12 @@
             "name": "cbo - Mala Mopsz - ber - 24 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 10.06,
-            "cpc": 0.28,
-            "ctr": 2.83,
+            "spend": 10.26,
+            "cpc": 0.26,
+            "ctr": 3.04,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.364191,
+            "frequency": 1.322524,
             "roas": 0,
             "cpa": null
           },
@@ -5020,6 +5020,19 @@
             "atc": 0,
             "purchases": 0,
             "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Mala Őszi - ber - 25 Agosto",
+            "status": "ACTIVE",
+            "objective": "OUTCOME_SALES",
+            "spend": 0.23,
+            "cpc": 0.23,
+            "ctr": 2,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 1.785714,
             "roas": 0,
             "cpa": null
           },
@@ -5092,14 +5105,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 378.31,
+            "spend": 378.72,
             "cpc": 0.15,
             "ctr": 5.92,
             "atc": 109,
             "purchases": 18,
-            "frequency": 1.2205811875,
-            "roas": 4.386600555555556,
-            "cpa": 21.017222222222223
+            "frequency": 1.221732375,
+            "roas": 4.386248222222222,
+            "cpa": 21.040000000000003
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -5256,24 +5269,11 @@
             "frequency": 0,
             "roas": 0,
             "cpa": null
-          },
-          {
-            "name": "CBO - Maté - 1,52 - 27 Abril (+)",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
           }
         ]
       },
-      "ads_spend_total": 1647.08,
-      "ads_revenue_attributed": 5227.096728598889,
+      "ads_spend_total": 1650.3700000000001,
+      "ads_revenue_attributed": 5234.112032856667,
       "revenue_history": [
         {
           "date": "2026-07-27",
