@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T06:00:46.102Z",
+  "generated_at": "2026-08-26T06:53:59.676Z",
   "eur_huf_rate": 362.28,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 116978.55571428571,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 35176,
+      "revenue_avg7d": 122003.69857142857,
+      "orders_today": 1,
+      "aov": 35176,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -26,35 +26,35 @@
           "examples": [
             {
               "number": 1395,
-              "hours": 93
+              "hours": 94
             },
             {
               "number": 1401,
-              "hours": 71
+              "hours": 72
             },
             {
               "number": 1403,
-              "hours": 70
+              "hours": 71
             },
             {
               "number": 1407,
-              "hours": 62
+              "hours": 63
             },
             {
               "number": 1406,
-              "hours": 62
+              "hours": 63
             },
             {
               "number": 1408,
-              "hours": 50
+              "hours": 51
             },
             {
               "number": 1409,
-              "hours": 49
+              "hours": 50
             },
             {
               "number": 1412,
-              "hours": 42
+              "hours": 43
             }
           ]
         },
@@ -73,7 +73,23 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Kézműves táska - Macskamágia",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Róza | Kézműves Vörös Macskás Táska Rózsákkal",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézzel Készített Chat Noir a Könyveken Táska",
+          "quantity": 1,
+          "revenue": 13990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -236,14 +252,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 801.07,
+            "spend": 801.63,
             "cpc": 0.16,
             "ctr": 3.98,
             "atc": 261,
             "purchases": 27,
-            "frequency": 1.3637655,
+            "frequency": 1.3649527666666668,
             "roas": 2.9471922105263157,
-            "cpa": 29.66925925925926
+            "cpa": 29.69
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -1224,14 +1240,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 404.11,
+            "spend": 405.3,
             "cpc": 0.15,
             "ctr": 6.02,
-            "atc": 117,
+            "atc": 119,
             "purchases": 18,
-            "frequency": 1.2150178823529412,
+            "frequency": 1.2235348823529413,
             "roas": 4.385809222222222,
-            "cpa": 22.450555555555557
+            "cpa": 22.516666666666666
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -1538,14 +1554,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 801.07,
+            "spend": 801.63,
             "cpc": 0.16,
             "ctr": 3.98,
             "atc": 261,
             "purchases": 27,
-            "frequency": 1.3637655,
+            "frequency": 1.3649527666666668,
             "roas": 2.9471922105263157,
-            "cpa": 29.66925925925926
+            "cpa": 29.69
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -2526,14 +2542,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 404.11,
+            "spend": 405.3,
             "cpc": 0.15,
             "ctr": 6.02,
-            "atc": 117,
+            "atc": 119,
             "purchases": 18,
-            "frequency": 1.2150178823529412,
+            "frequency": 1.2235348823529413,
             "roas": 4.385809222222222,
-            "cpa": 22.450555555555557
+            "cpa": 22.516666666666666
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -2840,14 +2856,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 801.07,
+            "spend": 801.63,
             "cpc": 0.16,
             "ctr": 3.98,
             "atc": 261,
             "purchases": 27,
-            "frequency": 1.3637655,
+            "frequency": 1.3649527666666668,
             "roas": 2.9471922105263157,
-            "cpa": 29.66925925925926
+            "cpa": 29.69
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -3828,14 +3844,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 404.11,
+            "spend": 405.3,
             "cpc": 0.15,
             "ctr": 6.02,
-            "atc": 117,
+            "atc": 119,
             "purchases": 18,
-            "frequency": 1.2150178823529412,
+            "frequency": 1.2235348823529413,
             "roas": 4.385809222222222,
-            "cpa": 22.450555555555557
+            "cpa": 22.516666666666666
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -4142,14 +4158,14 @@
             "name": "cbo - Collection malas (avisos) - 14 Julho",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 801.07,
+            "spend": 801.63,
             "cpc": 0.16,
             "ctr": 3.98,
             "atc": 261,
             "purchases": 27,
-            "frequency": 1.3637655,
+            "frequency": 1.3649527666666668,
             "roas": 2.9471922105263157,
-            "cpa": 29.66925925925926
+            "cpa": 29.69
           },
           {
             "name": "cbo - Collection Malas tudo - 4 Agosto",
@@ -5130,14 +5146,14 @@
             "name": "cbo - Malas Avisos - 10 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 404.11,
+            "spend": 405.3,
             "cpc": 0.15,
             "ctr": 6.02,
-            "atc": 117,
+            "atc": 119,
             "purchases": 18,
-            "frequency": 1.2150178823529412,
+            "frequency": 1.2235348823529413,
             "roas": 4.385809222222222,
-            "cpa": 22.450555555555557
+            "cpa": 22.516666666666666
           },
           {
             "name": "cbo - Malas carrousel - 17 Julho",
@@ -5284,8 +5300,8 @@
           }
         ]
       },
-      "ads_spend_total": 1797.31,
-      "ads_revenue_attributed": 5764.218335108538,
+      "ads_spend_total": 1799.0599999999997,
+      "ads_revenue_attributed": 5771.0878757208775,
       "revenue_history": [
         {
           "date": "2026-07-28",
@@ -5405,7 +5421,7 @@
         },
         {
           "date": "2026-08-26",
-          "revenue": 0
+          "revenue": 35176
         }
       ]
     },
