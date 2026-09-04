@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T14:17:11.460Z",
+  "generated_at": "2026-09-04T17:37:41.867Z",
   "eur_huf_rate": 363.28,
   "stores": [
     {
@@ -26,11 +26,11 @@
           "examples": [
             {
               "number": 1450,
-              "hours": 71
+              "hours": 74
             },
             {
               "number": 1453,
-              "hours": 67
+              "hours": 70
             }
           ]
         },
@@ -39,13 +39,6 @@
           "severity": "high",
           "message": "Campanha \"cbo - Collection Malas Salvador - 3 Set\" com ROAS abaixo de 1x hoje (0.00x)",
           "campaign": "cbo - Collection Malas Salvador - 3 Set",
-          "roas": 0
-        },
-        {
-          "type": "campaign_roas",
-          "severity": "high",
-          "message": "Campanha \"cbo - Mala Dorombolas meseje - 1.66 - 4 Set\" com ROAS abaixo de 1x hoje (0.00x)",
-          "campaign": "cbo - Mala Dorombolas meseje - 1.66 - 4 Set",
           "roas": 0
         }
       ],
@@ -160,14 +153,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 195.34,
+            "spend": 198.47,
             "cpc": 0.19,
-            "ctr": 5.52,
-            "atc": 68,
+            "ctr": 5.51,
+            "atc": 70,
             "purchases": 4,
-            "frequency": 1.19644675,
+            "frequency": 1.200213625,
             "roas": 4.670352,
-            "cpa": 48.835
+            "cpa": 49.6175
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -199,14 +192,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 124.26,
-            "cpc": 0.16,
+            "spend": 126.21,
+            "cpc": 0.15,
             "ctr": 4.74,
             "atc": 38,
             "purchases": 5,
-            "frequency": 1.251335,
+            "frequency": 1.2514792,
             "roas": 2.541801,
-            "cpa": 24.852
+            "cpa": 25.241999999999997
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -251,12 +244,12 @@
             "name": "cbo - Collection Malas Salvador - 3 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 44.48,
-            "cpc": 0.34,
-            "ctr": 5.34,
+            "spend": 47.94,
+            "cpc": 0.32,
+            "ctr": 5.58,
             "atc": 7,
             "purchases": 0,
-            "frequency": 1.2815155,
+            "frequency": 1.302705,
             "roas": 0,
             "cpa": null
           },
@@ -925,14 +918,14 @@
           },
           {
             "name": "cbo - Mala Dorombolas meseje - 1.66 - 4 Set",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 11.83,
             "cpc": 0.42,
-            "ctr": 3.4,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.243243,
+            "frequency": 1.27907,
             "roas": 0,
             "cpa": null
           },
@@ -1462,14 +1455,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 195.34,
+            "spend": 198.47,
             "cpc": 0.19,
-            "ctr": 5.52,
-            "atc": 68,
+            "ctr": 5.51,
+            "atc": 70,
             "purchases": 4,
-            "frequency": 1.19644675,
+            "frequency": 1.200213625,
             "roas": 4.670352,
-            "cpa": 48.835
+            "cpa": 49.6175
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -1501,14 +1494,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 124.26,
-            "cpc": 0.16,
+            "spend": 126.21,
+            "cpc": 0.15,
             "ctr": 4.74,
             "atc": 38,
             "purchases": 5,
-            "frequency": 1.251335,
+            "frequency": 1.2514792,
             "roas": 2.541801,
-            "cpa": 24.852
+            "cpa": 25.241999999999997
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -1553,12 +1546,12 @@
             "name": "cbo - Collection Malas Salvador - 3 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 44.48,
-            "cpc": 0.34,
-            "ctr": 5.34,
+            "spend": 47.94,
+            "cpc": 0.32,
+            "ctr": 5.58,
             "atc": 7,
             "purchases": 0,
-            "frequency": 1.2815155,
+            "frequency": 1.302705,
             "roas": 0,
             "cpa": null
           },
@@ -2227,14 +2220,14 @@
           },
           {
             "name": "cbo - Mala Dorombolas meseje - 1.66 - 4 Set",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 11.83,
             "cpc": 0.42,
-            "ctr": 3.4,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.243243,
+            "frequency": 1.27907,
             "roas": 0,
             "cpa": null
           },
@@ -2764,14 +2757,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 195.34,
+            "spend": 198.47,
             "cpc": 0.19,
-            "ctr": 5.52,
-            "atc": 68,
+            "ctr": 5.51,
+            "atc": 70,
             "purchases": 4,
-            "frequency": 1.19644675,
+            "frequency": 1.200213625,
             "roas": 4.670352,
-            "cpa": 48.835
+            "cpa": 49.6175
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -2803,14 +2796,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 124.26,
-            "cpc": 0.16,
+            "spend": 126.21,
+            "cpc": 0.15,
             "ctr": 4.74,
             "atc": 38,
             "purchases": 5,
-            "frequency": 1.251335,
+            "frequency": 1.2514792,
             "roas": 2.541801,
-            "cpa": 24.852
+            "cpa": 25.241999999999997
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -2855,12 +2848,12 @@
             "name": "cbo - Collection Malas Salvador - 3 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 44.48,
-            "cpc": 0.34,
-            "ctr": 5.34,
+            "spend": 47.94,
+            "cpc": 0.32,
+            "ctr": 5.58,
             "atc": 7,
             "purchases": 0,
-            "frequency": 1.2815155,
+            "frequency": 1.302705,
             "roas": 0,
             "cpa": null
           },
@@ -3529,14 +3522,14 @@
           },
           {
             "name": "cbo - Mala Dorombolas meseje - 1.66 - 4 Set",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 11.83,
             "cpc": 0.42,
-            "ctr": 3.4,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.243243,
+            "frequency": 1.27907,
             "roas": 0,
             "cpa": null
           },
@@ -4066,14 +4059,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 195.34,
+            "spend": 198.47,
             "cpc": 0.19,
-            "ctr": 5.52,
-            "atc": 68,
+            "ctr": 5.51,
+            "atc": 70,
             "purchases": 4,
-            "frequency": 1.19644675,
+            "frequency": 1.200213625,
             "roas": 4.670352,
-            "cpa": 48.835
+            "cpa": 49.6175
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -4105,14 +4098,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 124.26,
-            "cpc": 0.16,
+            "spend": 126.21,
+            "cpc": 0.15,
             "ctr": 4.74,
             "atc": 38,
             "purchases": 5,
-            "frequency": 1.251335,
+            "frequency": 1.2514792,
             "roas": 2.541801,
-            "cpa": 24.852
+            "cpa": 25.241999999999997
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -4157,12 +4150,12 @@
             "name": "cbo - Collection Malas Salvador - 3 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 44.48,
-            "cpc": 0.34,
-            "ctr": 5.34,
+            "spend": 47.94,
+            "cpc": 0.32,
+            "ctr": 5.58,
             "atc": 7,
             "purchases": 0,
-            "frequency": 1.2815155,
+            "frequency": 1.302705,
             "roas": 0,
             "cpa": null
           },
@@ -4831,14 +4824,14 @@
           },
           {
             "name": "cbo - Mala Dorombolas meseje - 1.66 - 4 Set",
-            "status": "ACTIVE",
+            "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 10.52,
+            "spend": 11.83,
             "cpc": 0.42,
-            "ctr": 3.4,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.243243,
+            "frequency": 1.27907,
             "roas": 0,
             "cpa": null
           },
@@ -5260,8 +5253,8 @@
           }
         ]
       },
-      "ads_spend_total": 374.6,
-      "ads_revenue_attributed": 1228.1507519400002,
+      "ads_spend_total": 372.62,
+      "ads_revenue_attributed": 1247.72546565,
       "revenue_history": [
         {
           "date": "2026-08-06",
