@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T09:11:32.842Z",
+  "generated_at": "2026-09-06T12:52:18.533Z",
   "eur_huf_rate": 363.28,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 95411,
-      "revenue_avg7d": 79330.68571428572,
-      "orders_today": 3,
-      "aov": 31803.666666666668,
+      "revenue_today": 115401,
+      "revenue_avg7d": 82186.40000000001,
+      "orders_today": 4,
+      "aov": 28850.25,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 18.031759259259257,
@@ -26,12 +26,17 @@
           "examples": [
             {
               "number": 1460,
-              "hours": 26
+              "hours": 30
             }
           ]
         }
       ],
       "top_products": [
+        {
+          "name": "A bájos Noé elefánt",
+          "quantity": 1,
+          "revenue": 19990
+        },
         {
           "name": "Ragyogó pitypangok",
           "quantity": 1,
@@ -49,11 +54,6 @@
         },
         {
           "name": "Kézzel Készített Fekete Macskás Táska Szívvel és Margarétákkal",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Elegáns Steppelt Táska",
           "quantity": 1,
           "revenue": 14990
         }
@@ -129,14 +129,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 24.94,
-            "cpc": 0.27,
-            "ctr": 5.53,
-            "atc": 7,
+            "spend": 39.63,
+            "cpc": 0.24,
+            "ctr": 5.24,
+            "atc": 8,
             "purchases": 1,
-            "frequency": 1.300726,
+            "frequency": 1.2350575,
             "roas": 1.93108,
-            "cpa": 24.94
+            "cpa": 39.63
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -181,14 +181,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 226.79,
-            "cpc": 0.2,
-            "ctr": 5.46,
-            "atc": 87,
-            "purchases": 5,
-            "frequency": 1.207876,
-            "roas": 3.89537925,
-            "cpa": 45.358
+            "spend": 239.69,
+            "cpc": 0.19,
+            "ctr": 5.55,
+            "atc": 96,
+            "purchases": 7,
+            "frequency": 1.2049538,
+            "roas": 4.8549456,
+            "cpa": 34.24142857142857
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -220,14 +220,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 148.01,
-            "cpc": 0.15,
-            "ctr": 4.76,
-            "atc": 46,
-            "purchases": 6,
-            "frequency": 1.2350694285714285,
-            "roas": 2.418799,
-            "cpa": 24.668333333333333
+            "spend": 160.29,
+            "cpc": 0.14,
+            "ctr": 4.79,
+            "atc": 53,
+            "purchases": 7,
+            "frequency": 1.2202435714285713,
+            "roas": 3.668991166666667,
+            "cpa": 22.898571428571426
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -1431,14 +1431,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 39.63,
-            "cpc": 0.24,
-            "ctr": 5.24,
+            "spend": 45.68,
+            "cpc": 0.23,
+            "ctr": 5.32,
             "atc": 8,
             "purchases": 1,
-            "frequency": 1.2350575,
+            "frequency": 1.263721,
             "roas": 1.93108,
-            "cpa": 39.63
+            "cpa": 45.68
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -1483,14 +1483,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 239.69,
+            "spend": 246,
             "cpc": 0.19,
-            "ctr": 5.55,
+            "ctr": 5.58,
             "atc": 96,
             "purchases": 7,
-            "frequency": 1.2049538,
-            "roas": 4.8549456,
-            "cpa": 34.24142857142857
+            "frequency": 1.2052782,
+            "roas": 4.3477412,
+            "cpa": 35.142857142857146
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -1522,14 +1522,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 160.29,
+            "spend": 167.9,
             "cpc": 0.14,
-            "ctr": 4.79,
-            "atc": 53,
-            "purchases": 7,
-            "frequency": 1.2202435714285713,
-            "roas": 3.668991166666667,
-            "cpa": 22.898571428571426
+            "ctr": 4.81,
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.217817142857143,
+            "roas": 3.5033868333333333,
+            "cpa": 20.9875
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -2733,14 +2733,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 39.63,
-            "cpc": 0.24,
-            "ctr": 5.24,
+            "spend": 45.68,
+            "cpc": 0.23,
+            "ctr": 5.32,
             "atc": 8,
             "purchases": 1,
-            "frequency": 1.2350575,
+            "frequency": 1.263721,
             "roas": 1.93108,
-            "cpa": 39.63
+            "cpa": 45.68
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -2785,14 +2785,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 239.69,
+            "spend": 246,
             "cpc": 0.19,
-            "ctr": 5.55,
+            "ctr": 5.58,
             "atc": 96,
             "purchases": 7,
-            "frequency": 1.2049538,
-            "roas": 4.8549456,
-            "cpa": 34.24142857142857
+            "frequency": 1.2052782,
+            "roas": 4.3477412,
+            "cpa": 35.142857142857146
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -2824,14 +2824,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 160.29,
+            "spend": 167.9,
             "cpc": 0.14,
-            "ctr": 4.79,
-            "atc": 53,
-            "purchases": 7,
-            "frequency": 1.2202435714285713,
-            "roas": 3.668991166666667,
-            "cpa": 22.898571428571426
+            "ctr": 4.81,
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.217817142857143,
+            "roas": 3.5033868333333333,
+            "cpa": 20.9875
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -4035,14 +4035,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 39.63,
-            "cpc": 0.24,
-            "ctr": 5.24,
+            "spend": 45.68,
+            "cpc": 0.23,
+            "ctr": 5.32,
             "atc": 8,
             "purchases": 1,
-            "frequency": 1.2350575,
+            "frequency": 1.263721,
             "roas": 1.93108,
-            "cpa": 39.63
+            "cpa": 45.68
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -4087,14 +4087,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 239.69,
+            "spend": 246,
             "cpc": 0.19,
-            "ctr": 5.55,
+            "ctr": 5.58,
             "atc": 96,
             "purchases": 7,
-            "frequency": 1.2049538,
-            "roas": 4.8549456,
-            "cpa": 34.24142857142857
+            "frequency": 1.2052782,
+            "roas": 4.3477412,
+            "cpa": 35.142857142857146
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -4126,14 +4126,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 160.29,
+            "spend": 167.9,
             "cpc": 0.14,
-            "ctr": 4.79,
-            "atc": 53,
-            "purchases": 7,
-            "frequency": 1.2202435714285713,
-            "roas": 3.668991166666667,
-            "cpa": 22.898571428571426
+            "ctr": 4.81,
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.217817142857143,
+            "roas": 3.5033868333333333,
+            "cpa": 20.9875
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -5268,8 +5268,8 @@
           }
         ]
       },
-      "ads_spend_total": 399.74,
-      "ads_revenue_attributed": 1289.6006352975,
+      "ads_spend_total": 439.61,
+      "ads_revenue_attributed": 1828.313205369,
       "revenue_history": [
         {
           "date": "2026-08-08",
@@ -5389,7 +5389,7 @@
         },
         {
           "date": "2026-09-06",
-          "revenue": 95411
+          "revenue": 115401
         }
       ]
     },
