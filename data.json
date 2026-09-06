@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T05:00:22.195Z",
+  "generated_at": "2026-09-06T09:11:32.842Z",
   "eur_huf_rate": 363.28,
   "stores": [
     {
@@ -9,15 +9,55 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 65700.54285714285,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 95411,
+      "revenue_avg7d": 79330.68571428572,
+      "orders_today": 3,
+      "aov": 31803.666666666668,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 13.655277777777776,
-      "alerts": [],
-      "top_products": [],
+      "avg_fulfillment_hours": 18.031759259259257,
+      "alerts": [
+        {
+          "type": "unfulfilled_orders",
+          "severity": "medium",
+          "count": 1,
+          "count_severe": 0,
+          "message": "1 encomenda por cumprir",
+          "examples": [
+            {
+              "number": 1460,
+              "hours": 26
+            }
+          ]
+        }
+      ],
+      "top_products": [
+        {
+          "name": "Ragyogó pitypangok",
+          "quantity": 1,
+          "revenue": 17690
+        },
+        {
+          "name": "Kristályos macska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézműves Sziámi Macska Táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézzel Készített Fekete Macskás Táska Szívvel és Margarétákkal",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Elegáns Steppelt Táska",
+          "quantity": 1,
+          "revenue": 14990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -89,14 +129,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 23.19,
+            "spend": 24.94,
             "cpc": 0.27,
-            "ctr": 5.51,
+            "ctr": 5.53,
             "atc": 7,
             "purchases": 1,
-            "frequency": 1.3216215,
+            "frequency": 1.300726,
             "roas": 1.93108,
-            "cpa": 23.19
+            "cpa": 24.94
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -141,14 +181,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 224.63,
+            "spend": 226.79,
             "cpc": 0.2,
             "ctr": 5.46,
             "atc": 87,
             "purchases": 5,
-            "frequency": 1.2001621,
+            "frequency": 1.207876,
             "roas": 3.89537925,
-            "cpa": 44.926
+            "cpa": 45.358
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -180,14 +220,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 147.37,
+            "spend": 148.01,
             "cpc": 0.15,
-            "ctr": 4.77,
+            "ctr": 4.76,
             "atc": 46,
             "purchases": 6,
-            "frequency": 1.2253921428571428,
+            "frequency": 1.2350694285714285,
             "roas": 2.418799,
-            "cpa": 24.561666666666667
+            "cpa": 24.668333333333333
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -1391,14 +1431,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 24.94,
-            "cpc": 0.27,
-            "ctr": 5.53,
-            "atc": 7,
+            "spend": 39.63,
+            "cpc": 0.24,
+            "ctr": 5.24,
+            "atc": 8,
             "purchases": 1,
-            "frequency": 1.300726,
+            "frequency": 1.2350575,
             "roas": 1.93108,
-            "cpa": 24.94
+            "cpa": 39.63
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -1443,14 +1483,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 226.79,
-            "cpc": 0.2,
-            "ctr": 5.46,
-            "atc": 87,
-            "purchases": 5,
-            "frequency": 1.207876,
-            "roas": 3.89537925,
-            "cpa": 45.358
+            "spend": 239.69,
+            "cpc": 0.19,
+            "ctr": 5.55,
+            "atc": 96,
+            "purchases": 7,
+            "frequency": 1.2049538,
+            "roas": 4.8549456,
+            "cpa": 34.24142857142857
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -1482,14 +1522,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 148.01,
-            "cpc": 0.15,
-            "ctr": 4.76,
-            "atc": 46,
-            "purchases": 6,
-            "frequency": 1.2350694285714285,
-            "roas": 2.418799,
-            "cpa": 24.668333333333333
+            "spend": 160.29,
+            "cpc": 0.14,
+            "ctr": 4.79,
+            "atc": 53,
+            "purchases": 7,
+            "frequency": 1.2202435714285713,
+            "roas": 3.668991166666667,
+            "cpa": 22.898571428571426
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -2693,14 +2733,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 24.94,
-            "cpc": 0.27,
-            "ctr": 5.53,
-            "atc": 7,
+            "spend": 39.63,
+            "cpc": 0.24,
+            "ctr": 5.24,
+            "atc": 8,
             "purchases": 1,
-            "frequency": 1.300726,
+            "frequency": 1.2350575,
             "roas": 1.93108,
-            "cpa": 24.94
+            "cpa": 39.63
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -2745,14 +2785,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 226.79,
-            "cpc": 0.2,
-            "ctr": 5.46,
-            "atc": 87,
-            "purchases": 5,
-            "frequency": 1.207876,
-            "roas": 3.89537925,
-            "cpa": 45.358
+            "spend": 239.69,
+            "cpc": 0.19,
+            "ctr": 5.55,
+            "atc": 96,
+            "purchases": 7,
+            "frequency": 1.2049538,
+            "roas": 4.8549456,
+            "cpa": 34.24142857142857
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -2784,14 +2824,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 148.01,
-            "cpc": 0.15,
-            "ctr": 4.76,
-            "atc": 46,
-            "purchases": 6,
-            "frequency": 1.2350694285714285,
-            "roas": 2.418799,
-            "cpa": 24.668333333333333
+            "spend": 160.29,
+            "cpc": 0.14,
+            "ctr": 4.79,
+            "atc": 53,
+            "purchases": 7,
+            "frequency": 1.2202435714285713,
+            "roas": 3.668991166666667,
+            "cpa": 22.898571428571426
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -3995,14 +4035,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 24.94,
-            "cpc": 0.27,
-            "ctr": 5.53,
-            "atc": 7,
+            "spend": 39.63,
+            "cpc": 0.24,
+            "ctr": 5.24,
+            "atc": 8,
             "purchases": 1,
-            "frequency": 1.300726,
+            "frequency": 1.2350575,
             "roas": 1.93108,
-            "cpa": 24.94
+            "cpa": 39.63
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -4047,14 +4087,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 226.79,
-            "cpc": 0.2,
-            "ctr": 5.46,
-            "atc": 87,
-            "purchases": 5,
-            "frequency": 1.207876,
-            "roas": 3.89537925,
-            "cpa": 45.358
+            "spend": 239.69,
+            "cpc": 0.19,
+            "ctr": 5.55,
+            "atc": 96,
+            "purchases": 7,
+            "frequency": 1.2049538,
+            "roas": 4.8549456,
+            "cpa": 34.24142857142857
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -4086,14 +4126,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 148.01,
-            "cpc": 0.15,
-            "ctr": 4.76,
-            "atc": 46,
-            "purchases": 6,
-            "frequency": 1.2350694285714285,
-            "roas": 2.418799,
-            "cpa": 24.668333333333333
+            "spend": 160.29,
+            "cpc": 0.14,
+            "ctr": 4.79,
+            "atc": 53,
+            "purchases": 7,
+            "frequency": 1.2202435714285713,
+            "roas": 3.668991166666667,
+            "cpa": 22.898571428571426
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -5228,8 +5268,8 @@
           }
         ]
       },
-      "ads_spend_total": 395.19,
-      "ads_revenue_attributed": 1276.2591947575002,
+      "ads_spend_total": 399.74,
+      "ads_revenue_attributed": 1289.6006352975,
       "revenue_history": [
         {
           "date": "2026-08-08",
@@ -5349,7 +5389,7 @@
         },
         {
           "date": "2026-09-06",
-          "revenue": 0
+          "revenue": 95411
         }
       ]
     },
