@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T15:50:14.550Z",
+  "generated_at": "2026-09-06T17:45:28.778Z",
   "eur_huf_rate": 363.28,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 115401,
-      "revenue_avg7d": 82186.40000000001,
-      "orders_today": 4,
-      "aov": 28850.25,
+      "revenue_today": 140884,
+      "revenue_avg7d": 85826.82857142857,
+      "orders_today": 5,
+      "aov": 28176.8,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 18.031759259259257,
@@ -26,12 +26,17 @@
           "examples": [
             {
               "number": 1460,
-              "hours": 33
+              "hours": 35
             }
           ]
         }
       ],
       "top_products": [
+        {
+          "name": "Kézműves Juharfa Naplemente Táska",
+          "quantity": 2,
+          "revenue": 28980
+        },
         {
           "name": "A bájos Noé elefánt",
           "quantity": 1,
@@ -43,17 +48,12 @@
           "revenue": 17690
         },
         {
+          "name": "Kézzel Készített Matelassé Táska: Könyvek és Virágok",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
           "name": "Kristályos macska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Kézműves Sziámi Macska Táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Kézzel Készített Fekete Macskás Táska Szívvel és Margarétákkal",
           "quantity": 1,
           "revenue": 14990
         }
@@ -129,14 +129,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 45.68,
-            "cpc": 0.23,
-            "ctr": 5.32,
+            "spend": 49.71,
+            "cpc": 0.22,
+            "ctr": 5.34,
             "atc": 8,
             "purchases": 1,
-            "frequency": 1.263721,
+            "frequency": 1.2744965,
             "roas": 1.93108,
-            "cpa": 45.68
+            "cpa": 49.71
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -181,14 +181,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 246,
+            "spend": 250.44,
             "cpc": 0.19,
-            "ctr": 5.58,
+            "ctr": 5.59,
             "atc": 96,
             "purchases": 7,
-            "frequency": 1.2052782,
-            "roas": 4.3477412,
-            "cpa": 35.142857142857146
+            "frequency": 1.2062576,
+            "roas": 4.1380142,
+            "cpa": 35.777142857142856
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -220,14 +220,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 167.9,
+            "spend": 171.34,
             "cpc": 0.14,
-            "ctr": 4.81,
+            "ctr": 4.77,
             "atc": 55,
             "purchases": 8,
-            "frequency": 1.217817142857143,
-            "roas": 3.5033868333333333,
-            "cpa": 20.9875
+            "frequency": 1.2200632857142857,
+            "roas": 3.2911948333333334,
+            "cpa": 21.4175
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -5268,8 +5268,8 @@
           }
         ]
       },
-      "ads_spend_total": 459.58000000000004,
-      "ads_revenue_attributed": 1745.9747189166667,
+      "ads_spend_total": 471.49,
+      "ads_revenue_attributed": 1696.2315857913331,
       "revenue_history": [
         {
           "date": "2026-08-08",
@@ -5389,7 +5389,7 @@
         },
         {
           "date": "2026-09-06",
-          "revenue": 115401
+          "revenue": 140884
         }
       ]
     },
