@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T14:04:03.293Z",
+  "generated_at": "2026-09-13T17:22:36.246Z",
   "eur_huf_rate": 364.45,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 52763,
-      "revenue_avg7d": 138441.37142857144,
-      "orders_today": 3,
-      "aov": 17587.666666666668,
+      "revenue_today": 77396,
+      "revenue_avg7d": 141960.37142857144,
+      "orders_today": 4,
+      "aov": 19349,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": 11.573055555555555,
@@ -26,16 +26,26 @@
           "examples": [
             {
               "number": 1492,
-              "hours": 32
+              "hours": 35
             }
           ]
         }
       ],
       "top_products": [
         {
+          "name": "Fekete macska és sütőtök motívumú steppelt válltáska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
           "name": "Az Empátia Öröme",
           "quantity": 1,
           "revenue": 14990
+        },
+        {
+          "name": "Kézműves Pillangó és Könyv Táska",
+          "quantity": 1,
+          "revenue": 13990
         },
         {
           "name": "Bélelt Smaragd Könyvestáskák",
@@ -44,11 +54,6 @@
         },
         {
           "name": "Hollis | Kézműves, laza fazonú táska",
-          "quantity": 1,
-          "revenue": 13990
-        },
-        {
-          "name": "Kézműves Misztikus Macska Táska",
           "quantity": 1,
           "revenue": 13990
         }
@@ -1426,14 +1431,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 214.36,
-            "cpc": 0.19,
+            "spend": 220.21,
+            "cpc": 0.18,
             "ctr": 4.59,
-            "atc": 54,
-            "purchases": 7,
-            "frequency": 1.304915,
-            "roas": 10.6477206,
-            "cpa": 30.622857142857146
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.312484,
+            "roas": 9.361868666666666,
+            "cpa": 27.52625
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -1530,14 +1535,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 338.95,
+            "spend": 344.25,
             "cpc": 0.15,
-            "ctr": 4.02,
-            "atc": 117,
+            "ctr": 3.99,
+            "atc": 119,
             "purchases": 14,
-            "frequency": 1.2067063571428571,
-            "roas": 2.631041090909091,
-            "cpa": 24.210714285714285
+            "frequency": 1.206287142857143,
+            "roas": 2.579084090909091,
+            "cpa": 24.589285714285715
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -2518,14 +2523,14 @@
             "name": "cbo - Mala Napraforgóval - 1.57 - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 63.06,
+            "spend": 64.15,
             "cpc": 0.35,
-            "ctr": 4.43,
+            "ctr": 4.38,
             "atc": 4,
             "purchases": 2,
-            "frequency": 1.3935228333333334,
+            "frequency": 1.3938645,
             "roas": 5.4498535,
-            "cpa": 31.53
+            "cpa": 32.075
           },
           {
             "name": "cbo - Mala Olivia - 1,53 - 23 Julho",
@@ -2635,14 +2640,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 146.14,
+            "spend": 151.51,
             "cpc": 0.34,
-            "ctr": 1.64,
-            "atc": 40,
+            "ctr": 1.62,
+            "atc": 41,
             "purchases": 5,
-            "frequency": 1.4850926666666666,
-            "roas": 2.44952775,
-            "cpa": 29.227999999999998
+            "frequency": 1.4914565,
+            "roas": 2.24295225,
+            "cpa": 30.302
           },
           {
             "name": "cbo - Mala Sage - 1.57 - 30 Agosto",
@@ -2728,14 +2733,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 214.36,
-            "cpc": 0.19,
+            "spend": 220.21,
+            "cpc": 0.18,
             "ctr": 4.59,
-            "atc": 54,
-            "purchases": 7,
-            "frequency": 1.304915,
-            "roas": 10.6477206,
-            "cpa": 30.622857142857146
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.312484,
+            "roas": 9.361868666666666,
+            "cpa": 27.52625
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -2832,14 +2837,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 338.95,
+            "spend": 344.25,
             "cpc": 0.15,
-            "ctr": 4.02,
-            "atc": 117,
+            "ctr": 3.99,
+            "atc": 119,
             "purchases": 14,
-            "frequency": 1.2067063571428571,
-            "roas": 2.631041090909091,
-            "cpa": 24.210714285714285
+            "frequency": 1.206287142857143,
+            "roas": 2.579084090909091,
+            "cpa": 24.589285714285715
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -3820,14 +3825,14 @@
             "name": "cbo - Mala Napraforgóval - 1.57 - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 63.06,
+            "spend": 64.15,
             "cpc": 0.35,
-            "ctr": 4.43,
+            "ctr": 4.38,
             "atc": 4,
             "purchases": 2,
-            "frequency": 1.3935228333333334,
+            "frequency": 1.3938645,
             "roas": 5.4498535,
-            "cpa": 31.53
+            "cpa": 32.075
           },
           {
             "name": "cbo - Mala Olivia - 1,53 - 23 Julho",
@@ -3937,14 +3942,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 146.14,
+            "spend": 151.51,
             "cpc": 0.34,
-            "ctr": 1.64,
-            "atc": 40,
+            "ctr": 1.62,
+            "atc": 41,
             "purchases": 5,
-            "frequency": 1.4850926666666666,
-            "roas": 2.44952775,
-            "cpa": 29.227999999999998
+            "frequency": 1.4914565,
+            "roas": 2.24295225,
+            "cpa": 30.302
           },
           {
             "name": "cbo - Mala Sage - 1.57 - 30 Agosto",
@@ -4030,14 +4035,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 214.36,
-            "cpc": 0.19,
+            "spend": 220.21,
+            "cpc": 0.18,
             "ctr": 4.59,
-            "atc": 54,
-            "purchases": 7,
-            "frequency": 1.304915,
-            "roas": 10.6477206,
-            "cpa": 30.622857142857146
+            "atc": 55,
+            "purchases": 8,
+            "frequency": 1.312484,
+            "roas": 9.361868666666666,
+            "cpa": 27.52625
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -4134,14 +4139,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 338.95,
+            "spend": 344.25,
             "cpc": 0.15,
-            "ctr": 4.02,
-            "atc": 117,
+            "ctr": 3.99,
+            "atc": 119,
             "purchases": 14,
-            "frequency": 1.2067063571428571,
-            "roas": 2.631041090909091,
-            "cpa": 24.210714285714285
+            "frequency": 1.206287142857143,
+            "roas": 2.579084090909091,
+            "cpa": 24.589285714285715
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -5122,14 +5127,14 @@
             "name": "cbo - Mala Napraforgóval - 1.57 - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 63.06,
+            "spend": 64.15,
             "cpc": 0.35,
-            "ctr": 4.43,
+            "ctr": 4.38,
             "atc": 4,
             "purchases": 2,
-            "frequency": 1.3935228333333334,
+            "frequency": 1.3938645,
             "roas": 5.4498535,
-            "cpa": 31.53
+            "cpa": 32.075
           },
           {
             "name": "cbo - Mala Olivia - 1,53 - 23 Julho",
@@ -5239,14 +5244,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 146.14,
+            "spend": 151.51,
             "cpc": 0.34,
-            "ctr": 1.64,
-            "atc": 40,
+            "ctr": 1.62,
+            "atc": 41,
             "purchases": 5,
-            "frequency": 1.4850926666666666,
-            "roas": 2.44952775,
-            "cpa": 29.227999999999998
+            "frequency": 1.4914565,
+            "roas": 2.24295225,
+            "cpa": 30.302
           },
           {
             "name": "cbo - Mala Sage - 1.57 - 30 Agosto",
@@ -5384,7 +5389,7 @@
         },
         {
           "date": "2026-09-13",
-          "revenue": 52763
+          "revenue": 77396
         }
       ]
     },
