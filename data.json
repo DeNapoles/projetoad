@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T21:26:51.292Z",
+  "generated_at": "2026-09-15T23:34:13.366Z",
   "eur_huf_rate": 366.03,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 81548,
-      "revenue_avg7d": 124280.92857142857,
-      "orders_today": 4,
-      "aov": 20387,
+      "revenue_today": 0,
+      "revenue_avg7d": 96332.35714285714,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 8.103055555555555,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 55
+              "hours": 57
             }
           ]
         },
@@ -38,33 +38,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Kézműves Elefántos Táska",
-          "quantity": 2,
-          "revenue": 29980
-        },
-        {
-          "name": "Mező | Varázslatos mosókosár vadvirágokkal",
-          "quantity": 1,
-          "revenue": 17990
-        },
-        {
-          "name": "Vitrail üveg lámpa, inspirálva a Whippet-től",
-          "quantity": 1,
-          "revenue": 15990
-        },
-        {
-          "name": "Charlotte | Kézzel készült, steppelt napi táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Amelia | Kézzel készült puha napi táska",
-          "quantity": 1,
-          "revenue": 14990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -136,14 +110,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 273.07,
+            "spend": 273.15,
             "cpc": 0.18,
             "ctr": 4.17,
             "atc": 70,
             "purchases": 8,
-            "frequency": 1.3103040909090908,
+            "frequency": 1.3103087272727274,
             "roas": 9.254691333333334,
-            "cpa": 34.13375
+            "cpa": 34.14375
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -188,12 +162,12 @@
             "name": "cbo - Collection Cardigans - 14 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 53.53,
+            "spend": 53.69,
             "cpc": 0.27,
             "ctr": 6.76,
             "atc": 5,
             "purchases": 0,
-            "frequency": 1.366371,
+            "frequency": 1.3677825,
             "roas": 0,
             "cpa": null
           },
@@ -253,14 +227,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 395.94,
+            "spend": 395.95,
             "cpc": 0.14,
             "ctr": 3.79,
             "atc": 122,
             "purchases": 14,
-            "frequency": 1.215373625,
+            "frequency": 1.2153893125,
             "roas": 2.5417845454545454,
-            "cpa": 28.28142857142857
+            "cpa": 28.282142857142855
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -1358,14 +1332,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 204.74,
+            "spend": 204.81,
             "cpc": 0.31,
             "ctr": 1.49,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.519171875,
-            "roas": 2.7444154,
-            "cpa": 29.24857142857143
+            "frequency": 1.518968125,
+            "roas": 2.741001,
+            "cpa": 29.25857142857143
           }
         ],
         "yesterday": [
@@ -1438,14 +1412,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 273.07,
+            "spend": 273.15,
             "cpc": 0.18,
             "ctr": 4.17,
             "atc": 70,
             "purchases": 8,
-            "frequency": 1.3103040909090908,
+            "frequency": 1.3103087272727274,
             "roas": 9.254691333333334,
-            "cpa": 34.13375
+            "cpa": 34.14375
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -1490,12 +1464,12 @@
             "name": "cbo - Collection Cardigans - 14 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 53.53,
+            "spend": 53.69,
             "cpc": 0.27,
             "ctr": 6.76,
             "atc": 5,
             "purchases": 0,
-            "frequency": 1.366371,
+            "frequency": 1.3677825,
             "roas": 0,
             "cpa": null
           },
@@ -1555,14 +1529,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 395.94,
+            "spend": 395.95,
             "cpc": 0.14,
             "ctr": 3.79,
             "atc": 122,
             "purchases": 14,
-            "frequency": 1.215373625,
+            "frequency": 1.2153893125,
             "roas": 2.5417845454545454,
-            "cpa": 28.28142857142857
+            "cpa": 28.282142857142855
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -2660,14 +2634,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 204.74,
+            "spend": 204.81,
             "cpc": 0.31,
             "ctr": 1.49,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.519171875,
-            "roas": 2.7444154,
-            "cpa": 29.24857142857143
+            "frequency": 1.518968125,
+            "roas": 2.741001,
+            "cpa": 29.25857142857143
           }
         ],
         "last_7d": [
@@ -2740,14 +2714,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 273.07,
+            "spend": 273.15,
             "cpc": 0.18,
             "ctr": 4.17,
             "atc": 70,
             "purchases": 8,
-            "frequency": 1.3103040909090908,
+            "frequency": 1.3103087272727274,
             "roas": 9.254691333333334,
-            "cpa": 34.13375
+            "cpa": 34.14375
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -2792,12 +2766,12 @@
             "name": "cbo - Collection Cardigans - 14 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 53.53,
+            "spend": 53.69,
             "cpc": 0.27,
             "ctr": 6.76,
             "atc": 5,
             "purchases": 0,
-            "frequency": 1.366371,
+            "frequency": 1.3677825,
             "roas": 0,
             "cpa": null
           },
@@ -2857,14 +2831,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 395.94,
+            "spend": 395.95,
             "cpc": 0.14,
             "ctr": 3.79,
             "atc": 122,
             "purchases": 14,
-            "frequency": 1.215373625,
+            "frequency": 1.2153893125,
             "roas": 2.5417845454545454,
-            "cpa": 28.28142857142857
+            "cpa": 28.282142857142855
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -3962,14 +3936,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 204.74,
+            "spend": 204.81,
             "cpc": 0.31,
             "ctr": 1.49,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.519171875,
-            "roas": 2.7444154,
-            "cpa": 29.24857142857143
+            "frequency": 1.518968125,
+            "roas": 2.741001,
+            "cpa": 29.25857142857143
           }
         ],
         "last_30d": [
@@ -4042,14 +4016,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 273.07,
+            "spend": 273.15,
             "cpc": 0.18,
             "ctr": 4.17,
             "atc": 70,
             "purchases": 8,
-            "frequency": 1.3103040909090908,
+            "frequency": 1.3103087272727274,
             "roas": 9.254691333333334,
-            "cpa": 34.13375
+            "cpa": 34.14375
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -4094,12 +4068,12 @@
             "name": "cbo - Collection Cardigans - 14 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 53.53,
+            "spend": 53.69,
             "cpc": 0.27,
             "ctr": 6.76,
             "atc": 5,
             "purchases": 0,
-            "frequency": 1.366371,
+            "frequency": 1.3677825,
             "roas": 0,
             "cpa": null
           },
@@ -4159,14 +4133,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 395.94,
+            "spend": 395.95,
             "cpc": 0.14,
             "ctr": 3.79,
             "atc": 122,
             "purchases": 14,
-            "frequency": 1.215373625,
+            "frequency": 1.2153893125,
             "roas": 2.5417845454545454,
-            "cpa": 28.28142857142857
+            "cpa": 28.282142857142855
           },
           {
             "name": "CBO - Collection Malas - 25Maio",
@@ -5264,24 +5238,20 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 204.74,
+            "spend": 204.81,
             "cpc": 0.31,
             "ctr": 1.49,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.519171875,
-            "roas": 2.7444154,
-            "cpa": 29.24857142857143
+            "frequency": 1.518968125,
+            "roas": 2.741001,
+            "cpa": 29.25857142857143
           }
         ]
       },
-      "ads_spend_total": 927.28,
-      "ads_revenue_attributed": 4095.464344316606,
+      "ads_spend_total": 927.5999999999999,
+      "ads_revenue_attributed": 4095.722943282727,
       "revenue_history": [
-        {
-          "date": "2026-08-17",
-          "revenue": 29980
-        },
         {
           "date": "2026-08-18",
           "revenue": 68453
@@ -5397,6 +5367,10 @@
         {
           "date": "2026-09-15",
           "revenue": 81548
+        },
+        {
+          "date": "2026-09-16",
+          "revenue": 0
         }
       ]
     },
