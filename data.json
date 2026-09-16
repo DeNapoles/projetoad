@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T19:35:54.224Z",
+  "generated_at": "2026-09-16T22:17:17.593Z",
   "eur_huf_rate": 364.45,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 30381,
-      "revenue_avg7d": 100672.5,
-      "orders_today": 2,
-      "aov": 15190.5,
+      "revenue_today": 0,
+      "revenue_avg7d": 56608,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 18.14138888888889,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -26,15 +26,15 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 77
+              "hours": 80
             },
             {
               "number": 1499,
-              "hours": 37
+              "hours": 39
             },
             {
               "number": 1502,
-              "hours": 32
+              "hours": 35
             }
           ]
         },
@@ -46,23 +46,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Vitrail üveg lámpa, inspirálva a Whippet-től",
-          "quantity": 1,
-          "revenue": 15990
-        },
-        {
-          "name": "Kézműves Karácsonyi Harangok Táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Tip",
-          "quantity": 1,
-          "revenue": 1000
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -1356,14 +1340,14 @@
             "name": "cbo - Malas  - 8 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 204.85,
+            "spend": 204.87,
             "cpc": 0.31,
             "ctr": 1.5,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.3501296666666667,
-            "roas": 2.7390598,
-            "cpa": 29.264285714285712
+            "frequency": 1.3501512222222223,
+            "roas": 2.738092,
+            "cpa": 29.267142857142858
           }
         ],
         "yesterday": [
@@ -5273,13 +5257,9 @@
           }
         ]
       },
-      "ads_spend_total": 927.94,
-      "ads_revenue_attributed": 4095.83965847,
+      "ads_spend_total": 927.96,
+      "ads_revenue_attributed": 4095.69616648,
       "revenue_history": [
-        {
-          "date": "2026-08-18",
-          "revenue": 68453
-        },
         {
           "date": "2026-08-19",
           "revenue": 184820
@@ -5395,6 +5375,10 @@
         {
           "date": "2026-09-16",
           "revenue": 30381
+        },
+        {
+          "date": "2026-09-17",
+          "revenue": 0
         }
       ]
     },
