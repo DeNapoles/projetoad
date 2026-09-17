@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T21:40:02.975Z",
+  "generated_at": "2026-09-17T23:39:37.557Z",
   "eur_huf_rate": 362.98,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 4763,
-      "revenue_avg7d": 57288.42857142857,
-      "orders_today": 1,
-      "aov": 4763,
+      "revenue_today": 0,
+      "revenue_avg7d": 42741.142857142855,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -26,23 +26,23 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 103
+              "hours": 105
             },
             {
               "number": 1499,
-              "hours": 63
+              "hours": 65
             },
             {
               "number": 1502,
-              "hours": 58
+              "hours": 60
             },
             {
               "number": 1503,
-              "hours": 43
+              "hours": 45
             },
             {
               "number": 1504,
-              "hours": 40
+              "hours": 42
             }
           ]
         },
@@ -54,13 +54,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Harper | Kézműves kényelmes hordozótáska",
-          "quantity": 1,
-          "revenue": 13990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -5275,10 +5269,6 @@
       "ads_revenue_attributed": 4095.555101345454,
       "revenue_history": [
         {
-          "date": "2026-08-19",
-          "revenue": 184820
-        },
-        {
           "date": "2026-08-20",
           "revenue": 148445
         },
@@ -5393,6 +5383,10 @@
         {
           "date": "2026-09-17",
           "revenue": 4763
+        },
+        {
+          "date": "2026-09-18",
+          "revenue": 0
         }
       ]
     },
