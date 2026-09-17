@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-17T10:00:01.061Z",
-  "eur_huf_rate": 364.45,
+  "generated_at": "2026-09-17T14:43:52.299Z",
+  "eur_huf_rate": 362.98,
   "stores": [
     {
       "id": "arany_luna",
@@ -21,28 +21,28 @@
           "type": "unfulfilled_orders",
           "severity": "high",
           "count": 5,
-          "count_severe": 2,
-          "message": "5 encomendas por cumprir (2 há mais de 48h)",
+          "count_severe": 3,
+          "message": "5 encomendas por cumprir (3 há mais de 48h)",
           "examples": [
             {
               "number": 1497,
-              "hours": 92
+              "hours": 96
             },
             {
               "number": 1499,
-              "hours": 51
+              "hours": 56
             },
             {
               "number": 1502,
-              "hours": 46
+              "hours": 51
             },
             {
               "number": 1503,
-              "hours": 31
+              "hours": 36
             },
             {
               "number": 1504,
-              "hours": 29
+              "hours": 33
             }
           ]
         },
@@ -131,7 +131,7 @@
             "ctr": 4.17,
             "atc": 70,
             "purchases": 8,
-            "frequency": 1.2012859166666667,
+            "frequency": 1.3104937272727273,
             "roas": 9.254691333333334,
             "cpa": 34.1475
           },
@@ -183,7 +183,7 @@
             "ctr": 6.81,
             "atc": 5,
             "purchases": 0,
-            "frequency": 0.9134226666666667,
+            "frequency": 1.370134,
             "roas": 0,
             "cpa": null
           },
@@ -1353,7 +1353,7 @@
             "ctr": 1.5,
             "atc": 63,
             "purchases": 7,
-            "frequency": 1.3501512222222223,
+            "frequency": 1.518920125,
             "roas": 2.738092,
             "cpa": 29.267142857142858
           }
