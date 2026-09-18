@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T06:11:13.386Z",
+  "generated_at": "2026-09-18T11:08:41.339Z",
   "eur_huf_rate": 362.98,
   "stores": [
     {
@@ -9,40 +9,24 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 42741.142857142855,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 25483,
+      "revenue_avg7d": 46381.57142857143,
+      "orders_today": 1,
+      "aov": 25483,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": null,
+      "avg_fulfillment_hours": 53.51677777777778,
       "alerts": [
         {
           "type": "unfulfilled_orders",
           "severity": "high",
-          "count": 5,
-          "count_severe": 5,
-          "message": "5 encomendas por cumprir (5 há mais de 48h)",
+          "count": 1,
+          "count_severe": 1,
+          "message": "1 encomenda por cumprir (1 há mais de 48h)",
           "examples": [
             {
               "number": 1497,
-              "hours": 112
-            },
-            {
-              "number": 1499,
-              "hours": 71
-            },
-            {
-              "number": 1502,
-              "hours": 67
-            },
-            {
-              "number": 1503,
-              "hours": 51
-            },
-            {
-              "number": 1504,
-              "hours": 49
+              "hours": 117
             }
           ]
         },
@@ -54,7 +38,18 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Kézműves Erdei Őszi Bagoly Táska",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézműves Delfines Táska",
+          "quantity": 1,
+          "revenue": 14990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -5386,7 +5381,7 @@
         },
         {
           "date": "2026-09-18",
-          "revenue": 0
+          "revenue": 25483
         }
       ]
     },
