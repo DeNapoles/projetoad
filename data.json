@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T01:27:01.247Z",
+  "generated_at": "2026-09-18T06:11:13.386Z",
   "eur_huf_rate": 362.98,
   "stores": [
     {
@@ -21,28 +21,28 @@
           "type": "unfulfilled_orders",
           "severity": "high",
           "count": 5,
-          "count_severe": 3,
-          "message": "5 encomendas por cumprir (3 há mais de 48h)",
+          "count_severe": 5,
+          "message": "5 encomendas por cumprir (5 há mais de 48h)",
           "examples": [
             {
               "number": 1497,
-              "hours": 107
+              "hours": 112
             },
             {
               "number": 1499,
-              "hours": 66
+              "hours": 71
             },
             {
               "number": 1502,
-              "hours": 62
+              "hours": 67
             },
             {
               "number": 1503,
-              "hours": 46
+              "hours": 51
             },
             {
               "number": 1504,
-              "hours": 44
+              "hours": 49
             }
           ]
         },
