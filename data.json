@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T20:25:30.078Z",
+  "generated_at": "2026-09-18T22:41:12.091Z",
   "eur_huf_rate": 364.28,
   "stores": [
     {
@@ -9,13 +9,13 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 25483,
-      "revenue_avg7d": 46381.57142857143,
-      "orders_today": 1,
-      "aov": 25483,
+      "revenue_today": 0,
+      "revenue_avg7d": 38286.28571428572,
+      "orders_today": 0,
+      "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 53.51677777777778,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 126
+              "hours": 128
             }
           ]
         },
@@ -38,18 +38,7 @@
           "roas": 0
         }
       ],
-      "top_products": [
-        {
-          "name": "Kézműves Erdei Őszi Bagoly Táska",
-          "quantity": 1,
-          "revenue": 14990
-        },
-        {
-          "name": "Kézműves Delfines Táska",
-          "quantity": 1,
-          "revenue": 14990
-        }
-      ],
+      "top_products": [],
       "campaigns_by_range": {
         "today": [
           {
@@ -5264,10 +5253,6 @@
       "ads_revenue_attributed": 4095.555101345454,
       "revenue_history": [
         {
-          "date": "2026-08-20",
-          "revenue": 148445
-        },
-        {
           "date": "2026-08-21",
           "revenue": 131779
         },
@@ -5382,6 +5367,10 @@
         {
           "date": "2026-09-18",
           "revenue": 25483
+        },
+        {
+          "date": "2026-09-19",
+          "revenue": 0
         }
       ]
     },
