@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T04:58:32.769Z",
+  "generated_at": "2026-09-19T09:10:30.225Z",
   "eur_huf_rate": 364.28,
   "stores": [
     {
@@ -15,7 +15,7 @@
       "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": null,
+      "avg_fulfillment_hours": 19.71388888888889,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 135
+              "hours": 139
             }
           ]
         },
