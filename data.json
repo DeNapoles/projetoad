@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T20:58:28.475Z",
+  "generated_at": "2026-09-19T22:38:22.920Z",
   "eur_huf_rate": 364.28,
   "stores": [
     {
@@ -10,12 +10,12 @@
       "active": true,
       "profit_margin_pct": 30,
       "revenue_today": 0,
-      "revenue_avg7d": 38286.28571428572,
+      "revenue_avg7d": 27229.714285714286,
       "orders_today": 0,
       "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": 19.71388888888889,
+      "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
@@ -26,7 +26,7 @@
           "examples": [
             {
               "number": 1497,
-              "hours": 151
+              "hours": 152
             }
           ]
         },
@@ -5253,10 +5253,6 @@
       "ads_revenue_attributed": 4095.555101345454,
       "revenue_history": [
         {
-          "date": "2026-08-21",
-          "revenue": 131779
-        },
-        {
           "date": "2026-08-22",
           "revenue": 160933.89
         },
@@ -5370,6 +5366,10 @@
         },
         {
           "date": "2026-09-19",
+          "revenue": 0
+        },
+        {
+          "date": "2026-09-20",
           "revenue": 0
         }
       ]
