@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T09:41:12.837Z",
+  "generated_at": "2026-09-20T13:41:06.735Z",
   "eur_huf_rate": 364.28,
   "stores": [
     {
@@ -15,21 +15,8 @@
       "aov": null,
       "refunded_today": 0,
       "refund_count_today": 0,
-      "avg_fulfillment_hours": null,
+      "avg_fulfillment_hours": 163.63583333333332,
       "alerts": [
-        {
-          "type": "unfulfilled_orders",
-          "severity": "high",
-          "count": 1,
-          "count_severe": 1,
-          "message": "1 encomenda por cumprir (1 há mais de 48h)",
-          "examples": [
-            {
-              "number": 1497,
-              "hours": 163
-            }
-          ]
-        },
         {
           "type": "campaign_roas",
           "severity": "high",
