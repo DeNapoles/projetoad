@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T21:24:03.083Z",
+  "generated_at": "2026-09-22T23:38:47.433Z",
   "eur_huf_rate": 361.58,
   "stores": [
     {
@@ -10,7 +10,7 @@
       "active": true,
       "profit_margin_pct": 30,
       "revenue_today": 0,
-      "revenue_avg7d": 8661,
+      "revenue_avg7d": 4320.857142857143,
       "orders_today": 0,
       "aov": null,
       "refunded_today": 0,
@@ -5240,10 +5240,6 @@
       "ads_revenue_attributed": 4095.555101345454,
       "revenue_history": [
         {
-          "date": "2026-08-24",
-          "revenue": 120419
-        },
-        {
           "date": "2026-08-25",
           "revenue": 106129
         },
@@ -5357,6 +5353,10 @@
         },
         {
           "date": "2026-09-22",
+          "revenue": 0
+        },
+        {
+          "date": "2026-09-23",
           "revenue": 0
         }
       ]
