@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T18:38:59.641Z",
+  "generated_at": "2026-10-04T21:54:04.425Z",
   "eur_huf_rate": 369.18,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 0,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 13990,
+      "revenue_avg7d": 1998.5714285714287,
+      "orders_today": 1,
+      "aov": 13990,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -25,7 +25,13 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Jayla | Kézműves kényelmes hordtáska",
+          "quantity": 1,
+          "revenue": 13990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -5357,7 +5363,7 @@
         },
         {
           "date": "2026-10-04",
-          "revenue": 0
+          "revenue": 13990
         }
       ]
     },
