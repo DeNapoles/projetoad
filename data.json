@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T23:15:52.328Z",
+  "generated_at": "2026-10-07T02:24:10.484Z",
   "eur_huf_rate": 364.95,
   "stores": [
     {
@@ -84,14 +84,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 215.96,
+            "spend": 186.66,
             "cpc": 0.17,
-            "ctr": 4,
-            "atc": 60,
-            "purchases": 7,
-            "frequency": 1.311063,
-            "roas": 10.7194136,
-            "cpa": 30.851428571428574
+            "ctr": 3.9,
+            "atc": 56,
+            "purchases": 6,
+            "frequency": 1.307823875,
+            "roas": 12.74133175,
+            "cpa": 31.11
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -162,14 +162,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 142,
+            "spend": 121.95,
             "cpc": 0.21,
-            "ctr": 5.53,
-            "atc": 75,
+            "ctr": 5.58,
+            "atc": 59,
             "purchases": 4,
-            "frequency": 1.278291,
+            "frequency": 1.269783,
             "roas": 5.6187595,
-            "cpa": 35.5
+            "cpa": 30.4875
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -201,14 +201,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 216.88,
-            "cpc": 0.15,
-            "ctr": 3.23,
-            "atc": 67,
-            "purchases": 6,
-            "frequency": 1.2067751111111111,
-            "roas": 2.016478,
-            "cpa": 36.14666666666667
+            "spend": 197.2,
+            "cpc": 0.14,
+            "ctr": 3.19,
+            "atc": 63,
+            "purchases": 5,
+            "frequency": 1.20867975,
+            "roas": 1.9968425,
+            "cpa": 39.44
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
@@ -770,19 +770,6 @@
             "cpa": null
           },
           {
-            "name": "cbo - Mala Emma vaca - ber - 12 Junho",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
             "name": "cbo - Mala Flores brancas - 1.71 - 27 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
@@ -1033,12 +1020,12 @@
             "name": "cbo - Mala Őszi csivava - 1.57 - 7 Set",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 20.35,
-            "cpc": 0.45,
-            "ctr": 2.46,
+            "spend": 9.42,
+            "cpc": 0.39,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.3452983333333333,
+            "frequency": 1.25914,
             "roas": 0,
             "cpa": null
           },
@@ -1317,6 +1304,19 @@
           },
           {
             "name": "cbo - Necessaires  - 8 Agosto",
+            "status": "PAUSED",
+            "objective": "OUTCOME_SALES",
+            "spend": 0,
+            "cpc": null,
+            "ctr": null,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -1386,14 +1386,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 215.96,
+            "spend": 186.66,
             "cpc": 0.17,
-            "ctr": 4,
-            "atc": 60,
-            "purchases": 7,
-            "frequency": 1.311063,
-            "roas": 10.7194136,
-            "cpa": 30.851428571428574
+            "ctr": 3.9,
+            "atc": 56,
+            "purchases": 6,
+            "frequency": 1.307823875,
+            "roas": 12.74133175,
+            "cpa": 31.11
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -1464,14 +1464,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 142,
+            "spend": 121.95,
             "cpc": 0.21,
-            "ctr": 5.53,
-            "atc": 75,
+            "ctr": 5.58,
+            "atc": 59,
             "purchases": 4,
-            "frequency": 1.278291,
+            "frequency": 1.269783,
             "roas": 5.6187595,
-            "cpa": 35.5
+            "cpa": 30.4875
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -1503,14 +1503,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 216.88,
-            "cpc": 0.15,
-            "ctr": 3.23,
-            "atc": 67,
-            "purchases": 6,
-            "frequency": 1.2067751111111111,
-            "roas": 2.016478,
-            "cpa": 36.14666666666667
+            "spend": 197.2,
+            "cpc": 0.14,
+            "ctr": 3.19,
+            "atc": 63,
+            "purchases": 5,
+            "frequency": 1.20867975,
+            "roas": 1.9968425,
+            "cpa": 39.44
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
@@ -2072,19 +2072,6 @@
             "cpa": null
           },
           {
-            "name": "cbo - Mala Emma vaca - ber - 12 Junho",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
             "name": "cbo - Mala Flores brancas - 1.71 - 27 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
@@ -2335,12 +2322,12 @@
             "name": "cbo - Mala Őszi csivava - 1.57 - 7 Set",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 20.35,
-            "cpc": 0.45,
-            "ctr": 2.46,
+            "spend": 9.42,
+            "cpc": 0.39,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.3452983333333333,
+            "frequency": 1.25914,
             "roas": 0,
             "cpa": null
           },
@@ -2619,6 +2606,19 @@
           },
           {
             "name": "cbo - Necessaires  - 8 Agosto",
+            "status": "PAUSED",
+            "objective": "OUTCOME_SALES",
+            "spend": 0,
+            "cpc": null,
+            "ctr": null,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -2688,14 +2688,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 215.96,
+            "spend": 186.66,
             "cpc": 0.17,
-            "ctr": 4,
-            "atc": 60,
-            "purchases": 7,
-            "frequency": 1.311063,
-            "roas": 10.7194136,
-            "cpa": 30.851428571428574
+            "ctr": 3.9,
+            "atc": 56,
+            "purchases": 6,
+            "frequency": 1.307823875,
+            "roas": 12.74133175,
+            "cpa": 31.11
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -2766,14 +2766,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 142,
+            "spend": 121.95,
             "cpc": 0.21,
-            "ctr": 5.53,
-            "atc": 75,
+            "ctr": 5.58,
+            "atc": 59,
             "purchases": 4,
-            "frequency": 1.278291,
+            "frequency": 1.269783,
             "roas": 5.6187595,
-            "cpa": 35.5
+            "cpa": 30.4875
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -2805,14 +2805,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 216.88,
-            "cpc": 0.15,
-            "ctr": 3.23,
-            "atc": 67,
-            "purchases": 6,
-            "frequency": 1.2067751111111111,
-            "roas": 2.016478,
-            "cpa": 36.14666666666667
+            "spend": 197.2,
+            "cpc": 0.14,
+            "ctr": 3.19,
+            "atc": 63,
+            "purchases": 5,
+            "frequency": 1.20867975,
+            "roas": 1.9968425,
+            "cpa": 39.44
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
@@ -3374,19 +3374,6 @@
             "cpa": null
           },
           {
-            "name": "cbo - Mala Emma vaca - ber - 12 Junho",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
             "name": "cbo - Mala Flores brancas - 1.71 - 27 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
@@ -3637,12 +3624,12 @@
             "name": "cbo - Mala Őszi csivava - 1.57 - 7 Set",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 20.35,
-            "cpc": 0.45,
-            "ctr": 2.46,
+            "spend": 9.42,
+            "cpc": 0.39,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.3452983333333333,
+            "frequency": 1.25914,
             "roas": 0,
             "cpa": null
           },
@@ -3921,6 +3908,19 @@
           },
           {
             "name": "cbo - Necessaires  - 8 Agosto",
+            "status": "PAUSED",
+            "objective": "OUTCOME_SALES",
+            "spend": 0,
+            "cpc": null,
+            "ctr": null,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 0,
+            "roas": 0,
+            "cpa": null
+          },
+          {
+            "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
             "spend": 0,
@@ -3990,14 +3990,14 @@
             "name": "cbo - Cestos de roupa - 5 Set",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 215.96,
+            "spend": 186.66,
             "cpc": 0.17,
-            "ctr": 4,
-            "atc": 60,
-            "purchases": 7,
-            "frequency": 1.311063,
-            "roas": 10.7194136,
-            "cpa": 30.851428571428574
+            "ctr": 3.9,
+            "atc": 56,
+            "purchases": 6,
+            "frequency": 1.307823875,
+            "roas": 12.74133175,
+            "cpa": 31.11
           },
           {
             "name": "cbo - Collection 10 criativos - 21 Março",
@@ -4068,14 +4068,14 @@
             "name": "cbo - Collection Criativos handmadeuk - 28 Agosto",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 142,
+            "spend": 121.95,
             "cpc": 0.21,
-            "ctr": 5.53,
-            "atc": 75,
+            "ctr": 5.58,
+            "atc": 59,
             "purchases": 4,
-            "frequency": 1.278291,
+            "frequency": 1.269783,
             "roas": 5.6187595,
-            "cpa": 35.5
+            "cpa": 30.4875
           },
           {
             "name": "CBO - Collection Floral Ruhak - 26 Abril",
@@ -4107,14 +4107,14 @@
             "name": "cbo - Collection Lampadas - 31 Agosto",
             "status": "ACTIVE",
             "objective": "OUTCOME_SALES",
-            "spend": 216.88,
-            "cpc": 0.15,
-            "ctr": 3.23,
-            "atc": 67,
-            "purchases": 6,
-            "frequency": 1.2067751111111111,
-            "roas": 2.016478,
-            "cpa": 36.14666666666667
+            "spend": 197.2,
+            "cpc": 0.14,
+            "ctr": 3.19,
+            "atc": 63,
+            "purchases": 5,
+            "frequency": 1.20867975,
+            "roas": 1.9968425,
+            "cpa": 39.44
           },
           {
             "name": "cbo - Collection malas (avisos) - 14 Julho",
@@ -4676,19 +4676,6 @@
             "cpa": null
           },
           {
-            "name": "cbo - Mala Emma vaca - ber - 12 Junho",
-            "status": "PAUSED",
-            "objective": "OUTCOME_SALES",
-            "spend": 0,
-            "cpc": null,
-            "ctr": null,
-            "atc": 0,
-            "purchases": 0,
-            "frequency": 0,
-            "roas": 0,
-            "cpa": null
-          },
-          {
             "name": "cbo - Mala Flores brancas - 1.71 - 27 Julho",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
@@ -4939,12 +4926,12 @@
             "name": "cbo - Mala Őszi csivava - 1.57 - 7 Set",
             "status": "PAUSED",
             "objective": "OUTCOME_SALES",
-            "spend": 20.35,
-            "cpc": 0.45,
-            "ctr": 2.46,
+            "spend": 9.42,
+            "cpc": 0.39,
+            "ctr": 3.39,
             "atc": 0,
             "purchases": 0,
-            "frequency": 1.3452983333333333,
+            "frequency": 1.25914,
             "roas": 0,
             "cpa": null
           },
@@ -5233,11 +5220,24 @@
             "frequency": 0,
             "roas": 0,
             "cpa": null
+          },
+          {
+            "name": "cbo - Necessair Margarida - 1.54 - 17 Julho",
+            "status": "PAUSED",
+            "objective": "OUTCOME_SALES",
+            "spend": 0,
+            "cpc": null,
+            "ctr": null,
+            "atc": 0,
+            "purchases": 0,
+            "frequency": 0,
+            "roas": 0,
+            "cpa": null
           }
         ]
       },
-      "ads_spend_total": 825.27,
-      "ads_revenue_attributed": 3876.4442987360003,
+      "ads_spend_total": 776.29,
+      "ads_revenue_attributed": 3896.2203144950004,
       "revenue_history": [
         {
           "date": "2026-09-08",
