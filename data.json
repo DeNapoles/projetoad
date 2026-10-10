@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T01:11:07.285Z",
+  "generated_at": "2026-10-10T07:01:31.766Z",
   "eur_huf_rate": 365.08,
   "stores": [
     {
@@ -9,10 +9,10 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 1998.5714285714287,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 14990,
+      "revenue_avg7d": 4140,
+      "orders_today": 1,
+      "aov": 14990,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
@@ -25,7 +25,13 @@
           "roas": 0
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Kézműves Misztikus Macska Táska",
+          "quantity": 1,
+          "revenue": 14990
+        }
+      ],
       "campaigns_by_range": {
         "today": [
           {
@@ -5357,7 +5363,7 @@
         },
         {
           "date": "2026-10-10",
-          "revenue": 0
+          "revenue": 14990
         }
       ]
     },
