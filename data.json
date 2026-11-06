@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T22:14:08.243Z",
+  "generated_at": "2026-11-06T02:24:52.211Z",
   "eur_huf_rate": 363.18,
   "stores": [
     {
@@ -27,10 +27,6 @@
       "ads_spend_total": 0,
       "ads_revenue_attributed": 0,
       "revenue_history": [
-        {
-          "date": "2026-10-07",
-          "revenue": 0
-        },
         {
           "date": "2026-10-08",
           "revenue": 0
@@ -145,6 +141,10 @@
         },
         {
           "date": "2026-11-05",
+          "revenue": 0
+        },
+        {
+          "date": "2026-11-06",
           "revenue": 0
         }
       ]
