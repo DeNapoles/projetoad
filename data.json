@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T07:30:40.998Z",
+  "generated_at": "2026-11-08T14:27:01.900Z",
   "eur_huf_rate": 363.9,
   "stores": [
     {
@@ -9,15 +9,36 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 0,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 87376,
+      "revenue_avg7d": 12482.285714285714,
+      "orders_today": 1,
+      "aov": 87376,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "3 részes steppelt ágyneműgarnitúra - Üdülési menedék",
+          "quantity": 1,
+          "revenue": 41990
+        },
+        {
+          "name": "3 részes steppelt ágyneműgarnitúra - Erdei séta",
+          "quantity": 1,
+          "revenue": 32990
+        },
+        {
+          "name": "3 részes steppelt ágyneműgarnitúra - Hóbarátok",
+          "quantity": 1,
+          "revenue": 32990
+        },
+        {
+          "name": "Tip",
+          "quantity": 1,
+          "revenue": 1000
+        }
+      ],
       "campaigns_by_range": {
         "today": [],
         "yesterday": [],
@@ -145,7 +166,7 @@
         },
         {
           "date": "2026-11-08",
-          "revenue": 0
+          "revenue": 87376
         }
       ]
     },
