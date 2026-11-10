@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-10T09:28:07.338Z",
-  "eur_huf_rate": 362.99,
+  "generated_at": "2026-11-10T17:11:18.654Z",
+  "eur_huf_rate": 362.98,
   "stores": [
     {
       "id": "arany_luna",
@@ -9,15 +9,21 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 12482.285714285714,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 16990,
+      "revenue_avg7d": 14909.42857142857,
+      "orders_today": 1,
+      "aov": 16990,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Steppelt asztali futó - Rusztikus magnóliavirág",
+          "quantity": 1,
+          "revenue": 16990
+        }
+      ],
       "campaigns_by_range": {
         "today": [],
         "yesterday": [],
@@ -145,7 +151,7 @@
         },
         {
           "date": "2026-11-10",
-          "revenue": 0
+          "revenue": 16990
         }
       ]
     },
