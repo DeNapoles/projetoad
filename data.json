@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-11T08:49:34.242Z",
-  "eur_huf_rate": 362.98,
+  "generated_at": "2026-11-11T16:39:10.377Z",
+  "eur_huf_rate": 365.08,
   "stores": [
     {
       "id": "arany_luna",
@@ -16,7 +16,21 @@
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
-      "alerts": [],
+      "alerts": [
+        {
+          "type": "unfulfilled_orders",
+          "severity": "medium",
+          "count": 1,
+          "count_severe": 0,
+          "message": "1 encomenda por cumprir",
+          "examples": [
+            {
+              "number": 1511,
+              "hours": 28
+            }
+          ]
+        }
+      ],
       "top_products": [],
       "campaigns_by_range": {
         "today": [],
