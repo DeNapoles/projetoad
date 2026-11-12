@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-12T11:48:39.271Z",
-  "eur_huf_rate": 365.08,
+  "generated_at": "2026-11-12T19:10:21.215Z",
+  "eur_huf_rate": 364.98,
   "stores": [
     {
       "id": "arany_luna",
@@ -19,14 +19,14 @@
       "alerts": [
         {
           "type": "unfulfilled_orders",
-          "severity": "medium",
+          "severity": "high",
           "count": 1,
-          "count_severe": 0,
-          "message": "1 encomenda por cumprir",
+          "count_severe": 1,
+          "message": "1 encomenda por cumprir (1 há mais de 48h)",
           "examples": [
             {
               "number": 1511,
-              "hours": 47
+              "hours": 55
             }
           ]
         }
