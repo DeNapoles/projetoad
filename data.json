@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-20T09:14:46.664Z",
-  "eur_huf_rate": 369.43,
+  "generated_at": "2026-11-20T17:48:26.755Z",
+  "eur_huf_rate": 373.55,
   "stores": [
     {
       "id": "arany_luna",
@@ -9,15 +9,21 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 2055.8571428571427,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 15990,
+      "revenue_avg7d": 4340.142857142857,
+      "orders_today": 1,
+      "aov": 15990,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Kristályos macska",
+          "quantity": 1,
+          "revenue": 15990
+        }
+      ],
       "campaigns_by_range": {
         "today": [],
         "yesterday": [],
@@ -145,7 +151,7 @@
         },
         {
           "date": "2026-11-20",
-          "revenue": 0
+          "revenue": 15990
         }
       ]
     },
