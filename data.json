@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T11:53:32.635Z",
+  "generated_at": "2026-11-22T18:41:58.133Z",
   "eur_huf_rate": 373.55,
   "stores": [
     {
@@ -9,29 +9,45 @@
       "currency": "HUF",
       "active": true,
       "profit_margin_pct": 30,
-      "revenue_today": 0,
-      "revenue_avg7d": 4340.142857142857,
-      "orders_today": 0,
-      "aov": null,
+      "revenue_today": 36776,
+      "revenue_avg7d": 9593.857142857143,
+      "orders_today": 1,
+      "aov": 36776,
       "refunded_today": 0,
       "refund_count_today": 0,
       "avg_fulfillment_hours": null,
       "alerts": [
         {
           "type": "unfulfilled_orders",
-          "severity": "medium",
+          "severity": "high",
           "count": 1,
-          "count_severe": 0,
-          "message": "1 encomenda por cumprir",
+          "count_severe": 1,
+          "message": "1 encomenda por cumprir (1 há mais de 48h)",
           "examples": [
             {
               "number": 1513,
-              "hours": 43
+              "hours": 50
             }
           ]
         }
       ],
-      "top_products": [],
+      "top_products": [
+        {
+          "name": "Luna | Macskamintás szennyeskosár",
+          "quantity": 1,
+          "revenue": 15990
+        },
+        {
+          "name": "Emma | Kézműves táska aranyos tehénnel",
+          "quantity": 1,
+          "revenue": 14990
+        },
+        {
+          "name": "Kézműves Macskavarázs Táska",
+          "quantity": 1,
+          "revenue": 14990
+        }
+      ],
       "campaigns_by_range": {
         "today": [],
         "yesterday": [],
@@ -159,7 +175,7 @@
         },
         {
           "date": "2026-11-22",
-          "revenue": 0
+          "revenue": 36776
         }
       ]
     },
