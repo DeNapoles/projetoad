@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T14:22:08.246Z",
-  "eur_huf_rate": 373.55,
+  "generated_at": "2026-11-24T01:44:23.431Z",
+  "eur_huf_rate": 372.28,
   "stores": [
     {
       "id": "arany_luna",
@@ -20,13 +20,17 @@
         {
           "type": "unfulfilled_orders",
           "severity": "high",
-          "count": 1,
+          "count": 2,
           "count_severe": 1,
-          "message": "1 encomenda por cumprir (1 há mais de 48h)",
+          "message": "2 encomendas por cumprir (1 há mais de 48h)",
           "examples": [
             {
               "number": 1513,
-              "hours": 69
+              "hours": 81
+            },
+            {
+              "number": 1514,
+              "hours": 32
             }
           ]
         }
@@ -41,10 +45,6 @@
       "ads_spend_total": 0,
       "ads_revenue_attributed": 0,
       "revenue_history": [
-        {
-          "date": "2026-10-25",
-          "revenue": 0
-        },
         {
           "date": "2026-10-26",
           "revenue": 0
@@ -159,6 +159,10 @@
         },
         {
           "date": "2026-11-23",
+          "revenue": 0
+        },
+        {
+          "date": "2026-11-24",
           "revenue": 0
         }
       ]
